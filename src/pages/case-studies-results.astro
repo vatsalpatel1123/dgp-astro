@@ -1,0 +1,1431 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies & Results | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="Real results from real dental practices. See the ROI, before/after data, and testimonials from practices that transformed their patient acquisition with our automated systems."
+    />
+        <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 100px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-container h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-container .highlight {
+        color: var(--natural);
+      }
+
+      .hero-container p {
+        font-size: 22px;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.7;
+        margin-bottom: 40px;
+      }
+
+      /* Stats Overview */
+      .stats-overview {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+        margin-top: 50px;
+      }
+
+      .overview-stat {
+        text-align: center;
+      }
+
+      .overview-number {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+
+      .overview-label {
+        font-size: 16px;
+        color: rgba(255,255,255,0.9);
+        font-weight: 600;
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Section Styles */
+      .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      /* Case Study Cards Section */
+      .case-studies-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .case-study-card {
+        background: var(--grey);
+        border-radius: 24px;
+        overflow: hidden;
+        margin-bottom: 60px;
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .case-study-card:hover {
+        border-color: var(--natural);
+        box-shadow: 0 20px 60px rgba(43, 102, 72, 0.15);
+      }
+
+      .case-study-header {
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        padding: 40px;
+        color: var(--white);
+      }
+
+      .practice-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .practice-details h3 {
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .practice-location {
+        font-size: 16px;
+        opacity: 0.9;
+        margin-bottom: 8px;
+      }
+
+      .practice-type {
+        display: inline-block;
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+        padding: 6px 14px;
+        border-radius: 14px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .case-study-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 24px;
+      }
+
+      .header-stat {
+        text-align: center;
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .header-stat-number {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .header-stat-label {
+        font-size: 13px;
+        opacity: 0.9;
+      }
+
+      .case-study-body {
+        padding: 50px;
+      }
+
+      .challenge-section,
+      .solution-section,
+      .results-section {
+        margin-bottom: 40px;
+      }
+
+      .case-study-body h4 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .case-study-body h4::before {
+        content: '';
+        width: 6px;
+        height: 30px;
+        background: var(--natural);
+        border-radius: 3px;
+      }
+
+      .case-study-body p {
+        color: var(--dim-grey);
+        line-height: 1.8;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin-top: 30px;
+      }
+
+      .metric-card {
+        background: var(--white);
+        padding: 28px;
+        border-radius: 16px;
+        text-align: center;
+        border: 2px solid var(--natural);
+        transition: all 0.3s ease;
+      }
+
+      .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(43, 102, 72, 0.15);
+      }
+
+      .metric-label {
+        font-size: 14px;
+        color: var(--dim-grey);
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .metric-comparison {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .before-value {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--indian-red);
+        text-decoration: line-through;
+      }
+
+      .arrow {
+        font-size: 24px;
+        color: var(--green);
+      }
+
+      .after-value {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--green);
+      }
+
+      .metric-improvement {
+        font-size: 13px;
+        color: var(--green);
+        font-weight: 700;
+        background: var(--pale-goldenrod);
+        padding: 4px 10px;
+        border-radius: 12px;
+        display: inline-block;
+      }
+
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .testimonial-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .quote-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 6px 20px rgba(8, 57, 129, 0.25);
+      }
+
+      .testimonial-text {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--black);
+        margin-bottom: 28px;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 2px solid var(--grey);
+      }
+
+      .author-avatar {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--green), var(--dark-olive-green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--white);
+        flex-shrink: 0;
+      }
+
+      .author-info h5 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 4px;
+      }
+
+      .author-info p {
+        font-size: 14px;
+        color: var(--dim-grey);
+      }
+
+      .rating {
+        color: var(--orange);
+        font-size: 18px;
+        margin-top: 8px;
+      }
+
+      /* ROI Calculator Section */
+      .roi-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .roi-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .roi-section .section-title,
+      .roi-section .section-description {
+        color: var(--white);
+      }
+
+      .roi-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .roi-card {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        text-align: center;
+      }
+
+      .roi-card:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .roi-number {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        margin-bottom: 12px;
+        line-height: 1;
+      }
+
+      .roi-label {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 12px;
+      }
+
+      .roi-description {
+        font-size: 15px;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.7;
+      }
+
+      /* Before/After Comparison Section */
+      .comparison-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .comparison-table {
+        max-width: 1000px;
+        margin: 60px auto 0;
+        background: var(--grey);
+        border-radius: 24px;
+        overflow: hidden;
+        border: 3px solid var(--natural);
+      }
+
+      .comparison-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        color: var(--white);
+      }
+
+      .comparison-header div {
+        padding: 24px;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .comparison-header div:first-child {
+        text-align: left;
+      }
+
+      .comparison-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        border-bottom: 1px solid var(--silver);
+      }
+
+      .comparison-row:last-child {
+        border-bottom: none;
+      }
+
+      .comparison-row:hover {
+        background: var(--white);
+      }
+
+      .comparison-row div {
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+
+      .comparison-row div:first-child {
+        justify-content: flex-start;
+        font-weight: 600;
+        color: var(--black);
+      }
+
+      .before-cell {
+        color: var(--indian-red);
+        font-weight: 700;
+      }
+
+      .after-cell {
+        color: var(--green);
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 21px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 44px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .cta-buttons {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container h1 {
+          font-size: 44px;
+        }
+
+        .practice-info {
+          flex-direction: column;
+        }
+
+        .comparison-header,
+        .comparison-row {
+          grid-template-columns: 1.5fr 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-container h1 {
+          font-size: 38px;
+        }
+
+        .hero-container p {
+          font-size: 18px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .case-study-body {
+          padding: 30px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .cta-section h2 {
+          font-size: 38px;
+        }
+
+        .comparison-header,
+        .comparison-row {
+          grid-template-columns: 1fr;
+        }
+
+        .comparison-row div {
+          justify-content: flex-start;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-container h1 {
+          font-size: 32px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+
+        .overview-number {
+          font-size: 42px;
+        }
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 18px 24px;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        border-top: 3px solid var(--natural);
+      }
+
+      .sticky-cta.active {
+        display: block;
+      }
+
+      .sticky-cta-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sticky-cta-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      @media (max-width: 767px) {
+        .sticky-cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <h1>
+          Real Practices. <span class="highlight">Real Results.</span>
+        </h1>
+        <p>
+          See the actual ROI, before/after data, and testimonials from dental practices that transformed their patient acquisition with our complete automated system.
+        </p>
+        <div class="stats-overview">
+          <div class="overview-stat">
+            <span class="overview-number">287%</span>
+            <span class="overview-label">Average ROI</span>
+          </div>
+          <div class="overview-stat">
+            <span class="overview-number">$847K</span>
+            <span class="overview-label">Avg. Revenue Added</span>
+          </div>
+          <div class="overview-stat">
+            <span class="overview-number">156</span>
+            <span class="overview-label">Avg. New Patients/Year</span>
+          </div>
+          <div class="overview-stat">
+            <span class="overview-number">75%</span>
+            <span class="overview-label">Higher Show Rates</span>
+          </div>
+        </div>
+        <div class="cta-buttons" style="margin-top: 50px;">
+          <a href="/book-demo" class="btn-primary">
+            Book Your Demo
+            <span>→</span>
+          </a>
+          <a href="#case-studies" class="btn-secondary">
+            Read Case Studies
+            <span>↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies-section" id="case-studies">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Success Stories</span>
+          <h2 class="section-title">Practices That Transformed Their Growth</h2>
+          <p class="section-description">
+            These aren't hypothetical projections—they're documented results from real dental practices using our complete automated marketing and patient management system.
+          </p>
+        </div>
+
+        <!-- Case Study 1 -->
+        <div class="case-study-card">
+          <div class="case-study-header">
+            <div class="practice-info">
+              <div class="practice-details">
+                <h3>Elite Dental Implant Center</h3>
+                <p class="practice-location">Phoenix, AZ</p>
+                <span class="practice-type">Multi-Specialty Practice</span>
+              </div>
+              <div class="case-study-stats">
+                <div class="header-stat">
+                  <span class="header-stat-number">$1.2M</span>
+                  <span class="header-stat-label">Revenue Added</span>
+                </div>
+                <div class="header-stat">
+                  <span class="header-stat-number">218</span>
+                  <span class="header-stat-label">New Implant Patients</span>
+                </div>
+                <div class="header-stat">
+                  <span class="header-stat-number">12 mo</span>
+                  <span class="header-stat-label">Time Frame</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-body">
+            <div class="challenge-section">
+              <h4>The Challenge</h4>
+              <p>
+                Elite Dental was spending $18,000/month on Google Ads and Facebook advertising but only booking 8-12 implant consultations monthly. Their front desk was overwhelmed with unqualified calls, show-up rates were below 50%, and they had no systematic way to nurture leads who weren't ready to book immediately. Cost per scheduled patient exceeded $1,500, and actual treatment acceptance was unpredictable.
+              </p>
+            </div>
+            <div class="solution-section">
+              <h4>The Solution</h4>
+              <p>
+                We implemented our complete Multi-Implant Marketing + Booking System with AI-powered lead qualification, human dental experts for initial contact, 43-touchpoint nurture sequences, and PMS-integrated scheduling. We restructured their ad campaigns using our AI creative research system and implemented behavior-based lead scoring across 4 qualification dimensions.
+              </p>
+            </div>
+            <div class="results-section">
+              <h4>The Results</h4>
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Monthly Consultations</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">10</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">32</span>
+                  </div>
+                  <span class="metric-improvement">+220%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Show-Up Rate</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">47%</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">82%</span>
+                  </div>
+                  <span class="metric-improvement">+75%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Cost Per Patient</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">$1,523</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">$687</span>
+                  </div>
+                  <span class="metric-improvement">-55%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Treatment Acceptance</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">41%</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">68%</span>
+                  </div>
+                  <span class="metric-improvement">+66%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="case-study-card">
+          <div class="case-study-header">
+            <div class="practice-info">
+              <div class="practice-details">
+                <h3>Coastal Cosmetic Dentistry</h3>
+                <p class="practice-location">San Diego, CA</p>
+                <span class="practice-type">High-End Cosmetic Practice</span>
+              </div>
+              <div class="case-study-stats">
+                <div class="header-stat">
+                  <span class="header-stat-number">$890K</span>
+                  <span class="header-stat-label">Revenue Added</span>
+                </div>
+                <div class="header-stat">
+                  <span class="header-stat-number">142</span>
+                  <span class="header-stat-label">New Veneer Cases</span>
+                </div>
+                <div class="header-stat">
+                  <span class="header-stat-number">10 mo</span>
+                  <span class="header-stat-label">Time Frame</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-body">
+            <div class="challenge-section">
+              <h4>The Challenge</h4>
+              <p>
+                Coastal Cosmetic had a beautiful practice and exceptional work but struggled to fill their cosmetic consultation slots. They were getting 30-40 inquiries monthly but only converting 5-8 into booked consultations. Most leads went cold after the initial contact, and their receptionist didn't have the bandwidth or training to properly qualify and nurture high-value cosmetic cases.
+              </p>
+            </div>
+            <div class="solution-section">
+              <h4>The Solution</h4>
+              <p>
+                Implemented our High-Value Case Marketing + Booking System specifically optimized for cosmetic dentistry. We deployed AI + human hybrid communication for instant engagement, created custom nurture sequences showcasing before/after galleries and patient testimonials, and integrated financing pre-qualification to remove price objections early in the conversation.
+              </p>
+            </div>
+            <div class="results-section">
+              <h4>The Results</h4>
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Monthly Consultations</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">6</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">24</span>
+                  </div>
+                  <span class="metric-improvement">+300%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Inquiry to Consult Rate</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">18%</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">61%</span>
+                  </div>
+                  <span class="metric-improvement">+239%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Average Case Value</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">$4,200</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">$6,270</span>
+                  </div>
+                  <span class="metric-improvement">+49%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">No-Show Rate</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">38%</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">9%</span>
+                  </div>
+                  <span class="metric-improvement">-76%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="case-study-card">
+          <div class="case-study-header">
+            <div class="practice-info">
+              <div class="practice-details">
+                <h3>Family Dental Group</h3>
+                <p class="practice-location">Austin, TX</p>
+                <span class="practice-type">Multi-Location Group</span>
+              </div>
+              <div class="case-study-stats">
+                <div class="header-stat">
+                  <span class="header-stat-number">$620K</span>
+                  <span class="header-stat-label">Revenue Added</span>
+                </div>
+                <div class="header-stat">
+                  <span class="header-stat-number">487</span>
+                  <span class="header-stat-label">New Patients</span>
+                </div>
+                <div class="header-stat">
+                  <span class="header-stat-number">8 mo</span>
+                  <span class="header-stat-label">Time Frame</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-study-body">
+            <div class="challenge-section">
+              <h4>The Challenge</h4>
+              <p>
+                Family Dental Group operates three locations and was losing 60+ patient calls per week due to overwhelmed front desk staff. Patients calling one location couldn't be easily routed to another, missed calls never received follow-up, and there was no centralized system for tracking inquiries across locations. They estimated losing $100K+ annually just from unanswered phones.
+              </p>
+            </div>
+            <div class="solution-section">
+              <h4>The Solution</h4>
+              <p>
+                Deployed our AI Voice Receptionist + PMS Integration across all three locations with intelligent routing based on location preference and availability. Implemented automated patient communication for reminders, reactivation campaigns, and review generation. Created unified reporting dashboard showing pipeline performance across all locations.
+              </p>
+            </div>
+            <div class="results-section">
+              <h4>The Results</h4>
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Call Answer Rate</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">34%</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">98%</span>
+                  </div>
+                  <span class="metric-improvement">+188%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Front Desk Hours Saved</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">0</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">42/wk</span>
+                  </div>
+                  <span class="metric-improvement">Per Location</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Database Reactivations</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">8/mo</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">67/mo</span>
+                  </div>
+                  <span class="metric-improvement">+738%</span>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Online Reviews</div>
+                  <div class="metric-comparison">
+                    <span class="before-value">2/mo</span>
+                    <span class="arrow">→</span>
+                    <span class="after-value">23/mo</span>
+                  </div>
+                  <span class="metric-improvement">+1050%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">What Our Partners Say</span>
+          <h2 class="section-title">Hear From Practice Owners Directly</h2>
+          <p class="section-description">
+            Real testimonials from dentists who transformed their practices with our automated marketing and patient management systems.
+          </p>
+        </div>
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "We went from 8 implant consultations a month to 32 within 90 days. The AI qualification system is incredible—we're only seeing patients who are actually ready to move forward. Our case acceptance rate has nearly doubled because leads are pre-qualified and pre-educated before they ever walk in."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">DR</div>
+              <div class="author-info">
+                <h5>Dr. Robert Martinez</h5>
+                <p>Elite Dental Implant Center</p>
+                <p>Phoenix, AZ</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "The automated patient communication alone has been worth the investment. We're bringing back 60+ inactive patients every month from our database—patients we thought were gone forever. The AI follows up persistently but naturally, and the human team closes the deal. It's brilliant."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">DS</div>
+              <div class="author-info">
+                <h5>Dr. Sarah Chen</h5>
+                <p>Coastal Cosmetic Dentistry</p>
+                <p>San Diego, CA</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "I was skeptical about AI receptionists, but this system is remarkable. It answers calls instantly, books appointments correctly, and my staff loves it because they can focus on patients in the office instead of being glued to the phone. We're capturing patients at 10 PM who would have called a competitor the next morning."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JT</div>
+              <div class="author-info">
+                <h5>Dr. James Thompson</h5>
+                <p>Family Dental Group</p>
+                <p>Austin, TX</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "Best decision we've made for our practice in 10 years. The show-up rate improvement alone changed everything—we went from 50% to 85% overnight. Fewer last-minute cancellations means predictable revenue and less wasted chair time. The ROI is off the charts."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MP</div>
+              <div class="author-info">
+                <h5>Dr. Michael Park</h5>
+                <p>Premier Implant Specialists</p>
+                <p>Denver, CO</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "Finally, marketing that actually delivers patients—not just 'leads.' The integration with our PMS is seamless, everything's tracked, and we know exactly what's working. We're spending less on ads and getting 3x more consultations. This is what dental marketing should have been all along."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">LA</div>
+              <div class="author-info">
+                <h5>Dr. Lisa Anderson</h5>
+                <p>Smile Design Studio</p>
+                <p>Miami, FL</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "The 43-touchpoint nurture system is genius. We used to lose leads after one or two follow-ups. Now they get personalized content, educational materials, and consistent follow-up until they're ready. Our conversion timeline shortened from 60+ days to under 3 weeks."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">KW</div>
+              <div class="author-info">
+                <h5>Dr. Kevin White</h5>
+                <p>Advanced Dental Implants</p>
+                <p>Seattle, WA</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI Section -->
+    <section class="roi-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Return on Investment</span>
+          <h2 class="section-title">Average Practice ROI Across All Partners</h2>
+          <p class="section-description">
+            These are real, measured outcomes from practices using our complete system for 12+ months.
+          </p>
+        </div>
+        <div class="roi-cards">
+          
+          <div class="roi-card">
+            <span class="roi-number">287%</span>
+            <span class="roi-label">Average ROI</span>
+            <p class="roi-description">For every $1 invested, practices see $2.87 in additional revenue within the first year</p>
+          </div>
+
+          <div class="roi-card">
+            <span class="roi-number">$847K</span>
+            <span class="roi-label">Avg. Revenue Added</span>
+            <p class="roi-description">Annual revenue increase across all partner practices using our complete system</p>
+          </div>
+
+          <div class="roi-card">
+            <span class="roi-number">156</span>
+            <span class="roi-label">New Patients/Year</span>
+            <p class="roi-description">Average number of new high-value patients acquired through automated pipeline</p>
+          </div>
+
+          <div class="roi-card">
+            <span class="roi-number">6.2x</span>
+            <span class="roi-label">Lead Conversion Lift</span>
+            <p class="roi-description">Improvement in inquiry-to-appointment conversion rate vs. traditional methods</p>
+          </div>
+
+          <div class="roi-card">
+            <span class="roi-number">42hrs</span>
+            <span class="roi-label">Staff Time Saved</span>
+            <p class="roi-description">Weekly hours reclaimed per location from automated communication and scheduling</p>
+          </div>
+
+          <div class="roi-card">
+            <span class="roi-number">90 days</span>
+            <span class="roi-label">Payback Period</span>
+            <p class="roi-description">Average time to complete ROI on initial investment and monthly fees</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After Comparison Section -->
+    <section class="comparison-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Before vs After</span>
+          <h2 class="section-title">What Changes When You Partner With Us</h2>
+          <p class="section-description">
+            Side-by-side comparison of typical practice metrics before and after implementing our complete automated system.
+          </p>
+        </div>
+        <div class="comparison-table">
+          <div class="comparison-header">
+            <div>Metric</div>
+            <div>Before DGP</div>
+            <div>After DGP</div>
+          </div>
+          <div class="comparison-row">
+            <div>Monthly Consultation Volume</div>
+            <div class="before-cell">8-12</div>
+            <div class="after-cell">28-35</div>
+          </div>
+          <div class="comparison-row">
+            <div>Call Answer Rate</div>
+            <div class="before-cell">34%</div>
+            <div class="after-cell">98%</div>
+          </div>
+          <div class="comparison-row">
+            <div>Lead Response Time</div>
+            <div class="before-cell">4-8 hours</div>
+            <div class="after-cell">&lt;30 seconds</div>
+          </div>
+          <div class="comparison-row">
+            <div>Inquiry to Consult Rate</div>
+            <div class="before-cell">18-25%</div>
+            <div class="after-cell">58-72%</div>
+          </div>
+          <div class="comparison-row">
+            <div>Consultation Show Rate</div>
+            <div class="before-cell">45-55%</div>
+            <div class="after-cell">78-85%</div>
+          </div>
+          <div class="comparison-row">
+            <div>Cost Per Scheduled Patient</div>
+            <div class="before-cell">$1,200-1,800</div>
+            <div class="after-cell">$550-750</div>
+          </div>
+          <div class="comparison-row">
+            <div>Database Reactivations/Month</div>
+            <div class="before-cell">5-10</div>
+            <div class="after-cell">45-70</div>
+          </div>
+          <div class="comparison-row">
+            <div>Online Reviews/Month</div>
+            <div class="before-cell">1-3</div>
+            <div class="after-cell">18-28</div>
+          </div>
+          <div class="comparison-row">
+            <div>Front Desk Phone Time</div>
+            <div class="before-cell">30+ hrs/week</div>
+            <div class="after-cell">8-12 hrs/week</div>
+          </div>
+          <div class="comparison-row">
+            <div>Marketing Attribution Clarity</div>
+            <div class="before-cell">Poor/None</div>
+            <div class="after-cell">Complete</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <h2>Ready to <span class="highlight">Transform</span> Your Results?</h2>
+        <p>
+          Join the dental practices achieving 287% ROI and adding $800K+ in annual revenue with our complete automated marketing and patient management system.
+        </p>
+        <div class="cta-buttons">
+          <a href="/book-demo" class="btn-primary">
+            Book Your Demo
+            <span>→</span>
+          </a>
+          <a href="tel:+16505578269" class="btn-secondary">
+            Call (650) 557-8269
+            <span>📞</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+
+    <!-- Scripts -->
+    <script>
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 800) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Case Studies & Results - Dentistry Growth Partners",
+      "description": "Real results from real dental practices. See the ROI, before/after data, and testimonials from practices that transformed their patient acquisition.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      }
+    }
+    </script>
+  </body>
+</html>

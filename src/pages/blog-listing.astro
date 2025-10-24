@@ -1,0 +1,1073 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+
+// This would normally come from your CMS or database
+// For now, we're using static data as an example
+const currentPage = 1;
+const postsPerPage = 9;
+const totalPosts = 27; // Example: 27 total posts
+const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+// Example blog posts data - in production, this would come from your CMS
+const blogPosts = [
+  {
+    id: 1,
+    title: "How AI Voice Receptionists Are Revolutionizing Dental Practices in 2025",
+    excerpt: "Discover how AI-powered voice technology is helping dental practices answer every call, reduce staff workload, and increase patient bookings by 300%.",
+    image: "/images/blog/ai-receptionist-dental.jpg",
+    category: "Technology",
+    author: "Sarah Johnson",
+    date: "January 15, 2025",
+    readTime: "8 min read",
+    slug: "ai-voice-receptionists-dental-practices-2025"
+  },
+  {
+    id: 2,
+    title: "The Complete Guide to Multi-Implant Marketing for Dental Practices",
+    excerpt: "Everything you need to know about attracting high-value implant patients through targeted marketing, qualification systems, and automated follow-up.",
+    image: "/images/blog/multi-implant-marketing.jpg",
+    category: "Marketing",
+    author: "Dr. Michael Chen",
+    date: "January 12, 2025",
+    readTime: "12 min read",
+    slug: "complete-guide-multi-implant-marketing"
+  },
+  {
+    id: 3,
+    title: "Why Your Dental Practice Is Losing Patients to Voicemail (And How to Fix It)",
+    excerpt: "Studies show that 85% of patients won't leave a voicemail. Learn how automated call handling can capture every opportunity and increase revenue.",
+    image: "/images/blog/dental-voicemail-problem.jpg",
+    category: "Practice Growth",
+    author: "Emily Rodriguez",
+    date: "January 10, 2025",
+    readTime: "6 min read",
+    slug: "dental-practice-losing-patients-voicemail"
+  },
+  {
+    id: 4,
+    title: "Local SEO for Dentists: How to Dominate 'Dentist Near Me' Searches",
+    excerpt: "A comprehensive guide to ranking #1 in local search results, optimizing your Google Business Profile, and capturing patients searching for dentists nearby.",
+    image: "/images/blog/local-seo-dentists.jpg",
+    category: "SEO",
+    author: "Mark Thompson",
+    date: "January 8, 2025",
+    readTime: "10 min read",
+    slug: "local-seo-dentists-near-me-searches"
+  },
+  {
+    id: 5,
+    title: "Case Study: How a Miami Dental Practice Added $847K in Revenue in 12 Months",
+    excerpt: "Real numbers, real results. See exactly how we transformed a struggling Miami practice into a patient acquisition machine with our automated system.",
+    image: "/images/blog/miami-dental-case-study.jpg",
+    category: "Case Studies",
+    author: "Sarah Johnson",
+    date: "January 5, 2025",
+    readTime: "15 min read",
+    slug: "miami-dental-practice-847k-revenue-case-study"
+  },
+  {
+    id: 6,
+    title: "The 43-Touchpoint Nurture System: Converting Leads Into Booked Appointments",
+    excerpt: "Why most dental leads never convert, and how our behavior-based nurture sequences turn cold prospects into confirmed patients over time.",
+    image: "/images/blog/43-touchpoint-nurture.jpg",
+    category: "Automation",
+    author: "Dr. Jennifer Lee",
+    date: "January 3, 2025",
+    readTime: "9 min read",
+    slug: "43-touchpoint-nurture-system-dental-leads"
+  },
+  {
+    id: 7,
+    title: "Database Reactivation: The $100K Hidden in Your Patient Management System",
+    excerpt: "Your inactive patient list is a goldmine. Learn how to systematically reactivate lapsed patients and generate revenue from your existing database.",
+    image: "/images/blog/database-reactivation-dental.jpg",
+    category: "Marketing",
+    author: "Mark Thompson",
+    date: "December 28, 2024",
+    readTime: "7 min read",
+    slug: "database-reactivation-dental-practice-revenue"
+  },
+  {
+    id: 8,
+    title: "Google Ads for Dental Implants: What Works in 2025",
+    excerpt: "The exact Google Ads strategies we use to generate high-quality implant leads at 50% lower cost than traditional dental marketing agencies.",
+    image: "/images/blog/google-ads-dental-implants.jpg",
+    category: "Advertising",
+    author: "Sarah Johnson",
+    date: "December 26, 2024",
+    readTime: "11 min read",
+    slug: "google-ads-dental-implants-2025-strategy"
+  },
+  {
+    id: 9,
+    title: "How to Improve Dental Appointment Show Rates by 75%",
+    excerpt: "The proven multi-channel confirmation system that virtually eliminates no-shows and keeps your schedule consistently full.",
+    image: "/images/blog/improve-dental-show-rates.jpg",
+    category: "Practice Management",
+    author: "Dr. Michael Chen",
+    date: "December 22, 2024",
+    readTime: "8 min read",
+    slug: "improve-dental-appointment-show-rates"
+  }
+];
+
+const categories = [
+  { name: "All Posts", count: 27, slug: "all" },
+  { name: "Marketing", count: 8, slug: "marketing" },
+  { name: "Technology", count: 6, slug: "technology" },
+  { name: "Case Studies", count: 4, slug: "case-studies" },
+  { name: "SEO", count: 5, slug: "seo" },
+  { name: "Practice Growth", count: 4, slug: "practice-growth" }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dental Marketing Blog | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="Expert insights on dental marketing, practice automation, AI technology, and patient acquisition. Learn from industry leaders at Dentistry Growth Partners."
+    />
+        <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 80px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-container h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-container .highlight {
+        color: var(--natural);
+      }
+
+      .hero-container p {
+        font-size: 22px;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      /* Search Bar */
+      .search-section {
+        max-width: 700px;
+        margin: 40px auto 0;
+      }
+
+      .search-bar {
+        position: relative;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 18px 60px 18px 24px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50px;
+        font-size: 16px;
+        font-family: inherit;
+        background: rgba(255,255,255,0.1);
+        color: var(--white);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .search-bar input::placeholder {
+        color: rgba(255,255,255,0.6);
+      }
+
+      .search-bar input:focus {
+        outline: none;
+        border-color: var(--natural);
+        background: rgba(255,255,255,0.15);
+        box-shadow: 0 0 0 3px rgba(198,255,83,0.2);
+      }
+
+      .search-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--natural);
+        color: var(--black);
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .search-btn:hover {
+        background: var(--green);
+        color: var(--white);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      /* Blog Container */
+      .blog-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .blog-layout {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 60px;
+      }
+
+      /* Main Content */
+      .blog-main {
+        /* Posts grid will be inside here */
+      }
+
+      /* Featured Post */
+      .featured-post {
+        background: var(--grey);
+        border-radius: 24px;
+        overflow: hidden;
+        border: 3px solid var(--natural);
+        margin-bottom: 60px;
+        transition: all 0.3s ease;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+
+      .featured-post:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(43, 102, 72, 0.2);
+      }
+
+      .featured-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      }
+
+      .featured-content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .featured-badge {
+        display: inline-block;
+        background: var(--natural);
+        color: var(--black);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        width: fit-content;
+      }
+
+      .featured-content h2 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 16px;
+        line-height: 1.3;
+      }
+
+      .featured-content p {
+        font-size: 17px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: var(--dim-grey);
+        margin-bottom: 24px;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .read-more-btn {
+        background: var(--dark-slate-blue);
+        color: var(--white);
+        padding: 14px 32px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+      }
+
+      .read-more-btn:hover {
+        background: var(--green);
+        transform: translateX(5px);
+      }
+
+      /* Blog Posts Grid */
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 32px;
+      }
+
+      .post-card {
+        background: var(--grey);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .post-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.15);
+        border-color: var(--natural);
+      }
+
+      .post-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      }
+
+      .post-content {
+        padding: 28px;
+      }
+
+      .post-category {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 6px 14px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+
+      .post-content h3 {
+        font-size: 21px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .post-content > p {
+        font-size: 15px;
+        color: var(--dim-grey);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .post-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid var(--silver);
+      }
+
+      .post-author {
+        font-size: 13px;
+        color: var(--dim-grey);
+        font-weight: 600;
+      }
+
+      .post-date {
+        font-size: 13px;
+        color: var(--dark-grey);
+      }
+
+      /* Sidebar */
+      .blog-sidebar {
+        /* Sidebar content */
+      }
+
+      .sidebar-section {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 32px;
+        margin-bottom: 32px;
+        border: 2px solid var(--natural);
+      }
+
+      .sidebar-section h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 20px;
+      }
+
+      .category-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .category-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        background: var(--white);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--black);
+      }
+
+      .category-item:hover,
+      .category-item.active {
+        background: var(--natural);
+        transform: translateX(5px);
+      }
+
+      .category-name {
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .category-count {
+        background: rgba(0,0,0,0.1);
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      /* Recent Posts */
+      .recent-posts {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .recent-post-item {
+        display: flex;
+        gap: 16px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .recent-post-item:hover {
+        transform: translateX(5px);
+      }
+
+      .recent-post-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        object-fit: cover;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      }
+
+      .recent-post-content h4 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 6px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .recent-post-date {
+        font-size: 13px;
+        color: var(--dim-grey);
+      }
+
+      /* Newsletter */
+      .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .newsletter-form input {
+        padding: 14px;
+        border: 2px solid var(--silver);
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form input:focus {
+        outline: none;
+        border-color: var(--natural);
+        box-shadow: 0 0 0 3px rgba(198,255,83,0.2);
+      }
+
+      .newsletter-btn {
+        background: var(--dark-slate-blue);
+        color: var(--white);
+        padding: 14px 24px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-btn:hover {
+        background: var(--green);
+        transform: translateY(-2px);
+      }
+
+      /* Pagination */
+      .pagination-section {
+        margin-top: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .pagination-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--grey);
+        color: var(--black);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .pagination-btn:hover:not(.disabled) {
+        background: var(--natural);
+        transform: translateY(-3px);
+      }
+
+      .pagination-btn.active {
+        background: var(--dark-slate-blue);
+        color: var(--white);
+        border-color: var(--natural);
+      }
+
+      .pagination-btn.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .pagination-dots {
+        padding: 0 8px;
+        color: var(--dim-grey);
+        font-weight: 700;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      .cta-section h2 {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 20px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 40px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .blog-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .blog-sidebar {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 32px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .hero-container h1 {
+          font-size: 44px;
+        }
+
+        .featured-post {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-image {
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-container h1 {
+          font-size: 38px;
+        }
+
+        .hero-container p {
+          font-size: 18px;
+        }
+
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-content {
+          padding: 30px;
+        }
+
+        .featured-content h2 {
+          font-size: 26px;
+        }
+
+        .cta-section h2 {
+          font-size: 36px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-container h1 {
+          font-size: 32px;
+        }
+
+        .pagination-section {
+          gap: 8px;
+        }
+
+        .pagination-btn {
+          width: 38px;
+          height: 38px;
+          font-size: 14px;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <h1>
+          Dental Marketing <span class="highlight">Insights</span> & Expertise
+        </h1>
+        <p>
+          Expert strategies, case studies, and actionable insights to help your dental practice attract more patients, automate operations, and maximize ROI.
+        </p>
+        
+        <!-- Search Bar -->
+        <div class="search-section">
+          <div class="search-bar">
+            <input 
+              type="text" 
+              placeholder="Search articles..."
+              id="searchInput"
+            />
+            <button class="search-btn" id="searchBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Container -->
+    <div class="blog-container">
+      <div class="blog-layout">
+        
+        <!-- Main Content -->
+        <div class="blog-main">
+          
+          <!-- Featured Post -->
+          <article class="featured-post">
+            <img 
+              src={blogPosts[0].image} 
+              alt={blogPosts[0].title}
+              class="featured-image"
+            />
+            <div class="featured-content">
+              <span class="featured-badge">Featured Post</span>
+              <h2>{blogPosts[0].title}</h2>
+              <div class="post-meta">
+                <span class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  {blogPosts[0].author}
+                </span>
+                <span class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  {blogPosts[0].date}
+                </span>
+                <span class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  {blogPosts[0].readTime}
+                </span>
+              </div>
+              <p>{blogPosts[0].excerpt}</p>
+              <a href={`/blog/${blogPosts[0].slug}`} class="read-more-btn">
+                Read Full Article
+                <span>→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Blog Posts Grid -->
+          <div class="posts-grid">
+            {blogPosts.slice(1).map(post => (
+              <a href={`/blog/${post.slug}`} class="post-card">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  class="post-image"
+                />
+                <div class="post-content">
+                  <span class="post-category">{post.category}</span>
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                  <div class="post-footer">
+                    <span class="post-author">{post.author}</span>
+                    <span class="post-date">{post.date}</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination-section">
+            <a href="/blog?page=1" class="pagination-btn disabled">
+              <span>←</span>
+            </a>
+            <a href="/blog?page=1" class="pagination-btn active">1</a>
+            <a href="/blog?page=2" class="pagination-btn">2</a>
+            <a href="/blog?page=3" class="pagination-btn">3</a>
+            <span class="pagination-dots">...</span>
+            <a href={`/blog?page=${totalPages}`} class="pagination-btn">{totalPages}</a>
+            <a href="/blog?page=2" class="pagination-btn">
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+          
+          <!-- Categories -->
+          <div class="sidebar-section">
+            <h3>Categories</h3>
+            <div class="category-list">
+              {categories.map((category, index) => (
+                <a 
+                  href={`/blog/category/${category.slug}`} 
+                  class={`category-item ${index === 0 ? 'active' : ''}`}
+                >
+                  <span class="category-name">{category.name}</span>
+                  <span class="category-count">{category.count}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Recent Posts -->
+          <div class="sidebar-section">
+            <h3>Recent Posts</h3>
+            <div class="recent-posts">
+              {blogPosts.slice(0, 4).map(post => (
+                <a href={`/blog/${post.slug}`} class="recent-post-item">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    class="recent-post-image"
+                  />
+                  <div class="recent-post-content">
+                    <h4>{post.title}</h4>
+                    <span class="recent-post-date">{post.date}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="sidebar-section">
+            <h3>Newsletter</h3>
+            <p style="font-size: 14px; color: var(--dim-grey); margin-bottom: 16px; line-height: 1.6;">
+              Get the latest dental marketing insights delivered to your inbox weekly.
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input 
+                type="email" 
+                placeholder="Your email address"
+                required
+              />
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Ready to <span class="highlight">Transform</span> Your Practice?</h2>
+      <p>
+        Stop reading about it and start experiencing it. Schedule a demo to see our complete automated system in action.
+      </p>
+      <div class="cta-buttons">
+        <a href="/book-demo" class="btn-primary">
+          Schedule Your Demo
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+
+    <!-- Scripts -->
+    <script>
+      // Search functionality
+      document.getElementById('searchBtn').addEventListener('click', function() {
+        const searchTerm = document.getElementById('searchInput').value;
+        if (searchTerm) {
+          window.location.href = `/blog/search?q=${encodeURIComponent(searchTerm)}`;
+        }
+      });
+
+      document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const searchTerm = this.value;
+          if (searchTerm) {
+            window.location.href = `/blog/search?q=${encodeURIComponent(searchTerm)}`;
+          }
+        }
+      });
+
+      // Newsletter form
+      document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Here you would typically send to your newsletter service
+        console.log('Newsletter signup:', email);
+        
+        alert('Thank you for subscribing! Check your email for confirmation.');
+        this.reset();
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Dentistry Growth Partners Blog",
+      "description": "Expert insights on dental marketing, practice automation, AI technology, and patient acquisition",
+      "url": "https://dentistrygrowthpartners.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      }
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+---
+// Sticky CTA Component - Floating action buttons with mobile bottom menu bar
+---
+
+<style>
+  /* ============================================
+     FLOATING CTA BUTTONS
+  ============================================ */
+
+  .floating-cta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9998;
+  }
+
+  .floating-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: var(--natural);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .floating-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+  }
+
+  .floating-btn i {
+    font-size: 24px;
+  }
+
+  /* ============================================
+     MOBILE APP-STYLE BOTTOM MENU BAR
+  ============================================ */
+
+  @media (max-width: 767px) {
+    .floating-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      flex-direction: row;
+      justify-content: space-around;
+      background: var(--white);
+      padding: 12px 16px;
+      gap: 0;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+      border-top: 1px solid rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+    }
+
+    .floating-btn {
+      flex: 1;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 16px;
+      background: transparent;
+      border-radius: 12px;
+      box-shadow: none;
+      font-size: 12px;
+      font-weight: 600;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .floating-btn:hover {
+      transform: none;
+      box-shadow: none;
+      background: rgba(198, 255, 83, 0.15);
+    }
+
+    .floating-btn:active {
+      background: rgba(198, 255, 83, 0.25);
+    }
+
+    .floating-btn i {
+      font-size: 28px;
+      color: var(--dark-slate-blue);
+    }
+
+    /* Add padding to body to prevent content from being hidden behind the fixed bottom bar */
+    body {
+      padding-bottom: 80px;
+    }
+  }
+</style>
+
+<!-- Floating CTA Buttons -->
+<div class="floating-cta">
+  <a href="/book-a-call" class="floating-btn">
+    <i class="ti ti-calendar-event"></i>
+    <span>Consult Now</span>
+  </a>
+  <a href="tel:+16505578269" class="floating-btn">
+    <i class="ti ti-phone"></i>
+    <span>Call Now</span>
+  </a>
+</div>

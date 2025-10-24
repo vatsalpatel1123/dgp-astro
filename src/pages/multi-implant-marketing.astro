@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Implant Marketing + Booking System | Dentistry Growth Partners</title>
+  <meta name="description" content="Complete multi-implant patient acquisition system. AI-powered marketing, instant engagement, and automated scheduling for high-value implant cases.">
+  <meta property="og:title" content="Multi-Implant Marketing + Booking System | Dentistry Growth Partners">
+  <meta property="og:description" content="Complete multi-implant patient acquisition system. AI-powered marketing, instant engagement, and automated scheduling for high-value implant cases.">
+  <meta property="og:image" content="636f4050ef41c9124a12cbba/dgp-logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="shortcut icon" href="636f4050ef41c9124a12cbba/dgp-logo1.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="636f4050ef41c9124a12cbba/dgp-logo1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variables - Dark Blue & Lime Green Theme */
+    :root {
+      --dark-slate-blue: #083981;
+      --natural: #c6ff53;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+      --dark-olive-green: #194c8b;
+      --green: #2b6648;
+      --pale-goldenrod: #e3fcb0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       NAVBAR STYLES
+    ============================================ */
+
+    .nav-bar-dark {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--dark-slate-blue);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .top-bar-dark {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .top-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .top-bar-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .top-bar-link {
+      color: var(--natural);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .top-bar-link:hover {
+      opacity: 0.8;
+    }
+
+    .navbar-container-dark {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo-link {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-image {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar-menu-dark {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      margin-left: 60px;
+    }
+
+    .navbar-menu-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link-dark {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link-dark:hover {
+      color: var(--natural);
+    }
+
+    .nav-link-dark.w--current {
+      color: var(--natural);
+    }
+
+    .dropdown-dark {
+      position: relative;
+    }
+
+    .dropdown-toggle-dark {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .dropdown-icon {
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-dark.w--open .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-list-dark {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      padding: 12px;
+      min-width: 280px;
+      display: none;
+      z-index: 9999;
+    }
+
+    .dropdown-dark.w--open .dropdown-list-dark {
+      display: block;
+      animation: fadeInDown 0.3s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dropdown-links-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dropdown-link-dark {
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-link-dark:hover {
+      background: rgba(198, 255, 83, 0.15);
+    }
+
+    .dropdown-link-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .dropdown-link-dark:hover .dropdown-link-text {
+      color: var(--dark-slate-blue);
+    }
+
+    .cta-button-dark {
+      background: var(--natural);
+      color: var(--black);
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(198, 255, 83, 0.3);
+    }
+
+    .cta-button-dark:hover {
+      background: var(--white);
+      color: var(--dark-slate-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(198, 255, 83, 0.4);
+    }
+
+    .navbar-menu-button {
+      display: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .menu-icon-wrapper {
+      width: 24px;
+      height: 20px;
+      position: relative;
+      margin: 10px auto;
+    }
+
+    .menu-icon-line-top,
+    .menu-icon-line-middle,
+    .menu-icon-line-bottom {
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      position: absolute;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon-line-top {
+      top: 0;
+    }
+
+    .menu-icon-line-middle {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .menu-icon-line-bottom {
+      bottom: 0;
+    }
+
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      padding: 160px 24px 100px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 120px;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero-content .highlight {
+      color: var(--natural);
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(198,255,83,0.3);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--natural);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--natural);
+      color: var(--black);
+      padding: 18px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--natural);
+      box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--natural);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--white);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--dark-slate-blue);
+      transform: translateY(-3px);
+    }
+
+    /* ============================================
+       SECTION STYLES
+    ============================================ */
+
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 60px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--pale-goldenrod);
+      color: var(--green);
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      font-size: 19px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       SYSTEM OVERVIEW SECTION
+    ============================================ */
+
+    .system-section {
+      padding: 100px 24px;
+      background: var(--white);
+    }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .system-card {
+      background: var(--grey);
+      padding: 40px;
+      border-radius: 20px;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .system-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .system-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--natural);
+      margin-bottom: 24px;
+    }
+
+    .system-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .system-card p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       FEATURES SECTION
+    ============================================ */
+
+    .features-section {
+      padding: 100px 24px;
+      background: var(--grey);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .feature-card-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       BENEFITS SECTION
+    ============================================ */
+
+    .benefits-section {
+      padding: 100px 24px;
+      background: var(--white);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .benefit-card {
+      background: var(--grey);
+      padding: 32px;
+      border-radius: 16px;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .benefit-icon {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .benefit-card p {
+      font-size: 15px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       PRICING SECTION
+    ============================================ */
+
+    .pricing-section {
+      padding: 100px 24px;
+      background: var(--grey);
+    }
+
+    .pricing-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 60px;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border: 4px solid var(--natural);
+      position: relative;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--natural);
+      color: var(--black);
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .pricing-amount {
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .pricing-period {
+      font-size: 20px;
+      color: var(--dim-grey);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .pricing-description {
+      font-size: 18px;
+      color: var(--dim-grey);
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .pricing-features li {
+      font-size: 16px;
+      color: var(--black);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--grey);
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .pricing-features li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--natural);
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    /* ============================================
+       CTA SECTION
+    ============================================ */
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .cta-section .section-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h2 {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .cta-section p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================
+       FOOTER STYLES
+    ============================================ */
+
+    .footer {
+      background: var(--dark-slate-blue);
+      color: var(--white);
+      padding: 80px 24px 24px;
+    }
+
+    .footer-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+    }
+
+    .footer-left-contain {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .remedo-logo {
+      width: 200px;
+      height: auto;
+    }
+
+    .footer-heading {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+    }
+
+    .footer-heading:hover {
+      color: var(--natural);
+    }
+
+    .social-links-contain {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background: var(--natural);
+      transform: translateY(-3px);
+    }
+
+    .social-link-image {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-link:hover .social-link-image {
+      filter: brightness(0);
+    }
+
+    .hipaa-logo {
+      width: 120px;
+      height: auto;
+      margin-top: 16px;
+    }
+
+    .footer-right-contain {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+    }
+
+    .footer_link-coloumn {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-coloumn-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--natural);
+      margin-bottom: 8px;
+    }
+
+    .footer-link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link-2 {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-link-2:hover {
+      color: var(--natural);
+      padding-left: 8px;
+    }
+
+    .footer-last-text {
+      max-width: 1400px;
+      margin: 60px auto 0;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .copyright-text-2 {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Sticky CTA Bar */
+    .sticky-cta {
+      position: fixed;
+      bottom: -100px;
+      left: 0;
+      right: 0;
+      background: var(--dark-slate-blue);
+      padding: 20px 24px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+      transition: bottom 0.3s ease;
+      z-index: 9998;
+    }
+
+    .sticky-cta.active {
+      bottom: 0;
+    }
+
+    .sticky-cta-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .sticky-cta-text {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+    ============================================ */
+
+    @media (max-width: 991px) {
+      .navbar-menu-dark {
+        display: none;
+        position: fixed;
+        /* top: 120px; */
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--dark-slate-blue);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        margin-left: 0;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+      }
+
+      .navbar-menu-dark.w--open {
+        display: flex;
+      }
+
+      .navbar-menu-left {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0;
+      }
+
+      .nav-link-dark {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-menu-button {
+        display: block;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .system-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .sticky-cta-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .top-bar-content {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      .cta-section h2 {
+        font-size: 36px;
+      }
+
+      .pricing-card {
+        padding: 40px 24px;
+      }
+
+      .pricing-amount {
+        font-size: 48px;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .hero-content h1 {
+        font-size: 32px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR SECTION
+  ============================================ -->
+  <div class="nav-bar-dark">
+    <!-- Top Bar -->
+    <!-- <div class="top-bar-dark">
+      <div class="top-bar-content">
+        <div class="top-bar-item">
+          <div class="top-bar-label">Website :</div>
+          <a href="https://dentistrygrowthpartners.com" class="top-bar-link">dentistrygrowthpartners.com</a>
+        </div>
+        <div class="top-bar-item">
+          <div class="top-bar-label">Founders :</div>
+          <span class="top-bar-link">Tom Santella & Mario Ferrara</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Main Navbar -->
+    <div class="navbar-container-dark">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo-link">
+        <div class="logo-wrapper">
+          <img
+            loading="lazy"
+            width="100"
+            src="636f4050ef41c9124a12cbba/dgp-logo.png"
+            alt="Dentistry Growth Partners Logo"
+            class="logo-image"
+          />
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav role="navigation" class="navbar-menu-dark">
+        <div class="navbar-menu-left">
+          <a href="/" class="nav-link-dark">Home</a>
+
+          <!-- Services Dropdown -->
+          <div class="dropdown-dark">
+            <div class="dropdown-toggle-dark">
+              <div class="nav-link-dark w--current">Services</div>
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <nav class="dropdown-list-dark">
+              <div class="dropdown-links-wrapper">
+                <a href="/multi-implant-marketing" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Multi-Implant Marketing</div>
+                </a>
+                <a href="/high-value-case-marketing-system" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">High-Value Case Marketing</div>
+                </a>
+                <a href="/ai-voice-receptionist-pms-integration" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">AI Voice Receptionist</div>
+                </a>
+                <a href="/automated-patient-communication" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Patient Communication</div>
+                </a>
+                <a href="/aio-seo" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">AIO SEO</div>
+                </a>
+                <a href="/website-design-management" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Website Design & Management</div>
+                </a>
+              </div>
+            </nav>
+          </div>
+
+          <a href="/how-it-works" class="nav-link-dark">How It Works</a>
+          <a href="/about-dgp" class="nav-link-dark">About DGP</a>
+
+          <!-- Resources Dropdown -->
+          <div class="dropdown-dark">
+            <div class="dropdown-toggle-dark">
+              <div class="nav-link-dark">Resources</div>
+              <div class="dropdown-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <nav class="dropdown-list-dark">
+              <div class="dropdown-links-wrapper">
+                <a href="/case-studies-results" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Case Studies</div>
+                </a>
+                <a href="/blog" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Blog</div>
+                </a>
+                <a href="/vsl" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">VSL Page</div>
+                </a>
+              </div>
+            </nav>
+          </div>
+
+          <a href="/contact" class="nav-link-dark">Contact</a>
+        </div>
+
+        <!-- Right Side Menu -->
+        <div class="navbar-menu-right">
+          <div class="navbar-button-wrapper">
+            <a href="/book-a-call" class="cta-button-dark">Book a Demo</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="navbar-menu-button">
+        <div class="menu-icon-wrapper">
+          <div class="menu-icon-line-top"></div>
+          <div class="menu-icon-line-middle"></div>
+          <div class="menu-icon-line-bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       HERO SECTION
+  ============================================ -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>
+          <span class="highlight">Multi-Implant Marketing</span> + Automated Booking System
+        </h1>
+        <p>
+          The complete patient acquisition engine for dental implant practices. Generate qualified leads, engage them instantly with AI, and book them directly into your schedule—all automated.
+        </p>
+        <div class="hero-buttons">
+          <a href="/book-a-call" class="btn-primary">
+            Book Your Demo
+            <span>→</span>
+          </a>
+          <a href="/case-studies-results" class="btn-secondary">
+            View Case Studies
+            <span>📊</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">3-5x</span>
+            <span class="stat-label">ROI Typical</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Consultations/90 Days</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">AI Engagement</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <!-- Placeholder for hero image -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SYSTEM OVERVIEW SECTION
+  ============================================ -->
+  <section class="system-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">The System</span>
+        <h2 class="section-title">How It Works: From Click to Booked Consultation</h2>
+        <p class="section-description">
+          Three integrated systems that work together to fill your schedule with qualified implant patients.
+        </p>
+      </div>
+      <div class="system-grid">
+        
+        <div class="system-card">
+          <div class="system-number">1</div>
+          <h3>Targeted Lead Generation</h3>
+          <p>
+            Precision marketing campaigns on Google and Facebook targeting high-intent prospects actively searching for dental implants in your area. Custom landing pages designed to convert.
+          </p>
+        </div>
+
+        <div class="system-card">
+          <div class="system-number">2</div>
+          <h3>Instant AI Engagement</h3>
+          <p>
+            Every lead gets an immediate response via SMS and voice—24/7. Our AI qualifies prospects, answers questions, and nurtures interest with human-like conversations.
+          </p>
+        </div>
+
+        <div class="system-card">
+          <div class="system-number">3</div>
+          <h3>Automated Scheduling</h3>
+          <p>
+            Qualified prospects book directly into your calendar via PMS integration. Automated reminders, confirmations, and follow-up keep your schedule full and reduce no-shows.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES SECTION
+  ============================================ -->
+  <section class="features-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Complete Features</span>
+        <h2 class="section-title">Everything You Need to Dominate Implant Marketing</h2>
+        <p class="section-description">
+          A comprehensive system handling every step from first impression to booked appointment.
+        </p>
+      </div>
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div class="feature-card-icon">🎯</div>
+          <h3>Google & Facebook Ads</h3>
+          <p>
+            Targeted campaigns optimized for high-value implant cases. We handle creative, targeting, and ongoing optimization to maximize your ad spend ROI.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🌐</div>
+          <h3>Custom Landing Pages</h3>
+          <p>
+            Professional, conversion-optimized pages designed specifically for implant patients. Mobile-responsive, fast-loading, and built to convert visitors into leads.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🤖</div>
+          <h3>AI Voice Agent (24/7)</h3>
+          <p>
+            Human-like AI that answers calls, qualifies prospects, and books consultations—even after hours. Never miss an opportunity again.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">💬</div>
+          <h3>Smart SMS Engagement</h3>
+          <p>
+            Instant text responses to web leads. Our AI handles initial qualification, answers FAQs, and keeps prospects warm with personalized follow-up.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">📊</div>
+          <h3>Lead Scoring & Qualification</h3>
+          <p>
+            Every prospect is automatically scored based on financial capability, urgency, clinical fit, and engagement—so you focus on the best opportunities first.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🔗</div>
+          <h3>PMS Integration</h3>
+          <p>
+            Direct integration with Dentrix, Open Dental, Eaglesoft, and more. Bookings flow directly into your schedule—no manual data entry required.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">📅</div>
+          <h3>Online Booking Portal</h3>
+          <p>
+            Let qualified prospects self-schedule consultations based on your real-time availability. Reduces front-desk workload and improves conversion rates.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🔔</div>
+          <h3>Smart Reminders</h3>
+          <p>
+            Automated appointment reminders via SMS, email, and voice—reducing no-shows by up to 80%.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">⭐</div>
+          <h3>Review Generation</h3>
+          <p>
+            Automated post-treatment review requests that build your online reputation and attract more high-value cases.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card-icon">🔄</div>
+          <h3>Database Reactivation</h3>
+          <p>
+            Re-engage inactive patients with targeted implant campaigns, bringing back high-value opportunities you already know.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BENEFITS SECTION
+  ============================================ -->
+  <section class="benefits-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Practice Benefits</span>
+        <h2 class="section-title">Transform Your Implant Practice Growth</h2>
+        <p class="section-description">
+          Real results that impact your bottom line, patient experience, and practice efficiency.
+        </p>
+      </div>
+      <div class="benefits-grid">
+        
+        <div class="benefit-card">
+          <span class="benefit-icon">📈</span>
+          <h3>3x More Consultations</h3>
+          <p>Attract and book significantly more qualified implant consultations with targeted marketing and instant engagement.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">⚡</span>
+          <h3>85% Faster Response</h3>
+          <p>Engage prospects within seconds—not hours. Dramatically improve conversion rates with instant AI-powered responses.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">💰</span>
+          <h3>Higher Case Value</h3>
+          <p>Focus your team on closing high-value cases while automation handles qualification and initial engagement.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">🎯</span>
+          <h3>Better Lead Quality</h3>
+          <p>Smart qualification filters ensure you only speak with prospects who are serious about moving forward.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">⏰</span>
+          <h3>Reclaim Staff Time</h3>
+          <p>Front desk stops playing phone tag. Automation handles routine inquiries so staff focuses on patient care.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">📊</span>
+          <h3>Complete Visibility</h3>
+          <p>Know exactly where every dollar goes and what's working. Track ROI down to the campaign level.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">🔄</span>
+          <h3>Never Miss a Lead</h3>
+          <p>24/7 engagement means you capture opportunities even when your office is closed or staff is busy.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">🎨</span>
+          <h3>Professional Brand</h3>
+          <p>Modern, responsive landing pages and messaging that position you as the implant expert in your market.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRICING SECTION
+  ============================================ -->
+  <section class="pricing-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Investment</span>
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-description">
+          Everything you need to dominate implant marketing in your area—one flat monthly fee.
+        </p>
+      </div>
+      <div class="pricing-card">
+        <span class="pricing-badge">Most Popular</span>
+        <div class="pricing-amount">$2,497</div>
+        <div class="pricing-period">per month</div>
+        <p class="pricing-description">
+          Complete multi-implant marketing and booking system. No setup fees, no hidden costs, no long-term contracts.
+        </p>
+        <ul class="pricing-features">
+          <li>Targeted Google & Facebook Ads</li>
+          <li>Custom Landing Pages</li>
+          <li>AI Voice & SMS Agents (24/7)</li>
+          <li>Smart Lead Qualification</li>
+          <li>Automated Nurture Sequences</li>
+          <li>PMS Direct Integration</li>
+          <li>Online Booking Portal</li>
+          <li>Appointment Reminders</li>
+          <li>Review Generation System</li>
+          <li>Database Reactivation Campaigns</li>
+          <li>Real-Time Analytics Dashboard</li>
+          <li>Dedicated Account Manager</li>
+          <li>Monthly Strategy Calls</li>
+          <li>Ongoing Optimization</li>
+        </ul>
+        <div class="pricing-cta">
+          <a href="/book-a-call" class="btn-primary" style="width: 100%; justify-content: center;">
+            Book Your Demo
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA SECTION
+  ============================================ -->
+  <section class="cta-section">
+    <div class="section-container">
+      <h2>Ready to Fill Your Schedule with High-Value Implant Cases?</h2>
+      <p>
+        Join practices nationwide that have transformed their implant patient acquisition with our proven system. Book a demo to see how it works.
+      </p>
+      <div class="cta-buttons">
+        <a href="/book-a-call" class="btn-primary">
+          Schedule Your Demo
+          <span>→</span>
+        </a>
+        <a href="tel:+16505578269" class="btn-secondary">
+          Call (650) 557-8269
+          <span>📞</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER SECTION
+  ============================================ -->
+  <div class="footer">
+    <div class="footer-wrapper">
+      <!-- Left Column -->
+      <div class="footer-left-contain">
+        <a href="/" class="addicon">
+          <img
+            src="636f4050ef41c9124a12cbba/dgp-logo.png"
+            loading="lazy"
+            width="200"
+            alt="Dentistry Growth Partners Logo"
+            class="remedo-logo"
+          />
+        </a>
+        <div class="footer-heading">
+          Dentistry Growth Partners provides you with an AI-driven conversion engine to attract new patients and grow your dental practice.<br /><br />
+          Email us: <a href="mailto:info@dentistrygrowthpartners.com" class="footer-heading">info@dentistrygrowthpartners.com</a><br />
+          Call us: <a href="tel:+16505578269" class="footer-heading">+1 (650) 557-8269</a>
+        </div>
+        <div class="social-links-contain">
+          <a href="https://www.facebook.com/remedoapp" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/636f4050ef41c996e212cc2c_facebook-circle-fill 1.svg" loading="lazy" alt="Facebook" class="social-link-image" />
+          </a>
+          <a href="https://instagram.com/remedo.io?igshid=ZDdkNTZiNTM=" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/636f4050ef41c9d69612cc2d_instagram-fill 1.svg" loading="lazy" alt="Instagram" class="social-link-image" />
+          </a>
+          <a href="https://www.linkedin.com/company/remedo/?viewAsMember=true" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/636f4050ef41c9df6212cc2b_linkedin-box-fill 1.svg" loading="lazy" alt="LinkedIn" class="social-link-image" />
+          </a>
+          <a href="https://youtube.com/@remedo5803?feature=shared" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/689a7545d23043cd8cb9958c_mdi_youtube.svg" loading="lazy" alt="YouTube" class="social-link-image" />
+          </a>
+          <a href="https://x.com/remedo_io/" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/689a75878bcf03c299da13be_ph_x-logo-fill.svg" loading="lazy" alt="X (Twitter)" class="social-link-image" />
+          </a>
+        </div>
+        <div>
+          <img src="636f4050ef41c9124a12cbba/68861916f7b4ab651cbea57b_logo-HIPAA.svg" loading="lazy" alt="HIPAA Compliant" class="hipaa-logo" />
+        </div>
+      </div>
+
+      <!-- Right Columns -->
+      <div class="footer-right-contain">
+        <!-- Quick Links -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Quick Links</h5>
+          <div class="footer-link-list">
+            <a href="/" class="footer-link-2">Home</a>
+            <a href="/contact" class="footer-link-2">Contact</a>
+            <a href="/blog" class="footer-link-2">Blog</a>
+            <a href="/case-studies-results" class="footer-link-2">Case Studies</a>
+            <a href="/terms" class="footer-link-2">Terms</a>
+            <a href="/privacy-policy" class="footer-link-2">Privacy Policy</a>
+          </div>
+        </div>
+
+        <!-- Our Services -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Our Services</h5>
+          <div class="footer-link-list">
+            <a href="/multi-implant-marketing" class="footer-link-2">Multi-Implant Marketing</a>
+            <a href="/high-value-case-marketing-system" class="footer-link-2">High-Value Case Marketing</a>
+            <a href="/ai-voice-receptionist-pms-integration" class="footer-link-2">AI Voice Receptionist</a>
+            <a href="/automated-patient-communication" class="footer-link-2">Patient Communication</a>
+            <a href="/aio-seo" class="footer-link-2">AIO SEO</a>
+            <a href="/website-design-management" class="footer-link-2">Website Design</a>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Resources</h5>
+          <div class="footer-link-list">
+            <a href="/how-it-works" class="footer-link-2">How It Works</a>
+            <a href="/about-dgp" class="footer-link-2">About DGP</a>
+            <a href="/case-studies-results" class="footer-link-2">Case Studies</a>
+            <a href="/blog" class="footer-link-2">Blog</a>
+            <a href="/vsl" class="footer-link-2">VSL Page</a>
+            <a href="/book-a-call" class="footer-link-2">Book a Call</a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Company</h5>
+          <div class="footer-link-list">
+            <a href="/about-dgp" class="footer-link-2">About Us</a>
+            <a href="/contact" class="footer-link-2">Contact</a>
+            <a href="/careers" class="footer-link-2">Careers</a>
+            <a href="/partners" class="footer-link-2">Partners</a>
+            <a href="/press" class="footer-link-2">Press</a>
+            <a href="/support" class="footer-link-2">Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-last-text">
+      <p class="copyright-text-2">
+        ©2025 Dentistry Growth Partners. All rights reserved
+      </p>
+    </div>
+  </div>
+
+  <!-- Sticky CTA Bar -->
+  <div class="sticky-cta" id="stickyCTA">
+    <div class="sticky-cta-content">
+      <span class="sticky-cta-text">Ready to 3x Your Implant Consultations?</span>
+      <a href="/book-a-call" class="cta-button-dark">Book Your Demo</a>
+    </div>
+  </div>
+
+  <!-- ============================================
+       JAVASCRIPT
+  ============================================ -->
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.querySelector('.navbar-menu-button');
+      const menu = document.querySelector('.navbar-menu-dark');
+      
+      if (menuButton && menu) {
+        menuButton.addEventListener('click', function() {
+          menuButton.classList.toggle('w--open');
+          menu.classList.toggle('w--open');
+        });
+      }
+
+      // Desktop dropdowns
+      const dropdowns = document.querySelectorAll('.dropdown-dark');
+      dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle-dark');
+        
+        if (toggle) {
+          toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Close other dropdowns
+            dropdowns.forEach(otherDropdown => {
+              if (otherDropdown !== dropdown) {
+                otherDropdown.classList.remove('w--open');
+              }
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('w--open');
+          });
+        }
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown-dark')) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('w--open');
+          });
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      const navLinks = document.querySelectorAll('.nav-link-dark, .dropdown-link-dark');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 991) {
+            menuButton?.classList.remove('w--open');
+            menu?.classList.remove('w--open');
+          }
+        });
+      });
+
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 800) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Multi-Implant Marketing + Booking System",
+    "description": "Complete multi-implant patient acquisition system with AI-powered marketing, instant engagement, and automated scheduling for high-value implant cases.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Dentistry Growth Partners",
+      "url": "https://dentistrygrowthpartners.com"
+    },
+    "areaServed": "US",
+    "audience": {
+      "@type": "Audience",
+      "name": "Dental Practices"
+    }
+  }
+  </script>
+
+</body>
+</html>

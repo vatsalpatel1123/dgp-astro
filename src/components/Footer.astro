@@ -1,0 +1,319 @@
+---
+// Footer Component
+---
+
+<style>
+  /* ============================================
+     FOOTER STYLES
+  ============================================ */
+
+  .footer {
+    background: var(--dark-slate-blue);
+    color: var(--white);
+    padding: 80px 24px 24px;
+  }
+
+  .footer-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+  }
+
+  .footer-left-contain {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .addicon {
+    text-decoration: none;
+  }
+
+  .remedo-logo {
+    width: 200px;
+    height: auto;
+  }
+
+  .footer-heading {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+  }
+
+  .footer-heading:hover {
+    color: var(--natural);
+  }
+
+  .footer-heading-copy {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .social-links-contain {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-link:hover {
+    background: var(--natural);
+    transform: translateY(-3px);
+  }
+
+  .social-link-image {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  .social-link:hover .social-link-image {
+    filter: brightness(0);
+  }
+
+  .map-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+  }
+
+  .map-link:hover {
+    color: var(--natural);
+  }
+
+  .hipaa-logo {
+    width: 120px;
+    height: auto;
+    margin-top: 16px;
+  }
+
+  .footer-right-contain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+  }
+
+  .footer_link-coloumn {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-coloumn-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--natural);
+    margin-bottom: 8px;
+  }
+
+  .footer-link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-link-2 {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .footer-link-2:hover {
+    color: var(--natural);
+    padding-left: 8px;
+  }
+
+  .footer-last-text {
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  .copyright-text-2 {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* ============================================
+     RESPONSIVE DESIGN
+  ============================================ */
+
+  @media (max-width: 991px) {
+    .footer-wrapper {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    .footer-right-contain {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .footer-right-contain {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<!-- ============================================
+     FOOTER SECTION
+============================================ -->
+<div class="footer">
+  <div class="footer-wrapper">
+    <!-- Left Column -->
+    <div class="footer-left-contain">
+      <a href="/" class="addicon">
+        <img
+          src="/636f4050ef41c9124a12cbba/dgp-logo.png"
+          loading="lazy"
+          width="200"
+          alt="Dentistry Growth Partners Logo"
+          class="remedo-logo"
+        />
+      </a>
+      <div class="footer-heading">
+        Dentistry Growth Partners provides you with an AI-driven conversion engine to attract new patients and grow your dental practice.<br /><br />
+        Email us: <a href="mailto:info@dentistrygrowthpartners.com" class="footer-heading">info@dentistrygrowthpartners.com</a><br />
+        Call us: <a href="tel:+16505578269" class="footer-heading">+1 (650) 557-8269</a>
+      </div>
+      <div class="social-links-contain">
+        <a href="https://www.facebook.com/remedoapp" target="_blank" class="social-link">
+          <img src="/636f4050ef41c9124a12cbba/636f4050ef41c996e212cc2c_facebook-circle-fill 1.svg" loading="lazy" alt="Facebook" class="social-link-image" />
+        </a>
+        <a href="https://instagram.com/remedo.io?igshid=ZDdkNTZiNTM=" target="_blank" class="social-link">
+          <img src="/636f4050ef41c9124a12cbba/636f4050ef41c9d69612cc2d_instagram-fill 1.svg" loading="lazy" alt="Instagram" class="social-link-image" />
+        </a>
+        <a href="https://www.linkedin.com/company/remedo/?viewAsMember=true" target="_blank" class="social-link">
+          <img src="/636f4050ef41c9124a12cbba/636f4050ef41c9df6212cc2b_linkedin-box-fill 1.svg" loading="lazy" alt="LinkedIn" class="social-link-image" />
+        </a>
+        <a href="https://youtube.com/@remedo5803?feature=shared" target="_blank" class="social-link">
+          <img src="/636f4050ef41c9124a12cbba/689a7545d23043cd8cb9958c_mdi_youtube.svg" loading="lazy" alt="YouTube" class="social-link-image" />
+        </a>
+        <a href="https://x.com/remedo_io/" target="_blank" class="social-link">
+          <img src="/636f4050ef41c9124a12cbba/689a75878bcf03c299da13be_ph_x-logo-fill.svg" loading="lazy" alt="X (Twitter)" class="social-link-image" />
+        </a>
+      </div>
+      <div class="footer-heading-copy">
+        <a href="https://maps.app.goo.gl/tJcSQkYu6H1vX7de9" target="_blank" class="map-link">3623 Langdon Cmn, Fremont, CA 94538</a>
+      </div>
+      <div>
+        <img src="/636f4050ef41c9124a12cbba/68861916f7b4ab651cbea57b_logo-HIPAA.svg" loading="lazy" alt="HIPAA Compliant" class="hipaa-logo" />
+      </div>
+    </div>
+
+    <!-- Right Columns -->
+    <div class="footer-right-contain">
+      <!-- Quick Links -->
+      <div class="footer_link-coloumn">
+        <h5 class="footer-coloumn-title">Quick Links</h5>
+        <div class="footer-link-list">
+          <a href="/" class="footer-link-2">Home</a>
+          <a href="/contact" class="footer-link-2">Contact</a>
+          <a href="/blog-listing" class="footer-link-2">Blog</a>
+          <a href="/case-studies-results" class="footer-link-2">Case Studies</a>
+          <a href="/terms" class="footer-link-2">Terms</a>
+          <a href="/privacy-policy" class="footer-link-2">Privacy Policy</a>
+          <a href="/refund-cancellation" class="footer-link-2">Refund/Cancellation</a>
+        </div>
+      </div>
+
+      <!-- Our Services -->
+      <div class="footer_link-coloumn">
+        <h5 class="footer-coloumn-title">Our Services</h5>
+        <div class="footer-link-list">
+          <a href="/multi-implant-marketing" class="footer-link-2">Multi-Implant Marketing</a>
+          <a href="/high-value-case-marketing-system" class="footer-link-2">High-Value Case Marketing</a>
+          <a href="/ai-voice-receptionist-pms-integration" class="footer-link-2">AI Voice Receptionist</a>
+          <a href="/automated-patient-communication" class="footer-link-2">Patient Communication</a>
+          <a href="/aio-seo" class="footer-link-2">AIO SEO</a>
+          <a href="/website-design-management" class="footer-link-2">Website Design</a>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer_link-coloumn">
+        <h5 class="footer-coloumn-title">Resources</h5>
+        <div class="footer-link-list">
+          <a href="/how-it-works" class="footer-link-2">How It Works</a>
+          <a href="/about-dgp" class="footer-link-2">About DGP</a>
+          <a href="/case-studies-results" class="footer-link-2">Case Studies</a>
+          <a href="/blog" class="footer-link-2">Blog</a>
+          <a href="/vsl" class="footer-link-2">VSL Page</a>
+          <a href="/book-a-call" class="footer-link-2">Book a Call</a>
+        </div>
+      </div>
+
+      <!-- Locations -->
+      <div class="footer_link-coloumn">
+        <h5 class="footer-coloumn-title">Locations</h5>
+        <div class="footer-link-list">
+          <a href="/locations/new-york" class="footer-link-2">New York</a>
+          <a href="/locations/los-angeles" class="footer-link-2">Los Angeles</a>
+          <a href="/locations/chicago" class="footer-link-2">Chicago</a>
+          <a href="/locations/phoenix" class="footer-link-2">Phoenix</a>
+          <a href="/locations/houston" class="footer-link-2">Houston</a>
+          <a href="/locations/dallas" class="footer-link-2">Dallas</a>
+          <a href="/locations/boston" class="footer-link-2">Boston</a>
+          <a href="/locations/san-francisco" class="footer-link-2">San Francisco</a>
+          <a href="/locations" class="footer-link-2">More Locations</a>
+        </div>
+      </div>
+
+      <!-- Specialties -->
+      <div class="footer_link-coloumn">
+        <h5 class="footer-coloumn-title">Specialties</h5>
+        <div class="footer-link-list">
+          <a href="/specialties/endodontists" class="footer-link-2">Endodontists</a>
+          <a href="/specialties/orthodontists" class="footer-link-2">Orthodontists</a>
+          <a href="/specialties/oral-surgeons" class="footer-link-2">Oral Surgeons</a>
+          <a href="/specialties/cosmetic-dentists" class="footer-link-2">Cosmetic Dentists</a>
+          <a href="/specialties/oral-pathologists" class="footer-link-2">Oral Pathologists</a>
+          <a href="/specialties/pediatric-dentists" class="footer-link-2">Pediatric Dentists</a>
+          <a href="/specialties/periodontists" class="footer-link-2">Periodontists</a>
+          <a href="/specialties/prosthodontists" class="footer-link-2">Prosthodontists</a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer_link-coloumn">
+        <h5 class="footer-coloumn-title">Company</h5>
+        <div class="footer-link-list">
+          <a href="/about-dgp" class="footer-link-2">About Us</a>
+          <a href="/contact" class="footer-link-2">Contact</a>
+          <a href="/careers" class="footer-link-2">Careers</a>
+          <a href="/partners" class="footer-link-2">Partners</a>
+          <a href="/press" class="footer-link-2">Press</a>
+          <a href="/support" class="footer-link-2">Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-last-text">
+    <p class="copyright-text-2">
+      ©2025 Dentistry Growth Partners. All rights reserved
+    </p>
+  </div>
+</div>

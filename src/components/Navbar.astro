@@ -1,0 +1,510 @@
+---
+// Navbar Component
+---
+
+<style>
+  /* ============================================
+     NAVBAR STYLES
+  ============================================ */
+
+  .nav-bar-dark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: var(--dark-slate-blue);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .top-bar-dark {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .top-bar-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .top-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .top-bar-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .top-bar-link {
+    color: var(--natural);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .top-bar-link:hover {
+    opacity: 0.8;
+  }
+
+  .navbar-container-dark {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-image {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  .navbar-menu-dark {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 60px;
+  }
+
+  .navbar-menu-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link-dark {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    padding: 8px 0;
+  }
+
+  .nav-link-dark:hover {
+    color: var(--natural);
+  }
+
+  .nav-link-dark.w--current {
+    color: var(--natural);
+  }
+
+  .nav-link-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--natural);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link-dark:hover::after,
+  .nav-link-dark.w--current::after {
+    width: 100%;
+  }
+
+  .dropdown-dark {
+    position: relative;
+  }
+
+  .dropdown-toggle-dark {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .dropdown-icon {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-dark.w--open .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-list-dark {
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 0;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    padding: 12px;
+    min-width: 280px;
+    display: none;
+    z-index: 9999;
+  }
+
+  .dropdown-dark.w--open .dropdown-list-dark {
+    display: block;
+    animation: fadeInDown 0.3s ease;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .dropdown-links-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .dropdown-link-dark {
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-link-dark:hover {
+    background: rgba(198, 255, 83, 0.15);
+  }
+
+  .dropdown-link-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .dropdown-link-dark:hover .dropdown-link-text {
+    color: var(--dark-slate-blue);
+  }
+
+  .cta-button-dark {
+    background: var(--natural);
+    color: var(--black);
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(198, 255, 83, 0.3);
+  }
+
+  .cta-button-dark:hover {
+    background: var(--white);
+    color: var(--dark-slate-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(198, 255, 83, 0.4);
+  }
+
+  .navbar-menu-button {
+    display: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .menu-icon-wrapper {
+    width: 24px;
+    height: 20px;
+    position: relative;
+    margin: 10px auto;
+  }
+
+  .menu-icon-line-top,
+  .menu-icon-line-middle,
+  .menu-icon-line-bottom {
+    width: 100%;
+    height: 2px;
+    background: var(--white);
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+
+  .menu-icon-line-top {
+    top: 0;
+  }
+
+  .menu-icon-line-middle {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .menu-icon-line-bottom {
+    bottom: 0;
+  }
+
+  /* ============================================
+     RESPONSIVE DESIGN
+  ============================================ */
+
+  @media (max-width: 991px) {
+    .navbar-menu-dark {
+      display: none;
+      position: fixed;
+      /* top: 120px; */
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--dark-slate-blue);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      margin-left: 0;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .navbar-menu-dark.w--open {
+      display: flex;
+    }
+
+    .navbar-menu-left {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 0;
+    }
+
+    .nav-link-dark {
+      width: 100%;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-dark {
+      width: 100%;
+    }
+
+    .dropdown-toggle-dark {
+      width: 100%;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      justify-content: space-between;
+    }
+
+    .dropdown-list-dark {
+      position: static;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      box-shadow: none;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown-link-text {
+      color: var(--white);
+    }
+
+    .navbar-menu-button {
+      display: block;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .top-bar-content {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .navbar-container-dark {
+      padding: 12px 16px;
+    }
+
+    .logo-image {
+      height: 35px;
+    }
+  }
+</style>
+
+<!-- ============================================
+     NAVBAR SECTION
+============================================ -->
+<div class="nav-bar-dark">
+  <!-- Top Bar -->
+  <!-- <div class="top-bar-dark">
+    <div class="top-bar-content">
+      <div class="top-bar-item">
+        <div class="top-bar-label">Website :</div>
+        <a href="https://dentistrygrowthpartners.com" class="top-bar-link">dentistrygrowthpartners.com</a>
+      </div>
+      <div class="top-bar-item">
+        <div class="top-bar-label">Founders :</div>
+        <span class="top-bar-link">Tom Santella & Mario Ferrara</span>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Main Navbar -->
+  <div class="navbar-container-dark">
+    <!-- Logo -->
+    <a href="/" class="navbar-logo-link">
+      <div class="logo-wrapper">
+        <img
+          loading="lazy"
+          width="100"
+          src="/636f4050ef41c9124a12cbba/dgp-logo.png"
+          alt="Dentistry Growth Partners Logo"
+          class="logo-image"
+        />
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Menu -->
+    <nav role="navigation" class="navbar-menu-dark">
+      <div class="navbar-menu-left">
+        <!-- Home Link -->
+        <a href="/" class="nav-link-dark">Home</a>
+
+        <!-- Services Dropdown -->
+        <div class="dropdown-dark">
+          <div class="dropdown-toggle-dark">
+            <div class="nav-link-dark">Services</div>
+            <div class="dropdown-icon">
+              <i class="ti ti-chevron-down"></i>
+            </div>
+          </div>
+          <nav class="dropdown-list-dark">
+            <div class="dropdown-links-wrapper">
+              <a href="/multi-implant-marketing" class="dropdown-link-dark">
+                <div class="dropdown-link-text">Multi-Implant Marketing</div>
+              </a>
+              <a href="/high-value-case-marketing-system" class="dropdown-link-dark">
+                <div class="dropdown-link-text">High-Value Case Marketing</div>
+              </a>
+              <a href="/ai-voice-receptionist-pms-integration" class="dropdown-link-dark">
+                <div class="dropdown-link-text">AI Voice Receptionist</div>
+              </a>
+              <a href="/automated-patient-communication" class="dropdown-link-dark">
+                <div class="dropdown-link-text">Patient Communication</div>
+              </a>
+              <a href="/aio-seo" class="dropdown-link-dark">
+                <div class="dropdown-link-text">AIO SEO</div>
+              </a>
+              <a href="/website-design-management" class="dropdown-link-dark">
+                <div class="dropdown-link-text">Website Design & Management</div>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- How It Works Link -->
+        <a href="/how-it-works" class="nav-link-dark">How It Works</a>
+
+        <!-- About DGP Link -->
+        <a href="/about-dgp" class="nav-link-dark">About DGP</a>
+
+        <!-- Resources Dropdown -->
+        <div class="dropdown-dark">
+          <div class="dropdown-toggle-dark">
+            <div class="nav-link-dark">Resources</div>
+            <div class="dropdown-icon">
+              <i class="ti ti-chevron-down"></i>
+            </div>
+          </div>
+          <nav class="dropdown-list-dark">
+            <div class="dropdown-links-wrapper">
+              <a href="/case-studies-results" class="dropdown-link-dark">
+                <div class="dropdown-link-text">Case Studies</div>
+              </a>
+              <a href="/blog-listing" class="dropdown-link-dark">
+                <div class="dropdown-link-text">Blog</div>
+              </a>
+              <a href="/vsl" class="dropdown-link-dark">
+                <div class="dropdown-link-text">VSL Page</div>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Contact Link -->
+        <a href="/contact" class="nav-link-dark">Contact</a>
+      </div>
+
+      <!-- Right Side Menu -->
+      <div class="navbar-menu-right">
+        <div class="navbar-button-wrapper">
+          <a href="/book-a-call" class="cta-button-dark">Book a Demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <div class="navbar-menu-button">
+      <div class="menu-icon-wrapper">
+        <div class="menu-icon-line-top"></div>
+        <div class="menu-icon-line-middle"></div>
+        <div class="menu-icon-line-bottom"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.querySelector('.navbar-menu-button');
+    const navMenu = document.querySelector('.navbar-menu-dark');
+
+    if (menuButton && navMenu) {
+      menuButton.addEventListener('click', function() {
+        navMenu.classList.toggle('w--open');
+      });
+    }
+
+    // Dropdown toggles
+    const dropdowns = document.querySelectorAll('.dropdown-dark');
+    dropdowns.forEach(dropdown => {
+      const toggle = dropdown.querySelector('.dropdown-toggle-dark');
+      if (toggle) {
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          dropdown.classList.toggle('w--open');
+        });
+      }
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function() {
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('w--open');
+      });
+    });
+  });
+</script>

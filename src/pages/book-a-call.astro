@@ -1,0 +1,929 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Demo | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="Schedule your personalized demo with Dentistry Growth Partners. See how our complete automated system can transform your practice in just 30 minutes."
+    />
+        <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-content .highlight {
+        color: var(--natural);
+      }
+
+      .hero-content p {
+        font-size: 20px;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .hero-benefits {
+        background: rgba(255,255,255,0.1);
+        border-radius: 16px;
+        padding: 32px;
+        margin-top: 32px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(198,255,83,0.3);
+      }
+
+      .hero-benefits h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--natural);
+        margin-bottom: 20px;
+      }
+
+      .benefit-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--white);
+        font-size: 16px;
+      }
+
+      .benefit-icon {
+        width: 24px;
+        height: 24px;
+        background: var(--natural);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-weight: 800;
+        font-size: 14px;
+        color: var(--dark-slate-blue);
+      }
+
+      .hero-image {
+        position: relative;
+      }
+
+      .stats-card {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        border: 4px solid var(--natural);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--dark-slate-blue);
+        display: block;
+        margin-bottom: 8px;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 13px;
+        color: var(--dim-grey);
+        font-weight: 600;
+      }
+
+      /* Calendar Section */
+      .calendar-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .section-container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      .calendar-container {
+        background: var(--grey);
+        border-radius: 24px;
+        padding: 50px;
+        border: 3px solid var(--natural);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.15);
+        margin-top: 60px;
+      }
+
+      .calendar-embed {
+        width: 100%;
+        min-height: 800px;
+        border: none;
+        border-radius: 12px;
+        background: var(--white);
+      }
+
+      /* What to Expect Section */
+      .expect-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .expect-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .expect-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        transition: all 0.3s ease;
+      }
+
+      .expect-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .expect-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 24px;
+        box-shadow: 0 6px 20px rgba(8, 57, 129, 0.3);
+      }
+
+      .expect-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .expect-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Trust Section */
+      .trust-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .trust-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .trust-section .section-title,
+      .trust-section .section-description {
+        color: var(--white);
+      }
+
+      .trust-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .trust-stat {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        text-align: center;
+        transition: all 0.4s ease;
+      }
+
+      .trust-stat:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .trust-stat-number {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        margin-bottom: 12px;
+        line-height: 1;
+      }
+
+      .trust-stat-label {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 8px;
+      }
+
+      .trust-stat-description {
+        font-size: 14px;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.6;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .faq-list {
+        max-width: 900px;
+        margin: 60px auto 0;
+      }
+
+      .faq-item {
+        background: var(--grey);
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .faq-item:hover {
+        border-color: var(--natural);
+        box-shadow: 0 8px 24px rgba(43, 102, 72, 0.1);
+      }
+
+      .faq-question {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .faq-answer {
+        font-size: 16px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 21px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 44px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .hero-content h1 {
+          font-size: 44px;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-content h1 {
+          font-size: 38px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .calendar-container {
+          padding: 30px;
+        }
+
+        .calendar-embed {
+          min-height: 600px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .cta-section h2 {
+          font-size: 38px;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 18px 24px;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        border-top: 3px solid var(--natural);
+      }
+
+      .sticky-cta.active {
+        display: block;
+      }
+
+      .sticky-cta-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sticky-cta-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      @media (max-width: 767px) {
+        .sticky-cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>
+            See Your Complete <span class="highlight">Automated System</span> in Action
+          </h1>
+          <p>
+            Book a personalized 30-minute demo and discover exactly how we'll transform your patient acquisition—from first click to confirmed appointment.
+          </p>
+          <p>
+            No sales pitch. No fluff. Just a straightforward walkthrough of our proven system and how it'll work specifically for your practice.
+          </p>
+          <div class="hero-benefits">
+            <h3>What You'll See in Your Demo:</h3>
+            <div class="benefit-list">
+              <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <span>Complete patient pipeline from lead to booked appointment</span>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <span>Live demonstration of AI + human hybrid engagement</span>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <span>Your practice's potential ROI and patient volume projections</span>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <span>How we customize the system for your specific services</span>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <span>Implementation timeline and pricing transparency</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="stats-card">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number">287%</span>
+                <span class="stat-label">Average ROI</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">75%</span>
+                <span class="stat-label">Higher Show Rates</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">$847K</span>
+                <span class="stat-label">Avg. Revenue Added</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">10 Days</span>
+                <span class="stat-label">To Full Launch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Schedule Your Demo</span>
+          <h2 class="section-title">Pick a Time That Works for You</h2>
+          <p class="section-description">
+            Choose any available slot below. We'll send you a calendar invite and preparation materials so we can maximize the value of your 30 minutes together.
+          </p>
+        </div>
+        <div class="calendar-container">
+          <iframe 
+            src="https://cal.com/axonflash/15min" 
+            class="calendar-embed"
+            title="Book a Demo Call with Dentistry Growth Partners"
+            frameborder="0"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- What to Expect Section -->
+    <section class="expect-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">The Demo Process</span>
+          <h2 class="section-title">What Happens on Your Demo Call</h2>
+          <p class="section-description">
+            Here's exactly what we'll cover in 30 minutes—no surprises, no pressure, just valuable information.
+          </p>
+        </div>
+        <div class="expect-grid">
+          
+          <div class="expect-card">
+            <div class="expect-number">1</div>
+            <h3>Understand Your Practice</h3>
+            <p>
+              We'll ask about your current patient acquisition, marketing challenges, services offered, and growth goals. This ensures we can show you exactly what's relevant to your situation.
+            </p>
+          </div>
+
+          <div class="expect-card">
+            <div class="expect-number">2</div>
+            <h3>System Walkthrough</h3>
+            <p>
+              Live demonstration of our complete automated pipeline—from marketing and lead generation through AI engagement, qualification, nurturing, and PMS-integrated scheduling.
+            </p>
+          </div>
+
+          <div class="expect-card">
+            <div class="expect-number">3</div>
+            <h3>Custom Projections</h3>
+            <p>
+              Based on your market, current volume, and services, we'll project your likely patient volume increase, expected ROI, and timeline to profitability.
+            </p>
+          </div>
+
+          <div class="expect-card">
+            <div class="expect-number">4</div>
+            <h3>Case Study Review</h3>
+            <p>
+              We'll show you results from practices similar to yours—what they achieved, how long it took, and the specific strategies that drove their success.
+            </p>
+          </div>
+
+          <div class="expect-card">
+            <div class="expect-number">5</div>
+            <h3>Implementation Plan</h3>
+            <p>
+              If you're interested, we'll outline the exact 10-14 day implementation process, what's required from your team, and how quickly you'll start seeing results.
+            </p>
+          </div>
+
+          <div class="expect-card">
+            <div class="expect-number">6</div>
+            <h3>Pricing & Next Steps</h3>
+            <p>
+              Complete transparency on pricing, what's included, and the partnership structure. You'll leave knowing exactly what it takes to move forward—if you choose to.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Proven Results</span>
+          <h2 class="section-title">Results from Partner Practices</h2>
+          <p class="section-description">
+            These are real outcomes from dental practices using our complete system—not projections or promises.
+          </p>
+        </div>
+        <div class="trust-stats">
+          
+          <div class="trust-stat">
+            <span class="trust-stat-number">50+</span>
+            <span class="trust-stat-label">Partner Practices</span>
+            <p class="trust-stat-description">Dental practices nationwide trust us with their growth</p>
+          </div>
+
+          <div class="trust-stat">
+            <span class="trust-stat-number">$42M+</span>
+            <span class="trust-stat-label">Revenue Generated</span>
+            <p class="trust-stat-description">Total documented revenue added to partner practices</p>
+          </div>
+
+          <div class="trust-stat">
+            <span class="trust-stat-number">7,800+</span>
+            <span class="trust-stat-label">Patients Booked</span>
+            <p class="trust-stat-description">New high-value patients scheduled through our system</p>
+          </div>
+
+          <div class="trust-stat">
+            <span class="trust-stat-number">287%</span>
+            <span class="trust-stat-label">Average ROI</span>
+            <p class="trust-stat-description">Return on investment within the first 12 months</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Common Questions</span>
+          <h2 class="section-title">What to Know Before Your Demo</h2>
+          <p class="section-description">
+            Quick answers to the most common questions practices have before booking.
+          </p>
+        </div>
+        <div class="faq-list">
+          
+          <div class="faq-item">
+            <h3 class="faq-question">How long is the demo call?</h3>
+            <p class="faq-answer">
+              The demo is 30 minutes. We respect your time—if we can answer everything in 20 minutes, great. If you have more questions and want to go longer, we're flexible.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">Is this a sales call?</h3>
+            <p class="faq-answer">
+              It's an educational demonstration. Yes, we'd love to partner with you if it's a good fit—but our goal is to show you the system, answer your questions honestly, and let you decide. No pressure, no hard close.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">What should I prepare before the call?</h3>
+            <p class="faq-answer">
+              Nothing required, but it's helpful if you know: (1) Your approximate monthly marketing spend, (2) Current new patient volume, (3) Services you offer (implants, cosmetic, etc.), and (4) Your growth goals. We'll work with whatever information you have.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">Will you share pricing on the call?</h3>
+            <p class="faq-answer">
+              Absolutely. We'll be completely transparent about pricing, what's included, and what the total investment looks like. No games, no "we'll send you a proposal later." You'll know exactly what it costs.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">What if I need to reschedule?</h3>
+            <p class="faq-answer">
+              No problem. You'll receive a confirmation email with a link to reschedule or cancel. We understand things come up—just give us as much notice as possible.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3 class="faq-question">Can multiple people from my practice join?</h3>
+            <p class="faq-answer">
+              Yes! We encourage having your office manager, marketing coordinator, or business partner on the call. The more decision-makers present, the more productive the conversation.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <h2>Ready to See What's <span class="highlight">Possible</span>?</h2>
+        <p>
+          Pick a time above, or if you prefer to talk first, give us a call. Either way, we'll show you exactly how our automated system can transform your practice.
+        </p>
+        <div class="cta-buttons">
+          <a href="#calendar" class="btn-primary">
+            Schedule Demo Now
+            <span>↑</span>
+          </a>
+          <a href="tel:+16505578269" class="btn-secondary">
+            Call (650) 557-8269
+            <span>📞</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+
+    <!-- Scripts -->
+    <script>
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 800) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Book a Demo - Dentistry Growth Partners",
+      "description": "Schedule your personalized demo with Dentistry Growth Partners. See how our complete automated system can transform your practice in just 30 minutes.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      }
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1326 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="Meet the team behind Dentistry Growth Partners. Learn about our mission to transform dental practice growth through automation, AI, and proven marketing systems."
+    />
+        <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-content .highlight {
+        color: var(--natural);
+      }
+
+      .hero-content p {
+        font-size: 20px;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .stat-item {
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(198,255,83,0.3);
+      }
+
+      .stat-number {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: rgba(255,255,255,0.9);
+        font-weight: 600;
+      }
+
+      .hero-image {
+        position: relative;
+        padding: 40px;
+      }
+
+      .hero-visual-card {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 50px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        border: 4px solid var(--natural);
+        position: relative;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
+      }
+
+      .visual-icon-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .visual-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(8, 57, 129, 0.25);
+      }
+
+      .visual-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+        text-align: center;
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Section Styles */
+      .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      /* Mission Section */
+      .mission-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .mission-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 60px;
+      }
+
+      .mission-text h3 {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 24px;
+        line-height: 1.3;
+      }
+
+      .mission-text p {
+        font-size: 18px;
+        color: var(--dim-grey);
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .mission-visual {
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 24px;
+        padding: 60px;
+        color: var(--white);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mission-visual::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+      }
+
+      .mission-stat {
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .mission-stat:last-child {
+        margin-bottom: 0;
+      }
+
+      .mission-stat-number {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .mission-stat-label {
+        font-size: 16px;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      /* Values Section */
+      .values-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .value-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        transition: all 0.3s ease;
+      }
+
+      .value-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .value-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(8, 57, 129, 0.25);
+      }
+
+      .value-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .value-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Story Section */
+      .story-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .story-content {
+        max-width: 900px;
+        margin: 60px auto 0;
+      }
+
+      .story-content p {
+        font-size: 18px;
+        color: var(--dim-grey);
+        line-height: 1.9;
+        margin-bottom: 24px;
+      }
+
+      .story-highlight {
+        background: var(--pale-goldenrod);
+        border-left: 4px solid var(--green);
+        padding: 30px;
+        border-radius: 12px;
+        margin: 40px 0;
+      }
+
+      .story-highlight p {
+        color: var(--black);
+        font-weight: 600;
+        font-size: 19px;
+        margin: 0;
+      }
+
+      /* Team Section */
+      .team-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .team-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .team-section .section-title,
+      .team-section .section-description {
+        color: var(--white);
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .team-member {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        text-align: center;
+      }
+
+      .team-member:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .team-avatar {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, var(--natural), var(--green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--dark-slate-blue);
+        box-shadow: 0 8px 24px rgba(198,255,83,0.3);
+      }
+
+      .team-member h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 8px;
+      }
+
+      .team-role {
+        font-size: 15px;
+        color: var(--natural);
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .team-member p {
+        color: rgba(255,255,255,0.85);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Experience Section */
+      .experience-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .experience-timeline {
+        max-width: 900px;
+        margin: 60px auto 0;
+        position: relative;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 30px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, var(--dark-slate-blue), var(--natural));
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 30px;
+        margin-bottom: 50px;
+        position: relative;
+      }
+
+      .timeline-year {
+        width: 60px;
+        height: 60px;
+        background: var(--natural);
+        color: var(--black);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 16px;
+        box-shadow: 0 6px 20px rgba(198,255,83,0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .timeline-content {
+        padding-top: 8px;
+      }
+
+      .timeline-content h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .timeline-content p {
+        font-size: 16px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      /* Approach Section */
+      .approach-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .approach-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .approach-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .approach-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(198,255,83,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .approach-card:hover::before {
+        left: 100%;
+      }
+
+      .approach-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .approach-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 24px;
+        box-shadow: 0 6px 20px rgba(8, 57, 129, 0.3);
+      }
+
+      .approach-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .approach-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 21px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 44px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .cta-buttons {
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .mission-content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-content h1 {
+          font-size: 44px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-content h1 {
+          font-size: 38px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .cta-section h2 {
+          font-size: 38px;
+        }
+
+        .timeline-line {
+          left: 20px;
+        }
+
+        .timeline-item {
+          grid-template-columns: 40px 1fr;
+        }
+
+        .timeline-year {
+          width: 40px;
+          height: 40px;
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 18px 24px;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        border-top: 3px solid var(--natural);
+      }
+
+      .sticky-cta.active {
+        display: block;
+      }
+
+      .sticky-cta-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sticky-cta-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      @media (max-width: 767px) {
+        .sticky-cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>
+            Your Complete Growth Partner for <span class="highlight">Modern Dentistry</span>
+          </h1>
+          <p>
+            We're not another marketing agency promising leads. We're a full-service automation and growth partner that manages your entire patient pipeline—from first click to confirmed appointment.
+          </p>
+          <p>
+            Founded by dental marketing experts and AI specialists, we combine cutting-edge technology with deep industry expertise to deliver predictable, measurable practice growth.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Partner Practices</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">$42M+</span>
+              <span class="stat-label">Revenue Generated</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">7,800+</span>
+              <span class="stat-label">New Patients Booked</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">287%</span>
+              <span class="stat-label">Average ROI</span>
+            </div>
+          </div>
+          <div class="cta-buttons">
+            <a href="/book-demo" class="btn-primary">
+              Partner With Us
+              <span>→</span>
+            </a>
+            <a href="#mission" class="btn-secondary">
+              Our Mission
+              <span>↓</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-visual-card">
+            <div class="visual-icon-group">
+              <div class="visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                  <path d="M12 2v20M2 12h20"></path>
+                </svg>
+              </div>
+              <div class="visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <div class="visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="visual-text">Marketing + Automation + AI + Growth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section" id="mission">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Mission</span>
+          <h2 class="section-title">Transforming Dental Practice Growth Through Automation</h2>
+          <p class="section-description">
+            We believe dental practices shouldn't have to choose between exceptional patient care and effective marketing. Our mission is to automate the entire growth process so dentists can focus 100% on what they do best.
+          </p>
+        </div>
+        <div class="mission-content">
+          <div class="mission-text">
+            <h3>We Exist to Solve a Fundamental Problem</h3>
+            <p>
+              Traditional dental marketing is broken. Practices spend thousands on leads that never convert, juggle multiple vendors who don't communicate, and lose countless patients to voicemail and slow follow-up.
+            </p>
+            <p>
+              Dentists didn't go to dental school to become marketing experts, manage ad campaigns, or chase down unresponsive leads. They went to provide exceptional care—but the business of patient acquisition constantly pulls them away from their real work.
+            </p>
+            <p>
+              We built Dentistry Growth Partners to completely eliminate this friction. By combining advanced AI, proven marketing systems, and human dental expertise, we've created a complete automated solution that handles everything—from the first ad impression to the confirmed appointment sitting in your chair.
+            </p>
+          </div>
+          <div class="mission-visual">
+            <div class="mission-stat">
+              <span class="mission-stat-number">100%</span>
+              <span class="mission-stat-label">Patient Pipeline Managed</span>
+            </div>
+            <div class="mission-stat">
+              <span class="mission-stat-number">Zero</span>
+              <span class="mission-stat-label">Vendor Management Hassles</span>
+            </div>
+            <div class="mission-stat">
+              <span class="mission-stat-number">One</span>
+              <span class="mission-stat-label">Complete Growth Partner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Values</span>
+          <h2 class="section-title">The Principles That Guide Everything We Do</h2>
+          <p class="section-description">
+            These aren't just words on a wall—they're the non-negotiable standards that drive every decision, system, and partnership we create.
+          </p>
+        </div>
+        <div class="values-grid">
+          
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3>Results Over Activity</h3>
+            <p>
+              We don't measure success by leads generated or calls made—we measure it by booked appointments, show-up rates, and actual revenue added to your practice. Activity means nothing without results.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Radical Transparency</h3>
+            <p>
+              Every metric is tracked, every lead is attributed, and every dollar is accounted for. You'll always know exactly what's working, what's not, and what we're doing about it.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Speed Wins</h3>
+            <p>
+              Patients choose practices that respond first. Our systems engage leads in under 30 seconds, schedule consultations in real-time, and never let a patient inquiry go unanswered.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Obsessive Optimization</h3>
+            <p>
+              Good enough never is. We continuously A/B test, refine messaging, improve qualification criteria, and optimize every touchpoint to squeeze more performance from your system.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Partnership Not Vendor</h3>
+            <p>
+              We succeed when you succeed. We're invested in your long-term growth, not just extracting monthly fees. Your wins are our wins—and we work tirelessly to make them happen.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3>Technology Meets Humanity</h3>
+            <p>
+              AI and automation are powerful—but patients are human. Our systems blend cutting-edge technology with genuine human expertise to create experiences that feel personal, not robotic.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">How We Built a Better Way</h2>
+          <p class="section-description">
+            Dentistry Growth Partners was born from frustration with an industry that over-promises and under-delivers.
+          </p>
+        </div>
+        <div class="story-content">
+          <p>
+            Our founders spent years in dental marketing, watching practices waste millions on leads that never converted. The problem was obvious: traditional agencies stop at lead generation. They declare victory when someone fills out a form—but the practice still has to answer the call, qualify the lead, nurture them through objections, and actually get them scheduled.
+          </p>
+          <p>
+            Most leads fell through the cracks. Front desk staff was overwhelmed. Practices couldn't tell what was working. And dentists were frustrated paying thousands per month for what felt like nothing.
+          </p>
+          <div class="story-highlight">
+            <p>
+              "We realized the solution wasn't better ads—it was building a complete system that handled everything from first contact to confirmed appointment. Marketing, qualification, nurturing, scheduling, and follow-up—all automated, all integrated, all managed by one partner."
+            </p>
+          </div>
+          <p>
+            So we built it. We assembled a team of dental marketing experts, AI engineers, and automation specialists. We spent two years developing and refining the technology—testing with pilot practices, iterating based on real results, and perfecting every touchpoint in the patient journey.
+          </p>
+          <p>
+            The results were undeniable. Practices using our complete system saw 3-5x more consultations, 75% higher show rates, and 50% lower cost per patient. They finally had predictable patient acquisition without the stress of managing multiple vendors or chasing cold leads.
+          </p>
+          <p>
+            Today, we're the growth partner for 50+ dental practices across the country—managing over $42M in generated revenue and helping dentists get back to what they do best: exceptional patient care.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Team</span>
+          <h2 class="section-title">The Experts Behind Your Growth</h2>
+          <p class="section-description">
+            A diverse team of dental marketing specialists, AI engineers, and automation experts dedicated to your practice's success.
+          </p>
+        </div>
+        <div class="team-grid">
+          
+          <div class="team-member">
+            <div class="team-avatar">JD</div>
+            <h3>John Davis</h3>
+            <span class="team-role">Founder & CEO</span>
+            <p>
+              15 years in dental marketing with expertise in patient acquisition systems. Former VP of Marketing at leading dental group, where he managed $12M+ in ad spend.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-avatar">SP</div>
+            <h3>Sarah Park</h3>
+            <span class="team-role">Chief Technology Officer</span>
+            <p>
+              AI and machine learning specialist. Previously built automation systems for Fortune 500 healthcare companies. Expert in conversational AI and patient engagement.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-avatar">MR</div>
+            <h3>Dr. Michael Rivera</h3>
+            <span class="team-role">Clinical Advisor</span>
+            <p>
+              Practicing dentist with 20+ years experience in implant and cosmetic dentistry. Ensures our systems understand clinical realities and patient psychology.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-avatar">EC</div>
+            <h3>Emily Chen</h3>
+            <span class="team-role">Head of Client Success</span>
+            <p>
+              Former dental practice manager turned growth strategist. Leads our onboarding and optimization team, ensuring every partner practice achieves maximum ROI.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-avatar">DW</div>
+            <h3>David Wu</h3>
+            <span class="team-role">Lead AI Engineer</span>
+            <p>
+              Specializes in natural language processing and voice AI. Developed our proprietary 43-touchpoint nurture system and lead qualification algorithms.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="team-avatar">LT</div>
+            <h3>Lisa Thompson</h3>
+            <span class="team-role">Director of Marketing</span>
+            <p>
+              Google Ads and Meta Ads certified specialist. Manages creative testing, audience research, and campaign optimization for all partner practices.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Journey</span>
+          <h2 class="section-title">Key Milestones in Our Growth</h2>
+          <p class="section-description">
+            From founding to becoming the leading dental automation partner—here's how we got here.
+          </p>
+        </div>
+        <div class="experience-timeline">
+          <div class="timeline-line"></div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-content">
+              <h3>Company Founded</h3>
+              <p>
+                Dentistry Growth Partners launched with a vision to transform dental marketing through complete automation. Started with 3 pilot practices in California testing early versions of our system.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-content">
+              <h3>AI Voice System Launch</h3>
+              <p>
+                Developed and deployed our proprietary AI voice receptionist technology. Early partners saw 98% call answer rates and 6x improvement in lead response time.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-content">
+              <h3>Reached 25 Partner Practices</h3>
+              <p>
+                Expanded to 25 dental practices across 12 states. Collectively generated $18M in documented revenue for partners. Refined our 43-touchpoint nurture system based on real performance data.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-content">
+              <h3>PMS Integration Platform</h3>
+              <p>
+                Built seamless integrations with Dentrix, Open Dental, Eaglesoft, and other major practice management systems. Enabled true end-to-end automation from lead to booked appointment.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-content">
+              <h3>Advanced Lead Scoring AI</h3>
+              <p>
+                Launched 4-dimensional lead scoring system that predicts patient quality based on financial capability, urgency, clinical fit, and engagement behavior. Increased treatment acceptance rates by 40%.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+              <h3>50+ Practices, $42M Generated</h3>
+              <p>
+                Now serving 50+ partner practices nationwide, managing complete patient pipelines, and delivering 287% average ROI. Recognized as the leading dental automation partner in the industry.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Approach</span>
+          <h2 class="section-title">How We're Different From Everyone Else</h2>
+          <p class="section-description">
+            We don't do what traditional agencies do—we do what actually works.
+          </p>
+        </div>
+        <div class="approach-grid">
+          
+          <div class="approach-card">
+            <div class="approach-number">1</div>
+            <h3>Complete System, Not Just Leads</h3>
+            <p>
+              We don't stop at lead generation. We manage qualification, nurturing, scheduling, confirmations, and follow-up—delivering booked appointments, not cold leads.
+            </p>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-number">2</div>
+            <h3>AI + Human Hybrid Model</h3>
+            <p>
+              AI handles instant response and consistent follow-up, while dental-educated humans manage complex conversations and close consultations. Best of both worlds.
+            </p>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-number">3</div>
+            <h3>Data-Driven Optimization</h3>
+            <p>
+              Every lead is tracked, every touchpoint measured, every campaign optimized. We use real performance data—not gut feelings—to improve your results month over month.
+            </p>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-number">4</div>
+            <h3>Single Integrated Partner</h3>
+            <p>
+              One system, one team, one dashboard. No juggling multiple vendors or trying to get different tools to work together. Everything is unified and seamless.
+            </p>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-number">5</div>
+            <h3>Custom to Your Practice</h3>
+            <p>
+              We build systems customized to your services, market, patient demographics, and financing options. Not a one-size-fits-all template—a personalized growth engine.
+            </p>
+          </div>
+
+          <div class="approach-card">
+            <div class="approach-number">6</div>
+            <h3>Obsessed With ROI</h3>
+            <p>
+              We measure success by the revenue we generate, not the leads we deliver. Our goal is simple: deliver measurable ROI that makes our fees look like a rounding error.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <h2>Ready to <span class="highlight">Partner</span> With Us?</h2>
+        <p>
+          Join 50+ dental practices transforming their growth with our complete automated marketing and patient management system. See exactly how we'll customize our approach for your practice.
+        </p>
+        <div class="cta-buttons">
+          <a href="/book-demo" class="btn-primary">
+            Book Your Demo
+            <span>→</span>
+          </a>
+          <a href="tel:+16505578269" class="btn-secondary">
+            Call (650) 557-8269
+            <span>📞</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+
+    <!-- Scripts -->
+    <script>
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 800) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Dentistry Growth Partners",
+      "description": "Complete automation and growth partner for dental practices. We manage the entire patient pipeline from first click to confirmed appointment.",
+      "url": "https://dentistrygrowthpartners.com",
+      "foundingDate": "2020",
+      "numberOfEmployees": "20-50",
+      "areaServed": "US"
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1112 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watch Demo | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="See how Dentistry Growth Partners' complete automated system transforms dental practice growth. Watch our educational walkthrough video."
+    />
+        <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background: var(--black);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 60px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-container h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-container .highlight {
+        color: var(--natural);
+      }
+
+      .hero-container p {
+        font-size: 22px;
+        color: rgba(255,255,255,0.9);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .video-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+        padding: 12px 24px;
+        border-radius: 24px;
+        font-size: 15px;
+        font-weight: 700;
+        margin-top: 20px;
+        border: 2px solid rgba(198,255,83,0.3);
+      }
+
+      .play-icon {
+        width: 24px;
+        height: 24px;
+        background: var(--natural);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dark-slate-blue);
+        font-size: 12px;
+      }
+
+      /* Video Section */
+      .video-section {
+        padding: 80px 24px;
+        background: var(--black);
+      }
+
+      .video-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .video-wrapper {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(198,255,83,0.2);
+        border: 4px solid var(--natural);
+      }
+
+      .video-embed {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--black);
+      }
+
+      .video-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .video-info {
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 2px solid var(--grey);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .video-duration {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--dim-grey);
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .duration-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--pale-goldenrod);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Key Takeaways Section */
+      .takeaways-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      .takeaways-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .takeaway-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .takeaway-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(198,255,83,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .takeaway-card:hover::before {
+        left: 100%;
+      }
+
+      .takeaway-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+        background: var(--white);
+      }
+
+      .takeaway-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(8, 57, 129, 0.25);
+      }
+
+      .takeaway-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .takeaway-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Timeline Section */
+      .timeline-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .timeline-list {
+        max-width: 900px;
+        margin: 60px auto 0;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 32px;
+        margin-bottom: 40px;
+        align-items: start;
+      }
+
+      .timestamp {
+        background: var(--natural);
+        color: var(--black);
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 16px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(198,255,83,0.3);
+      }
+
+      .timeline-content {
+        background: var(--white);
+        padding: 28px;
+        border-radius: 16px;
+        border: 2px solid var(--natural);
+        transition: all 0.3s ease;
+      }
+
+      .timeline-content:hover {
+        transform: translateX(10px);
+        box-shadow: 0 8px 24px rgba(43, 102, 72, 0.15);
+      }
+
+      .timeline-content h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 10px;
+      }
+
+      .timeline-content p {
+        font-size: 15px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .stats-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .stats-section .section-title,
+      .stats-section .section-description {
+        color: var(--white);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .stat-card {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        text-align: center;
+        transition: all 0.4s ease;
+      }
+
+      .stat-card:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .stat-number {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        margin-bottom: 12px;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 8px;
+      }
+
+      .stat-description {
+        font-size: 14px;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.6;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 21px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 44px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Testimonial Section */
+      .testimonial-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .testimonial-card {
+        max-width: 900px;
+        margin: 60px auto 0;
+        background: var(--grey);
+        border-radius: 24px;
+        padding: 50px;
+        border: 3px solid var(--natural);
+        position: relative;
+      }
+
+      .quote-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 32px;
+        box-shadow: 0 8px 24px rgba(8, 57, 129, 0.25);
+      }
+
+      .testimonial-text {
+        font-size: 22px;
+        line-height: 1.8;
+        color: var(--black);
+        margin-bottom: 32px;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 32px;
+        border-top: 2px solid var(--silver);
+      }
+
+      .author-avatar {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--natural), var(--green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--dark-slate-blue);
+        flex-shrink: 0;
+      }
+
+      .author-info h4 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 4px;
+      }
+
+      .author-info p {
+        font-size: 15px;
+        color: var(--dim-grey);
+      }
+
+      .rating {
+        color: var(--orange);
+        font-size: 20px;
+        margin-top: 8px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container h1 {
+          font-size: 44px;
+        }
+
+        .video-wrapper {
+          padding: 30px;
+        }
+
+        .timeline-item {
+          grid-template-columns: 60px 1fr;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-container h1 {
+          font-size: 38px;
+        }
+
+        .hero-container p {
+          font-size: 18px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .video-wrapper {
+          padding: 20px;
+        }
+
+        .video-info {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .cta-section h2 {
+          font-size: 38px;
+        }
+
+        .testimonial-card {
+          padding: 30px;
+        }
+
+        .testimonial-text {
+          font-size: 18px;
+        }
+
+        .takeaways-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-container h1 {
+          font-size: 32px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+
+        .timestamp {
+          width: fit-content;
+        }
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 18px 24px;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        border-top: 3px solid var(--natural);
+      }
+
+      .sticky-cta.active {
+        display: block;
+      }
+
+      .sticky-cta-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sticky-cta-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      @media (max-width: 767px) {
+        .sticky-cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <h1>
+          See How We <span class="highlight">Transform</span> Dental Practices
+        </h1>
+        <p>
+          Watch this educational walkthrough to understand exactly how our complete automated system manages your entire patient pipeline—from first click to confirmed appointment.
+        </p>
+        <p>
+          No fluff, no hype—just a straightforward explanation of the system, how it works, and the results it delivers for practices like yours.
+        </p>
+        <div class="video-badge">
+          <div class="play-icon">▶</div>
+          <span>Educational System Walkthrough</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <div class="video-container">
+        <div class="video-wrapper">
+          <div class="video-embed">
+            <iframe 
+              src="https://www.loom.com/embed/bce49bd2785b450caa93b67484ae4548?sid=7b68ce25-e0b3-472a-ab37-6acc3f3fed61"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+              title="Dentistry Growth Partners System Walkthrough"
+            ></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-duration">
+              <div class="duration-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--green);">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <span>Watch the complete system walkthrough</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Takeaways Section -->
+    <section class="takeaways-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">What You'll Learn</span>
+          <h2 class="section-title">Key Takeaways from This Video</h2>
+          <p class="section-description">
+            After watching, you'll have a complete understanding of our system and how it can transform your patient acquisition.
+          </p>
+        </div>
+        <div class="takeaways-grid">
+          
+          <div class="takeaway-card">
+            <div class="takeaway-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3>Complete Pipeline Management</h3>
+            <p>
+              How we handle every stage from marketing and lead generation through qualification, nurturing, scheduling, and follow-up—all automated and integrated.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3>AI + Human Hybrid System</h3>
+            <p>
+              The exact combination of AI automation and human dental expertise that delivers 10x faster response times and 75% higher show rates.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>Real ROI & Results</h3>
+            <p>
+              Actual performance data from partner practices—287% average ROI, $847K average revenue added, and how quickly you'll see results.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <h3>4-Way Lead Qualification</h3>
+            <p>
+              Our proprietary scoring system that evaluates financial capability, urgency, clinical fit, and engagement—ensuring only high-quality patients reach your schedule.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>43-Touchpoint Nurture</h3>
+            <p>
+              How our behavior-based sequences keep prospects warm across SMS, email, and voice—preventing drop-off and maximizing conversion over time.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <div class="takeaway-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>10-Day Implementation</h3>
+            <p>
+              The exact process we use to get your complete system live in 10-14 days, what's required from your team, and when you'll start seeing results.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Video Chapters</span>
+          <h2 class="section-title">What's Covered in the Walkthrough</h2>
+          <p class="section-description">
+            Jump to any section or watch the complete walkthrough to understand our entire system.
+          </p>
+        </div>
+        <div class="timeline-list">
+          
+          <div class="timeline-item">
+            <div class="timestamp">00:00</div>
+            <div class="timeline-content">
+              <h3>Introduction & Problem</h3>
+              <p>
+                Why traditional dental marketing fails and the fundamental problems with lead generation agencies that stop at delivering contacts.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">02:15</div>
+            <div class="timeline-content">
+              <h3>System Overview</h3>
+              <p>
+                High-level explanation of our complete patient pipeline management system and how each component works together seamlessly.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">05:30</div>
+            <div class="timeline-content">
+              <h3>Marketing & Lead Generation</h3>
+              <p>
+                How we use deep market research and AI-powered creative testing to generate high-quality leads at 50% lower cost than traditional methods.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">08:45</div>
+            <div class="timeline-content">
+              <h3>Instant Engagement System</h3>
+              <p>
+                Demonstration of our AI + human hybrid model that responds to leads in under 30 seconds, 24/7, with dental-educated conversations.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">12:00</div>
+            <div class="timeline-content">
+              <h3>Lead Qualification & Scoring</h3>
+              <p>
+                Deep dive into our 4-dimensional scoring system that filters prospects based on financial capability, urgency, clinical fit, and engagement.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">15:30</div>
+            <div class="timeline-content">
+              <h3>Nurture Sequences</h3>
+              <p>
+                How our 43-touchpoint behavior-based sequences keep prospects warm, address objections, and move them toward booking—automatically.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">18:45</div>
+            <div class="timeline-content">
+              <h3>Appointment Scheduling</h3>
+              <p>
+                PMS integration, real-time booking, multi-channel confirmations, and how we achieve 75% higher show rates than traditional scheduling.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">22:00</div>
+            <div class="timeline-content">
+              <h3>Results & Case Studies</h3>
+              <p>
+                Real performance data from partner practices—ROI, revenue added, patient volume, and the typical timeline to profitability.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timestamp">25:30</div>
+            <div class="timeline-content">
+              <h3>Implementation & Next Steps</h3>
+              <p>
+                What happens after you decide to partner with us—the 10-14 day onboarding process, pricing structure, and how to get started.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Proven Results</span>
+          <h2 class="section-title">Results from Partner Practices</h2>
+          <p class="section-description">
+            These are real, measured outcomes from practices using our complete system—not projections or hypotheticals.
+          </p>
+        </div>
+        <div class="stats-grid">
+          
+          <div class="stat-card">
+            <span class="stat-number">287%</span>
+            <span class="stat-label">Average ROI</span>
+            <p class="stat-description">Return on investment within the first 12 months</p>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-number">$847K</span>
+            <span class="stat-label">Avg. Revenue Added</span>
+            <p class="stat-description">Annual revenue increase for partner practices</p>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-number">156</span>
+            <span class="stat-label">New Patients/Year</span>
+            <p class="stat-description">Average high-value patients acquired annually</p>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-number">75%</span>
+            <span class="stat-label">Higher Show Rates</span>
+            <p class="stat-description">Compared to traditional appointment setting</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">What Partners Say</span>
+          <h2 class="section-title">Real Feedback from Practice Owners</h2>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+            </svg>
+          </div>
+          <p class="testimonial-text">
+            "This video completely changed how I think about dental marketing. I was spending $18K/month on ads and only getting 8-10 consultations. After seeing how their complete system works—from lead generation through automated scheduling—I understood why. Three months in, we're at 32 consultations per month with 82% show rates. The ROI is incredible, and my staff actually loves the system because it removes so much manual work."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DR</div>
+            <div class="author-info">
+              <h4>Dr. Robert Martinez</h4>
+              <p>Elite Dental Implant Center</p>
+              <p>Phoenix, AZ</p>
+              <div class="rating">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <h2>Ready to <span class="highlight">Transform</span> Your Practice?</h2>
+        <p>
+          Now that you've seen how the system works, schedule a personalized demo to discuss your specific practice, get custom projections, and see exactly how we'll implement this for you.
+        </p>
+        <div class="cta-buttons">
+          <a href="/book-demo" class="btn-primary">
+            Schedule Your Demo
+            <span>→</span>
+          </a>
+          <a href="tel:+16505578269" class="btn-secondary">
+            Call (650) 557-8269
+            <span>📞</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+    <!-- Scripts -->
+    <script>
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 1000) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Dentistry Growth Partners System Walkthrough",
+      "description": "Complete educational walkthrough of our automated patient pipeline management system for dental practices",
+      "uploadDate": "2025-01-23",
+      "contentUrl": "https://www.loom.com/share/bce49bd2785b450caa93b67484ae4548",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      }
+    }
+    </script>
+  </body>
+</html>

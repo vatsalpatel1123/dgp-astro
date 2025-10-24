@@ -1,0 +1,1520 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dental Marketing & Automation Services in Florida | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="Florida's leading dental marketing and automation partner. Complete patient pipeline management for dental practices in Miami, Tampa, Orlando, Jacksonville & across FL."
+    />
+    <meta name="keywords" content="dental marketing Florida, dental advertising Florida, dental practice growth Florida, AI dental receptionist Florida, dental SEO Florida, dental lead generation Florida, Miami dental marketing, Tampa dental marketing, Orlando dental marketing" />
+    <link rel="canonical" href="https://dentistrygrowthpartners.com/locations/florida" />
+        <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Dentistry Growth Partners - Florida",
+      "description": "Complete dental marketing automation and patient acquisition services for dental practices throughout Florida",
+      "areaServed": {
+        "@type": "State",
+        "name": "Florida",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "FL",
+          "addressCountry": "US"
+        }
+      },
+      "serviceType": ["Dental Marketing", "Practice Automation", "AI Receptionist", "Patient Acquisition", "SEO Services"],
+      "provider": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      },
+      "telephone": "+1-650-557-8269",
+      "email": "support@dentistrygrowthpartners.com"
+    }
+    </script>
+
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-content .highlight {
+        color: var(--natural);
+      }
+
+      .hero-content .subtitle {
+        font-size: 22px;
+        color: rgba(255,255,255,0.95);
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      .location-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+        padding: 12px 24px;
+        border-radius: 24px;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        border: 2px solid rgba(198,255,83,0.3);
+      }
+
+      .cities-served {
+        background: rgba(255,255,255,0.1);
+        padding: 24px;
+        border-radius: 16px;
+        margin-top: 32px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(198,255,83,0.3);
+      }
+
+      .cities-served h3 {
+        font-size: 16px;
+        color: var(--natural);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+
+      .cities-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .city-tag {
+        background: rgba(255,255,255,0.15);
+        color: var(--white);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .hero-stats {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        border: 4px solid var(--natural);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--dark-slate-blue);
+        display: block;
+        margin-bottom: 8px;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 13px;
+        color: var(--dim-grey);
+        font-weight: 600;
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Section Styles */
+      .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .service-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+        background: var(--white);
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(8, 57, 129, 0.25);
+      }
+
+      .service-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .service-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+
+      .service-link {
+        color: var(--dark-slate-blue);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.3s ease;
+      }
+
+      .service-link:hover {
+        color: var(--green);
+      }
+
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .testimonial-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .quote-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 6px 20px rgba(8, 57, 129, 0.25);
+      }
+
+      .testimonial-text {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--black);
+        margin-bottom: 28px;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 2px solid var(--grey);
+      }
+
+      .author-avatar {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--green), var(--dark-olive-green));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--white);
+        flex-shrink: 0;
+      }
+
+      .author-info h5 {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 4px;
+      }
+
+      .author-info p {
+        font-size: 14px;
+        color: var(--dim-grey);
+        margin: 0;
+      }
+
+      .rating {
+        color: var(--orange);
+        font-size: 16px;
+        margin-top: 6px;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .faq-container {
+        max-width: 900px;
+        margin: 60px auto 0;
+      }
+
+      .faq-item {
+        background: var(--grey);
+        border-radius: 16px;
+        margin-bottom: 16px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        padding: 28px 32px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--black);
+        user-select: none;
+      }
+
+      .faq-item:hover {
+        border-color: var(--natural);
+      }
+
+      .faq-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--natural);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--black);
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .faq-answer-content {
+        padding: 0 32px 28px;
+        font-size: 16px;
+        color: var(--dim-grey);
+        line-height: 1.8;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      /* Form Section */
+      .form-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .form-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .form-section .section-title,
+      .form-section .section-description {
+        color: var(--white);
+      }
+
+      .form-container {
+        max-width: 800px;
+        margin: 60px auto 0;
+        background: rgba(255,255,255,0.05);
+        border-radius: 24px;
+        padding: 50px;
+        border: 2px solid rgba(198,255,83,0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .form-group label {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        padding: 16px;
+        border: 2px solid rgba(255,255,255,0.2);
+        border-radius: 12px;
+        font-size: 16px;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        background: rgba(255,255,255,0.1);
+        color: var(--white);
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: rgba(255,255,255,0.5);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--natural);
+        background: rgba(255,255,255,0.15);
+        box-shadow: 0 0 0 3px rgba(198,255,83,0.2);
+      }
+
+      .form-group select {
+        cursor: pointer;
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .form-required {
+        color: var(--natural);
+        margin-left: 4px;
+      }
+
+      .submit-btn {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+        cursor: pointer;
+      }
+
+      .submit-btn:hover:not(:disabled) {
+        background: var(--green);
+        border-color: var(--green);
+        color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(43, 102, 72, 0.4);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .form-message {
+        padding: 16px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        display: none;
+      }
+
+      .form-message.success {
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        display: block;
+      }
+
+      .form-message.error {
+        background: var(--misty-rose);
+        color: var(--indian-red);
+        display: block;
+      }
+
+      /* Cities Section */
+      .cities-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .cities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 60px;
+      }
+
+      .city-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 32px;
+        border: 2px solid var(--natural);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .city-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 36px rgba(43, 102, 72, 0.15);
+      }
+
+      .city-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+
+      .city-card p {
+        font-size: 14px;
+        color: var(--dim-grey);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .hero-content h1 {
+          font-size: 44px;
+        }
+
+        .stat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-content h1 {
+          font-size: 38px;
+        }
+
+        .hero-content .subtitle {
+          font-size: 19px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .form-container {
+          padding: 30px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+
+        .stat-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 18px 24px;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        border-top: 3px solid var(--natural);
+      }
+
+      .sticky-cta.active {
+        display: block;
+      }
+
+      .sticky-cta-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sticky-cta-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      @media (max-width: 767px) {
+        .sticky-cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="location-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Serving All of Florida</span>
+          </div>
+          <h1>
+            Florida's Leading <span class="highlight">Dental Marketing</span> & Automation Partner
+          </h1>
+          <p class="subtitle">
+            Complete Patient Pipeline Management for Dental Practices Across the Sunshine State
+          </p>
+          <p>
+            From Miami to Jacksonville, Tampa to Orlando—we help Florida dental practices automate their entire patient acquisition system. No more missed calls, lost leads, or overwhelmed front desks.
+          </p>
+          <div class="cities-served">
+            <h3>Major Florida Markets We Serve:</h3>
+            <div class="cities-list">
+              <span class="city-tag">Miami</span>
+              <span class="city-tag">Tampa</span>
+              <span class="city-tag">Orlando</span>
+              <span class="city-tag">Jacksonville</span>
+              <span class="city-tag">Fort Lauderdale</span>
+              <span class="city-tag">Tallahassee</span>
+              <span class="city-tag">Naples</span>
+              <span class="city-tag">Sarasota</span>
+              <span class="city-tag">St. Petersburg</span>
+              <span class="city-tag">Clearwater</span>
+              <span class="city-tag">Fort Myers</span>
+              <span class="city-tag">West Palm Beach</span>
+            </div>
+          </div>
+          <div class="cta-buttons">
+            <a href="/book-demo" class="btn-primary">
+              Schedule Demo
+              <span>→</span>
+            </a>
+            <a href="tel:+16505578269" class="btn-secondary">
+              Call (650) 557-8269
+              <span>📞</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-grid">
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">FL Practices</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">$8.4M</span>
+              <span class="stat-label">FL Revenue Added</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1,840+</span>
+              <span class="stat-label">FL Patients Booked</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">287%</span>
+              <span class="stat-label">Average ROI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Services</span>
+          <h2 class="section-title">Complete Dental Marketing Solutions for Florida Practices</h2>
+          <p class="section-description">
+            Everything you need to attract, qualify, and book high-value dental patients across Florida—managed by one partner.
+          </p>
+        </div>
+        <div class="services-grid">
+          
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 2v20M2 12h20"></path>
+              </svg>
+            </div>
+            <h3>Multi-Implant Marketing</h3>
+            <p>
+              Targeted campaigns across Florida's competitive markets to attract high-value implant patients. Full pipeline from ad to booked consultation.
+            </p>
+            <a href="/solutions/multi-implant-marketing" class="service-link">
+              Learn More →
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3>High-Value Case Marketing</h3>
+            <p>
+              Cosmetic dentistry, full-mouth reconstruction, and premium services. Customized for Florida's affluent markets from Naples to Boca Raton.
+            </p>
+            <a href="/solutions/high-value-cases" class="service-link">
+              Learn More →
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <h3>AI Voice Receptionist</h3>
+            <p>
+              24/7 phone coverage for Florida practices. Never miss a call from tourists, snowbirds, or local patients—answer every inquiry instantly.
+            </p>
+            <a href="/solutions/ai-voice-receptionist" class="service-link">
+              Learn More →
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3>Patient Communication</h3>
+            <p>
+              Automated SMS, email, and voice follow-up. Keep Florida patients engaged with reminders, reactivation campaigns, and review requests.
+            </p>
+            <a href="/solutions/automated-communication" class="service-link">
+              Learn More →
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <h3>Local SEO for Florida</h3>
+            <p>
+              Dominate local search in your Florida market. Google Business optimization, local citations, and content that ranks for "dentist near me."
+            </p>
+            <a href="/solutions/aio-seo" class="service-link">
+              Learn More →
+            </a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Website Design</h3>
+            <p>
+              Modern, mobile-optimized websites built for Florida dental practices. Fast loading, conversion-focused, and professionally managed.
+            </p>
+            <a href="/solutions/website-design" class="service-link">
+              Learn More →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Florida Success Stories</span>
+          <h2 class="section-title">What Florida Dental Practices Are Saying</h2>
+          <p class="section-description">
+            Real results from real Florida practices that transformed their patient acquisition with our automated systems.
+          </p>
+        </div>
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "In Miami's competitive market, we were drowning in leads that never converted. DGP's system changed everything—we went from 12 consultations a month to 38. The AI qualification is incredible, and the 24/7 coverage captures tourists and snowbirds we used to miss. Best investment we've made."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AC</div>
+              <div class="author-info">
+                <h5>Dr. Ana Castro</h5>
+                <p>Brickell Dental Implants</p>
+                <p>Miami, FL</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "Tampa has dozens of cosmetic dentists—we needed an edge. The automated nurture sequences and behavior-based follow-up from DGP kept prospects engaged until they were ready. Our veneer cases tripled in 6 months. The ROI speaks for itself."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MS</div>
+              <div class="author-info">
+                <h5>Dr. Michael Sanchez</h5>
+                <p>Bay Area Smile Design</p>
+                <p>Tampa, FL</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="quote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; color: white;">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+            </div>
+            <p class="testimonial-text">
+              "We run three locations across Central Florida—the AI voice system has been a game-changer. No more missed calls between locations, instant patient routing, and our front desk can finally focus on patients in the office. Added over $600K in revenue this year."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JW</div>
+              <div class="author-info">
+                <h5>Dr. Jennifer Williams</h5>
+                <p>Orlando Family Dental Group</p>
+                <p>Orlando, FL</p>
+                <div class="rating">★★★★★</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Frequently Asked Questions</span>
+          <h2 class="section-title">Common Questions from Florida Dental Practices</h2>
+          <p class="section-description">
+            Everything you need to know about working with us in Florida's unique dental market.
+          </p>
+        </div>
+        <div class="faq-container">
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you work with dental practices throughout Florida?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Yes! We serve dental practices in all major Florida markets including Miami, Tampa, Orlando, Jacksonville, Fort Lauderdale, Naples, Sarasota, and everywhere in between. Our system works equally well in competitive urban markets and smaller Florida communities. We customize our approach based on your specific local market dynamics.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do you handle Florida's seasonal patient fluctuations?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Florida's seasonal nature (snowbirds, tourists, etc.) is built into our strategy. Our 24/7 AI coverage captures calls during peak season when your staff is overwhelmed, and our database reactivation campaigns target seasonal patients when they return. We also adjust marketing spend based on seasonal demand patterns in your specific Florida market.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can you help with both Spanish and English-speaking patients in Florida?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Absolutely. Our AI voice system and human agents are bilingual, which is essential in markets like Miami, Tampa, and Orlando with large Spanish-speaking populations. All marketing materials, nurture sequences, and patient communications can be delivered in both English and Spanish based on patient preference.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How does local SEO work for Florida dental practices?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                We optimize your Google Business Profile for your specific Florida city, build local citations across Florida directories, create location-specific content, and manage reviews to boost local rankings. For practices with multiple locations, we create separate strategies for each location to dominate local search in every market you serve.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What makes Florida's dental market unique?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Florida has unique characteristics: large retiree population (prime for implants), seasonal snowbirds, medical tourism, highly competitive urban markets, diverse demographics, and strong demand for cosmetic dentistry in affluent areas. Our system accounts for all of these factors—from targeting the right demographics to capturing seasonal demand to standing out in competitive markets.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How quickly can you get my Florida practice up and running?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Our standard implementation timeline is 10-14 days regardless of location. For Florida practices, we customize everything to your specific market during this process—local ad targeting, market research, competitive analysis, and system configuration. You'll be live and generating results within two weeks of signing up.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you handle Google Ads compliance for Florida dental advertising?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                Yes. We ensure all advertising complies with Google's healthcare advertising policies and Florida dental advertising regulations. Our team stays current on both platform policies and state regulations to ensure your campaigns run smoothly without compliance issues.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can you help if we're already working with another Florida marketing agency?</span>
+              <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-content">
+                We can work alongside existing marketing efforts or replace them entirely—it's your choice. Many Florida practices come to us because their current agency only delivers leads without handling qualification, nurturing, or scheduling. We typically recommend transitioning fully to our complete system for maximum ROI, but we're flexible based on your situation.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Get Started</span>
+          <h2 class="section-title">Ready to Transform Your Florida Practice?</h2>
+          <p class="section-description">
+            Fill out the form below and we'll reach out within one business day to discuss your practice and how we can help.
+          </p>
+        </div>
+        <div class="form-container">
+          <div id="formMessage" class="form-message"></div>
+          
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name <span class="form-required">*</span></label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required 
+                  placeholder="Dr. John Smith"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="practice">Practice Name <span class="form-required">*</span></label>
+                <input 
+                  type="text" 
+                  id="practice" 
+                  name="practice" 
+                  required 
+                  placeholder="Smith Family Dentistry"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address <span class="form-required">*</span></label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  placeholder="dr.smith@example.com"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="form-required">*</span></label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  required 
+                  placeholder="(305) 555-0123"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="city">Florida City/Location <span class="form-required">*</span></label>
+              <select id="city" name="city" required>
+                <option value="">Select Your City</option>
+                <option value="Miami">Miami</option>
+                <option value="Tampa">Tampa</option>
+                <option value="Orlando">Orlando</option>
+                <option value="Jacksonville">Jacksonville</option>
+                <option value="Fort Lauderdale">Fort Lauderdale</option>
+                <option value="Tallahassee">Tallahassee</option>
+                <option value="Naples">Naples</option>
+                <option value="Sarasota">Sarasota</option>
+                <option value="St. Petersburg">St. Petersburg</option>
+                <option value="Clearwater">Clearwater</option>
+                <option value="Fort Myers">Fort Myers</option>
+                <option value="West Palm Beach">West Palm Beach</option>
+                <option value="Boca Raton">Boca Raton</option>
+                <option value="Gainesville">Gainesville</option>
+                <option value="Pensacola">Pensacola</option>
+                <option value="Other Florida City">Other Florida City</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="services">Services Interested In <span class="form-required">*</span></label>
+              <select id="services" name="services" required>
+                <option value="">Select Primary Interest</option>
+                <option value="Multi-Implant Marketing">Multi-Implant Marketing</option>
+                <option value="High-Value Case Marketing">High-Value Case Marketing</option>
+                <option value="AI Voice Receptionist">AI Voice Receptionist</option>
+                <option value="Patient Communication">Automated Patient Communication</option>
+                <option value="Local SEO">Local SEO for Florida</option>
+                <option value="Website Design">Website Design & Management</option>
+                <option value="Complete System">Complete System (All Services)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell Us About Your Practice <span class="form-required">*</span></label>
+              <textarea 
+                id="message" 
+                name="message" 
+                required 
+                placeholder="What are your current challenges? What are your growth goals?"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span>Send Message</span>
+              <span>→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section class="cities-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Florida Coverage</span>
+          <h2 class="section-title">Major Florida Markets We Serve</h2>
+          <p class="section-description">
+            Helping dental practices grow across the Sunshine State—from the Panhandle to the Keys.
+          </p>
+        </div>
+        <div class="cities-grid">
+          <div class="city-card">
+            <h3>Miami-Dade County</h3>
+            <p>Miami, Coral Gables, Hialeah, Kendall</p>
+          </div>
+          <div class="city-card">
+            <h3>Broward County</h3>
+            <p>Fort Lauderdale, Hollywood, Pembroke Pines</p>
+          </div>
+          <div class="city-card">
+            <h3>Palm Beach County</h3>
+            <p>West Palm Beach, Boca Raton, Delray Beach</p>
+          </div>
+          <div class="city-card">
+            <h3>Tampa Bay Area</h3>
+            <p>Tampa, St. Petersburg, Clearwater, Brandon</p>
+          </div>
+          <div class="city-card">
+            <h3>Central Florida</h3>
+            <p>Orlando, Kissimmee, Winter Park, Lake Mary</p>
+          </div>
+          <div class="city-card">
+            <h3>Jacksonville Metro</h3>
+            <p>Jacksonville, Ponte Vedra, Orange Park</p>
+          </div>
+          <div class="city-card">
+            <h3>Southwest Florida</h3>
+            <p>Naples, Fort Myers, Cape Coral, Bonita Springs</p>
+          </div>
+          <div class="city-card">
+            <h3>Sarasota-Bradenton</h3>
+            <p>Sarasota, Bradenton, Venice, Lakewood Ranch</p>
+          </div>
+          <div class="city-card">
+            <h3>Treasure Coast</h3>
+            <p>Port St. Lucie, Stuart, Vero Beach</p>
+          </div>
+          <div class="city-card">
+            <h3>Space Coast</h3>
+            <p>Melbourne, Cocoa Beach, Titusville</p>
+          </div>
+          <div class="city-card">
+            <h3>North Florida</h3>
+            <p>Tallahassee, Pensacola, Panama City</p>
+          </div>
+          <div class="city-card">
+            <h3>Florida Keys</h3>
+            <p>Key West, Marathon, Key Largo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+
+    <!-- Form Submission Script -->
+    <script>
+      // FAQ Accordion
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+          const faqItem = this.parentElement;
+          const wasActive = faqItem.classList.contains('active');
+          
+          // Close all FAQ items
+          document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+          });
+          
+          // Open clicked item if it wasn't active
+          if (!wasActive) {
+            faqItem.classList.add('active');
+          }
+        });
+      });
+
+      // Form Submission
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          // Disable submit button
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Sending...</span>';
+
+          // Get form data
+          const formData = new FormData(form);
+          
+          // Get current page URL and base URL
+          const currentUrl = window.location.href;
+          const baseUrl = window.location.origin;
+          
+          // Create payload with all form data
+          const payload = {
+            formData: {
+              name: formData.get('name'),
+              practice: formData.get('practice'),
+              email: formData.get('email'),
+              phone: formData.get('phone'),
+              city: formData.get('city'),
+              services: formData.get('services'),
+              message: formData.get('message')
+            },
+            pageInfo: {
+              currentUrl: currentUrl,
+              baseUrl: baseUrl,
+              pagePath: window.location.pathname,
+              location: 'Florida',
+              timestamp: new Date().toISOString(),
+              userAgent: navigator.userAgent
+            }
+          };
+
+          try {
+            const response = await fetch('https://n8n.srv791889.hstgr.cloud/webhook/dgp-website-forms', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+              // Success
+              formMessage.className = 'form-message success';
+              formMessage.textContent = '✓ Thank you! Your message has been sent successfully. We\'ll respond within one business day.';
+              form.reset();
+              
+              // Hide success message after 10 seconds
+              setTimeout(() => {
+                formMessage.style.display = 'none';
+              }, 10000);
+            } else {
+              throw new Error('Form submission failed');
+            }
+          } catch (error) {
+            // Error
+            formMessage.className = 'form-message error';
+            formMessage.textContent = '✗ Sorry, something went wrong. Please try again or call us at (650) 557-8269.';
+            console.error('Form submission error:', error);
+          } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Send Message</span><span>→</span>';
+          }
+        });
+      });
+
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 800) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
