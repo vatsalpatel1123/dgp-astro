@@ -1,0 +1,787 @@
+---
+// services.astro
+import '../css/main.css';
+import '../css/about-dgp.css';
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Solutions | Dentistry Growth Partners</title>
+  <meta name="description" content="Complete marketing and optimization solutions for dental practices. Drive consistent patient flow and increase conversion rates.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <style>
+    /* ============================================
+       RESET & BASE STYLES
+    ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark-slate-blue: #083981;
+      --natural: #c6ff53;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+      --dark-olive-green: #194c8b;
+      --green: #2b6648;
+      --pale-goldenrod: #e3fcb0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+    .services-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 160px 24px 100px;
+    }
+
+    .services-hero::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(198, 255, 83, 0.08) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(198, 255, 83, 0.08) 2px, transparent 2px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+    }
+
+    .hero-shape-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    .hero-shape-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
+      bottom: -150px;
+      left: -150px;
+      animation: float 18s infinite ease-in-out reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -30px) scale(1.1); }
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(198, 255, 83, 0.4);
+      padding: 12px 28px;
+      border-radius: 50px;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      transition: all 0.4s ease;
+    }
+
+    .hero-badge:hover {
+      background: rgba(198, 255, 83, 0.25);
+      transform: translateY(-3px);
+      border-color: rgba(198, 255, 83, 0.6);
+    }
+
+    .hero-badge i {
+      font-size: 20px;
+      color: var(--natural);
+    }
+
+    .services-hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .services-hero p {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       SERVICES SECTION
+    ============================================ */
+    .services-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .services-list {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 24px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 40px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.03) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .service-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: var(--natural);
+      flex-shrink: 0;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+    }
+
+    .service-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-content h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .service-content p {
+      font-size: 17px;
+      color: var(--dim-grey);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 32px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid var(--natural);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-cta:hover {
+      background: var(--dark-slate-blue);
+      color: var(--natural);
+      transform: translateX(4px);
+      box-shadow: 0 8px 24px rgba(8, 57, 129, 0.2);
+    }
+
+    .service-cta i {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-cta:hover i {
+      transform: translateX(4px);
+    }
+
+    /* ============================================
+       CTA SECTION
+    ============================================ */
+    .final-cta-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(198, 255, 83, 0.15);
+      border: 2px solid var(--natural);
+      padding: 10px 24px;
+      border-radius: 50px;
+      color: var(--natural);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .cta-badge i {
+      font-size: 18px;
+    }
+
+    .final-cta-section h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .final-cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 3px solid var(--natural);
+      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+    }
+
+    .cta-button:hover {
+      background: transparent;
+      color: var(--natural);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+    }
+
+    .cta-button i {
+      font-size: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover i {
+      transform: translateX(4px);
+    }
+
+    /* ============================================
+       FLOATING CTA BUTTONS
+    ============================================ */
+    .floating-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 1000;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      background: var(--dark-slate-blue);
+      color: var(--natural);
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+    ============================================ */
+    @media (max-width: 991px) {
+      .services-hero {
+        padding: 140px 24px 80px;
+        min-height: 60vh;
+      }
+
+      .services-hero h1 {
+        font-size: 42px;
+      }
+
+      .service-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 32px;
+        text-align: center;
+      }
+
+      .service-icon {
+        margin: 0 auto;
+      }
+
+      .service-cta {
+        margin: 0 auto;
+      }
+
+      .services-section {
+        padding: 80px 24px;
+      }
+
+      .final-cta-section {
+        padding: 80px 24px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .services-hero {
+        padding: 120px 20px 60px;
+      }
+
+      .services-hero h1 {
+        font-size: 32px;
+      }
+
+      .services-hero p {
+        font-size: 16px;
+      }
+
+      .hero-badge {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+
+      .service-card {
+        padding: 32px 24px;
+        gap: 20px;
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+      }
+
+      .service-content h3 {
+        font-size: 22px;
+      }
+
+      .service-content p {
+        font-size: 15px;
+      }
+
+      .service-cta {
+        padding: 14px 28px;
+        font-size: 15px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .services-list {
+        gap: 24px;
+      }
+
+      .services-section {
+        padding: 60px 20px;
+      }
+
+      .final-cta-section {
+        padding: 60px 20px;
+      }
+
+      .final-cta-section h2 {
+        font-size: 28px;
+      }
+
+      .final-cta-section p {
+        font-size: 16px;
+      }
+
+      .cta-button {
+        padding: 18px 36px;
+        font-size: 16px;
+      }
+
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+      }
+
+      .floating-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      .floating-btn span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .services-hero h1 {
+        font-size: 28px;
+        letter-spacing: -1px;
+      }
+
+      .service-content h3 {
+        font-size: 20px;
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <Navigation />
+  <!-- ============================================
+       HERO SECTION
+  ============================================ -->
+  <section class="services-hero">
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
+    
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="ti ti-checkup-list"></i>
+        <span>Our Solutions</span>
+      </div>
+      
+      <h1>Complete Solutions to Improve Your Practice</h1>
+      
+      <p>
+        Our comprehensive suite of solutions to drive consistent patient flow, optimize your practice, 
+        and increase conversion and retention.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SERVICES SECTION
+  ============================================ -->
+  <section class="services-section">
+    <div class="section-container">
+      <div class="services-list">
+
+        <!-- Service 1: Multi-Implant Marketing -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-dental"></i>
+          </div>
+          <div class="service-content">
+            <h3>Multi-Implant Marketing</h3>
+            <p>
+              Targeted marketing campaigns specifically designed to attract high-value multi-implant cases 
+              worth $15k-75k directly to your practice.
+            </p>
+          </div>
+          <a href="/multi-implant-marketing" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 2: High-Value Case Marketing -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-diamond"></i>
+          </div>
+          <div class="service-content">
+            <h3>High-Value Case Marketing</h3>
+            <p>
+              Premium marketing strategies focused on attracting high value cases like veneers, crowns, 
+              bridges and more.
+            </p>
+          </div>
+          <a href="/high-value-case-marketing" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 3: AI Voice Receptionist -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-phone-call"></i>
+          </div>
+          <div class="service-content">
+            <h3>AI Voice Receptionist</h3>
+            <p>
+              24/7 AI Voice Receptionist that answers patient's questions, books appointments, and qualifies 
+              leads automatically—never miss another opportunity.
+            </p>
+          </div>
+          <a href="/ai-voice-receptionist" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 4: Patient Communication -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-messages"></i>
+          </div>
+          <div class="service-content">
+            <h3>Patient Communication</h3>
+            <p>
+              Automated SMS, email, and voice outreach that keep your practice top of mind, nurture your 
+              patient base, and keep them self-booking follow up appointments throughout the year.
+            </p>
+          </div>
+          <a href="/patient-communication" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 5: AIO SEO -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-search"></i>
+          </div>
+          <div class="service-content">
+            <h3>AIO SEO</h3>
+            <p>
+              All-in-one SEO solution to dominate local search rankings, get recommended by ChatGPT 
+              and become the #1 choice for implant cases in your area.
+            </p>
+          </div>
+          <a href="/aio-seo" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 6: Website Design & Management -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-world"></i>
+          </div>
+          <div class="service-content">
+            <h3>Website Design & Management</h3>
+            <p>
+              Custom, high-converting websites designed specifically for dental practices with ongoing 
+              management and optimization.
+            </p>
+          </div>
+          <a href="/website-design-management" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA SECTION
+  ============================================ -->
+  <section class="final-cta-section">
+    <div class="cta-content">
+      <div class="cta-badge">
+        <i class="ti ti-star"></i>
+        <span>Limited Availability</span>
+      </div>
+      
+      <h2>A True Partnership - Solutions for Every One of Your Needs</h2>
+      
+      <p>
+        We work with one practice per region. Limited spots available.
+      </p>
+      
+      <a href="/book-a-call" class="cta-button">
+        Speak to Our Team
+        <i class="ti ti-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+  <FooterBar />
+
+  <!-- ============================================
+       FLOATING CTA BUTTONS
+  ============================================ -->
+  <div class="floating-cta">
+    <a href="/book-a-call" class="floating-btn">
+      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
+      <span>Let's Talk</span>
+    </a>
+    <a href="tel:+16505578269" class="floating-btn">
+      <i class="ti ti-phone" style="font-size: 24px;"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       SCROLL ANIMATIONS
+  ============================================ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.service-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

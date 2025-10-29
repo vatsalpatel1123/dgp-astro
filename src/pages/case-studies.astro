@@ -1,0 +1,480 @@
+---
+// case-studies.astro - Real Results Page with Authentic Case Studies Only
+import '../css/main.css';
+import '../css/case-studies.css';
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Results from Real Practices | Dentistry Growth Partners</title>
+  <meta name="description" content="These are actual results from our client practices—no fabricated data. See real ROI, case studies, and testimonials from dental practices.">
+  <meta property="og:title" content="Real Results from Real Practices | Dentistry Growth Partners">
+  <meta property="og:description" content="Authentic case studies showing real revenue growth and ROI from dental practices using our system.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+
+  <Navigation />
+
+  <!-- ============================================
+       HERO SECTION
+  ============================================ -->
+  <section class="case-studies-hero">
+    <!-- Animated Background -->
+    <div class="hero-background">
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </div>
+
+    <div class="hero-container">
+      <h1>Real Results from <span class="highlight">Real Practices</span></h1>
+      <p class="hero-description">
+        These are actual results from our client practices—no fabricated data.
+      </p>
+
+      <!-- Hero Features -->
+      <div class="hero-features">
+        <div class="hero-feature">
+          <i class="ti ti-certificate"></i>
+          <span>Verified Results</span>
+        </div>
+        <div class="hero-feature">
+          <i class="ti ti-chart-dots"></i>
+          <span>Detailed Analysis</span>
+        </div>
+        <div class="hero-feature">
+          <i class="ti ti-trending-up"></i>
+          <span>What to Expect</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       DOWNLOADABLE CASE STUDIES SECTION
+  ============================================ -->
+  <section class="downloadable-studies-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="ti ti-chart-dots"></i>
+          Detailed Analysis
+        </span>
+        <h2 class="section-title">Download Our Complete Case Studies</h2>
+        <p class="section-description">
+          In-depth analysis and real data from our partner practices. Download or preview the full reports.
+        </p>
+      </div>
+
+      <div class="download-cards-grid">
+        
+        <!-- Case Study Document 1 -->
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="ti ti-file-analytics"></i>
+          </div>
+          <h3>Comprehensive Campaign Analysis</h3>
+          <p class="download-subtitle">Lead Quality (LQ) vs. Lead Volume (LV)</p>
+          <p class="download-description">
+            Complete breakdown comparing lead quality strategies vs volume-based approaches, including conversion rates, cost per acquisition, and long-term ROI metrics.
+          </p>
+          <div class="download-actions">
+            <button class="btn-preview" data-pdf="campaign-analysis.pdf">
+              <i class="ti ti-eye"></i>
+              Preview
+            </button>
+            <a href="/downloads/campaign-analysis.pdf" download class="btn-download">
+              <i class="ti ti-download"></i>
+              Download PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- Case Study Document 2 -->
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="ti ti-chart-line"></i>
+          </div>
+          <h3>Summit Dental Implants Case Study</h3>
+          <p class="download-subtitle">Quality-First Lead Gen System</p>
+          <p class="download-description">
+            Real results from Summit Dental's implementation of our quality-first lead generation system, including month-by-month breakdown of consultations, conversion rates, and revenue growth.
+          </p>
+          <div class="download-actions">
+            <button class="btn-preview" data-pdf="summit-dental-case-study.pdf">
+              <i class="ti ti-eye"></i>
+              Preview
+            </button>
+            <a href="/downloads/summit-dental-case-study.pdf" download class="btn-download">
+              <i class="ti ti-download"></i>
+              Download PDF
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       REAL CASE STUDIES SECTION (GoHighLevel Data Only)
+  ============================================ -->
+  <section class="authentic-studies-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="ti ti-certificate"></i>
+          Verified Results
+        </span>
+        <h2 class="section-title">Authentic Performance Data</h2>
+        <p class="section-description">
+          Real stats from our GoHighLevel system. These are not projections—they're measured outcomes.
+        </p>
+      </div>
+
+      <!-- Case Study 1: Initial Trial Results -->
+      <div class="authentic-case-card">
+        <div class="case-badge">Initial Trial Results</div>
+        <div class="case-header">
+          <div class="case-info">
+            <h3>Multi-Location Practice</h3>
+            <p class="case-location">
+              <i class="ti ti-map-pin"></i>
+              United States (Region Confidential)
+            </p>
+          </div>
+        </div>
+
+        <div class="case-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-cash"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">$300K - $750K</span>
+              <span class="stat-label">First Trial Earnings</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-clock"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">11 Days</span>
+              <span class="stat-label">To First Consult</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-trophy"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">8-10x</span>
+              <span class="stat-label">ROI</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-users"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">25+</span>
+              <span class="stat-label">Qualified Consults (90 days)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-description">
+          <h4>System Implemented</h4>
+          <p>
+            Complete Multi-Implant Marketing + Booking System with AI-powered qualification, 24/7 engagement, 43-touchpoint nurture sequences, and direct PMS integration. Focus on lead quality over volume with rigorous financial and clinical qualification criteria.
+          </p>
+        </div>
+      </div>
+
+      <!-- Case Study 2: Monthly Performance -->
+      <div class="authentic-case-card">
+        <div class="case-badge">Ongoing Monthly Performance</div>
+        <div class="case-header">
+          <div class="case-info">
+            <h3>Implant-Focused Practice</h3>
+            <p class="case-location">
+              <i class="ti ti-map-pin"></i>
+              United States (Region Confidential)
+            </p>
+          </div>
+        </div>
+
+        <div class="case-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-cash"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">$150K - $750K</span>
+              <span class="stat-label">Monthly Earnings</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-calendar-check"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">10-40</span>
+              <span class="stat-label">Consults Per Month</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-chart-line"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">75%</span>
+              <span class="stat-label">Case Acceptance Rate</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="ti ti-clock-check"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">90+ Days</span>
+              <span class="stat-label">Sustained Growth</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-description">
+          <h4>System Implemented</h4>
+          <p>
+            Full patient pipeline automation including targeted Google and Facebook campaigns, instant AI + human engagement, smart qualification workflows, automated nurturing, direct calendar scheduling, and case acceptance training. System delivers consistent 10-40 qualified consultations monthly with 75% acceptance rate.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       EXPECTED RESULTS SECTION
+  ============================================ -->
+  <section class="expected-results-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="ti ti-trending-up"></i>
+          What to Expect
+        </span>
+        <h2 class="section-title">Typical Results from Our System</h2>
+        <p class="section-description">
+          Based on real data from practices using our Multi-Implant Booking System for 90+ days.
+        </p>
+      </div>
+
+      <div class="results-timeline">
+        
+        <!-- Phase 1: First 90 Days -->
+        <div class="timeline-phase">
+          <div class="phase-badge">First 90 Days</div>
+          <h3>Initial Trial Period</h3>
+          <div class="phase-metrics">
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>25 qualified, attended consults</span>
+            </div>
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>$300K - $750K total earnings</span>
+            </div>
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>11-14 days to first consult</span>
+            </div>
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>8-10x ROI on investment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2: Ongoing Monthly -->
+        <div class="timeline-phase">
+          <div class="phase-badge">Monthly (After Trial)</div>
+          <h3>Sustained Performance</h3>
+          <div class="phase-metrics">
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>10-40 qualified consults per month</span>
+            </div>
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>$150K - $750K monthly earnings</span>
+            </div>
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>75% case acceptance rate</span>
+            </div>
+            <div class="metric-item">
+              <i class="ti ti-check-circle"></i>
+              <span>Consistent, predictable growth</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Key Success Factors -->
+      <div class="success-factors">
+        <h3>Why These Results Are Achievable</h3>
+        <div class="factors-grid">
+          <div class="factor-card">
+            <i class="ti ti-target"></i>
+            <h4>Quality Over Volume</h4>
+            <p>We filter 65% of leads to only book financially qualified patients ready for treatment</p>
+          </div>
+          <div class="factor-card">
+            <i class="ti ti-robot"></i>
+            <h4>24/7 Instant Response</h4>
+            <p>AI + human hybrid engagement ensures no lead is missed, even at 10 PM</p>
+          </div>
+          <div class="factor-card">
+            <i class="ti ti-refresh"></i>
+            <h4>43-Touchpoint Nurture</h4>
+            <p>Automated sequences keep prospects warm until they're ready to book</p>
+          </div>
+          <div class="factor-card">
+            <i class="ti ti-calendar-stats"></i>
+            <h4>PMS Integration</h4>
+            <p>Direct scheduling eliminates friction and reduces no-shows by 60%</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA SECTION
+  ============================================ -->
+  <section class="cta-section">
+    <div class="section-container">
+      <h2>Want Results Like These?</h2>
+      <p>
+        Join the dental practices achieving 8-10x ROI and adding $300K-$750K in revenue with our proven system.
+      </p>
+      <a href="/book-a-call" class="btn-primary">
+        Speak to Our Team
+        <i class="ti ti-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <FooterBar />
+
+  <!-- ============================================
+       FLOATING CTA BUTTONS
+  ============================================ -->
+  <div class="floating-cta">
+    <a href="/book-a-call" class="floating-btn">
+      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
+      <span>Let's Talk</span>
+    </a>
+    <a href="tel:+16505578269" class="floating-btn">
+      <i class="ti ti-phone" style="font-size: 24px;"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       PDF PREVIEW MODAL
+  ============================================ -->
+  <div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal-overlay"></div>
+    <div class="pdf-modal-content">
+      <button class="pdf-modal-close" aria-label="Close preview">
+        <i class="ti ti-x"></i>
+      </button>
+      <iframe id="pdfViewer" class="pdf-viewer"></iframe>
+    </div>
+  </div>
+
+  <!-- ============================================
+       JAVASCRIPT
+  ============================================ -->
+  <script>
+    // PDF Preview Modal
+    document.addEventListener('DOMContentLoaded', function() {
+      const previewButtons = document.querySelectorAll('.btn-preview');
+      const modal = document.getElementById('pdfModal');
+      const modalOverlay = modal?.querySelector('.pdf-modal-overlay');
+      const closeButton = modal?.querySelector('.pdf-modal-close');
+      const pdfViewer = document.getElementById('pdfViewer');
+
+      previewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const pdfFile = this.getAttribute('data-pdf');
+          if (pdfViewer && modal) {
+            pdfViewer.src = `/downloads/${pdfFile}`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      // Close modal
+      const closeModal = () => {
+        if (modal && pdfViewer) {
+          modal.classList.remove('active');
+          pdfViewer.src = '';
+          document.body.style.overflow = '';
+        }
+      };
+
+      closeButton?.addEventListener('click', closeModal);
+      modalOverlay?.addEventListener('click', closeModal);
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal?.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

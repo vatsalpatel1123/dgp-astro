@@ -569,11 +569,13 @@ import StickyCTA from '../components/StickyCTA.astro';
             <p class="calendar-description">
               Schedule a 30-minute demo to see how our complete automated system can transform your patient acquisition. Pick a time that works best for you.
             </p>
-            <!-- Replace this URL with your actual calendar booking URL -->
-            <iframe 
-              src="https://calendar.google.com/calendar/appointments/schedules/YOUR_CALENDAR_ID" 
+            <!-- GHL Booking Widget -->
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/bookings/discovery-call-dgp"
               class="calendar-embed"
               title="Book a Demo Call"
+              allow="payment"
+              scrolling="yes"
             ></iframe>
           </div>
 

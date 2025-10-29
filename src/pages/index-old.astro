@@ -1,0 +1,2910 @@
+---
+// index.astro
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Driven Conversion Engine for Private Dental Practices | Dentistry Growth Partners</title>
+  <meta name="description" content="Get 25+ booked consultations in 90 days or pay nothing. AI-powered patient acquisition, scheduling & conversion for high-value dental cases.">
+  <meta property="og:title" content="AI-Driven Conversion Engine for Private Dental Practices | Dentistry Growth Partners">
+  <meta property="og:description" content="Get 25+ booked consultations in 90 days or pay nothing. AI-powered patient acquisition, scheduling & conversion for high-value dental cases.">
+  <meta property="og:image" content="636f4050ef41c9124a12cbba/dgp-logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="shortcut icon" href="636f4050ef41c9124a12cbba/dgp-logo1.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="636f4050ef41c9124a12cbba/dgp-logo1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    /* CSS Variables */
+    :root {
+      --dark-slate-blue: #083981;
+      --natural: #c6ff53;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+      --dark-olive-green: #194c8b;
+      --green: #2b6648;
+      --pale-goldenrod: #e3fcb0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       NAVBAR STYLES
+    ============================================ */
+
+    .nav-bar-dark {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--dark-slate-blue);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .top-bar-dark {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .top-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .top-bar-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .top-bar-link {
+      color: var(--natural);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .top-bar-link:hover {
+      opacity: 0.8;
+    }
+
+    .navbar-container-dark {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo-link {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-image {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .navbar-menu-dark {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      margin-left: 60px;
+    }
+
+    .navbar-menu-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link-dark {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link-dark:hover {
+      color: var(--natural);
+    }
+
+    .nav-link-dark.w--current {
+      color: var(--natural);
+    }
+
+    .nav-link-dark::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--natural);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link-dark:hover::after,
+    .nav-link-dark.w--current::after {
+      width: 100%;
+    }
+
+    .dropdown-dark {
+      position: relative;
+    }
+
+    .dropdown-toggle-dark {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .dropdown-icon {
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-dark.w--open .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-list-dark {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      padding: 12px;
+      min-width: 280px;
+      display: none;
+      z-index: 9999;
+    }
+
+    .dropdown-dark.w--open .dropdown-list-dark {
+      display: block;
+      animation: fadeInDown 0.3s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dropdown-links-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dropdown-link-dark {
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-link-dark:hover {
+      background: rgba(198, 255, 83, 0.15);
+    }
+
+    .dropdown-link-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .dropdown-link-dark:hover .dropdown-link-text {
+      color: var(--dark-slate-blue);
+    }
+
+    .cta-button-dark {
+      background: var(--natural);
+      color: var(--black);
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(198, 255, 83, 0.3);
+    }
+
+    .cta-button-dark:hover {
+      background: var(--white);
+      color: var(--dark-slate-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(198, 255, 83, 0.4);
+    }
+
+    .navbar-menu-button {
+      display: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .menu-icon-wrapper {
+      width: 24px;
+      height: 20px;
+      position: relative;
+      margin: 10px auto;
+    }
+
+    .menu-icon-line-top,
+    .menu-icon-line-middle,
+    .menu-icon-line-bottom {
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      position: absolute;
+      transition: all 0.3s ease;
+    }
+
+    .menu-icon-line-top {
+      top: 0;
+    }
+
+    .menu-icon-line-middle {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .menu-icon-line-bottom {
+      bottom: 0;
+    }
+
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      padding: 140px 24px 100px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 0;
+      padding-top: 180px;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 58px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero-content .highlight {
+      color: var(--natural);
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--natural);
+      color: var(--black);
+      padding: 18px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--natural);
+      box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--natural);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--white);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--dark-slate-blue);
+      transform: translateY(-3px);
+    }
+
+    .hero-image-container {
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-mockup {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    }
+
+    /* ============================================
+       STATS BAR SECTION
+    ============================================ */
+
+    .stats-bar {
+      background: var(--grey);
+      padding: 40px 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .stats-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .stat-number {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+      line-height: 1;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .stat-icon {
+      font-size: 32px;
+      color: var(--natural);
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--dim-grey);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ============================================
+       PIPELINE SECTION
+    ============================================ */
+
+    .pipeline-section {
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pipeline-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .pipeline-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pipeline-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pipeline-header h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .pipeline-header p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .pipeline-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      position: relative;
+      margin-top: 60px;
+    }
+
+    .pipeline-card {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      border: 3px solid transparent;
+    }
+
+    .pipeline-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--natural);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .pipeline-number {
+      width: 40px;
+      height: 40px;
+      background: var(--natural);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--black);
+      margin: 0 auto 20px;
+    }
+
+    .pipeline-icon {
+      font-size: 48px;
+      color: var(--dark-slate-blue);
+      margin-bottom: 16px;
+    }
+
+    .pipeline-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .pipeline-card p {
+      font-size: 14px;
+      color: var(--dim-grey);
+      line-height: 1.6;
+    }
+
+    .pipeline-arrow {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: var(--natural);
+      z-index: 2;
+    }
+
+    .pipeline-card:last-child .pipeline-arrow {
+      display: none;
+    }
+
+    /* ============================================
+       FEATURES SECTION
+    ============================================ */
+
+    .features-section {
+      padding: 100px 24px;
+      background: var(--white);
+    }
+
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 60px;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      font-size: 19px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .feature-card {
+      background: var(--grey);
+      padding: 40px;
+      border-radius: 20px;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .feature-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 36px;
+      color: var(--natural);
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       TIMELINE SECTION
+    ============================================ */
+
+    .timeline-section {
+      padding: 100px 24px;
+      background: var(--white);
+    }
+
+    .timeline-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+
+    .timeline-header h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .timeline-header p {
+      font-size: 20px;
+      color: var(--dim-grey);
+    }
+
+    .timeline-track {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      padding: 40px 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--dark-slate-blue) 0%, var(--natural) 100%);
+      border-radius: 2px;
+    }
+
+    .timeline-items {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-item {
+      text-align: center;
+    }
+
+    .timeline-node {
+      width: 80px;
+      height: 80px;
+      background: var(--white);
+      border: 4px solid var(--dark-slate-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 36px;
+      color: var(--dark-slate-blue);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-item:hover .timeline-node {
+      background: var(--natural);
+      border-color: var(--natural);
+      transform: scale(1.15);
+      box-shadow: 0 8px 24px rgba(198,255,83,0.4);
+    }
+
+    .timeline-day {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark-slate-blue);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--dim-grey);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       SOLUTIONS SECTION
+    ============================================ */
+
+    .solutions-section {
+      padding: 100px 24px;
+      background: var(--grey);
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .solution-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .solution-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .solution-card.featured {
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      color: var(--white);
+      grid-column: span 3;
+      text-align: center;
+    }
+
+    .solution-card.featured h3,
+    .solution-card.featured p,
+    .solution-card.featured li {
+      color: var(--white);
+    }
+
+    .solution-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 36px;
+      color: var(--natural);
+    }
+
+    .solution-card.featured .solution-icon {
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      margin: 0 auto 24px;
+    }
+
+    .solution-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .solution-benefits {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .solution-benefits li {
+      font-size: 15px;
+      color: var(--dim-grey);
+      line-height: 1.8;
+      padding-left: 28px;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .solution-benefits li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--natural);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .solution-cta {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--dark-slate-blue);
+      color: var(--white);
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .solution-cta:hover {
+      background: var(--dark-olive-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(8, 57, 129, 0.3);
+    }
+
+    .solution-card.featured .solution-cta {
+      background: var(--natural);
+      color: var(--black);
+      font-size: 17px;
+      padding: 16px 40px;
+    }
+
+    .solution-card.featured .solution-cta:hover {
+      background: var(--white);
+      color: var(--dark-slate-blue);
+    }
+
+    /* ============================================
+       VIDEO SECTION
+    ============================================ */
+
+    .video-section {
+      padding: 100px 24px;
+      background: var(--white);
+    }
+
+    .video-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .video-container h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .video-container p {
+      font-size: 20px;
+      color: var(--dim-grey);
+      margin-bottom: 48px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ============================================
+       FAQ SECTION
+    ============================================ */
+
+    .faq-section {
+      padding: 100px 24px;
+      background: var(--grey);
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .faq-header h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .faq-header p {
+      font-size: 20px;
+      color: var(--dim-grey);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--natural);
+    }
+
+    .faq-question {
+      padding: 24px 28px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: rgba(198,255,83,0.1);
+    }
+
+    .faq-icon {
+      font-size: 24px;
+      color: var(--dark-slate-blue);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 28px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 28px 24px;
+    }
+
+    .faq-answer p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       ROI CALCULATOR SECTION
+    ============================================ */
+
+    .calculator-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calculator-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .calculator-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 60px;
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .calculator-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .calculator-header h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .calculator-header p {
+      font-size: 18px;
+      color: var(--dim-grey);
+    }
+
+    .calculator-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .calculator-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calculator-field label {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .calculator-field input {
+      padding: 16px 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .calculator-field input:focus {
+      outline: none;
+      border-color: var(--dark-slate-blue);
+      box-shadow: 0 0 0 4px rgba(8, 57, 129, 0.1);
+    }
+
+    .calculator-results {
+      background: var(--natural);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .calculator-results h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .result-item {
+      margin-bottom: 20px;
+    }
+
+    .result-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .result-value {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+    }
+
+    .calculator-cta {
+      margin-top: 32px;
+    }
+
+    .calculator-cta a {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--dark-slate-blue);
+      color: var(--white);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(8, 57, 129, 0.3);
+    }
+
+    .calculator-cta a:hover {
+      background: var(--dark-olive-green);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(8, 57, 129, 0.4);
+    }
+
+    /* ============================================
+       TRUST SECTION
+    ============================================ */
+
+    .trust-section {
+      padding: 60px 24px;
+      background: var(--grey);
+      text-align: center;
+    }
+
+    .trust-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dim-grey);
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .trust-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .trust-logo {
+      height: 40px;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+      filter: grayscale(100%);
+    }
+
+    .trust-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+
+    /* ============================================
+       TESTIMONIALS SECTION
+    ============================================ */
+
+    .testimonials-section {
+      padding: 100px 24px;
+      background: var(--dark-slate-blue);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .testimonials-section .section-title {
+      color: var(--white);
+    }
+
+    .testimonials-section .section-description {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      color: var(--black);
+    }
+
+    .stars {
+      color: #ffc107;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .testimonial-title {
+      font-size: 14px;
+      color: var(--dim-grey);
+    }
+
+    /* ============================================
+       GET STARTED SECTION
+    ============================================ */
+
+    .get-started-section {
+      padding: 100px 24px;
+      background: var(--natural);
+    }
+
+    .get-started-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .get-started-section .section-title {
+      color: var(--black);
+      margin-bottom: 32px;
+    }
+
+    .get-started-section .section-description {
+      font-size: 20px;
+      color: var(--black);
+      margin-bottom: 48px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 56px;
+      border-radius: 28px;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+      border: 3px solid rgba(8, 57, 129, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background: #fafafa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--dark-slate-blue);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(8, 57, 129, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-group input:hover,
+    .form-group select:hover,
+    .form-group textarea:hover {
+      border-color: #d1d5db;
+      background: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      color: var(--white);
+      padding: 20px;
+      border-radius: 14px;
+      border: none;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(8, 57, 129, 0.25);
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, var(--dark-olive-green), var(--dark-slate-blue));
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(8, 57, 129, 0.35);
+    }
+
+    .submit-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(8, 57, 129, 0.3);
+    }
+
+    /* ============================================
+       FOOTER STYLES
+    ============================================ */
+
+    .footer {
+      background: var(--dark-slate-blue);
+      color: var(--white);
+      padding: 80px 24px 24px;
+    }
+
+    .footer-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+    }
+
+    .footer-left-contain {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .remedo-logo {
+      width: 200px;
+      height: auto;
+    }
+
+    .footer-heading {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+    }
+
+    .footer-heading:hover {
+      color: var(--natural);
+    }
+
+    .social-links-contain {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background: var(--natural);
+      transform: translateY(-3px);
+    }
+
+    .social-link-image {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-link:hover .social-link-image {
+      filter: brightness(0);
+    }
+
+    .map-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .map-link:hover {
+      color: var(--natural);
+    }
+
+    .hipaa-logo {
+      width: 120px;
+      height: auto;
+      margin-top: 16px;
+    }
+
+    .footer-right-contain {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+    }
+
+    .footer_link-coloumn {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-coloumn-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--natural);
+      margin-bottom: 8px;
+    }
+
+    .footer-link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link-2 {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-link-2:hover {
+      color: var(--natural);
+      padding-left: 8px;
+    }
+
+    .footer-last-text {
+      max-width: 1400px;
+      margin: 60px auto 0;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .copyright-text-2 {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Floating CTA Buttons */
+    .floating-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 9998;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--natural);
+      color: var(--black);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    }
+
+    .floating-btn i {
+      font-size: 24px;
+    }
+
+    /* Mobile App-style Bottom Menu Bar */
+    @media (max-width: 767px) {
+      .floating-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        background: var(--white);
+        padding: 12px 16px;
+        gap: 0;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+        border-top: 1px solid rgba(0,0,0,0.1);
+        backdrop-filter: blur(10px);
+        z-index: 9999;
+      }
+
+      .floating-btn {
+        flex: 1;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 16px;
+        background: transparent;
+        border-radius: 12px;
+        box-shadow: none;
+        font-size: 12px;
+        font-weight: 600;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .floating-btn:hover {
+        transform: none;
+        box-shadow: none;
+        background: rgba(198, 255, 83, 0.15);
+      }
+
+      .floating-btn:active {
+        background: rgba(198, 255, 83, 0.25);
+      }
+
+      .floating-btn i {
+        font-size: 28px;
+        color: var(--dark-slate-blue);
+      }
+
+      /* Add padding to body to prevent content from being hidden behind the fixed bottom bar */
+      body {
+        padding-bottom: 80px;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+    ============================================ */
+
+    @media (max-width: 991px) {
+      .pipeline-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-items {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .solutions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-card.featured {
+        grid-column: span 1;
+      }
+
+      .navbar-menu-dark {
+        display: none;
+        position: fixed;
+        /* top: 120px; */
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--dark-slate-blue);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        margin-left: 0;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+      }
+
+      .navbar-menu-dark.w--open {
+        display: flex;
+      }
+
+      .navbar-menu-left {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0;
+      }
+
+      .nav-link-dark {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .dropdown-dark {
+        width: 100%;
+      }
+
+      .dropdown-toggle-dark {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        justify-content: space-between;
+      }
+
+      .dropdown-list-dark {
+        position: static;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .dropdown-link-text {
+        color: var(--white);
+      }
+
+      .navbar-menu-button {
+        display: block;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .footer-right-contain {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .stats-container {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .stat-number {
+        font-size: 32px;
+      }
+
+      .timeline-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .timeline-line {
+        display: none;
+      }
+
+      .calculator-container {
+        padding: 40px 24px;
+      }
+
+      .top-bar-content {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .navbar-container-dark {
+        padding: 12px 16px;
+      }
+
+      .logo-image {
+        height: 35px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      .footer-right-contain {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .hero-content h1 {
+        font-size: 32px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .form-container {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR SECTION
+  ============================================ -->
+  <div class="nav-bar-dark">
+    <!-- Top Bar -->
+    <!-- <div class="top-bar-dark">
+      <div class="top-bar-content">
+        <div class="top-bar-item">
+          <div class="top-bar-label">Website :</div>
+          <a href="https://dentistrygrowthpartners.com" class="top-bar-link">dentistrygrowthpartners.com</a>
+        </div>
+        <div class="top-bar-item">
+          <div class="top-bar-label">Founders :</div>
+          <span class="top-bar-link">Tom Santella & Mario Ferrara</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Main Navbar -->
+    <div class="navbar-container-dark">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo-link">
+        <div class="logo-wrapper">
+          <img
+            loading="lazy"
+            width="100"
+            src="636f4050ef41c9124a12cbba/dgp-logo.png"
+            alt="Dentistry Growth Partners Logo"
+            class="logo-image"
+          />
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav role="navigation" class="navbar-menu-dark">
+        <div class="navbar-menu-left">
+          <!-- Home Link -->
+          <a href="/" class="nav-link-dark w--current">Home</a>
+
+          <!-- Services Dropdown -->
+          <div class="dropdown-dark">
+            <div class="dropdown-toggle-dark">
+              <div class="nav-link-dark">Services</div>
+              <div class="dropdown-icon">
+                <i class="ti ti-chevron-down"></i>
+              </div>
+            </div>
+            <nav class="dropdown-list-dark">
+              <div class="dropdown-links-wrapper">
+                <a href="/multi-implant-marketing" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Multi-Implant Marketing</div>
+                </a>
+                <a href="/high-value-case-marketing-system" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">High-Value Case Marketing</div>
+                </a>
+                <a href="/ai-voice-receptionist-pms-integration" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">AI Voice Receptionist</div>
+                </a>
+                <a href="/automated-patient-communication" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Patient Communication</div>
+                </a>
+                <a href="/aio-seo" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">AIO SEO</div>
+                </a>
+                <a href="/website-design-management" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Website Design & Management</div>
+                </a>
+              </div>
+            </nav>
+          </div>
+
+          <!-- How It Works Link -->
+          <a href="/how-it-works" class="nav-link-dark">How It Works</a>
+
+          <!-- About DGP Link -->
+          <a href="/about-dgp" class="nav-link-dark">About DGP</a>
+
+          <!-- Resources Dropdown -->
+          <div class="dropdown-dark">
+            <div class="dropdown-toggle-dark">
+              <div class="nav-link-dark">Resources</div>
+              <div class="dropdown-icon">
+                <i class="ti ti-chevron-down"></i>
+              </div>
+            </div>
+            <nav class="dropdown-list-dark">
+              <div class="dropdown-links-wrapper">
+                <a href="/case-studies-results" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Case Studies</div>
+                </a>
+                <a href="/blog" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">Blog</div>
+                </a>
+                <a href="/vsl" class="dropdown-link-dark">
+                  <div class="dropdown-link-text">VSL Page</div>
+                </a>
+              </div>
+            </nav>
+          </div>
+
+          <!-- Contact Link -->
+          <a href="/contact" class="nav-link-dark">Contact</a>
+        </div>
+
+        <!-- Right Side Menu -->
+        <div class="navbar-menu-right">
+          <div class="navbar-button-wrapper">
+            <a href="/book-a-call" class="cta-button-dark">Book a Demo</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="navbar-menu-button">
+        <div class="menu-icon-wrapper">
+          <div class="menu-icon-line-top"></div>
+          <div class="menu-icon-line-middle"></div>
+          <div class="menu-icon-line-bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       HERO SECTION
+  ============================================ -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>
+          The <span class="highlight">AI-Driven Conversion Engine</span> Built For Private Dental Practices
+        </h1>
+        <p>
+          Get 25+ booked high-value consultations in 90 days or pay nothing. Our AI-powered system handles patient acquisition, qualification, scheduling, and conversion—automatically.
+        </p>
+        <div class="hero-buttons">
+          <a href="/book-a-call" class="btn-primary">
+            Book Your Demo
+            <i class="ti ti-arrow-right"></i>
+          </a>
+          <a href="/how-it-works" class="btn-secondary">
+            See How It Works
+            <i class="ti ti-player-play-filled"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <img 
+          src="636f4050ef41c9124a12cbba/hero-img.png" 
+          alt="DGP Dashboard" 
+          class="hero-mockup"
+          style="background: linear-gradient(135deg, #e0e7ff, #f0f4ff); border: 4px solid var(--natural);"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       STATS BAR SECTION
+  ============================================ -->
+  <section class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number">
+          <!-- <i class="ti ti-users stat-icon"></i> -->
+          <span>8,000+</span>
+        </div>
+        <div class="stat-label">Practices Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">
+          <span>$50M+</span>
+        </div>
+        <div class="stat-label">Patient Revenue Generated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">
+          <span>75%</span>
+        </div>
+        <div class="stat-label">Average Show-Up Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">
+          <!-- <i class="ti ti-clock-24 stat-icon"></i> -->
+          <span>24/7</span>
+        </div>
+        <div class="stat-label">Coverage Guaranteed</div>
+      </div>
+      <!-- <div class="stat-item">
+        <div class="stat-number">
+          <i class="ti ti-shield-check stat-icon"></i>
+        </div>
+        <div class="stat-label">HIPAA Compliant</div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- ============================================
+       PATIENT PIPELINE SECTION
+  ============================================ -->
+  <section class="pipeline-section">
+    <div class="pipeline-container">
+      <div class="pipeline-header">
+        <h2>From Click to Chair - Automated</h2>
+        <p>See exactly how every patient journey flows through our system</p>
+      </div>
+
+      <div class="pipeline-flow">
+        <div class="pipeline-card">
+          <div class="pipeline-number">1</div>
+          <div class="pipeline-icon">
+            <i class="ti ti-speakerphone"></i>
+          </div>
+          <h3>Marketing</h3>
+          <p>AI-optimized ads across Google, Meta & local search attract high-intent patients</p>
+          <span class="pipeline-arrow"><i class="ti ti-arrow-right"></i></span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-number">2</div>
+          <div class="pipeline-icon">
+            <i class="ti ti-bolt"></i>
+          </div>
+          <h3>Instant Engagement</h3>
+          <p>Human + AI responds within 60 seconds via SMS, chat, or call</p>
+          <span class="pipeline-arrow"><i class="ti ti-arrow-right"></i></span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-number">3</div>
+          <div class="pipeline-icon">
+            <i class="ti ti-clipboard-check"></i>
+          </div>
+          <h3>Qualification</h3>
+          <p>AI scores leads on urgency, budget, fit & intent—only qualified leads move forward</p>
+          <span class="pipeline-arrow"><i class="ti ti-arrow-right"></i></span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-number">4</div>
+          <div class="pipeline-icon">
+            <i class="ti ti-plant"></i>
+          </div>
+          <h3>Nurturing</h3>
+          <p>43-touchpoint sequences via SMS, email & voice keep leads warm until ready</p>
+          <span class="pipeline-arrow"><i class="ti ti-arrow-right"></i></span>
+        </div>
+
+        <div class="pipeline-card">
+          <div class="pipeline-number">5</div>
+          <div class="pipeline-icon">
+            <i class="ti ti-calendar-check"></i>
+          </div>
+          <h3>Scheduling</h3>
+          <p>AI books consultations directly into your PMS with automated confirmations</p>
+        </div>
+      </div>
+
+      <p style="text-align: center; color: rgba(255,255,255,0.9); font-size: 18px; margin-top: 60px; font-weight: 600;">
+        Every patient journey is automated, measurable, and managed by our team
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES SECTION
+  ============================================ -->
+  <section class="features-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">The Automated Practice Protocol</h2>
+        <p class="section-description">
+          Four AI-powered systems working together to transform your dental practice growth
+        </p>
+      </div>
+      <div class="features-grid">
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-target-arrow"></i>
+          </div>
+          <h3>AI-Powered Lead Generation</h3>
+          <p>
+            Targeted campaigns that attract qualified patients actively seeking high-value dental procedures. Multi-channel acquisition across Google, Meta, and local search.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-brain"></i>
+          </div>
+          <h3>Intelligent Lead Qualification</h3>
+          <p>
+            Our AI instantly engages and qualifies every lead, scoring them on financial capability, urgency, clinical fit, and treatment intent—so you only see ready-to-book patients.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-phone-call"></i>
+          </div>
+          <h3>24/7 AI Voice Receptionist</h3>
+          <p>
+            Never miss a call again. Our AI receptionist answers every call instantly, handles scheduling, answers FAQs, and books appointments directly into your PMS—day or night.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-refresh"></i>
+          </div>
+          <h3>Automated Follow-Up System</h3>
+          <p>
+            43-touchpoint nurture sequences via SMS, email, and voice keep prospects engaged until they're ready to book. Automated reminders, confirmations, and reactivation campaigns.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TIMELINE SECTION
+  ============================================ -->
+  <section class="timeline-section">
+    <div class="section-container">
+      <div class="timeline-header">
+        <h2>From Sign-Up to Launch in 10 Days</h2>
+        <p>See exactly how we get your automated patient pipeline running</p>
+      </div>
+
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-user-check"></i>
+            </div>
+            <div class="timeline-day">Day 1</div>
+            <div class="timeline-desc">Onboarding & Strategy Call</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-file-description"></i>
+            </div>
+            <div class="timeline-day">Day 2</div>
+            <div class="timeline-desc">Practice Data Collection</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-video"></i>
+            </div>
+            <div class="timeline-day">Day 3</div>
+            <div class="timeline-desc">Deep Dive Session</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-settings"></i>
+            </div>
+            <div class="timeline-day">Day 7</div>
+            <div class="timeline-desc">System Configuration</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-eye"></i>
+            </div>
+            <div class="timeline-day">Day 10</div>
+            <div class="timeline-desc">Preview & Testing</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-rocket"></i>
+            </div>
+            <div class="timeline-day">Days 10-14</div>
+            <div class="timeline-desc">Launch & Go Live</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-node">
+              <i class="ti ti-chart-line"></i>
+            </div>
+            <div class="timeline-day">Ongoing</div>
+            <div class="timeline-desc">Optimization & Reporting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       VIDEO SECTION
+  ============================================ -->
+  <section class="video-section">
+    <div class="video-container">
+      <h2>See the System in Action</h2>
+      <p>Watch how we generate 25+ consultations in 90 days</p>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.loom.com/embed/bce49bd2785b450caa93b67484ae4548?sid=7b68ce25-e0b3-472a-ab37-6acc3f3fed61"
+          title="DGP System Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TRUST SECTION
+  ============================================ -->
+  <section class="trust-section">
+    <div class="section-container">
+      <h3 class="trust-title">Serving 8,000+ practices across U.S., Canada, U.K. & India</h3>
+      <div class="trust-logos">
+        <img src="636f4050ef41c9124a12cbba/google-logo.png" alt="Google" class="trust-logo" style="height: 30px;">
+        <img src="636f4050ef41c9124a12cbba/facebook-logo.png" alt="Facebook" class="trust-logo" style="height: 35px;">
+        <img src="636f4050ef41c9124a12cbba/dentrix-logo.png" alt="Dentrix" class="trust-logo" style="height: 35px;">
+        <img src="636f4050ef41c9124a12cbba/aws-logo.png" alt="AWS" class="trust-logo" style="height: 40px;">
+        <img src="636f4050ef41c9124a12cbba/hipaa-logo.png" alt="HIPAA Compliant" class="trust-logo" style="height: 40px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TESTIMONIALS SECTION
+  ============================================ -->
+  <section class="testimonials-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Real Stories from Real Practices</h2>
+        <p class="section-description">
+          See how dental practices nationwide are transforming their growth with our AI-driven system
+        </p>
+      </div>
+      <div class="testimonials-grid">
+        
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Within 90 days of launching with DGP, we booked 34 full-arch consultations. Their AI system handles everything—from the first ad click to the confirmed appointment. Game-changing."
+          </p>
+          <div class="testimonial-author">West Coast Dental Care</div>
+          <div class="testimonial-title">Multi-Location Practice, CA</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "The AI voice receptionist alone was worth it. We went from missing 20+ calls per week to answering 100%. Now we're booking 3-4 implant cases weekly instead of 1-2."
+          </p>
+          <div class="testimonial-author">Jonathan Glover DDS</div>
+          <div class="testimonial-title">Private Practice, TX</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "DGP's system generated $847K in documented implant revenue for us last year. The lead quality, automation, and ROI tracking are unmatched. Best decision we made."
+          </p>
+          <div class="testimonial-author">Skyline Dental Practice</div>
+          <div class="testimonial-title">Implant Center, FL</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SOLUTIONS SECTION
+  ============================================ -->
+  <section class="solutions-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Complete Solutions for Every Growth Need</h2>
+        <p class="section-description">
+          Choose the services that fit your practice goals—or get the complete system
+        </p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="solution-card">
+          <div class="solution-icon">
+            <i class="ti ti-dental"></i>
+          </div>
+          <h3>Multi-Implant Marketing</h3>
+          <ul class="solution-benefits">
+            <li>Deep market research + AI-optimized ad creatives</li>
+            <li>Human + AI engagement within 60 seconds</li>
+            <li>75% higher show-up rates with multi-touch confirmations</li>
+          </ul>
+          <a href="/multi-implant-marketing" class="solution-cta">Learn More</a>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-icon">
+            <i class="ti ti-phone"></i>
+          </div>
+          <h3>AI Voice Receptionist</h3>
+          <ul class="solution-benefits">
+            <li>24/7 phone coverage, never miss a call</li>
+            <li>Reduce front desk workload by 35%</li>
+            <li>Plugs $100K+ annual revenue loss</li>
+          </ul>
+          <a href="/ai-voice-receptionist-pms-integration" class="solution-cta">Learn More</a>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-icon">
+            <i class="ti ti-message-circle"></i>
+          </div>
+          <h3>Patient Communication</h3>
+          <ul class="solution-benefits">
+            <li>Birthday, holiday, milestone outreach</li>
+            <li>5-star review & referral automation</li>
+            <li>Database reactivation for high-value cases</li>
+          </ul>
+          <a href="/automated-patient-communication" class="solution-cta">Learn More</a>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-icon">
+            <i class="ti ti-chart-dots"></i>
+          </div>
+          <h3>AIO + SEO</h3>
+          <ul class="solution-benefits">
+            <li>AI-optimized content strategy</li>
+            <li>Answer engine optimization (AIO)</li>
+            <li>Rank for high-intent dental searches</li>
+          </ul>
+          <a href="/aio-seo" class="solution-cta">Learn More</a>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-icon">
+            <i class="ti ti-device-desktop"></i>
+          </div>
+          <h3>Website Design & Management</h3>
+          <ul class="solution-benefits">
+            <li>Constantly optimized for SEO + conversions</li>
+            <li>Lightning-fast hosting (<2s load time)</li>
+            <li>Mobile-first, visually stunning design</li>
+          </ul>
+          <a href="/website-design-management" class="solution-cta">Learn More</a>
+        </div>
+
+        <div class="solution-card featured">
+          <div class="solution-icon">
+            <i class="ti ti-puzzle"></i>
+          </div>
+          <h3>Complete Growth System</h3>
+          <p style="margin-bottom: 24px; font-size: 18px;">
+            Get everything working together seamlessly - most practices choose this option for maximum results
+          </p>
+          <a href="/how-it-works" class="solution-cta">See Complete System</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ SECTION
+  ============================================ -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <div class="faq-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about our system</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How quickly will I see results?</span>
+            <i class="ti ti-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Most practices see their first booked consultations within 7-14 days of launch. Our 90-day guarantee means you'll get 25+ booked high-value consultations or pay nothing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do I need to change my current PMS?</span>
+            <i class="ti ti-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>No! Our system integrates seamlessly with your existing PMS (Dentrix, Eaglesoft, Open Dental, etc.). We handle all the technical setup.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What makes your AI different from other chatbots?</span>
+            <i class="ti ti-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our AI is specifically trained for dental practice workflows and high-value case qualification. Plus, we combine AI with human oversight to ensure quality—it's not just a generic chatbot.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What if I don't get 25+ consultations in 90 days?</span>
+            <i class="ti ti-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You pay nothing. Our performance guarantee means we're invested in your success. If we don't deliver the results, you don't pay for the service.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How much time will my staff need to spend on this?</span>
+            <i class="ti ti-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Minimal. Our system is designed to reduce your staff's workload by up to 35%. They'll only need to handle pre-qualified, ready-to-book patients.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Is your system HIPAA compliant?</span>
+            <i class="ti ti-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, absolutely. We're fully HIPAA compliant with enterprise-grade security, encrypted data storage, and regular security audits.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ROI CALCULATOR SECTION
+  ============================================ -->
+  <section class="calculator-section">
+    <div class="calculator-container">
+      <div class="calculator-header">
+        <h2>See Your Potential ROI</h2>
+        <p>Calculate how much revenue you could generate with DGP</p>
+      </div>
+
+      <div class="calculator-inputs">
+        <div class="calculator-field">
+          <label for="caseValue">Average Case Value ($)</label>
+          <input type="number" id="caseValue" value="25000" min="0">
+        </div>
+
+        <div class="calculator-field">
+          <label for="currentConsults">Current Monthly Consultations</label>
+          <input type="number" id="currentConsults" value="5" min="0">
+        </div>
+
+        <div class="calculator-field">
+          <label for="showUpRate">Current Show-Up Rate (%)</label>
+          <input type="number" id="showUpRate" value="60" min="0" max="100">
+        </div>
+      </div>
+
+      <div class="calculator-results">
+        <h3>Your Potential Results with DGP:</h3>
+        <div class="result-item">
+          <div class="result-label">New Patients Per Month</div>
+          <div class="result-value" id="newPatients">20+</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Monthly Revenue Increase</div>
+          <div class="result-value" id="revenueIncrease">$375,000</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Annual Revenue Growth</div>
+          <div class="result-value" id="annualGrowth">$4.5M+</div>
+        </div>
+        <div class="calculator-cta">
+          <a href="/book-a-call">Get These Results →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       GET STARTED SECTION
+  ============================================ -->
+  <section class="get-started-section">
+    <div class="get-started-container">
+      <h2 class="section-title">Get Started</h2>
+      <p class="section-description">
+        We'll respond within one business day to schedule your demo. See the system live!
+      </p>
+      
+      <div class="form-container">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required>
+            </div>
+
+          <div class="form-group">
+            <label for="practiceName">Practice Name *</label>
+            <input type="text" id="practiceName" name="practiceName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="services">Services Interested In *</label>
+            <select id="services" name="services" required>
+              <option value="">Select a service</option>
+              <option value="multi-implant">Multi-Implant Marketing</option>
+              <option value="high-value">High-Value Case Marketing</option>
+              <option value="ai-receptionist">AI Voice Receptionist</option>
+              <option value="patient-comm">Patient Communication</option>
+              <option value="full-system">Complete System</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Book Your Demo
+            <i class="ti ti-send" style="margin-left: 8px; font-size: 20px;"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER SECTION
+  ============================================ -->
+  <div class="footer">
+    <div class="footer-wrapper">
+      <!-- Left Column -->
+      <div class="footer-left-contain">
+        <a href="/" class="addicon">
+          <img
+            src="636f4050ef41c9124a12cbba/dgp-logo.png"
+            loading="lazy"
+            width="200"
+            alt="Dentistry Growth Partners Logo"
+            class="remedo-logo"
+          />
+        </a>
+        <div class="footer-heading">
+          Dentistry Growth Partners provides you with an AI-driven conversion engine to attract new patients and grow your dental practice.<br /><br />
+          Email us: <a href="mailto:info@dentistrygrowthpartners.com" class="footer-heading">info@dentistrygrowthpartners.com</a><br />
+          Call us: <a href="tel:+16505578269" class="footer-heading">+1 (650) 557-8269</a>
+        </div>
+        <div class="social-links-contain">
+          <a href="https://www.facebook.com/remedoapp" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/636f4050ef41c996e212cc2c_facebook-circle-fill 1.svg" loading="lazy" alt="Facebook" class="social-link-image" />
+          </a>
+          <a href="https://instagram.com/remedo.io?igshid=ZDdkNTZiNTM=" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/636f4050ef41c9d69612cc2d_instagram-fill 1.svg" loading="lazy" alt="Instagram" class="social-link-image" />
+          </a>
+          <a href="https://www.linkedin.com/company/remedo/?viewAsMember=true" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/636f4050ef41c9df6212cc2b_linkedin-box-fill 1.svg" loading="lazy" alt="LinkedIn" class="social-link-image" />
+          </a>
+          <a href="https://youtube.com/@remedo5803?feature=shared" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/689a7545d23043cd8cb9958c_mdi_youtube.svg" loading="lazy" alt="YouTube" class="social-link-image" />
+          </a>
+          <a href="https://x.com/remedo_io/" target="_blank" class="social-link">
+            <img src="636f4050ef41c9124a12cbba/689a75878bcf03c299da13be_ph_x-logo-fill.svg" loading="lazy" alt="X (Twitter)" class="social-link-image" />
+          </a>
+        </div>
+        <div class="footer-heading-copy">
+          <a href="https://maps.app.goo.gl/tJcSQkYu6H1vX7de9" target="_blank" class="map-link">3623 Langdon Cmn, Fremont, CA 94538</a>
+        </div>
+        <div>
+          <img src="636f4050ef41c9124a12cbba/68861916f7b4ab651cbea57b_logo-HIPAA.svg" loading="lazy" alt="HIPAA Compliant" class="hipaa-logo" />
+        </div>
+      </div>
+
+      <!-- Right Columns -->
+      <div class="footer-right-contain">
+        <!-- Quick Links -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Quick Links</h5>
+          <div class="footer-link-list">
+            <a href="/" class="footer-link-2">Home</a>
+            <a href="/contact" class="footer-link-2">Contact</a>
+            <a href="/blog" class="footer-link-2">Blog</a>
+            <a href="/case-studies-results" class="footer-link-2">Case Studies</a>
+            <a href="/terms" class="footer-link-2">Terms</a>
+            <a href="/privacy-policy" class="footer-link-2">Privacy Policy</a>
+            <a href="/refund-cancellation" class="footer-link-2">Refund/Cancellation</a>
+          </div>
+        </div>
+
+        <!-- Our Services -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Our Services</h5>
+          <div class="footer-link-list">
+            <a href="/multi-implant-marketing" class="footer-link-2">Multi-Implant Marketing</a>
+            <a href="/high-value-case-marketing-system" class="footer-link-2">High-Value Case Marketing</a>
+            <a href="/ai-voice-receptionist-pms-integration" class="footer-link-2">AI Voice Receptionist</a>
+            <a href="/automated-patient-communication" class="footer-link-2">Patient Communication</a>
+            <a href="/aio-seo" class="footer-link-2">AIO SEO</a>
+            <a href="/website-design-management" class="footer-link-2">Website Design</a>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Resources</h5>
+          <div class="footer-link-list">
+            <a href="/how-it-works" class="footer-link-2">How It Works</a>
+            <a href="/about-dgp" class="footer-link-2">About DGP</a>
+            <a href="/case-studies-results" class="footer-link-2">Case Studies</a>
+            <a href="/blog" class="footer-link-2">Blog</a>
+            <a href="/vsl" class="footer-link-2">VSL Page</a>
+            <a href="/book-a-call" class="footer-link-2">Book a Call</a>
+          </div>
+        </div>
+
+        <!-- Locations -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Locations</h5>
+          <div class="footer-link-list">
+            <a href="/locations/new-york" class="footer-link-2">New York</a>
+            <a href="/locations/los-angeles" class="footer-link-2">Los Angeles</a>
+            <a href="/locations/chicago" class="footer-link-2">Chicago</a>
+            <a href="/locations/phoenix" class="footer-link-2">Phoenix</a>
+            <a href="/locations/houston" class="footer-link-2">Houston</a>
+            <a href="/locations/dallas" class="footer-link-2">Dallas</a>
+            <a href="/locations/boston" class="footer-link-2">Boston</a>
+            <a href="/locations/san-francisco" class="footer-link-2">San Francisco</a>
+            <a href="/locations" class="footer-link-2">More Locations</a>
+          </div>
+        </div>
+
+        <!-- Specialties -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Specialties</h5>
+          <div class="footer-link-list">
+            <a href="/specialties/endodontists" class="footer-link-2">Endodontists</a>
+            <a href="/specialties/orthodontists" class="footer-link-2">Orthodontists</a>
+            <a href="/specialties/oral-surgeons" class="footer-link-2">Oral Surgeons</a>
+            <a href="/specialties/cosmetic-dentists" class="footer-link-2">Cosmetic Dentists</a>
+            <a href="/specialties/oral-pathologists" class="footer-link-2">Oral Pathologists</a>
+            <a href="/specialties/pediatric-dentists" class="footer-link-2">Pediatric Dentists</a>
+            <a href="/specialties/periodontists" class="footer-link-2">Periodontists</a>
+            <a href="/specialties/prosthodontists" class="footer-link-2">Prosthodontists</a>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div class="footer_link-coloumn">
+          <h5 class="footer-coloumn-title">Company</h5>
+          <div class="footer-link-list">
+            <a href="/about-dgp" class="footer-link-2">About Us</a>
+            <a href="/contact" class="footer-link-2">Contact</a>
+            <a href="/careers" class="footer-link-2">Careers</a>
+            <a href="/partners" class="footer-link-2">Partners</a>
+            <a href="/press" class="footer-link-2">Press</a>
+            <a href="/support" class="footer-link-2">Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-last-text">
+      <p class="copyright-text-2">
+        ©2025 Dentistry Growth Partners. All rights reserved
+      </p>
+    </div>
+  </div>
+
+  <!-- Floating CTA Buttons -->
+  <div class="floating-cta">
+    <a href="/book-a-call" class="floating-btn">
+      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
+      <span>Consult Now</span>
+    </a>
+    <a href="tel:+16505578269" class="floating-btn">
+      <i class="ti ti-phone" style="font-size: 24px;"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       JAVASCRIPT
+  ============================================ -->
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.querySelector('.navbar-menu-button');
+      const menu = document.querySelector('.navbar-menu-dark');
+      
+      if (menuButton && menu) {
+        menuButton.addEventListener('click', function() {
+          menuButton.classList.toggle('w--open');
+          menu.classList.toggle('w--open');
+        });
+      }
+
+      // Desktop dropdowns
+      const dropdowns = document.querySelectorAll('.dropdown-dark');
+      dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle-dark');
+        
+        if (toggle) {
+          toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Close other dropdowns
+            dropdowns.forEach(otherDropdown => {
+              if (otherDropdown !== dropdown) {
+                otherDropdown.classList.remove('w--open');
+              }
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('w--open');
+          });
+        }
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown-dark')) {
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('w--open');
+          });
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      const navLinks = document.querySelectorAll('.nav-link-dark, .dropdown-link-dark');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 991) {
+            menuButton?.classList.remove('w--open');
+            menu?.classList.remove('w--open');
+          }
+        });
+      });
+
+      // Form submission
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('Thank you for your interest! We\'ll contact you within 1 business day to schedule your demo.');
+          this.reset();
+        });
+      }
+
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        if (question) {
+          question.addEventListener('click', function() {
+            // Close other FAQs
+            faqItems.forEach(otherItem => {
+              if (otherItem !== item) {
+                otherItem.classList.remove('active');
+              }
+            });
+
+            // Toggle current FAQ
+            item.classList.toggle('active');
+          });
+        }
+      });
+
+      // ROI Calculator
+      const caseValue = document.getElementById('caseValue');
+      const currentConsults = document.getElementById('currentConsults');
+      const showUpRate = document.getElementById('showUpRate');
+      const newPatients = document.getElementById('newPatients');
+      const revenueIncrease = document.getElementById('revenueIncrease');
+      const annualGrowth = document.getElementById('annualGrowth');
+
+      function calculateROI() {
+        const avgCaseValue = parseInt(caseValue.value) || 25000;
+        const currentMonthly = parseInt(currentConsults.value) || 5;
+        const currentShowUp = parseInt(showUpRate.value) || 60;
+
+        // DGP typically adds 15-20 consultations per month with 75% show-up
+        const additionalConsults = 20;
+        const dgpShowUpRate = 75;
+
+        // Calculate new patients
+        const newPatientsPerMonth = Math.floor(additionalConsults * (dgpShowUpRate / 100));
+
+        // Calculate revenue increase
+        const monthlyRevenue = newPatientsPerMonth * avgCaseValue;
+        const annualRevenue = monthlyRevenue * 12;
+
+        // Update display
+        newPatients.textContent = newPatientsPerMonth + '+';
+        revenueIncrease.textContent = '$' + monthlyRevenue.toLocaleString();
+        annualGrowth.textContent = '$' + (annualRevenue / 1000000).toFixed(1) + 'M+';
+      }
+
+      if (caseValue && currentConsults && showUpRate) {
+        caseValue.addEventListener('input', calculateROI);
+        currentConsults.addEventListener('input', calculateROI);
+        showUpRate.addEventListener('input', calculateROI);
+
+        // Initial calculation
+        calculateROI();
+      }
+    });
+  </script>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dentistry Growth Partners",
+    "description": "AI-driven conversion engine for dental practices, offering innovative digital solutions including website design, SEO, Google Ads, and comprehensive growth strategies.",
+    "url": "https://dentistrygrowthpartners.com",
+    "logo": "https://cdn.prod.website-files.com/636f4050ef41c9124a12cbba/dgp-logo.png",
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Tom Santella"
+      },
+      {
+        "@type": "Person",
+        "name": "Mario Ferrara"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/remedoapp",
+      "https://instagram.com/remedo.io?igshid=ZDdkNTZiNTM=",
+      "https://www.linkedin.com/company/remedo/?viewAsMember=true"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "info@dentistrygrowthpartners.com",
+      "telephone": "+1-650-557-8269",
+      "url": "https://dentistrygrowthpartners.com/contact"
+    }
+  }
+  </script>
+
+</body>
+</html>
