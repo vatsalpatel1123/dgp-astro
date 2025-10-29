@@ -1,0 +1,1739 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Dental Website Design | Dentistry Growth Partners</title>
+      <link rel="shortcut icon" href="636f4050ef41c9124a12cbba/dgp-logo1.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="636f4050ef41c9124a12cbba/dgp-logo1.png">
+    <meta
+      name="description"
+      content="Beautiful, high-converting dental websites built for growth. Modern design, lightning-fast performance, and optimized for patient conversion and SEO."
+    />
+    <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Icon System */
+      .icon {
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        fill: currentColor;
+      }
+      
+      .icon-lg {
+        width: 2em;
+        height: 2em;
+      }
+      
+      .icon-xl {
+        width: 2.5em;
+        height: 2.5em;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-section::after {
+        content: '';
+        position: absolute;
+        bottom: -150px;
+        left: -150px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.15) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .hero-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-content .highlight {
+        color: var(--natural);
+        position: relative;
+        display: inline-block;
+      }
+
+      .hero-content .subtitle {
+        font-size: 22px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 36px;
+        line-height: 1.7;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: rgba(255,255,255,0.8);
+        display: block;
+        font-weight: 500;
+      }
+
+      .hero-visual {
+        position: relative;
+        padding: 40px;
+      }
+
+      .visual-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        position: relative;
+        animation: float 6s ease-in-out infinite;
+        border: 3px solid var(--natural);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
+      }
+
+      .visual-icon {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(8, 57, 129, 0.3);
+      }
+
+      .visual-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .visual-text {
+        color: var(--dim-grey);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .visual-badge {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        background: var(--orange);
+        color: var(--white);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(235, 116, 46, 0.4);
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Problem Section */
+      .problem-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+        margin-top: 50px;
+      }
+
+      .problem-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 36px;
+        transition: all 0.4s ease;
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--dark-slate-blue), var(--dark-olive-green));
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .problem-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .problem-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--dark-olive-green);
+        box-shadow: 0 16px 48px rgba(25, 76, 139, 0.2);
+        background: var(--white);
+      }
+
+      .problem-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 20px rgba(8, 57, 129, 0.3);
+      }
+
+      .problem-card h3 {
+        font-size: 23px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
+
+      .problem-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Solution Section */
+      .solution-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .feature-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(198,255,83,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .feature-card:hover::before {
+        left: 100%;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--orange), var(--dark-olive-green));
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(235, 116, 46, 0.25);
+      }
+
+      .feature-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .feature-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Design Showcase Section */
+      .showcase-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .showcase-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .showcase-section .section-title,
+      .showcase-section .section-description {
+        color: var(--white);
+      }
+
+      .design-principles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .principle-card {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 36px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        text-align: center;
+      }
+
+      .principle-card:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .principle-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--natural);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+      }
+
+      .principle-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 14px;
+      }
+
+      .principle-card p {
+        color: rgba(255,255,255,0.85);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Tech Stack Section */
+      .tech-stack-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 28px;
+        margin-top: 60px;
+      }
+
+      .tech-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 36px;
+        transition: all 0.4s ease;
+        border: 3px solid transparent;
+        text-align: center;
+      }
+
+      .tech-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--orange);
+        box-shadow: 0 16px 48px rgba(235, 116, 46, 0.15);
+        background: var(--white);
+      }
+
+      .tech-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--orange), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        box-shadow: 0 8px 24px rgba(235, 116, 46, 0.25);
+      }
+
+      .tech-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .tech-card p {
+        color: var(--dim-grey);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      /* Process Section */
+      .process-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-olive-green), var(--dark-slate-blue));
+      }
+
+      .process-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .process-section .section-title,
+      .process-section .section-description {
+        color: var(--white);
+      }
+
+      .process-timeline {
+        max-width: 1100px;
+        margin: 60px auto 0;
+      }
+
+      .process-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+
+      .process-step {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 36px;
+        align-items: start;
+        position: relative;
+      }
+
+      .process-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 45px;
+        top: 90px;
+        bottom: -48px;
+        width: 3px;
+        background: linear-gradient(to bottom, var(--natural), rgba(198,255,83,0.3));
+      }
+
+      .step-number {
+        width: 90px;
+        height: 90px;
+        background: var(--natural);
+        color: var(--black);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        font-weight: 800;
+        box-shadow: 0 10px 28px rgba(198,255,83,0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .step-content {
+        background: rgba(255,255,255,0.05);
+        border-radius: 20px;
+        padding: 32px;
+        border: 2px solid rgba(198,255,83,0.3);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .step-content:hover {
+        border-color: var(--natural);
+        background: rgba(255,255,255,0.1);
+      }
+
+      .step-content h3 {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 14px;
+      }
+
+      .step-label {
+        display: inline-block;
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+        padding: 6px 14px;
+        border-radius: 14px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .step-content p {
+        color: rgba(255,255,255,0.85);
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      /* Management Section */
+      .management-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .management-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .management-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 40px;
+        transition: all 0.4s ease;
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .management-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(235,116,46,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .management-card:hover::before {
+        left: 100%;
+      }
+
+      .management-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--orange);
+        box-shadow: 0 16px 48px rgba(235, 116, 46, 0.15);
+        background: var(--white);
+      }
+
+      .management-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--orange), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(235, 116, 46, 0.25);
+      }
+
+      .management-card h3 {
+        font-size: 23px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .management-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .pricing-card {
+        background: var(--white);
+        border-radius: 28px;
+        padding: 50px;
+        border: 4px solid var(--natural);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 24px 64px rgba(43, 102, 72, 0.15);
+        transition: all 0.3s ease;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 32px 80px rgba(43, 102, 72, 0.2);
+      }
+
+      .pricing-badge {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        background: var(--orange);
+        color: var(--white);
+        padding: 10px 20px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(235, 116, 46, 0.4);
+      }
+
+      .pricing-header {
+        margin-bottom: 32px;
+      }
+
+      .pricing-header h3 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .pricing-amount {
+        font-size: 62px;
+        font-weight: 800;
+        color: var(--dark-slate-blue);
+        line-height: 1;
+      }
+
+      .pricing-period {
+        font-size: 19px;
+        color: var(--dim-grey);
+        margin-bottom: 24px;
+      }
+
+      .pricing-description {
+        font-size: 16px;
+        color: var(--dim-grey);
+        line-height: 1.8;
+        margin-bottom: 36px;
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin-bottom: 36px;
+      }
+
+      .pricing-features li {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--silver);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--black);
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .pricing-features li::before {
+        content: '✓';
+        color: var(--green);
+        font-weight: bold;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .pricing-cta {
+        text-align: center;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 21px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 44px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .cta-buttons {
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .hero-content h1 {
+          font-size: 44px;
+        }
+
+        .hero-stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .process-step {
+          grid-template-columns: 70px 1fr;
+        }
+
+        .step-number {
+          width: 70px;
+          height: 70px;
+          font-size: 28px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-content h1 {
+          font-size: 38px;
+        }
+
+        .hero-content .subtitle {
+          font-size: 19px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .pricing-card {
+          padding: 36px 28px;
+        }
+
+        .pricing-amount {
+          font-size: 48px;
+        }
+
+        .cta-section h2 {
+          font-size: 38px;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .stat-number {
+          font-size: 38px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-on-scroll {
+        animation: fadeInUp 0.8s ease-out;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  </head>
+  <body>
+    <!-- Navbar Component -->
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>
+            Beautiful Dental Websites That <span class="highlight">Convert</span>
+          </h1>
+          <p class="subtitle">
+            Modern Design, Lightning Speed, Optimized for Growth
+          </p>
+          <p>
+            Your website is your most powerful marketing tool. We build stunning, high-performance dental websites designed to attract patients, showcase your expertise, and convert visitors into appointments—with zero maintenance headaches.
+          </p>
+          <div class="cta-buttons">
+            <a href="/book-demo" class="btn-primary">
+              View Portfolio
+              <span>→</span>
+            </a>
+            <a href="/vsl" class="btn-secondary">
+              See Demo Sites
+              <span>▶</span>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">&lt;1s</span>
+              <span class="stat-label">Load Time</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">95+</span>
+              <span class="stat-label">Performance Score</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3x</span>
+              <span class="stat-label">Higher Conversions</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-card">
+            <span class="visual-badge">Premium</span>
+            <div class="visual-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: white;">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <div class="visual-title">Modern Design</div>
+            <div class="visual-text">
+              Custom designs that reflect your brand, showcase your expertise, and create trust—built on cutting-edge technology for maximum performance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">The Problem</span>
+          <h2 class="section-title">Why Your Website Isn't Working</h2>
+          <p class="section-description">
+            An outdated, slow, or poorly designed website actively hurts your practice. Patients judge your quality based on your online presence—and yours is losing them.
+          </p>
+        </div>
+        <div class="problem-grid">
+          
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </div>
+            <h3>Outdated Design Screams "Old"</h3>
+            <p>
+              Your website looks like it's from 2010. Patients see outdated design and assume your dental techniques are equally behind the times.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M12 8v4l2 2"></path>
+              </svg>
+            </div>
+            <h3>Painfully Slow Load Times</h3>
+            <p>
+              Your site takes 5+ seconds to load. 53% of mobile visitors leave if a site takes longer than 3 seconds—you're losing half your traffic.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3>Broken Mobile Experience</h3>
+            <p>
+              Your site looks terrible on phones. 70% of dental searches happen on mobile—your broken mobile site is killing conversions.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <h3>Generic Template Content</h3>
+            <p>
+              Same stock photos and generic text as every other dental site. Nothing unique, nothing compelling—patients see right through it.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>No Clear Call-to-Action</h3>
+            <p>
+              Visitors land on your site and don't know what to do. Hidden phone numbers, buried contact forms—no clear path to booking.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <h3>Maintenance Nightmare</h3>
+            <p>
+              Every update requires calling your web developer. Simple changes take weeks and cost hundreds of dollars. You're held hostage.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">The Solution</span>
+          <h2 class="section-title">Modern Websites Built for Conversion</h2>
+          <p class="section-description">
+            We build beautiful, fast, SEO-optimized dental websites that turn visitors into patients—and handle all the technical maintenance for you.
+          </p>
+        </div>
+        <div class="features-grid">
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+            <h3>Custom, Premium Design</h3>
+            <p>
+              No templates. Every site is custom-designed to reflect your brand, showcase your expertise, and differentiate you from every other practice in your market.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3>Lightning-Fast Performance</h3>
+            <p>
+              Sub-1-second load times on modern hosting infrastructure. Fast sites rank higher on Google, convert better, and create exceptional user experiences.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3>Mobile-First Design</h3>
+            <p>
+              Designed for mobile first, then scaled to desktop. Perfect experience on every device, every screen size—capturing patients wherever they search.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <h3>SEO-Optimized Foundation</h3>
+            <p>
+              Built with SEO best practices from day one. Clean code, proper structure, optimized images, and technical excellence for maximum rankings.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>Conversion-Focused Layout</h3>
+            <p>
+              Every element strategically placed to drive bookings. Clear CTAs, prominent phone numbers, easy appointment forms—removing all friction.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Enterprise Security</h3>
+            <p>
+              HIPAA-compliant hosting, SSL certificates, regular security updates, and backups. Your patients' data is protected with enterprise-grade security.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Showcase Section -->
+    <section class="showcase-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Design Principles</span>
+          <h2 class="section-title">What Makes Our Websites Different</h2>
+          <p class="section-description">
+            We follow proven design principles that maximize patient trust, engagement, and conversion.
+          </p>
+        </div>
+        <div class="design-principles">
+          
+          <div class="principle-card">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                <line x1="9" y1="20" x2="15" y2="20"></line>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+              </svg>
+            </div>
+            <h3>Clean, Modern Aesthetic</h3>
+            <p>Minimalist design that feels premium and professional. White space, elegant typography, and sophisticated color palettes that inspire trust.</p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>Strategic Visual Hierarchy</h3>
+            <p>Eye-tracking optimization guides visitors exactly where you want them. From hero image to booking button, every element is purposefully placed.</p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+            <h3>High-Quality Imagery</h3>
+            <p>Professional photography of your actual team and office. No stock photos—authentic images that build genuine trust and connection.</p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <h3>Compelling Copywriting</h3>
+            <p>Patient-focused content that addresses concerns, builds credibility, and motivates action. No dental jargon—clear benefits patients understand.</p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3>Social Proof Integration</h3>
+            <p>Reviews, testimonials, before/after galleries, and credentials prominently displayed. Show potential patients why others trust you.</p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>Micro-Interactions</h3>
+            <p>Subtle animations and hover effects that create delight. Modern interactions that make your site feel alive and engaging without being distracting.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-stack-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Technology</span>
+          <h2 class="section-title">Built on Modern, Reliable Technology</h2>
+          <p class="section-description">
+            We use cutting-edge web technologies that ensure speed, security, and scalability—without the bloat of outdated platforms.
+          </p>
+        </div>
+        <div class="tech-grid">
+          
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3>Modern Frameworks</h3>
+            <p>React, Next.js, or Astro—fast, scalable, and SEO-friendly</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 2v20M2 12h20"></path>
+              </svg>
+            </div>
+            <h3>Headless CMS</h3>
+            <p>Easy content updates without technical knowledge</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <h3>CDN Delivery</h3>
+            <p>Global content delivery for instant load times</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>SSL Security</h3>
+            <p>Encrypted connections and HIPAA compliance</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3>Performance Monitoring</h3>
+            <p>Real-time tracking and optimization</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3>Analytics Integration</h3>
+            <p>Track every visit, click, and conversion</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Process</span>
+          <h2 class="section-title">From Concept to Launch in 4-6 Weeks</h2>
+          <p class="section-description">
+            Our streamlined process delivers beautiful, high-converting websites faster than traditional agencies—without compromising quality.
+          </p>
+        </div>
+        <div class="process-timeline">
+          <div class="process-steps">
+            
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <span class="step-label">Week 1</span>
+                <h3>Discovery & Strategy</h3>
+                <p>
+                  Deep dive into your practice, target patients, competitors, and unique value proposition. We create a comprehensive design and content strategy aligned with your growth goals.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <span class="step-label">Week 2</span>
+                <h3>Design & Wireframing</h3>
+                <p>
+                  Custom designs created in Figma for your review. We iterate based on your feedback until you're thrilled with the visual direction and layout.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <span class="step-label">Week 3-4</span>
+                <h3>Development & Content</h3>
+                <p>
+                  We build the site using modern frameworks while creating SEO-optimized content. Professional photography coordinated, integrations configured, and functionality tested.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <span class="step-label">Week 5</span>
+                <h3>Review & Refinement</h3>
+                <p>
+                  You review the completed site on a staging environment. We make final adjustments, test on all devices, and optimize performance to perfection.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <span class="step-label">Week 6</span>
+                <h3>Launch & Training</h3>
+                <p>
+                  Site goes live with SEO configured, analytics tracking, and all systems operational. We train your team on making content updates and provide ongoing support.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Management Section -->
+    <section class="management-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Ongoing Management</span>
+          <h2 class="section-title">We Handle Everything So You Don't Have To</h2>
+          <p class="section-description">
+            Your website isn't a one-time project—it's an ongoing asset. We manage all technical maintenance, updates, and optimizations.
+          </p>
+        </div>
+        <div class="management-grid">
+          
+          <div class="management-card">
+            <div class="management-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Security & Updates</h3>
+            <p>Automatic security patches, software updates, and vulnerability monitoring. Your site stays secure without you thinking about it.</p>
+          </div>
+
+          <div class="management-card">
+            <div class="management-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+            </div>
+            <h3>Daily Backups</h3>
+            <p>Automated daily backups stored securely off-site. If anything goes wrong, we can restore your site in minutes.</p>
+          </div>
+
+          <div class="management-card">
+            <div class="management-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3>Performance Monitoring</h3>
+            <p>24/7 uptime monitoring and performance tracking. We're alerted instantly if anything affects your site speed or availability.</p>
+          </div>
+
+          <div class="management-card">
+            <div class="management-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <h3>Content Updates</h3>
+            <p>Monthly content updates included. New service pages, blog posts, team photos—we handle it all without additional charges.</p>
+          </div>
+
+          <div class="management-card">
+            <div class="management-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <h3>SEO Maintenance</h3>
+            <p>Ongoing SEO optimization, keyword updates, and technical improvements to maintain and improve your rankings.</p>
+          </div>
+
+          <div class="management-card">
+            <div class="management-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3>Priority Support</h3>
+            <p>Direct access to our team for any questions, issues, or requests. Same-day response guaranteed for all support tickets.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Investment</span>
+          <h2 class="section-title">Website Design & Management Pricing</h2>
+          <p class="section-description">
+            Transparent pricing with no hidden fees. One-time design fee plus monthly management.
+          </p>
+        </div>
+        <div class="pricing-cards">
+          
+          <div class="pricing-card">
+            <span class="pricing-badge">One-Time</span>
+            <div class="pricing-header">
+              <h3>Website Design & Development</h3>
+            </div>
+            <div class="pricing-amount">$7,500</div>
+            <div class="pricing-period">one-time</div>
+            <p class="pricing-description">
+              Complete custom website design and development. From discovery to launch, everything you need for a high-converting website.
+            </p>
+            <ul class="pricing-features">
+              <li>Custom Design (No Templates)</li>
+              <li>Mobile-First Development</li>
+              <li>SEO Foundation Setup</li>
+              <li>Up to 15 Pages</li>
+              <li>Content Strategy & Creation</li>
+              <li>Professional Copywriting</li>
+              <li>Image Optimization</li>
+              <li>Contact Forms & CTAs</li>
+              <li>Google Analytics Setup</li>
+              <li>Social Media Integration</li>
+              <li>Review Integration</li>
+              <li>SSL Certificate</li>
+              <li>Training & Documentation</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="/book-demo" class="btn-primary" style="width: 100%; justify-content: center; background: var(--orange); border-color: var(--orange); color: white;">
+                Start Your Project
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <span class="pricing-badge">Monthly</span>
+            <div class="pricing-header">
+              <h3>Website Management & Hosting</h3>
+            </div>
+            <div class="pricing-amount">$497</div>
+            <div class="pricing-period">per month</div>
+            <p class="pricing-description">
+              Complete website management and maintenance. We handle all technical updates, security, backups, and content changes.
+            </p>
+            <ul class="pricing-features">
+              <li>Premium Hosting Included</li>
+              <li>SSL Certificate Management</li>
+              <li>Daily Automated Backups</li>
+              <li>Security Monitoring & Updates</li>
+              <li>Performance Optimization</li>
+              <li>24/7 Uptime Monitoring</li>
+              <li>Monthly Content Updates</li>
+              <li>SEO Maintenance</li>
+              <li>Analytics Reporting</li>
+              <li>Priority Support (Same-Day)</li>
+              <li>Plugin/Framework Updates</li>
+              <li>Spam Protection</li>
+              <li>Unlimited Bandwidth</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="/book-demo" class="btn-primary" style="width: 100%; justify-content: center; background: var(--dark-slate-blue); border-color: var(--dark-slate-blue); color: white;">
+                Get Started
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <h2>Ready for a Website That <span class="highlight">Converts</span>?</h2>
+        <p>
+          Stop losing patients to outdated design and slow performance. Get a modern, high-converting website that showcases your expertise and drives bookings.
+        </p>
+        <div class="cta-buttons">
+          <a href="/book-demo" class="btn-primary">
+            View Our Portfolio
+            <span>→</span>
+          </a>
+          <a href="tel:+16505578269" class="btn-secondary">
+            Call (650) 557-8269
+            <span>📞</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Sticky CTA Component -->
+    <StickyCTA />
+
+    <!-- Scripts -->
+    <script>
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Custom Dental Website Design & Management",
+      "description": "Beautiful, high-converting dental websites with modern design, lightning-fast performance, and complete ongoing management and maintenance.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      },
+      "areaServed": "US",
+      "audience": {
+        "@type": "Audience",
+        "name": "Dental Practices"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "7500",
+          "priceCurrency": "USD",
+          "description": "Website Design & Development"
+        },
+        {
+          "@type": "Offer",
+          "price": "497",
+          "priceCurrency": "USD",
+          "description": "Monthly Website Management"
+        }
+      ]
+    }
+    </script>
+  </body>
+</html>

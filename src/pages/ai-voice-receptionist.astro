@@ -1,7 +1,6 @@
 ---
-// multi-implant-marketing.astro
+// ai-voice-receptionist.astro
 import '../css/main.css';
-// import '../css/about-dgp.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
 ---
@@ -10,8 +9,8 @@ import FooterBar from '../components/FooterBar.astro';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multi-Implant Marketing | Dentistry Growth Partners</title>
-  <meta name="description" content="Targeted marketing campaigns designed to attract full and single arch cases worth $15k-75k directly to your practice.">
+  <title>AI Voice Receptionist | Dentistry Growth Partners</title>
+  <meta name="description" content="24/7 AI Voice Receptionist that answers calls, books appointments, and qualifies leads automatically—never miss another patient opportunity.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -38,7 +37,6 @@ import FooterBar from '../components/FooterBar.astro';
       --green: #2b6648;
       --pale-goldenrod: #e3fcb0;
     }
-
 
     body {
       font-family: 'Inter', sans-serif;
@@ -356,26 +354,16 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     /* ============================================
-       SYSTEMS SECTION
+       CAPABILITIES SECTION
     ============================================ */
-    /* .systems-section {
+    .capabilities-section {
       padding: 120px 24px;
       background: var(--white);
     }
 
     .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    } */
-
-    .systems-section {
-padding: 120px 24px;
-background: var(--white);
-}
-
-    .section-header {
-      max-width: 800px; /* Limit the header width for better typography */
-      margin: 0 auto 60px; /* Center the block and keep the bottom margin */
+      max-width: 800px;
+      margin: 0 auto 60px;
       text-align: center;
     }
 
@@ -405,7 +393,7 @@ background: var(--white);
       letter-spacing: -1px;
     }
 
-    .systems-grid {
+    .capabilities-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
@@ -413,7 +401,7 @@ background: var(--white);
       margin: 0 auto;
     }
 
-    .system-card {
+    .capability-card {
       background: var(--white);
       border: 3px solid var(--grey);
       border-radius: 20px;
@@ -423,7 +411,7 @@ background: var(--white);
       overflow: hidden;
     }
 
-    .system-card::before {
+    .capability-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -435,17 +423,17 @@ background: var(--white);
       transition: opacity 0.4s ease;
     }
 
-    .system-card:hover {
+    .capability-card:hover {
       border-color: var(--natural);
       transform: translateY(-8px);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
     }
 
-    .system-card:hover::before {
+    .capability-card:hover::before {
       opacity: 1;
     }
 
-    .system-icon {
+    .capability-icon {
       width: 70px;
       height: 70px;
       background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
@@ -459,11 +447,11 @@ background: var(--white);
       transition: all 0.4s ease;
     }
 
-    .system-card:hover .system-icon {
+    .capability-card:hover .capability-icon {
       transform: scale(1.1) rotate(5deg);
     }
 
-    .system-card h3 {
+    .capability-card h3 {
       font-size: 22px;
       font-weight: 800;
       color: var(--dark-slate-blue);
@@ -471,7 +459,7 @@ background: var(--white);
       letter-spacing: -0.3px;
     }
 
-    .system-card p {
+    .capability-card p {
       font-size: 15px;
       color: var(--dim-grey);
       line-height: 1.7;
@@ -479,14 +467,111 @@ background: var(--white);
     }
 
     /* ============================================
-       RESULTS SECTION
+       DEMO CTA SECTION
     ============================================ */
-    .results-section {
-      padding: 120px 24px;
+    .demo-cta-section {
+      padding: 80px 24px;
       background: var(--grey);
     }
 
-    .results-grid {
+    .demo-cta-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--white);
+      border: 3px solid var(--dark-slate-blue);
+      border-radius: 24px;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-cta-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.05) 100%);
+    }
+
+    .demo-cta-container .demo-icon {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 40px;
+      color: var(--natural);
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-cta-container h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+      margin-bottom: 16px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-cta-container p {
+      font-size: 18px;
+      color: var(--dim-grey);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-cta-container .demo-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 3px solid var(--natural);
+      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-cta-container .demo-cta-button:hover {
+      background: var(--dark-slate-blue);
+      color: var(--natural);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+    }
+
+    .demo-cta-container .demo-cta-button i {
+      font-size: 22px;
+    }
+
+    /* ============================================
+       BENEFITS SECTION
+    ============================================ */
+    .benefits-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .benefits-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 40px;
@@ -494,7 +579,7 @@ background: var(--white);
       margin: 60px auto 0;
     }
 
-    .result-card {
+    .benefit-card {
       background: var(--white);
       border: 3px solid transparent;
       border-radius: 24px;
@@ -503,30 +588,26 @@ background: var(--white);
       position: relative;
     }
 
-    .result-card::before {
+    .benefit-card::before {
       content: '';
       position: absolute;
       top: -3px;
       left: -3px;
       right: -3px;
       bottom: -3px;
-      /* background: linear-gradient(135deg, var(--dark-slate-blue), var(--natural)); */
       border-radius: 24px;
       z-index: -1;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
-    .result-card:hover {
+    .benefit-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--natural);
     }
 
-    .result-card:hover::before {
-      opacity: 1;
-    }
-
-    .result-badge {
+    .benefit-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -541,81 +622,36 @@ background: var(--white);
       margin-bottom: 24px;
     }
 
-    .result-badge i {
+    .benefit-badge i {
       font-size: 16px;
     }
 
-    .result-card h3 {
+    .benefit-card h3 {
       font-size: 28px;
       font-weight: 800;
       color: var(--dark-slate-blue);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       letter-spacing: -0.5px;
     }
 
-    .result-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .stat-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 16px;
-      background: var(--grey);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .stat-item:hover {
-      background: var(--pale-goldenrod);
-      transform: translateX(4px);
-    }
-
-    .stat-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--natural);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--dark-slate-blue);
+    .benefit-card p {
       font-size: 16px;
-    }
-
-    .stat-content {
-      flex: 1;
-    }
-
-    .stat-value {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--dark-slate-blue);
-      margin-bottom: 4px;
-      letter-spacing: -0.3px;
-    }
-
-    .stat-label {
-      font-size: 14px;
       color: var(--dim-grey);
-      line-height: 1.4;
+      line-height: 1.7;
+      margin: 0;
     }
 
     /* ============================================
-       GUARANTEE SECTION
+       FINAL CTA SECTION
     ============================================ */
-    .guarantee-section {
+    .final-cta-section {
       padding: 100px 24px;
       background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .guarantee-section::before {
+    .final-cta-section::before {
       content: '';
       position: absolute;
       top: 0;
@@ -626,7 +662,7 @@ background: var(--white);
       opacity: 0.3;
     }
 
-    .guarantee-content {
+    .final-cta-content {
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -634,7 +670,7 @@ background: var(--white);
       z-index: 10;
     }
 
-    .guarantee-icon {
+    .final-cta-icon {
       width: 100px;
       height: 100px;
       background: rgba(198, 255, 83, 0.15);
@@ -648,7 +684,7 @@ background: var(--white);
       color: var(--natural);
     }
 
-    .guarantee-section h2 {
+    .final-cta-section h2 {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
       color: var(--white);
@@ -657,7 +693,7 @@ background: var(--white);
       letter-spacing: -1px;
     }
 
-    .guarantee-text {
+    .final-cta-text {
       font-size: 20px;
       color: rgba(255, 255, 255, 0.95);
       line-height: 1.7;
@@ -667,12 +703,12 @@ background: var(--white);
       margin-right: auto;
     }
 
-    .guarantee-text strong {
+    .final-cta-text strong {
       color: var(--natural);
       font-weight: 800;
     }
 
-    .guarantee-cta {
+    .final-cta-button {
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -688,14 +724,14 @@ background: var(--white);
       box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
     }
 
-    .guarantee-cta:hover {
+    .final-cta-button:hover {
       background: transparent;
       color: var(--natural);
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
     }
 
-    .guarantee-cta i {
+    .final-cta-button i {
       font-size: 22px;
     }
 
@@ -765,19 +801,20 @@ background: var(--white);
         height: 300px;
       }
 
-      .systems-grid {
+      .capabilities-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
       }
 
-      .results-grid {
+      .benefits-grid {
         grid-template-columns: 1fr;
         gap: 32px;
       }
 
-      .systems-section,
-      .results-section,
-      .guarantee-section {
+      .capabilities-section,
+      .benefits-section,
+      .final-cta-section,
+      .demo-cta-section {
         padding: 80px 24px;
       }
     }
@@ -861,53 +898,61 @@ background: var(--white);
         font-size: 13px;
       }
 
-      .systems-grid {
+      .capabilities-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
-      .system-card {
+      .capability-card {
         padding: 32px 24px;
       }
 
-      .system-icon {
+      .capability-icon {
         width: 60px;
         height: 60px;
         font-size: 28px;
       }
 
-      .result-card {
+      .benefit-card {
         padding: 36px 28px;
       }
 
-      .result-card h3 {
+      .benefit-card h3 {
         font-size: 24px;
       }
 
-      .stat-value {
-        font-size: 16px;
+      .demo-cta-container {
+        padding: 48px 32px;
       }
 
-      .guarantee-icon {
+      .demo-cta-container .demo-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 36px;
+      }
+
+      .final-cta-icon {
         width: 80px;
         height: 80px;
         font-size: 40px;
       }
 
-      .guarantee-text {
+      .final-cta-text {
         font-size: 17px;
       }
 
-      .guarantee-cta {
+      .final-cta-button,
+      .demo-cta-button {
         padding: 18px 36px;
         font-size: 16px;
         width: 100%;
         justify-content: center;
       }
 
-      .systems-section,
-      .results-section,
-      .guarantee-section {
+      .capabilities-section,
+      .benefits-section,
+      .final-cta-section,
+      .demo-cta-section {
         padding: 60px 20px;
       }
 
@@ -915,7 +960,7 @@ background: var(--white);
         margin-bottom: 40px;
       }
 
-      .results-grid {
+      .benefits-grid {
         margin-top: 40px;
       }
 
@@ -978,22 +1023,27 @@ background: var(--white);
         font-size: 13px;
       }
 
-      .system-card h3 {
+      .capability-card h3 {
         font-size: 20px;
       }
 
-      .result-card h3 {
+      .benefit-card h3 {
         font-size: 22px;
       }
 
-      .guarantee-section h2 {
+      .final-cta-section h2 {
         font-size: 28px;
+      }
+
+      .demo-cta-container {
+        padding: 40px 24px;
       }
     }
   </style>
 </head>
 <body>
   <Navigation />
+  
   <!-- ============================================
        HERO SECTION
   ============================================ -->
@@ -1008,131 +1058,136 @@ background: var(--white);
 
     <div class="hero-container">
       <div class="hero-badge" data-aos="fade-up">
-        <i class="ti ti-dental"></i>
-        <span>Flagship Service</span>
+        <i class="ti ti-phone-call"></i>
+        <span>24/7 Coverage</span>
       </div>
 
       <h1 data-aos="fade-up" data-aos-delay="100">
-        <span class="highlight-animated">Multi-Implant</span> Marketing
+        <span class="highlight-animated">Never Miss</span> a Call Again
       </h1>
 
       <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-        Targeted marketing campaigns specifically designed to attract full and single arch cases
-        directly to your practice.
+        24/7 AI Voice Receptionist that answers calls, books appointments, and qualifies leads 
+        automatically—ensuring you never lose another patient opportunity.
       </p>
 
       <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
         <div class="hero-stat">
           <div class="stat-icon">
-            <i class="ti ti-target"></i>
+            <i class="ti ti-clock-24"></i>
           </div>
           <div class="stat-content">
-            <span class="stat-label">Quality Over Quantity</span>
+            <span class="stat-label">24/7 Availability</span>
           </div>
         </div>
         <div class="hero-stat">
           <div class="stat-icon">
-            <i class="ti ti-diamond"></i>
+            <i class="ti ti-bolt"></i>
           </div>
           <div class="stat-content">
-            <span class="stat-label">High-Value Cases</span>
+            <span class="stat-label">Instant Response</span>
           </div>
         </div>
         <div class="hero-stat">
           <div class="stat-icon">
-            <i class="ti ti-trending-up"></i>
+            <i class="ti ti-calendar-check"></i>
           </div>
           <div class="stat-content">
-            <span class="stat-label">8-10x ROI</span>
+            <span class="stat-label">Direct Booking</span>
           </div>
         </div>
       </div>
+
+      <a href="/book-a-call" class="hero-cta" data-aos="fade-up" data-aos-delay="400">
+        <i class="ti ti-calendar-event"></i>
+        Book a Call
+      </a>
+
       <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="500">
-        <span>Learn how it works</span>
+        <span>See what it does</span>
         <i class="ti ti-chevron-down"></i>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       SIX SYSTEMS SECTION
+       CAPABILITIES SECTION
   ============================================ -->
-  <section class="systems-section">
+  <section class="capabilities-section">
     <div class="section-container">
       <div class="section-header">
         <span class="section-tag">
           <i class="ti ti-settings"></i>
-          How It Works
+          Core Capabilities
         </span>
-        <h2 class="section-title">Six Integrated Systems Working for You</h2>
+        <h2 class="section-title">What Our AI Receptionist Does</h2>
       </div>
 
-      <div class="systems-grid">
+      <div class="capabilities-grid">
         
-        <!-- System 1: Targeted Marketing -->
-        <div class="system-card">
-          <div class="system-icon">
-            <i class="ti ti-target"></i>
+        <!-- Capability 1: 24/7 Call Answering -->
+        <div class="capability-card">
+          <div class="capability-icon">
+            <i class="ti ti-phone-incoming"></i>
           </div>
-          <h3>Targeted Marketing</h3>
+          <h3>24/7 Call Answering</h3>
           <p>
-            Google & Facebook Ads specifically optimized for high-value implant cases.
+            Answers all incoming calls instantly, even after hours, on weekends, and during holidays—ensuring no patient ever reaches voicemail.
           </p>
         </div>
 
-        <!-- System 2: Instant AI Engagement -->
-        <div class="system-card">
-          <div class="system-icon">
-            <i class="ti ti-robot"></i>
+        <!-- Capability 2: Direct Appointment Booking -->
+        <div class="capability-card">
+          <div class="capability-icon">
+            <i class="ti ti-calendar-plus"></i>
           </div>
-          <h3>Instant AI Engagement</h3>
+          <h3>Direct Appointment Booking</h3>
           <p>
-            24/7 AI voice + SMS engagement that responds immediately to every lead.
+            Books appointments directly into your PMS in real-time, eliminating back-and-forth and reducing scheduling friction.
           </p>
         </div>
 
-        <!-- System 3: Smart Qualification -->
-        <div class="system-card">
-          <div class="system-icon">
-            <i class="ti ti-checklist"></i>
+        <!-- Capability 3: Patient Questions -->
+        <div class="capability-card">
+          <div class="capability-icon">
+            <i class="ti ti-message-circle-question"></i>
           </div>
-          <h3>Smart Qualification</h3>
+          <h3>Answers Common Questions</h3>
           <p>
-            Lead scoring based on financial capability, urgency, and fit. Our qualification criteria 
-            is customized to the financing options your practice offers.
+            Provides instant, accurate answers to patient questions about services, pricing, insurance, location, and hours.
           </p>
         </div>
 
-        <!-- System 4: Automated Nurturing -->
-        <div class="system-card">
-          <div class="system-icon">
-            <i class="ti ti-refresh"></i>
+        <!-- Capability 4: Lead Qualification -->
+        <div class="capability-card">
+          <div class="capability-icon">
+            <i class="ti ti-user-check"></i>
           </div>
-          <h3>Automated Nurturing</h3>
+          <h3>Smart Lead Qualification</h3>
           <p>
-            43-touchpoint sequences via SMS, email, and voice to keep leads engaged.
+            Qualifies leads based on your custom criteria including treatment interest, financial capability, and urgency level.
           </p>
         </div>
 
-        <!-- System 5: Direct Scheduling -->
-        <div class="system-card">
-          <div class="system-icon">
-            <i class="ti ti-calendar-check"></i>
+        <!-- Capability 5: Confirmations & Reminders -->
+        <div class="capability-card">
+          <div class="capability-icon">
+            <i class="ti ti-bell-ringing"></i>
           </div>
-          <h3>Direct Scheduling</h3>
+          <h3>Confirmations & Reminders</h3>
           <p>
-            Real-time PMS integration for instant booking directly into your calendar.
+            Automatically sends appointment confirmations and reminders via SMS and voice to reduce no-shows by up to 80%.
           </p>
         </div>
 
-        <!-- System 6: Case Acceptance Support -->
-        <div class="system-card">
-          <div class="system-icon">
-            <i class="ti ti-chart-line"></i>
+        <!-- Capability 6: Cancellations & Rescheduling -->
+        <div class="capability-card">
+          <div class="capability-icon">
+            <i class="ti ti-calendar-event"></i>
           </div>
-          <h3>Case Acceptance Support</h3>
+          <h3>Handles Rescheduling</h3>
           <p>
-            Training and systems designed to help you close consultations effectively.
+            Manages cancellations and rescheduling requests seamlessly, keeping your calendar optimized without staff involvement.
           </p>
         </div>
 
@@ -1141,147 +1196,125 @@ background: var(--white);
   </section>
 
   <!-- ============================================
-       REAL RESULTS SECTION
+       DEMO CTA SECTION
   ============================================ -->
-  <section class="results-section">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-chart-bar"></i>
-          Proven Results
-        </span>
-        <h2 class="section-title">Real Results from Real Practices</h2>
+  <section class="demo-cta-section">
+    <div class="demo-cta-container">
+      <div class="demo-icon">
+        <i class="ti ti-microphone"></i>
       </div>
-
-      <div class="results-grid">
-        
-        <!-- Initial Trial Results -->
-        <div class="result-card">
-          <div class="result-badge">
-            <i class="ti ti-rocket"></i>
-            Initial Trial
-          </div>
-          <h3>What to Expect</h3>
-          <div class="result-stats">
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-users"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">25 Qualified Consults</div>
-                <div class="stat-label">Attended consultations in the first 90 days</div>
-              </div>
-            </div>
-
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-cash"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">$300K - $750K</div>
-                <div class="stat-label">Total earnings from initial trial period</div>
-              </div>
-            </div>
-
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-clock"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">11-14 Days</div>
-                <div class="stat-label">Time to first qualified consultation</div>
-              </div>
-            </div>
-
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-trending-up"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">8-10x ROI</div>
-                <div class="stat-label">Return on your marketing investment</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Post Trial Performance -->
-        <div class="result-card">
-          <div class="result-badge">
-            <i class="ti ti-star"></i>
-            Post Trial Performance
-          </div>
-          <h3>Sustained Growth</h3>
-          <div class="result-stats">
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-calendar-event"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">10-40 Consults/Month</div>
-                <div class="stat-label">Qualified, attended consultations each month</div>
-              </div>
-            </div>
-
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-check"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">75% Acceptance Rate</div>
-                <div class="stat-label">Consultations converting to accepted cases</div>
-              </div>
-            </div>
-
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-moneybag"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">$150K - $750K</div>
-                <div class="stat-label">Monthly earnings from qualified patients</div>
-              </div>
-            </div>
-
-            <div class="stat-item">
-              <div class="stat-icon">
-                <i class="ti ti-infinity"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-value">90+ Days</div>
-                <div class="stat-label">Sustained, predictable growth</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       GUARANTEE SECTION
-  ============================================ -->
-  <section class="guarantee-section">
-    <div class="guarantee-content">
-      <div class="guarantee-icon">
-        <i class="ti ti-shield-check"></i>
-      </div>
-      
-      <h2>Performance-Backed Guarantee</h2>
-      
-      <p class="guarantee-text">
-        <strong>Earn your ad spend and investment back or be completely refunded.</strong> 
-        Only pay us per accepted case. We're so confident in our system that we put our money where our mouth is.
+      <h2>Talk to Maria, Our AI Receptionist</h2>
+      <p>
+        Experience our AI voice technology firsthand. Click below to have Maria reach out to you 
+        via text or call—just like she does for your potential patients.
       </p>
-      
-      <a href="/book-a-call" class="guarantee-cta">
-        <i class="ti ti-calendar-event"></i>
-        Book a Call
+      <a href="/book-a-call" class="demo-cta-button">
+        <i class="ti ti-phone-call"></i>
+        See It in Action
       </a>
     </div>
   </section>
+
+  <!-- ============================================
+       BENEFITS SECTION
+  ============================================ -->
+  <section class="benefits-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="ti ti-star"></i>
+          Why It Works
+        </span>
+        <h2 class="section-title">Why Practices Love It</h2>
+      </div>
+
+      <div class="benefits-grid">
+        
+        <!-- Benefit 1: Never Miss a Lead -->
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-trophy"></i>
+            Capture Every Lead
+          </div>
+          <h3>Never Miss a Lead Due to Missed Calls</h3>
+          <p>
+            Every call is answered immediately, every lead is captured, and every opportunity is 
+            maximized—even when your front desk is busy, on lunch, or unavailable. Convert up to 
+            40% more leads simply by being available 24/7.
+          </p>
+        </div>
+
+        <!-- Benefit 2: Free Up Front Desk -->
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-users"></i>
+            Staff Efficiency
+          </div>
+          <h3>Free Up Front Desk from Phone Duties</h3>
+          <p>
+            Your team gains over 10 hours per week by eliminating repetitive phone tasks. They can 
+            focus on delivering exceptional in-person patient care instead of being tied to the phone 
+            all day.
+          </p>
+        </div>
+
+        <!-- Benefit 3: Instant Response -->
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-rocket"></i>
+            Speed Wins
+          </div>
+          <h3>Instant Response = Higher Conversion</h3>
+          <p>
+            Studies show that responding to leads within 5 minutes increases conversion by 400%. 
+            Our AI responds in seconds, every single time—ensuring you book more appointments 
+            than practices that rely on callbacks.
+          </p>
+        </div>
+
+        <!-- Benefit 4: Consistent Experience -->
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-shield-check"></i>
+            Quality Assured
+          </div>
+          <h3>Consistent Patient Experience 24/7</h3>
+          <p>
+            Every caller receives the same professional, friendly, knowledgeable experience—no matter 
+            the time of day. No more variability based on staff mood, training level, or availability.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA SECTION
+  ============================================ -->
+  <section class="final-cta-section">
+    <div class="final-cta-content">
+      <div class="final-cta-icon">
+        <i class="ti ti-phone-check"></i>
+      </div>
+      
+      <h2>Ready to Never Miss Another Call?</h2>
+      
+      <p class="final-cta-text">
+        <strong>Stop losing patients to voicemail.</strong> 
+        Let our AI receptionist handle every call professionally while your team focuses on 
+        delivering exceptional care. Book a demo to see Maria in action.
+      </p>
+      
+      <a href="/book-a-call" class="final-cta-button">
+        <i class="ti ti-calendar-event"></i>
+        Book a Demo
+      </a>
+    </div>
+  </section>
+
   <FooterBar />
+
   <!-- ============================================
        FLOATING CTA BUTTONS
   ============================================ -->
@@ -1335,35 +1368,27 @@ background: var(--white);
       const scrollIndicator = document.querySelector('.scroll-indicator');
       if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
-          const systemsSection = document.querySelector('.systems-section');
-          if (systemsSection) {
-            systemsSection.scrollIntoView({ behavior: 'smooth' });
+          const capabilitiesSection = document.querySelector('.capabilities-section');
+          if (capabilitiesSection) {
+            capabilitiesSection.scrollIntoView({ behavior: 'smooth' });
           }
         });
       }
 
-      // Animate system cards
-      document.querySelectorAll('.system-card').forEach((card, index) => {
+      // Animate capability cards
+      document.querySelectorAll('.capability-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
       });
 
-      // Animate result cards
-      document.querySelectorAll('.result-card').forEach((card, index) => {
+      // Animate benefit cards
+      document.querySelectorAll('.benefit-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
         observer.observe(card);
-      });
-
-      // Animate stat items with stagger
-      document.querySelectorAll('.stat-item').forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-20px)';
-        item.style.transition = `opacity 0.5s ease ${index * 0.08}s, transform 0.5s ease ${index * 0.08}s`;
-        observer.observe(item);
       });
 
       // Smooth scroll for all anchor links

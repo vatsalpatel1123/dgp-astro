@@ -1,0 +1,1047 @@
+---
+// vsl-page.astro
+import '../css/main.css';
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Our Process | Dentistry Growth Partners</title>
+  <meta name="description" content="Discover how Dentistry Growth Partners helps dental practices attract high-value implant cases and automate their patient pipeline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Wistia Script -->
+  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+  
+  <style>
+    /* ============================================
+       RESET & BASE STYLES
+    ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark-slate-blue: #083981;
+      --natural: #c6ff53;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+      --dark-olive-green: #194c8b;
+      --green: #2b6648;
+      --pale-goldenrod: #e3fcb0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================
+       HERO SECTION WITH VIDEO
+    ============================================ */
+    .vsl-hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
+      padding: 140px 24px 80px;
+      margin-top: 0;
+    }
+
+    /* Animated grid background */
+    .vsl-hero-section .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .vsl-hero-section .hero-background::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(60px, 60px);
+      }
+    }
+
+    .vsl-hero-section .hero-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .vsl-hero-section .shape {
+      position: absolute;
+      filter: blur(100px);
+      opacity: 0.3;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .vsl-hero-section .shape-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
+      top: -150px;
+      right: -150px;
+      animation: floatSlow 18s infinite ease-in-out;
+    }
+
+    .vsl-hero-section .shape-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
+      bottom: -200px;
+      left: -200px;
+      animation: floatSlow 22s infinite ease-in-out reverse;
+    }
+
+    .vsl-hero-section .shape-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: floatSlow 25s infinite ease-in-out;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(40px, -40px) scale(1.1);
+      }
+      66% {
+        transform: translate(-30px, 30px) scale(0.95);
+      }
+    }
+
+    .vsl-hero-section .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .vsl-hero-section .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(198, 255, 83, 0.3);
+      padding: 12px 28px;
+      border-radius: 50px;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .vsl-hero-section .hero-badge i {
+      font-size: 20px;
+      color: var(--natural);
+    }
+
+    .vsl-hero-section h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin: 0 auto 20px;
+      letter-spacing: -1.5px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .vsl-hero-section .highlight-animated {
+      color: var(--natural);
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .vsl-hero-section .hero-subtitle {
+      font-size: clamp(17px, 2vw, 20px);
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.6;
+      margin-bottom: 48px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================
+       VIDEO CONTAINER
+    ============================================ */
+    .video-container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(198, 255, 83, 0.2);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .video-container:hover {
+      border-color: rgba(198, 255, 83, 0.4);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .video-wrapper iframe,
+    .video-wrapper .wistia_responsive_padding {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+    }
+
+    .video-wrapper .wistia_responsive_wrapper {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    /* ============================================
+       VIDEO FEATURES SECTION
+    ============================================ */
+    .video-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto 48px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(198, 255, 83, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(198, 255, 83, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--natural), #d4ff8d);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--dark-slate-blue);
+      margin: 0 auto 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ============================================
+       CTA SECTION
+    ============================================ */
+    .vsl-cta-section {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 40px;
+    }
+
+    .vsl-cta-section h2 {
+      font-size: clamp(28px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+    }
+
+    .vsl-cta-section p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .vsl-cta-section .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 42px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 3px solid var(--natural);
+      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+    }
+
+    .vsl-cta-section .hero-cta:hover {
+      background: transparent;
+      color: var(--natural);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+    }
+
+    .vsl-cta-section .hero-cta i {
+      font-size: 22px;
+    }
+
+    /* ============================================
+       BENEFITS SECTION
+    ============================================ */
+    .benefits-section {
+      padding: 100px 24px;
+      background: var(--white);
+    }
+
+    .section-header {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--pale-goldenrod);
+      color: var(--dark-olive-green);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .section-tag i {
+      font-size: 18px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+      margin-bottom: 16px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      font-size: 18px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 20px;
+      padding: 40px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--natural);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    }
+
+    .benefit-card:hover::before {
+      opacity: 1;
+    }
+
+    .benefit-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--natural);
+      margin-bottom: 24px;
+      transition: all 0.4s ease;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .benefit-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--dark-slate-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .benefit-card p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ============================================
+       FINAL CTA SECTION
+    ============================================ */
+    .final-cta-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .final-cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .final-cta-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(198, 255, 83, 0.15);
+      border: 3px solid var(--natural);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      font-size: 48px;
+      color: var(--natural);
+    }
+
+    .final-cta-section h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .final-cta-text {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 3px solid var(--natural);
+      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+    }
+
+    .final-cta-button:hover {
+      background: transparent;
+      color: var(--natural);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+    }
+
+    .final-cta-button i {
+      font-size: 22px;
+    }
+
+    /* ============================================
+       FLOATING CTA BUTTONS
+    ============================================ */
+    .floating-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 1000;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--natural);
+      color: var(--dark-slate-blue);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      background: var(--dark-slate-blue);
+      color: var(--natural);
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+    ============================================ */
+    @media (max-width: 991px) {
+      .vsl-hero-section {
+        padding: 130px 24px 80px;
+        min-height: 90vh;
+      }
+
+      .vsl-hero-section .shape-1,
+      .vsl-hero-section .shape-2,
+      .vsl-hero-section .shape-3 {
+        filter: blur(70px);
+      }
+
+      .video-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .benefits-section,
+      .final-cta-section {
+        padding: 80px 24px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .vsl-hero-section {
+        padding: 120px 20px 60px;
+        min-height: 85vh;
+      }
+
+      .vsl-hero-section h1 {
+        font-size: clamp(28px, 6vw, 40px);
+        margin-bottom: 16px;
+      }
+
+      .vsl-hero-section .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .video-container {
+        padding: 16px;
+        border-radius: 16px;
+        margin-bottom: 32px;
+      }
+
+      .video-features {
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .feature-card {
+        padding: 20px;
+      }
+
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+      }
+
+      .vsl-cta-section h2 {
+        font-size: 26px;
+      }
+
+      .vsl-cta-section p {
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
+
+      .vsl-cta-section .hero-cta {
+        padding: 16px 32px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+      }
+
+      .benefit-card {
+        padding: 32px 24px;
+      }
+
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+      }
+
+      .benefit-card h3 {
+        font-size: 22px;
+      }
+
+      .final-cta-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+      }
+
+      .final-cta-text {
+        font-size: 17px;
+      }
+
+      .final-cta-button {
+        padding: 18px 36px;
+        font-size: 16px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+      }
+
+      .floating-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      .floating-btn span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .vsl-hero-section {
+        padding: 110px 16px 50px;
+      }
+
+      .vsl-hero-section h1 {
+        font-size: clamp(24px, 7vw, 36px);
+      }
+
+      .vsl-hero-section .hero-subtitle {
+        font-size: 15px;
+      }
+
+      .video-container {
+        padding: 12px;
+      }
+
+      .feature-card h3 {
+        font-size: 16px;
+      }
+
+      .feature-card p {
+        font-size: 13px;
+      }
+
+      .benefit-card h3 {
+        font-size: 20px;
+      }
+
+      .final-cta-section h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <Navigation />
+
+  <!-- ============================================
+       VSL HERO SECTION
+  ============================================ -->
+  <section class="vsl-hero-section">
+    <div class="hero-background">
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-badge" data-aos="fade-up">
+        <i class="ti ti-player-play"></i>
+        <span>Watch Our Process</span>
+      </div>
+
+      <h1 data-aos="fade-up" data-aos-delay="100">
+        See How We <span class="highlight-animated">Transform</span> Dental Practices
+      </h1>
+
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+        Watch this short video to discover how our complete system attracts high-value implant cases and automates your entire patient pipeline.
+      </p>
+
+      <!-- VIDEO CONTAINER -->
+      <div class="video-container" data-aos="fade-up" data-aos-delay="300">
+        <div class="video-wrapper">
+          <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+              <div class="wistia_embed wistia_async_udb6eu1njd seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
+                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                  <img src="https://fast.wistia.com/embed/medias/udb6eu1njd/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO FEATURES -->
+      <div class="video-features" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-clock"></i>
+          </div>
+          <h3>Quick Overview</h3>
+          <p>Everything explained in under 15 minutes</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-chart-line"></i>
+          </div>
+          <h3>Real Results</h3>
+          <p>See actual case studies from our clients</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ti ti-checklist"></i>
+          </div>
+          <h3>Complete System</h3>
+          <p>Full pipeline from marketing to accepted case</p>
+        </div>
+      </div>
+
+      <!-- CTA SECTION -->
+      <!-- <div class="vsl-cta-section" data-aos="fade-up" data-aos-delay="500">
+        <h2>Ready to Get Started?</h2>
+        <p>Let's discuss how this system can work for your practice and help you attract more high-value implant cases.</p>
+        <a href="/book-a-call" class="hero-cta">
+          <i class="ti ti-calendar-event"></i>
+          Book Your Strategy Call
+        </a>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- ============================================
+       BENEFITS SECTION
+  ============================================ -->
+  <section class="benefits-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">
+          <i class="ti ti-star"></i>
+          What You'll Get
+        </span>
+        <h2 class="section-title">A Complete Growth Partnership</h2>
+        <p class="section-description">
+          We don't just generate leads—we build fully automated systems that handle your entire patient pipeline.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        
+        <!-- Benefit 1: Marketing -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-target"></i>
+          </div>
+          <h3>Targeted Marketing Campaigns</h3>
+          <p>
+            Google and Facebook ads specifically optimized for high-value implant cases. We focus on lead quality, not quantity—bringing you patients who are financially qualified and ready for treatment.
+          </p>
+        </div>
+
+        <!-- Benefit 2: Automation -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-robot"></i>
+          </div>
+          <h3>AI-Powered Automation</h3>
+          <p>
+            24/7 AI voice and SMS engagement that responds immediately to every lead, qualifies prospects, and nurtures them through automated sequences until they're ready to book.
+          </p>
+        </div>
+
+        <!-- Benefit 3: Scheduling -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-calendar-check"></i>
+          </div>
+          <h3>Direct PMS Integration</h3>
+          <p>
+            Real-time integration with your practice management system for instant booking directly into your calendar. No manual data entry, no missed appointments.
+          </p>
+        </div>
+
+        <!-- Benefit 4: Support -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-users"></i>
+          </div>
+          <h3>Case Acceptance Training</h3>
+          <p>
+            We provide training and systems designed to help you close consultations effectively, ensuring your team is equipped to convert qualified leads into accepted cases.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA SECTION
+  ============================================ -->
+  <!-- <section class="final-cta-section">
+    <div class="final-cta-content">
+      <div class="final-cta-icon">
+        <i class="ti ti-rocket"></i>
+      </div>
+      
+      <h2>Let's Transform Your Practice Together</h2>
+      
+      <p class="final-cta-text">
+        Schedule a strategy call to see exactly how our system can help you attract more high-value implant cases and automate your entire patient pipeline.
+      </p>
+      
+      <a href="/book-a-call" class="final-cta-button">
+        <i class="ti ti-calendar-event"></i>
+        Book Your Strategy Call
+      </a>
+    </div>
+  </section> -->
+
+  <FooterBar />
+
+  <!-- ============================================
+       FLOATING CTA BUTTONS
+  ============================================ -->
+  <div class="floating-cta">
+    <a href="/book-a-call" class="floating-btn">
+      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
+      <span>Let's Talk</span>
+    </a>
+    <a href="tel:+16505578269" class="floating-btn">
+      <i class="ti ti-phone" style="font-size: 24px;"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- ============================================
+       SCROLL ANIMATIONS
+  ============================================ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with data-aos attribute
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Animated highlight text
+      const highlights = document.querySelectorAll('.highlight-animated');
+      highlights.forEach((highlight, index) => {
+        setTimeout(() => {
+          highlight.classList.add('active');
+        }, 1000 + (index * 200));
+      });
+
+      // Animate benefit cards
+      document.querySelectorAll('.benefit-card').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+      });
+
+      // Smooth scroll for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1771 @@
+---
+// Import components here
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Optimized SEO | Dentistry Growth Partners</title>
+    <meta
+      name="description"
+      content="Dominate local dental search with AI-powered SEO and optimization. Rank #1 for high-value keywords, attract more organic patients, and establish market authority."
+    />
+    <!-- Tabler Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+      :root {
+        --black: #1d1d1d;
+        --dim-grey: #646464;
+        --dark-olive-green: #194c8b;
+        --white: white;
+        --dark-slate-blue: #083981;
+        --natural: #c6ff53;
+        --grey: whitesmoke;
+        --green: #2b6648;
+        --orange: #eb742e;
+        --dark-grey: #9f9f9f;
+        --misty-rose: #ffe4d4;
+        --pale-goldenrod: #e3fcb0;
+        --indian-red: #db5656;
+        --blue: #474bc5;
+        --silver: #c5c5c5;
+        --honeydew: #e7fff3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Icon System */
+      .icon {
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        fill: currentColor;
+      }
+      
+      .icon-lg {
+        width: 2em;
+        height: 2em;
+      }
+      
+      .icon-xl {
+        width: 2.5em;
+        height: 2.5em;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+        padding: 140px 24px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+        opacity: 0.3;
+      }
+
+      .hero-section::after {
+        content: '';
+        position: absolute;
+        top: -150px;
+        right: -150px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.15) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .hero-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 58px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-content .highlight {
+        color: var(--natural);
+        position: relative;
+        display: inline-block;
+      }
+
+      .hero-content .subtitle {
+        font-size: 22px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 36px;
+        line-height: 1.7;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: rgba(255,255,255,0.8);
+        display: block;
+        font-weight: 500;
+      }
+
+      .hero-visual {
+        position: relative;
+        padding: 40px;
+      }
+
+      .visual-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+        position: relative;
+        animation: float 6s ease-in-out infinite;
+        border: 3px solid var(--natural);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
+      }
+
+      .visual-icon {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(8, 57, 129, 0.3);
+      }
+
+      .visual-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .visual-text {
+        color: var(--dim-grey);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .visual-badge {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        background: var(--dark-slate-blue);
+        color: var(--white);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(8, 57, 129, 0.4);
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--natural);
+        color: var(--black);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid var(--natural);
+        box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--natural);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 18px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 17px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-slate-blue);
+        transform: translateY(-3px);
+      }
+
+      /* Problem Section */
+      .problem-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 10px 24px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .section-title {
+        font-size: 46px;
+        font-weight: 800;
+        color: var(--black);
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .section-description {
+        font-size: 19px;
+        color: var(--dim-grey);
+        line-height: 1.7;
+      }
+
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+        margin-top: 50px;
+      }
+
+      .problem-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 36px;
+        transition: all 0.4s ease;
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--dark-slate-blue), var(--dark-olive-green));
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .problem-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .problem-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--dark-olive-green);
+        box-shadow: 0 16px 48px rgba(25, 76, 139, 0.2);
+        background: var(--white);
+      }
+
+      .problem-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 20px rgba(8, 57, 129, 0.3);
+      }
+
+      .problem-card h3 {
+        font-size: 23px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
+
+      .problem-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Solution Section */
+      .solution-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .seo-services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .seo-service-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        border: 3px solid var(--natural);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .seo-service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(198,255,83,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .seo-service-card:hover::before {
+        left: 100%;
+      }
+
+      .seo-service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.2);
+      }
+
+      .seo-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--green), var(--dark-olive-green));
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(43, 102, 72, 0.25);
+      }
+
+      .seo-service-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .seo-service-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+
+      .seo-features {
+        list-style: none;
+        margin-top: 20px;
+      }
+
+      .seo-features li {
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--dim-grey);
+        font-size: 14px;
+      }
+
+      .seo-features li::before {
+        content: '✓';
+        color: var(--green);
+        font-weight: bold;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      /* AI Optimization Section */
+      .ai-optimization-section {
+        padding: 100px 24px;
+        background: var(--dark-slate-blue);
+      }
+
+      .ai-optimization-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .ai-optimization-section .section-title,
+      .ai-optimization-section .section-description {
+        color: var(--white);
+      }
+
+      .ai-features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .ai-feature-card {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 36px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+      }
+
+      .ai-feature-card:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .ai-feature-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--natural);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+
+      .ai-feature-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 14px;
+      }
+
+      .ai-feature-card p {
+        color: rgba(255,255,255,0.85);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Process Section */
+      .process-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .process-timeline {
+        max-width: 1100px;
+        margin: 60px auto 0;
+        position: relative;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 45px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, var(--dark-slate-blue), var(--natural));
+        border-radius: 4px;
+      }
+
+      .process-step {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 36px;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .process-number {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        font-weight: 800;
+        box-shadow: 0 10px 28px rgba(8, 57, 129, 0.3);
+        border: 4px solid var(--natural);
+        position: relative;
+        z-index: 1;
+      }
+
+      .process-content {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 32px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .process-content:hover {
+        border-color: var(--dark-olive-green);
+        background: var(--white);
+        box-shadow: 0 8px 24px rgba(25, 76, 139, 0.15);
+      }
+
+      .process-content h3 {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .process-label {
+        display: inline-block;
+        background: var(--pale-goldenrod);
+        color: var(--green);
+        padding: 6px 14px;
+        border-radius: 14px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .process-content p {
+        color: var(--dim-grey);
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      /* Results Section */
+      .results-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-olive-green), var(--dark-slate-blue));
+      }
+
+      .results-section .section-tag {
+        background: rgba(198,255,83,0.2);
+        color: var(--natural);
+      }
+
+      .results-section .section-title,
+      .results-section .section-description {
+        color: var(--white);
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .result-card {
+        background: rgba(255,255,255,0.05);
+        border: 2px solid rgba(198,255,83,0.3);
+        border-radius: 20px;
+        padding: 36px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        text-align: center;
+      }
+
+      .result-card:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--natural);
+        transform: translateY(-8px);
+      }
+
+      .result-number {
+        font-size: 56px;
+        font-weight: 800;
+        color: var(--natural);
+        display: block;
+        margin-bottom: 12px;
+        line-height: 1;
+      }
+
+      .result-label {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--white);
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .result-description {
+        font-size: 14px;
+        color: rgba(255,255,255,0.8);
+        line-height: 1.6;
+      }
+
+      /* Benefits Section */
+      .benefits-section {
+        padding: 100px 24px;
+        background: var(--white);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-top: 60px;
+      }
+
+      .benefit-card {
+        background: var(--grey);
+        border-radius: 20px;
+        padding: 40px;
+        transition: all 0.4s ease;
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefit-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(198,255,83,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .benefit-card:hover::before {
+        left: 100%;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--natural);
+        box-shadow: 0 16px 48px rgba(43, 102, 72, 0.15);
+        background: var(--white);
+      }
+
+      .benefit-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--green), var(--dark-olive-green));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 24px rgba(43, 102, 72, 0.25);
+      }
+
+      .benefit-card h3 {
+        font-size: 23px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 14px;
+      }
+
+      .benefit-card p {
+        color: var(--dim-grey);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        padding: 100px 24px;
+        background: linear-gradient(to bottom, var(--honeydew), var(--white));
+      }
+
+      .pricing-card {
+        max-width: 650px;
+        margin: 60px auto 0;
+        background: var(--white);
+        border-radius: 28px;
+        padding: 50px;
+        border: 4px solid var(--natural);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 24px 64px rgba(43, 102, 72, 0.15);
+      }
+
+      .pricing-badge {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        background: var(--dark-slate-blue);
+        color: var(--white);
+        padding: 10px 20px;
+        border-radius: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(8, 57, 129, 0.4);
+      }
+
+      .pricing-header {
+        margin-bottom: 32px;
+      }
+
+      .pricing-header h3 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--black);
+        margin-bottom: 12px;
+      }
+
+      .pricing-amount {
+        font-size: 62px;
+        font-weight: 800;
+        color: var(--dark-slate-blue);
+        line-height: 1;
+      }
+
+      .pricing-period {
+        font-size: 19px;
+        color: var(--dim-grey);
+        margin-bottom: 24px;
+      }
+
+      .pricing-description {
+        font-size: 16px;
+        color: var(--dim-grey);
+        line-height: 1.8;
+        margin-bottom: 36px;
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin-bottom: 36px;
+      }
+
+      .pricing-features li {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--silver);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--black);
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .pricing-features li::before {
+        content: '✓';
+        color: var(--green);
+        font-weight: bold;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .pricing-cta {
+        text-align: center;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 24px;
+        background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,255,83,0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .cta-section h2 {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 24px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .highlight {
+        color: var(--natural);
+      }
+
+      .cta-section p {
+        font-size: 21px;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 44px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-section .cta-buttons {
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .hero-content h1 {
+          font-size: 44px;
+        }
+
+        .hero-stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .process-step {
+          grid-template-columns: 70px 1fr;
+        }
+
+        .process-number {
+          width: 70px;
+          height: 70px;
+          font-size: 28px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .hero-content h1 {
+          font-size: 38px;
+        }
+
+        .hero-content .subtitle {
+          font-size: 19px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .pricing-card {
+          padding: 36px 28px;
+        }
+
+        .pricing-amount {
+          font-size: 48px;
+        }
+
+        .cta-section h2 {
+          font-size: 38px;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .stat-number {
+          font-size: 38px;
+        }
+
+        .section-title {
+          font-size: 30px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-on-scroll {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      /* Sticky CTA Bar */
+      .sticky-cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 18px 24px;
+        box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
+        z-index: 999;
+        display: none;
+        border-top: 3px solid var(--natural);
+      }
+
+      .sticky-cta.active {
+        display: block;
+      }
+
+      .sticky-cta-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sticky-cta-text {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      @media (max-width: 767px) {
+        .sticky-cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>
+            Dominate Local Search with <span class="highlight">AI-Optimized SEO</span>
+          </h1>
+          <p class="subtitle">
+            Rank #1 for High-Value Dental Keywords in Your Market
+          </p>
+          <p>
+            Stop paying for ads while competitors capture organic patients searching for dental services. Our AI-powered SEO system gets you to the top of Google for the keywords that matter—bringing in qualified patients who are actively searching for your services.
+          </p>
+          <div class="cta-buttons">
+            <a href="/book-demo" class="btn-primary">
+              Get SEO Audit
+              <span>→</span>
+            </a>
+            <a href="/vsl" class="btn-secondary">
+              See Results
+              <span>▶</span>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">#1</span>
+              <span class="stat-label">Local Rankings</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">10x</span>
+              <span class="stat-label">Organic Traffic</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">60%</span>
+              <span class="stat-label">Lower Cost per Patient</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-card">
+            <span class="visual-badge">AI-Powered</span>
+            <div class="visual-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: white;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <div class="visual-title">SEO Dominance</div>
+            <div class="visual-text">
+              AI-optimized content, technical SEO, and local dominance strategies that put you at the top of search results—capturing patients before they see your competitors.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">The Problem</span>
+          <h2 class="section-title">Why Most Dental Practices Lose at SEO</h2>
+          <p class="section-description">
+            You're invisible on Google. Patients searching for "dentist near me" see your competitors first. Every day, dozens of qualified patients choose other practices simply because you don't show up in their search results.
+          </p>
+        </div>
+        <div class="problem-grid">
+          
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+                <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+                <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+                <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+                <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+              </svg>
+            </div>
+            <h3>Invisible to Local Patients</h3>
+            <p>
+              You're not showing up when patients search "dentist near me" or your specialty services. Competitors with better SEO capture all the organic traffic.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>100% Reliance on Paid Ads</h3>
+            <p>
+              Spending thousands monthly on Google Ads because organic search isn't working. Your cost per patient keeps rising while organic competitors pay nothing.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <h3>Outdated Website Hurting Rankings</h3>
+            <p>
+              Slow site speed, poor mobile experience, broken pages, and outdated content. Google penalizes old websites, pushing you down in search results.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>No Technical SEO Foundation</h3>
+            <p>
+              Missing schema markup, broken links, duplicate content, poor site architecture. Technical issues prevent Google from properly indexing and ranking your site.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>Generic, Thin Content</h3>
+            <p>
+              Same templated content as every other dental website. Google rewards unique, helpful content—generic pages don't rank or convert patients.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3>Google Business Profile Neglected</h3>
+            <p>
+              Incomplete profile, no posts, few reviews, poor photos. Your Google Business Profile is critical for local SEO—and yours is barely optimized.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">The Solution</span>
+          <h2 class="section-title">Complete AI-Optimized SEO System</h2>
+          <p class="section-description">
+            Everything you need to dominate local search, outrank competitors, and capture organic patients searching for dental services in your area.
+          </p>
+        </div>
+        <div class="seo-services">
+          
+          <div class="seo-service-card">
+            <div class="seo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <h3>Local SEO Domination</h3>
+            <p>
+              Rank #1 for "dentist near me" and location-specific searches. We optimize every local ranking factor so you show up first when patients search in your area.
+            </p>
+            <ul class="seo-features">
+              <li>Google Business Profile optimization</li>
+              <li>Local citation building</li>
+              <li>Location page creation</li>
+              <li>Local schema markup</li>
+              <li>Google Maps optimization</li>
+            </ul>
+          </div>
+
+          <div class="seo-service-card">
+            <div class="seo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>Technical SEO Foundation</h3>
+            <p>
+              Fix all technical issues holding you back. Fast load times, mobile optimization, proper site structure, and error-free crawling for maximum rankings.
+            </p>
+            <ul class="seo-features">
+              <li>Site speed optimization</li>
+              <li>Mobile responsiveness</li>
+              <li>Schema markup implementation</li>
+              <li>XML sitemap optimization</li>
+              <li>Core Web Vitals improvement</li>
+            </ul>
+          </div>
+
+          <div class="seo-service-card">
+            <div class="seo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>AI-Written Content Strategy</h3>
+            <p>
+              High-quality, SEO-optimized content written by AI and refined by experts. Target every service, answer every question, and rank for hundreds of keywords.
+            </p>
+            <ul class="seo-features">
+              <li>Service page optimization</li>
+              <li>Blog content creation</li>
+              <li>FAQ pages</li>
+              <li>Procedure guides</li>
+              <li>Patient education content</li>
+            </ul>
+          </div>
+
+          <div class="seo-service-card">
+            <div class="seo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <circle cx="18" cy="18" r="3"></circle>
+                <circle cx="6" cy="6" r="3"></circle>
+                <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+              </svg>
+            </div>
+            <h3>Link Building & Authority</h3>
+            <p>
+              Build high-quality backlinks from authoritative sites. Increase domain authority and send strong trust signals to Google for better rankings.
+            </p>
+            <ul class="seo-features">
+              <li>High-authority backlinks</li>
+              <li>Local directory submissions</li>
+              <li>Dental industry links</li>
+              <li>Press release distribution</li>
+              <li>Guest post opportunities</li>
+            </ul>
+          </div>
+
+          <div class="seo-service-card">
+            <div class="seo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3>Reputation & Review Management</h3>
+            <p>
+              More reviews mean higher rankings. We help you generate consistent 5-star reviews and manage your online reputation across all platforms.
+            </p>
+            <ul class="seo-features">
+              <li>Review generation system</li>
+              <li>Review monitoring</li>
+              <li>Response management</li>
+              <li>Multi-platform optimization</li>
+              <li>Review schema markup</li>
+            </ul>
+          </div>
+
+          <div class="seo-service-card">
+            <div class="seo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: white;">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3>Ongoing Monitoring & Optimization</h3>
+            <p>
+              SEO is continuous. We monitor rankings, traffic, and conversions daily—making data-driven optimizations to keep you at the top.
+            </p>
+            <ul class="seo-features">
+              <li>Keyword rank tracking</li>
+              <li>Competitor monitoring</li>
+              <li>Traffic analysis</li>
+              <li>Conversion optimization</li>
+              <li>Monthly reporting</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Optimization Section -->
+    <section class="ai-optimization-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">AI-Powered</span>
+          <h2 class="section-title">How AI Accelerates Your SEO Results</h2>
+          <p class="section-description">
+            We leverage cutting-edge AI to deliver results faster and more effectively than traditional SEO agencies.
+          </p>
+        </div>
+        <div class="ai-features-grid">
+          
+          <div class="ai-feature-card">
+            <div class="ai-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+            <h3>AI Content Generation</h3>
+            <p>Generate SEO-optimized content in hours, not weeks. AI writes service pages, blogs, and FAQs that rank—refined by human experts for quality.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <h3>AI Keyword Research</h3>
+            <p>AI analyzes millions of search queries to identify high-value, low-competition keywords your competitors haven't found yet.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3>Predictive Analytics</h3>
+            <p>AI forecasts ranking opportunities and predicts which strategies will deliver the fastest ROI before we implement them.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Competitor Intelligence</h3>
+            <p>AI monitors competitor strategies 24/7—identifying their keywords, backlinks, and content gaps you can exploit for quick wins.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <h3>Automated Technical Audits</h3>
+            <p>AI crawls your site continuously, detecting and alerting us to technical issues before they impact rankings.</p>
+          </div>
+
+          <div class="ai-feature-card">
+            <div class="ai-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--dark-slate-blue);">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3>Real-Time Optimization</h3>
+            <p>AI suggests content improvements, metadata updates, and structural changes in real-time based on ranking performance.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Our Process</span>
+          <h2 class="section-title">How We Get You to #1</h2>
+          <p class="section-description">
+            Our proven SEO methodology delivers consistent first-page rankings in 90-120 days.
+          </p>
+        </div>
+        <div class="process-timeline">
+          <div class="timeline-line"></div>
+          
+          <div class="process-step">
+            <div class="process-number">1</div>
+            <div class="process-content">
+              <span class="process-label">Week 1-2</span>
+              <h3>Comprehensive SEO Audit</h3>
+              <p>
+                Deep analysis of your current SEO health, technical issues, content gaps, backlink profile, and competitive landscape. We identify quick wins and long-term opportunities.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">2</div>
+            <div class="process-content">
+              <span class="process-label">Week 2-4</span>
+              <h3>Technical Foundation & Local Setup</h3>
+              <p>
+                Fix critical technical issues, optimize site speed, implement schema markup, and set up comprehensive local SEO foundation including Google Business Profile optimization.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">3</div>
+            <div class="process-content">
+              <span class="process-label">Week 4-8</span>
+              <h3>Content Strategy & Creation</h3>
+              <p>
+                AI-assisted content creation targeting high-value keywords. Service pages, blog posts, FAQs, and location pages all optimized for search intent and conversion.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">4</div>
+            <div class="process-content">
+              <span class="process-label">Week 8-12</span>
+              <h3>Link Building & Authority Development</h3>
+              <p>
+                Strategic backlink acquisition from high-authority sites. Build domain authority through quality links, citations, and industry partnerships.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-number">5</div>
+            <div class="process-content">
+              <span class="process-label">Month 3-4</span>
+              <h3>Ongoing Optimization & Scaling</h3>
+              <p>
+                Continuous monitoring, testing, and refinement. Expand keyword targeting, create more content, and optimize based on performance data. Rankings and traffic accelerate.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Proven Results</span>
+          <h2 class="section-title">Real SEO Performance from Our Clients</h2>
+          <p class="section-description">
+            These are actual results from dental practices we've worked with—not hypothetical projections.
+          </p>
+        </div>
+        <div class="results-grid">
+          
+          <div class="result-card">
+            <span class="result-number">245%</span>
+            <span class="result-label">Organic Traffic Increase</span>
+            <p class="result-description">Average increase in organic website visitors within 6 months</p>
+          </div>
+
+          <div class="result-card">
+            <span class="result-number">#1-3</span>
+            <span class="result-label">Local Pack Rankings</span>
+            <p class="result-description">Average position for "dentist near me" searches in your area</p>
+          </div>
+
+          <div class="result-card">
+            <span class="result-number">32</span>
+            <span class="result-label">New Patients Monthly</span>
+            <p class="result-description">Average monthly organic patient acquisition after 4 months</p>
+          </div>
+
+          <div class="result-card">
+            <span class="result-number">180</span>
+            <span class="result-label">Keywords Ranking</span>
+            <p class="result-description">Average number of first-page keywords after 6 months</p>
+          </div>
+
+          <div class="result-card">
+            <span class="result-number">60%</span>
+            <span class="result-label">Lower Patient Cost</span>
+            <p class="result-description">Cost per patient from SEO vs paid ads</p>
+          </div>
+
+          <div class="result-card">
+            <span class="result-number">4.8x</span>
+            <span class="result-label">ROI Multiple</span>
+            <p class="result-description">Average return on SEO investment within 12 months</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Practice Benefits</span>
+          <h2 class="section-title">Why SEO Beats Paid Advertising</h2>
+          <p class="section-description">
+            SEO delivers compounding long-term results that paid ads can never match.
+          </p>
+        </div>
+        <div class="benefits-grid">
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <h3>Compounding Returns</h3>
+            <p>Unlike ads that stop when you stop paying, SEO builds momentum. Rankings improve month over month, delivering increasing returns over time.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>60% Lower Cost Per Patient</h3>
+            <p>Organic patients cost 60% less than paid advertising. Once you rank, you get patients for free while competitors keep paying for ads.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <polyline points="17 11 19 13 23 9"></polyline>
+              </svg>
+            </div>
+            <h3>Higher-Quality Patients</h3>
+            <p>Patients who find you organically trust you more and convert at higher rates than paid traffic. They're actively seeking your services.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+              </svg>
+            </div>
+            <h3>Market Authority & Credibility</h3>
+            <p>Ranking #1 positions you as the leading practice in your area. Patients perceive top-ranked practices as more trustworthy and established.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3>24/7 Patient Acquisition</h3>
+            <p>Your website works around the clock. Patients find you at 2 AM, on weekends, and holidays—capturing traffic when competitors are closed.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: white;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Competitive Moat</h3>
+            <p>Once you dominate local search, it's extremely difficult for competitors to displace you. You build a sustainable competitive advantage.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Investment</span>
+          <h2 class="section-title">SEO Service Pricing</h2>
+          <p class="section-description">
+            Comprehensive SEO that delivers first-page rankings and sustainable organic growth.
+          </p>
+        </div>
+        <div class="pricing-card">
+          <span class="pricing-badge">Most Popular</span>
+          <div class="pricing-header">
+            <h3>Complete AI-Optimized SEO</h3>
+          </div>
+          <div class="pricing-amount">$1,997</div>
+          <div class="pricing-period">per month</div>
+          <p class="pricing-description">
+            Everything you need to dominate local search and rank #1 for high-value keywords. No setup fees, 6-month minimum commitment for best results.
+          </p>
+          <ul class="pricing-features">
+            <li>Comprehensive SEO Audit</li>
+            <li>Technical SEO Optimization</li>
+            <li>Local SEO & Google Business Profile</li>
+            <li>AI-Powered Content Creation</li>
+            <li>Keyword Research & Strategy</li>
+            <li>On-Page Optimization</li>
+            <li>High-Authority Link Building</li>
+            <li>Citation Building & Management</li>
+            <li>Schema Markup Implementation</li>
+            <li>Competitor Analysis</li>
+            <li>Review Generation System</li>
+            <li>Monthly Performance Reports</li>
+            <li>Rank Tracking Dashboard</li>
+            <li>Conversion Rate Optimization</li>
+            <li>Dedicated SEO Manager</li>
+          </ul>
+          <div class="pricing-cta">
+            <a href="/book-demo" class="btn-primary" style="width: 100%; justify-content: center; background: var(--dark-slate-blue); border-color: var(--dark-slate-blue); color: white;">
+              Get Free SEO Audit
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <h2>Ready to <span class="highlight">Dominate</span> Local Search?</h2>
+        <p>
+          Stop losing patients to competitors who rank higher. Get a free SEO audit and see exactly what's holding you back from #1 rankings.
+        </p>
+        <div class="cta-buttons">
+          <a href="/book-demo" class="btn-primary">
+            Get Free SEO Audit
+            <span>→</span>
+          </a>
+          <a href="tel:+16505578269" class="btn-secondary">
+            Call (650) 557-8269
+            <span>📞</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+
+    <StickyCTA />
+    <!-- Scripts -->
+    <script>
+      // Sticky CTA Bar
+      window.addEventListener('scroll', function() {
+        const stickyCTA = document.getElementById('stickyCTA');
+        const scrollPosition = window.scrollY;
+        
+        if (scrollPosition > 800) {
+          stickyCTA.classList.add('active');
+        } else {
+          stickyCTA.classList.remove('active');
+        }
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "AI-Optimized SEO for Dental Practices",
+      "description": "Complete AI-powered SEO system that gets dental practices to rank #1 for high-value local keywords, dominate search results, and attract organic patients.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Dentistry Growth Partners",
+        "url": "https://dentistrygrowthpartners.com"
+      },
+      "areaServed": "US",
+      "audience": {
+        "@type": "Audience",
+        "name": "Dental Practices"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1997",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+  </body>
+</html>
