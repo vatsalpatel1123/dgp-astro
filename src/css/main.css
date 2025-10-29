@@ -529,7 +529,7 @@
       content: '✓';
       position: absolute;
       left: 0;
-      color: var(--natural);
+      color: var(--dark-slate-blue);
       font-weight: 700;
       font-size: 18px;
     }
