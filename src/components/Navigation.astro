@@ -1,3 +1,8 @@
+---
+// Get current path for active link highlighting
+const currentPath = Astro.url.pathname;
+---
+
 <!-- ============================================
        NAVBAR SECTION
   ============================================ -->
@@ -34,12 +39,46 @@
       <!-- Desktop Navigation Menu -->
       <nav role="navigation" class="navbar-menu-dark">
         <div class="navbar-menu-left">
-          <a href="/" class="nav-link-dark w--current">Home</a>
-          <a href="/services" class="nav-link-dark">Services</a>
-          <a href="/case-studies" class="nav-link-dark">Case Studies</a>
-          <a href="/about" class="nav-link-dark">About</a>
-          <a href="/blog-listing" class="nav-link-dark">Blog</a>
-          <a href="/contact" class="nav-link-dark">Contact</a>
+          <a href="/" class={`nav-link-dark ${currentPath === '/' ? 'active' : ''}`}>Home</a>
+
+          <!-- Services Dropdown -->
+          <div class="nav-dropdown">
+            <a href="/services" class={`nav-link-dark ${currentPath === '/services' || currentPath.includes('/multi-implant') || currentPath.includes('/high-value') || currentPath.includes('/ai-voice') || currentPath.includes('/patient-communication') || currentPath.includes('/aio-seo') || currentPath.includes('/website-design') ? 'active' : ''}`}>
+              Services
+              <i class="ti ti-chevron-down dropdown-icon"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="/multi-implant-marketing" class="dropdown-item">
+                <i class="ti ti-dental"></i>
+                Multi-Implant Marketing
+              </a>
+              <a href="/high-value-case-marketing" class="dropdown-item">
+                <i class="ti ti-diamond"></i>
+                High-Value Case Marketing
+              </a>
+              <a href="/ai-voice-receptionist" class="dropdown-item">
+                <i class="ti ti-phone-call"></i>
+                AI Scheduling Receptionist
+              </a>
+              <a href="/patient-communication" class="dropdown-item">
+                <i class="ti ti-messages"></i>
+                Automated Patient Communication
+              </a>
+              <a href="/aio-seo" class="dropdown-item">
+                <i class="ti ti-search"></i>
+                AIO SEO
+              </a>
+              <a href="/website-design-management" class="dropdown-item">
+                <i class="ti ti-world"></i>
+                Website Design & Management
+              </a>
+            </div>
+          </div>
+
+          <a href="/case-studies" class={`nav-link-dark ${currentPath === '/case-studies' ? 'active' : ''}`}>Case Studies</a>
+          <a href="/about" class={`nav-link-dark ${currentPath === '/about' ? 'active' : ''}`}>About</a>
+          <a href="/blog-listing" class={`nav-link-dark ${currentPath === '/blog-listing' ? 'active' : ''}`}>Blog</a>
+          <a href="/contact" class={`nav-link-dark ${currentPath === '/contact' ? 'active' : ''}`}>Contact</a>
         </div>
         <div class="navbar-menu-right">
           <div class="navbar-button-wrapper">
@@ -59,3 +98,128 @@
       </button>
     </div>
   </div>
+
+<style>
+  /* Dropdown Menu Styles */
+  .nav-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-dropdown .nav-link-dark {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .dropdown-icon {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 280px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 8px;
+    padding: 8px 0;
+  }
+
+  .nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #1d1d1d;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .dropdown-item i {
+    font-size: 18px;
+    color: #083981;
+  }
+
+  .dropdown-item:hover {
+    background: #f5f5f5;
+    border-left-color: #c6ff53;
+    padding-left: 24px;
+  }
+
+  /* Active Link Styles */
+  .nav-link-dark.active {
+    color: #c6ff53 !important;
+    position: relative;
+  }
+
+  .nav-link-dark.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #c6ff53;
+    border-radius: 2px;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 991px) {
+    .dropdown-menu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0.05);
+      margin-top: 8px;
+      border-radius: 8px;
+    }
+
+    .dropdown-item {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+
+    .dropdown-item i {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.querySelector('.navbar-menu-button');
+    const navMenu = document.querySelector('.navbar-menu-dark');
+
+    if (menuButton && navMenu) {
+      menuButton.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuButton.classList.toggle('active');
+      });
+    }
+  });
+</script>

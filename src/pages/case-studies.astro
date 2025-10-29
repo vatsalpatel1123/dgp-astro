@@ -93,11 +93,11 @@ import FooterBar from '../components/FooterBar.astro';
             Complete breakdown comparing lead quality strategies vs volume-based approaches, including conversion rates, cost per acquisition, and long-term ROI metrics.
           </p>
           <div class="download-actions">
-            <button class="btn-preview" data-pdf="campaign-analysis.pdf">
+            <button class="btn-preview" data-pdf="/pdf/68d53b784cbd20d70bf3aaad.pdf">
               <i class="ti ti-eye"></i>
               Preview
             </button>
-            <a href="/downloads/campaign-analysis.pdf" download class="btn-download">
+            <a href="/pdf/68d53b784cbd20d70bf3aaad.pdf" download class="btn-download">
               <i class="ti ti-download"></i>
               Download PDF
             </a>
@@ -115,11 +115,11 @@ import FooterBar from '../components/FooterBar.astro';
             Real results from Summit Dental's implementation of our quality-first lead generation system, including month-by-month breakdown of consultations, conversion rates, and revenue growth.
           </p>
           <div class="download-actions">
-            <button class="btn-preview" data-pdf="summit-dental-case-study.pdf">
+            <button class="btn-preview" data-pdf="/pdf/68d53b74f2acc73a59f6dac4.pdf">
               <i class="ti ti-eye"></i>
               Preview
             </button>
-            <a href="/downloads/summit-dental-case-study.pdf" download class="btn-download">
+            <a href="/pdf/68d53b74f2acc73a59f6dac4.pdf" download class="btn-download">
               <i class="ti ti-download"></i>
               Download PDF
             </a>
@@ -434,7 +434,7 @@ import FooterBar from '../components/FooterBar.astro';
         button.addEventListener('click', function() {
           const pdfFile = this.getAttribute('data-pdf');
           if (pdfViewer && modal) {
-            pdfViewer.src = `/downloads/${pdfFile}`;
+            pdfViewer.src = pdfFile;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
           }
