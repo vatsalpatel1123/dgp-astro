@@ -321,30 +321,8 @@ import FooterBar from '../components/FooterBar.astro'
        JAVASCRIPT
   ============================================ -->
   <script>
-    // Mobile menu toggle
+    // Smooth scroll for anchor links
     document.addEventListener('DOMContentLoaded', function() {
-      const menuButton = document.querySelector('.navbar-menu-button');
-      const menu = document.querySelector('.navbar-menu-dark');
-      
-      if (menuButton && menu) {
-        menuButton.addEventListener('click', function() {
-          menuButton.classList.toggle('w--open');
-          menu.classList.toggle('w--open');
-        });
-      }
-
-      // Close mobile menu when clicking a link
-      const navLinks = document.querySelectorAll('.nav-link-dark');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          if (window.innerWidth <= 991) {
-            menuButton?.classList.remove('w--open');
-            menu?.classList.remove('w--open');
-          }
-        });
-      });
-
-      // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();

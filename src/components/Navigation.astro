@@ -49,27 +49,27 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
               <i class="ti ti-chevron-down dropdown-icon"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="/multi-implant-marketing" class="dropdown-item">
+              <a href="/multi-implant-marketing" class={`dropdown-item ${currentPath === '/multi-implant-marketing' ? 'active' : ''}`}>
                 <i class="ti ti-dental"></i>
                 Multi-Implant Marketing
               </a>
-              <a href="/high-value-case-marketing" class="dropdown-item">
+              <a href="/high-value-case-marketing" class={`dropdown-item ${currentPath === '/high-value-case-marketing' ? 'active' : ''}`}>
                 <i class="ti ti-diamond"></i>
                 High-Value Case Marketing
               </a>
-              <a href="/ai-voice-receptionist" class="dropdown-item">
+              <a href="/ai-voice-receptionist" class={`dropdown-item ${currentPath === '/ai-voice-receptionist' ? 'active' : ''}`}>
                 <i class="ti ti-phone-call"></i>
                 AI Scheduling Receptionist
               </a>
-              <a href="/patient-communication" class="dropdown-item">
+              <a href="/patient-communication" class={`dropdown-item ${currentPath === '/patient-communication' ? 'active' : ''}`}>
                 <i class="ti ti-messages"></i>
                 Automated Patient Communication
               </a>
-              <a href="/aio-seo" class="dropdown-item">
+              <a href="/aio-seo" class={`dropdown-item ${currentPath === '/aio-seo' ? 'active' : ''}`}>
                 <i class="ti ti-search"></i>
                 AIO SEO
               </a>
-              <a href="/website-design-management" class="dropdown-item">
+              <a href="/website-design-management" class={`dropdown-item ${currentPath === '/website-design-management' ? 'active' : ''}`}>
                 <i class="ti ti-world"></i>
                 Website Design & Management
               </a>
@@ -186,26 +186,55 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     border-radius: 2px;
   }
 
+  /* Dropdown item active state */
+  .dropdown-item.active {
+    background: rgba(198, 255, 83, 0.1);
+    border-left-color: #c6ff53;
+    color: #c6ff53;
+    font-weight: 700;
+  }
+
   /* Mobile Responsive */
   @media (max-width: 991px) {
     .dropdown-menu {
       position: static;
-      opacity: 1;
-      visibility: visible;
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
       transform: none;
       box-shadow: none;
       background: rgba(255, 255, 255, 0.05);
-      margin-top: 8px;
+      margin-top: 0;
       border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dropdown.mobile-open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      max-height: 500px;
+      margin-top: 8px;
     }
 
     .dropdown-item {
       padding: 10px 16px;
       font-size: 13px;
+      color: #ffffff;
     }
 
     .dropdown-item i {
       font-size: 16px;
+      color: #c6ff53 !important;
+    }
+
+    .dropdown-item.active {
+      background: rgba(198, 255, 83, 0.15);
+      color: #c6ff53;
+    }
+
+    .navbar-button-wrapper {
+      margin-top: 16px;
     }
   }
 </style>
@@ -215,12 +244,48 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('.navbar-menu-button');
     const navMenu = document.querySelector('.navbar-menu-dark');
+    const navDropdown = document.querySelector('.nav-dropdown');
+    const servicesLink = navDropdown?.querySelector('.nav-link-dark');
 
+    // Main menu toggle
     if (menuButton && navMenu) {
       menuButton.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        menuButton.classList.toggle('active');
+        navMenu.classList.toggle('w--open');
+        menuButton.classList.toggle('w--open');
       });
     }
+
+    // Mobile dropdown toggle (click on Services link)
+    if (servicesLink && navDropdown) {
+      servicesLink.addEventListener('click', (e) => {
+        if (window.innerWidth <= 991) {
+          e.preventDefault();
+          navDropdown.classList.toggle('mobile-open');
+        }
+      });
+    }
+
+    // Close mobile menu when clicking a dropdown item
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 991) {
+          menuButton?.classList.remove('w--open');
+          navMenu?.classList.remove('w--open');
+          navDropdown?.classList.remove('mobile-open');
+        }
+      });
+    });
+
+    // Close mobile menu when clicking other nav links
+    const navLinks = document.querySelectorAll('.nav-link-dark:not(.nav-dropdown .nav-link-dark)');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 991) {
+          menuButton?.classList.remove('w--open');
+          navMenu?.classList.remove('w--open');
+        }
+      });
+    });
   });
 </script>

@@ -13,8 +13,8 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
-  padding: 200px 24px 100px;
-  /* margin-top: 120px; */
+  padding: 140px 24px 100px;
+  margin-top: 0;
 }
 
 /* Animated grid background */
@@ -743,8 +743,8 @@
 ============================================ */
 @media (max-width: 991px) {
   .case-studies-hero {
-    padding: 160px 24px 100px;
-    /* margin-top: 120px; */
+    padding: 120px 24px 100px;
+    margin-top: 0;
     min-height: 85vh;
   }
 
@@ -792,8 +792,8 @@
 
 @media (max-width: 767px) {
   .case-studies-hero {
-    padding: 140px 20px 80px;
-    margin-top: 100px;
+    padding: 120px 20px 80px;
+    margin-top: 0;
     min-height: 80vh;
   }
 
@@ -897,8 +897,8 @@
 
 @media (max-width: 479px) {
   .case-studies-hero {
-    padding: 120px 16px 60px;
-    margin-top: 80px;
+    padding: 110px 16px 60px;
+    margin-top: 0;
   }
 
   .case-studies-hero .hero-background::before {

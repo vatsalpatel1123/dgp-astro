@@ -841,7 +841,8 @@
       .navbar-menu-dark {
         display: none;
         position: fixed;
-        top: 120px;
+        /* top: 120px; */
+        top: 70px;
         left: 0;
         right: 0;
         background: var(--dark-slate-blue);
