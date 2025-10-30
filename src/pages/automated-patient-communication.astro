@@ -1,7 +1,9 @@
 ---
 // Import components here
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import '../css/main.css';
+import '../components/Navigation.astro'
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro'
 import StickyCTA from '../components/StickyCTA.astro';
 ---
 
@@ -1007,7 +1009,7 @@ import StickyCTA from '../components/StickyCTA.astro';
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
-    <Navbar />
+    <Navigation />
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -1694,7 +1696,7 @@ import StickyCTA from '../components/StickyCTA.astro';
     </section>
 
     <!-- Footer Component -->
-    <Footer />
+    <FooterBar />
 
     <!-- Sticky CTA Component -->
     <StickyCTA />

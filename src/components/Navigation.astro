@@ -1,6 +1,7 @@
 ---
 // Get current path for active link highlighting
-const currentPath = Astro.url.pathname;
+// Remove trailing slash for consistent comparison
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <!-- ============================================

@@ -119,6 +119,28 @@
   text-align: center;
 }
 
+.case-studies-hero .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(198, 255, 83, 0.3);
+  padding: 12px 28px;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  transition: all 0.3s ease;
+  animation: caseFadeInUp 0.8s ease-out;
+}
+
+.case-studies-hero .hero-badge i {
+  font-size: 20px;
+  color: #c6ff53;
+}
+
 .case-studies-hero h1 {
   font-size: clamp(36px, 5.5vw, 68px);
   font-weight: 800;
@@ -881,6 +903,11 @@
 
   .case-studies-hero .hero-background::before {
     background-size: 30px 30px;
+  }
+
+  .case-studies-hero .hero-badge {
+    padding: 10px 20px;
+    font-size: 13px;
   }
 
   .case-studies-hero h1 {
