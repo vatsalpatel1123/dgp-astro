@@ -1,7 +1,6 @@
 ---
-// services.astro
+// services.astro - Updated based on latest client feedback
 import '../css/main.css';
-import '../css/about-dgp.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
 ---
@@ -10,8 +9,8 @@ import FooterBar from '../components/FooterBar.astro';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Solutions | Dentistry Growth Partners</title>
-  <meta name="description" content="Complete marketing and optimization solutions for dental practices. Drive consistent patient flow and increase conversion rates.">
+  <title>Dental Marketing, Optimization, & Conversion Services | Dentistry Growth Partners</title>
+  <meta name="description" content="Solutions designed to overcome every bottleneck in your business. Complete marketing and optimization for dental practices.">
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
@@ -31,15 +30,18 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
+
+      /* Legacy variable mappings for gradual transition */
+      --dark-slate-blue: #07387D;
+      --dark-olive-green: #051023;
     }
 
     body {
@@ -57,111 +59,35 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     /* ============================================
-       HERO SECTION
+       HERO SECTION WITH BACKGROUND
     ============================================ */
     .services-hero {
-      min-height: 90vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
-      padding: 200px 24px 100px;
-      /* margin-top: 120px; */
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--accent-blue) 100%);
+      padding: 180px 24px 100px;
     }
 
-    /* Animated grid background */
-    .services-hero .hero-background {
+    /* Background Image Overlay */
+    .services-hero .hero-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
-      opacity: 0.15;
+      background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
       z-index: 0;
     }
 
-    .services-hero .hero-background::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(60px, 60px);
-      }
-    }
-
-    .services-hero .hero-shapes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-
-    .services-hero .shape {
-      position: absolute;
-      filter: blur(80px);
-      opacity: 0.3;
-      will-change: transform;
-      pointer-events: none;
-    }
-
-    .services-hero .shape-1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
-      animation: floatSlow 15s infinite ease-in-out;
-    }
-
-    .services-hero .shape-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
-      bottom: -250px;
-      left: -250px;
-      animation: floatSlow 18s infinite ease-in-out reverse;
-    }
-
-    .services-hero .shape-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      top: 15%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSlow 20s infinite ease-in-out;
-    }
-
-    @keyframes floatSlow {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(40px, -40px) scale(1.1);
-      }
-      66% {
-        transform: translate(-30px, 30px) scale(0.95);
-      }
-    }
-
     .services-hero .hero-container {
-      max-width: 1200px;
+      max-width: 1100px;
       width: 100%;
       margin: 0 auto;
       position: relative;
@@ -173,29 +99,8 @@ import FooterBar from '../components/FooterBar.astro';
       text-align: center;
     }
 
-    .services-hero .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
-      padding: 12px 28px;
-      border-radius: 50px;
-      color: var(--white);
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 32px;
-      transition: all 0.3s ease;
-    }
-
-    .services-hero .hero-badge i {
-      font-size: 20px;
-      color: var(--natural);
-    }
-
     .services-hero h1 {
-      font-size: clamp(36px, 5.5vw, 68px);
+      font-size: clamp(36px, 5.5vw, 58px);
       font-weight: 800;
       color: #ffffff;
       line-height: 1.2;
@@ -206,124 +111,12 @@ import FooterBar from '../components/FooterBar.astro';
       padding: 0 20px;
     }
 
-    .services-hero .highlight-animated {
-      color: var(--natural);
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .services-hero .highlight-animated::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: #c6ff53;
-      opacity: 0.3;
-      border-radius: 4px;
-      transform: scaleX(0);
-      animation: underlineGrow 0.8s ease-out 0.3s forwards;
-    }
-
-    @keyframes underlineGrow {
-      to {
-        transform: scaleX(1);
-      }
-    }
-
-    .services-hero .hero-description {
-      font-size: 20px;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.7;
+    .services-hero .hero-subtitle {
+      font-size: 22px;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.6;
       max-width: 800px;
-      margin: 0 auto 48px;
-    }
-
-    .services-hero .hero-stats {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
-
-    .services-hero .hero-stat {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.2);
-      padding: 20px 32px;
-      border-radius: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .services-hero .hero-stat:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(198, 255, 83, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .services-hero .stat-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--natural), #d4ff8d);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: var(--dark-slate-blue);
-    }
-
-    .services-hero .stat-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .services-hero .stat-label {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .services-hero .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .services-hero .scroll-indicator:hover {
-      color: var(--natural);
-      transform: translateY(4px);
-    }
-
-    .services-hero .scroll-indicator i {
-      font-size: 24px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
+      margin: 0 auto;
     }
 
     /* ============================================
@@ -339,7 +132,7 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 28px;
     }
 
     .service-card {
@@ -363,13 +156,13 @@ import FooterBar from '../components/FooterBar.astro';
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.03) 100%);
+      background: linear-gradient(135deg, transparent 0%, rgba(36, 142, 239, 0.03) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
     .service-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     }
@@ -381,13 +174,13 @@ import FooterBar from '../components/FooterBar.astro';
     .service-icon {
       width: 100px;
       height: 100px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 48px;
-      color: var(--natural);
+      color: var(--white);
       flex-shrink: 0;
       transition: all 0.4s ease;
       position: relative;
@@ -396,7 +189,7 @@ import FooterBar from '../components/FooterBar.astro';
 
     .service-card:hover .service-icon {
       transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
     }
 
     .service-content {
@@ -407,7 +200,7 @@ import FooterBar from '../components/FooterBar.astro';
     .service-content h3 {
       font-size: 28px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
@@ -415,7 +208,7 @@ import FooterBar from '../components/FooterBar.astro';
     .service-content p {
       font-size: 17px;
       color: var(--dim-grey);
-      line-height: 1.6;
+      line-height: 1.7;
       margin: 0;
     }
 
@@ -424,24 +217,24 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 16px 32px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 16px;
       font-weight: 700;
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 2px solid var(--natural);
+      border: 2px solid var(--accent-blue);
       flex-shrink: 0;
       position: relative;
       z-index: 1;
     }
 
     .service-cta:hover {
-      background: var(--dark-slate-blue);
-      color: var(--natural);
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
       transform: translateX(4px);
-      box-shadow: 0 8px 24px rgba(8, 57, 129, 0.2);
+      box-shadow: 0 8px 24px rgba(7, 56, 125, 0.3);
     }
 
     .service-cta i {
@@ -458,24 +251,13 @@ import FooterBar from '../components/FooterBar.astro';
     ============================================ */
     .final-cta-section {
       padding: 100px 24px;
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: var(--primary-light);
       position: relative;
       overflow: hidden;
     }
 
-    .final-cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
-      opacity: 0.3;
-    }
-
     .cta-content {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       text-align: center;
       position: relative;
@@ -486,24 +268,24 @@ import FooterBar from '../components/FooterBar.astro';
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 2px solid var(--natural);
-      padding: 10px 24px;
+      background: var(--primary-blue);
+      color: var(--white);
+      padding: 12px 28px;
       border-radius: 50px;
-      color: var(--natural);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .cta-badge i {
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .final-cta-section h2 {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
-      color: var(--white);
+      color: var(--primary-dark);
       margin-bottom: 20px;
       line-height: 1.2;
       letter-spacing: -1px;
@@ -511,7 +293,7 @@ import FooterBar from '../components/FooterBar.astro';
 
     .final-cta-section p {
       font-size: 18px;
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--dim-grey);
       margin-bottom: 40px;
       line-height: 1.6;
     }
@@ -521,22 +303,22 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 20px 48px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 18px;
       font-weight: 700;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
     }
 
     .cta-button:hover {
-      background: transparent;
-      color: var(--natural);
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(7, 56, 125, 0.4);
     }
 
     .cta-button i {
@@ -566,8 +348,8 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 16px 24px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--primary-blue);
+      color: var(--white);
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
@@ -579,8 +361,7 @@ import FooterBar from '../components/FooterBar.astro';
     .floating-btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      background: var(--dark-slate-blue);
-      color: var(--natural);
+      background: var(--accent-blue);
     }
 
     /* ============================================
@@ -588,34 +369,16 @@ import FooterBar from '../components/FooterBar.astro';
     ============================================ */
     @media (max-width: 991px) {
       .services-hero {
-        padding: 160px 24px 100px;
-        /* margin-top: 120px; */
-        min-height: 85vh;
+        padding: 160px 24px 80px;
+        min-height: 60vh;
       }
 
       .services-hero h1 {
-        font-size: clamp(36px, 6vw, 52px);
+        font-size: clamp(32px, 6vw, 48px);
       }
 
-      .services-hero .shape-1,
-      .services-hero .shape-2,
-      .services-hero .shape-3 {
-        filter: blur(60px);
-      }
-
-      .services-hero .shape-1 {
-        width: 400px;
-        height: 400px;
-      }
-
-      .services-hero .shape-2 {
-        width: 350px;
-        height: 350px;
-      }
-
-      .services-hero .shape-3 {
-        width: 300px;
-        height: 300px;
+      .services-hero .hero-subtitle {
+        font-size: 19px;
       }
 
       .service-card {
@@ -644,73 +407,18 @@ import FooterBar from '../components/FooterBar.astro';
 
     @media (max-width: 767px) {
       .services-hero {
-        padding: 140px 20px 80px;
-        margin-top: 100px;
-        min-height: 80vh;
-      }
-
-      .services-hero .hero-background::before {
-        background-size: 40px 40px;
+        padding: 140px 20px 60px;
+        min-height: 50vh;
       }
 
       .services-hero h1 {
-        font-size: clamp(28px, 7vw, 42px);
+        font-size: clamp(28px, 7vw, 38px);
         margin-bottom: 20px;
         padding: 0 10px;
       }
 
-      .services-hero .hero-description {
-        font-size: 18px;
-        margin-bottom: 40px;
-      }
-
-      .services-hero .shape-1,
-      .services-hero .shape-2,
-      .services-hero .shape-3 {
-        filter: blur(50px);
-      }
-
-      .services-hero .shape-1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        right: -100px;
-      }
-
-      .services-hero .shape-2 {
-        width: 250px;
-        height: 250px;
-        bottom: -150px;
-        left: -150px;
-      }
-
-      .services-hero .shape-3 {
-        width: 200px;
-        height: 200px;
-      }
-
-      .services-hero .hero-stats {
-        gap: 20px;
-        margin-bottom: 40px;
-      }
-
-      .services-hero .hero-stat {
-        padding: 16px 24px;
-      }
-
-      .services-hero .stat-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-
-      .services-hero .stat-label {
-        font-size: 13px;
-      }
-
-      .services-hero .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
+      .services-hero .hero-subtitle {
+        font-size: 17px;
       }
 
       .service-card {
@@ -782,40 +490,16 @@ import FooterBar from '../components/FooterBar.astro';
 
     @media (max-width: 479px) {
       .services-hero {
-        padding: 120px 16px 60px;
-        margin-top: 80px;
-      }
-
-      .services-hero .hero-background::before {
-        background-size: 30px 30px;
+        padding: 130px 16px 50px;
       }
 
       .services-hero h1 {
-        font-size: clamp(24px, 8vw, 36px);
+        font-size: clamp(24px, 8vw, 32px);
         padding: 0 5px;
       }
 
-      .services-hero .hero-description {
+      .services-hero .hero-subtitle {
         font-size: 16px;
-      }
-
-      .services-hero .shape-1,
-      .services-hero .shape-2,
-      .services-hero .shape-3 {
-        display: none;
-      }
-
-      .services-hero .hero-stats {
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 32px;
-      }
-
-      .services-hero .hero-stat {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-        padding: 14px 20px;
       }
 
       .service-content h3 {
@@ -831,65 +515,23 @@ import FooterBar from '../components/FooterBar.astro';
   </style>
 </head>
 <body>
-    <Navigation />
+  <Navigation />
+
   <!-- ============================================
        HERO SECTION
   ============================================ -->
   <section class="services-hero">
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+    <!-- Background Image Overlay -->
+    <div class="hero-background-overlay"></div>
 
     <div class="hero-container">
-      <div class="hero-badge" data-aos="fade-up">
-        <i class="ti ti-checkup-list"></i>
-        <span>Our Solutions</span>
-      </div>
-
-      <h1 data-aos="fade-up" data-aos-delay="100">
-        Complete Solutions to <span class="highlight-animated">Improve</span> Your Practice
+      <h1>
+        Dental Marketing, Optimization, & Conversion Services to Grow Your Practice
       </h1>
 
-      <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
-        Our comprehensive suite of solutions to drive consistent patient flow, optimize your practice,
-        and increase conversion and retention.
+      <p class="hero-subtitle">
+        Solutions designed to overcome every bottleneck in your business
       </p>
-
-      <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
-        <div class="hero-stat">
-          <div class="stat-icon">
-            <i class="ti ti-dental"></i>
-          </div>
-          <div class="stat-content">
-            <span class="stat-label">High-Value Cases</span>
-          </div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-icon">
-            <i class="ti ti-robot"></i>
-          </div>
-          <div class="stat-content">
-            <span class="stat-label">AI Automation</span>
-          </div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-icon">
-            <i class="ti ti-chart-line"></i>
-          </div>
-          <div class="stat-content">
-            <span class="stat-label">Growth Systems</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-        <span>Explore our solutions</span>
-        <i class="ti ti-chevron-down"></i>
-      </div>
     </div>
   </section>
 
@@ -900,41 +542,39 @@ import FooterBar from '../components/FooterBar.astro';
     <div class="section-container">
       <div class="services-list">
 
-        <!-- Service 1: Multi-Implant Marketing -->
+        <!-- Service 1: All-On-X AI -->
         <div class="service-card">
           <div class="service-icon">
             <i class="ti ti-dental"></i>
           </div>
           <div class="service-content">
-            <h3>Multi-Implant Marketing</h3>
+            <h3>All-On-X AI</h3>
             <p>
-              Targeted marketing campaigns specifically designed to attract high-value multi-implant cases 
-              worth $15k-75k directly to your practice.
+              Infrastructure that consistently attracts and converts high-value multi-implant cases worth $15k-75k on autopilot.
             </p>
           </div>
-          <a href="/multi-implant-marketing" class="service-cta">
+          <a href="/all-on-x-ai" class="service-cta">
             Learn More
             <i class="ti ti-arrow-right"></i>
           </a>
         </div>
 
         <!-- Service 2: High-Value Case Marketing -->
-        <div class="service-card">
+        <!-- <div class="service-card">
           <div class="service-icon">
             <i class="ti ti-diamond"></i>
           </div>
           <div class="service-content">
             <h3>High-Value Case Marketing</h3>
             <p>
-              Premium marketing strategies focused on attracting high value cases like veneers, crowns, 
-              bridges and more.
+              Premium marketing strategies focused on attracting high value cases like veneers, crowns, bridges and more.
             </p>
           </div>
           <a href="/high-value-case-marketing" class="service-cta">
             Learn More
             <i class="ti ti-arrow-right"></i>
           </a>
-        </div>
+        </div> -->
 
         <!-- Service 3: AI Voice Receptionist -->
         <div class="service-card">
@@ -942,10 +582,9 @@ import FooterBar from '../components/FooterBar.astro';
             <i class="ti ti-phone-call"></i>
           </div>
           <div class="service-content">
-            <h3>AI Scheduling Receptionist</h3>
+            <h3>AI Voice Receptionist</h3>
             <p>
-              24/7 AI Voice Receptionist that answers patient's questions, books appointments, and qualifies 
-              leads automatically—never miss another opportunity.
+              24/7 AI Voice Assistant that takes calls when your team can't, answers patient's questions, books appointments, and qualifies leads automatically—never miss another opportunity again.
             </p>
           </div>
           <a href="/ai-voice-receptionist" class="service-cta">
@@ -960,10 +599,9 @@ import FooterBar from '../components/FooterBar.astro';
             <i class="ti ti-messages"></i>
           </div>
           <div class="service-content">
-            <h3>Automated Patient Communication</h3>
+            <h3>Patient Communication</h3>
             <p>
-              Automated SMS, email, and voice outreach that keep your practice top of mind, nurture your 
-              patient base, and keep them self-booking follow up appointments throughout the year.
+              Automated multi-channel outreach that keeps your practice top of mind and your patient base self-booking appointments. Reactivate your database or run review and referral campaigns to uncover hidden revenue in your PMS.
             </p>
           </div>
           <a href="/patient-communication" class="service-cta">
@@ -980,8 +618,7 @@ import FooterBar from '../components/FooterBar.astro';
           <div class="service-content">
             <h3>AIO SEO</h3>
             <p>
-              All-in-one SEO solution to dominate local search rankings, get recommended by ChatGPT 
-              and become the #1 choice for implant cases in your area.
+              Modern SEO that ranks your practice top 3 on Google and in AI search engine recommendations so patients find you no matter where they search. 3-5x Web Traffic and organic results in just 30 days.
             </p>
           </div>
           <a href="/aio-seo" class="service-cta">
@@ -990,7 +627,24 @@ import FooterBar from '../components/FooterBar.astro';
           </a>
         </div>
 
-        <!-- Service 6: Website Design & Management -->
+        <!-- Service 6: Social Media Content + Planning -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="ti ti-calendar-event"></i>
+          </div>
+          <div class="service-content">
+            <h3>Social Media Content + Planning</h3>
+            <p>
+              Content + 90 Day Posting Calendar crafted by deep AI research to increase visibility, build credibility, and attract patients.
+            </p>
+          </div>
+          <a href="/social-media-content-planning" class="service-cta">
+            Learn More
+            <i class="ti ti-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 7: Website Design & Management -->
         <div class="service-card">
           <div class="service-icon">
             <i class="ti ti-world"></i>
@@ -998,8 +652,7 @@ import FooterBar from '../components/FooterBar.astro';
           <div class="service-content">
             <h3>Website Design & Management</h3>
             <p>
-              Custom, high-converting websites designed specifically for dental practices with ongoing 
-              management and optimization.
+              Custom, high-converting websites designed specifically for dental practices with ongoing management and optimization.
             </p>
           </div>
           <a href="/website-design-management" class="service-cta">
@@ -1018,7 +671,7 @@ import FooterBar from '../components/FooterBar.astro';
   <section class="final-cta-section">
     <div class="cta-content">
       <div class="cta-badge">
-        <i class="ti ti-star"></i>
+        <i class="ti ti-map-pin"></i>
         <span>Limited Availability</span>
       </div>
       
@@ -1034,6 +687,7 @@ import FooterBar from '../components/FooterBar.astro';
       </a>
     </div>
   </section>
+
   <FooterBar />
 
   <!-- ============================================
@@ -1069,33 +723,7 @@ import FooterBar from '../components/FooterBar.astro';
         });
       }, observerOptions);
 
-      // Observe all elements with data-aos attribute
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-      });
-
-      // Animated highlight text
-      const highlights = document.querySelectorAll('.highlight-animated');
-      highlights.forEach((highlight, index) => {
-        setTimeout(() => {
-          highlight.classList.add('active');
-        }, 1000 + (index * 200));
-      });
-
-      // Scroll indicator animation
-      const scrollIndicator = document.querySelector('.scroll-indicator');
-      if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-          const servicesSection = document.querySelector('.services-section');
-          if (servicesSection) {
-            servicesSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
+      // Animate service cards
       document.querySelectorAll('.service-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';

@@ -1,5 +1,5 @@
 ---
-// aio-seo.astro
+// aio-seo.astro - Updated
 import '../css/main.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
@@ -9,20 +9,16 @@ import FooterBar from '../components/FooterBar.astro';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIO SEO (All-In-One SEO) | Dentistry Growth Partners</title>
-  <meta name="description" content="Dominate local search rankings and become the #1 choice for high-value implant cases in your area. Get recommended by ChatGPT and other AI search engines.">
+  <title>All-In-One SEO | Dentistry Growth Partners</title>
+  <meta name="description" content="Dominate local search rankings and get recommended by ChatGPT & other AI Models to become the #1 choice for multi-implants and dental help in your area.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <!-- Favicon -->
   <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   
   <style>
-    /* ============================================
-       RESET & BASE STYLES
-    ============================================ */
     * {
       margin: 0;
       padding: 0;
@@ -30,15 +26,14 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
     }
 
     body {
@@ -55,112 +50,85 @@ import FooterBar from '../components/FooterBar.astro';
       padding: 0 24px;
     }
 
-    /* ============================================
-       HERO SECTION
-    ============================================ */
+    /* HERO SECTION */
     .hero-section {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
-      padding: 140px 24px 80px;
-      margin-top: 0;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--accent-blue) 100%);
+      padding: 160px 24px 100px;
     }
 
-    /* Animated grid background */
-    .hero-section .hero-background {
+    /* Animated gradient orbs */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: floatOrb 20s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: floatOrb 25s ease-in-out infinite reverse;
+      z-index: 1;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+
+    .hero-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
-      opacity: 0.15;
+      background-image: url('https://images.unsplash.com/photo-1551076805-e1869033e561?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
       z-index: 0;
     }
 
-    .hero-section .hero-background::before {
+    /* Dot pattern overlay */
+    .hero-background-overlay::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(60px, 60px);
-      }
-    }
-
-    .hero-section .hero-shapes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 1;
     }
 
-    .hero-section .shape {
-      position: absolute;
-      filter: blur(100px);
-      opacity: 0.3;
-      will-change: transform;
-      pointer-events: none;
-    }
-
-    .hero-section .shape-1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
-      animation: floatSlow 18s infinite ease-in-out;
-    }
-
-    .hero-section .shape-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
-      bottom: -200px;
-      left: -200px;
-      animation: floatSlow 22s infinite ease-in-out reverse;
-    }
-
-    .hero-section .shape-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSlow 25s infinite ease-in-out;
-    }
-
-    @keyframes floatSlow {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(40px, -40px) scale(1.1);
-      }
-      66% {
-        transform: translate(-30px, 30px) scale(0.95);
-      }
-    }
-
-    .hero-section .hero-container {
-      max-width: 1200px;
+    .hero-container {
+      max-width: 1100px;
       width: 100%;
       margin: 0 auto;
       position: relative;
@@ -172,177 +140,124 @@ import FooterBar from '../components/FooterBar.astro';
       text-align: center;
     }
 
-    .hero-section .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
-      padding: 12px 28px;
-      border-radius: 50px;
-      color: var(--white);
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 32px;
-      transition: all 0.3s ease;
-    }
-
-    .hero-section .hero-badge i {
-      font-size: 20px;
-      color: var(--natural);
+    .hero-content {
+      text-align: center;
+      position: relative;
     }
 
     .hero-section h1 {
-      font-size: clamp(40px, 5.5vw, 68px);
+      font-size: clamp(42px, 5.5vw, 62px);
       font-weight: 800;
       color: #ffffff;
-      line-height: 1.2;
-      margin: 0 auto 24px;
+      line-height: 1.15;
+      margin: 0 0 24px 0;
       letter-spacing: -1.8px;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      max-width: 1000px;
-      padding: 0 20px;
-    }
-
-    .hero-section .highlight-animated {
-      color: var(--natural);
       position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
-    .hero-section .highlight-animated::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: #c6ff53;
-      opacity: 0.3;
-      border-radius: 4px;
-      transform: scaleX(0);
-      animation: underlineGrow 0.8s ease-out 0.3s forwards;
-    }
-
-    @keyframes underlineGrow {
-      to {
-        transform: scaleX(1);
-      }
-    }
-
-    .hero-section .hero-subtitle {
-      font-size: clamp(18px, 2.2vw, 22px);
+    .hero-subtitle {
+      font-size: clamp(20px, 2.2vw, 24px);
       color: rgba(255, 255, 255, 0.95);
       line-height: 1.6;
-      margin-bottom: 48px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-section .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 18px 42px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
-      font-size: 17px;
-      font-weight: 700;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
-      margin-bottom: 28px;
-    }
-
-    .hero-section .hero-cta:hover {
-      background: transparent;
-      color: var(--natural);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
-    }
-
-    .hero-section .hero-cta i {
-      font-size: 22px;
-    }
-
-    .hero-section .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13px;
+      margin-bottom: 0;
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 8px;
     }
 
-    .hero-section .scroll-indicator:hover {
-      color: var(--natural);
-      transform: translateY(4px);
-    }
-
-    .hero-section .scroll-indicator i {
-      font-size: 22px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
-    }
-
-    /* ============================================
-       FEATURES SECTION
-    ============================================ */
-    .features-section {
+    /* WHY IT MATTERS SECTION */
+    .why-matters-section {
       padding: 120px 24px;
       background: var(--white);
     }
 
     .section-header {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto 60px;
       text-align: center;
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--pale-goldenrod);
-      color: var(--dark-olive-green);
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .section-tag i {
-      font-size: 18px;
     }
 
     .section-title {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
-      color: var(--dark-slate-blue);
-      margin-bottom: 16px;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
       line-height: 1.2;
       letter-spacing: -1px;
+    }
+
+    .why-matters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 24px;
+      padding: 48px 40px;
+      transition: all 0.4s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .benefit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+
+    .benefit-badge i {
+      font-size: 16px;
+    }
+
+    .benefit-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .benefit-card p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* FEATURES SECTION */
+    .features-section {
+      padding: 120px 24px;
+      background: var(--primary-light);
+    }
+
+    .features-intro {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .features-intro p {
+      font-size: 19px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin-top: 20px;
     }
 
     .features-grid {
@@ -370,13 +285,13 @@ import FooterBar from '../components/FooterBar.astro';
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.05) 100%);
+      background: linear-gradient(135deg, transparent 0%, rgba(36, 142, 239, 0.05) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
     .feature-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
     }
@@ -388,13 +303,13 @@ import FooterBar from '../components/FooterBar.astro';
     .feature-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      color: var(--natural);
+      color: var(--white);
       margin-bottom: 24px;
       transition: all 0.4s ease;
     }
@@ -406,7 +321,7 @@ import FooterBar from '../components/FooterBar.astro';
     .feature-card h3 {
       font-size: 22px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 12px;
       letter-spacing: -0.3px;
     }
@@ -418,148 +333,7 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       WHY IT MATTERS SECTION
-    ============================================ */
-    .why-matters-section {
-      padding: 120px 24px;
-      background: var(--grey);
-    }
-
-    .why-matters-intro {
-      max-width: 900px;
-      margin: 0 auto 60px;
-      text-align: center;
-    }
-
-    .why-matters-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto 60px;
-    }
-
-    .benefit-card {
-      background: var(--white);
-      border: 3px solid transparent;
-      border-radius: 24px;
-      padding: 48px 40px;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      border-color: var(--natural);
-    }
-
-    .benefit-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
-      color: var(--natural);
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 24px;
-    }
-
-    .benefit-badge i {
-      font-size: 16px;
-    }
-
-    .benefit-card h3 {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--dark-slate-blue);
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-
-    .benefit-card p {
-      font-size: 16px;
-      color: var(--dim-grey);
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .stats-highlight {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
-      border-radius: 24px;
-      padding: 48px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stats-highlight::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
-      opacity: 0.3;
-    }
-
-    .stats-highlight h3 {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 32px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .stat-box {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
-      border-radius: 16px;
-      padding: 32px 24px;
-      transition: all 0.3s ease;
-    }
-
-    .stat-box:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: var(--natural);
-      transform: translateY(-4px);
-    }
-
-    .stat-value {
-      font-size: 42px;
-      font-weight: 800;
-      color: var(--natural);
-      margin-bottom: 12px;
-      letter-spacing: -1px;
-    }
-
-    .stat-label {
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.95);
-      line-height: 1.5;
-    }
-
-    /* ============================================
-       PROCESS SECTION
-    ============================================ */
+    /* PROCESS SECTION */
     .process-section {
       padding: 120px 24px;
       background: var(--white);
@@ -578,7 +352,7 @@ import FooterBar from '../components/FooterBar.astro';
       top: 0;
       bottom: 0;
       width: 3px;
-      background: linear-gradient(180deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(180deg, var(--primary-blue), var(--accent-blue));
       transform: translateX(-50%);
     }
 
@@ -605,7 +379,7 @@ import FooterBar from '../components/FooterBar.astro';
 
     .step-content-left:hover,
     .step-content-right:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
     }
@@ -621,15 +395,15 @@ import FooterBar from '../components/FooterBar.astro';
     .step-number {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
-      border: 4px solid var(--natural);
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border: 4px solid var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
       font-weight: 800;
-      color: var(--natural);
+      color: var(--white);
       position: relative;
       z-index: 10;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -639,7 +413,7 @@ import FooterBar from '../components/FooterBar.astro';
     .step-content-right h3 {
       font-size: 24px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 12px;
       letter-spacing: -0.3px;
     }
@@ -652,25 +426,12 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       FINAL CTA SECTION
-    ============================================ */
+    /* FINAL CTA */
     .final-cta-section {
       padding: 100px 24px;
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
       position: relative;
       overflow: hidden;
-    }
-
-    .final-cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
-      opacity: 0.3;
     }
 
     .final-cta-content {
@@ -684,15 +445,15 @@ import FooterBar from '../components/FooterBar.astro';
     .final-cta-icon {
       width: 100px;
       height: 100px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 3px solid var(--natural);
+      background: rgba(255, 255, 255, 0.15);
+      border: 3px solid var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 32px;
       font-size: 48px;
-      color: var(--natural);
+      color: var(--white);
     }
 
     .final-cta-section h2 {
@@ -719,31 +480,29 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 20px 48px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--white);
+      color: var(--primary-blue);
       font-size: 18px;
       font-weight: 700;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--white);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
     }
 
     .final-cta-button:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--white);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
     }
 
     .final-cta-button i {
       font-size: 22px;
     }
 
-    /* ============================================
-       FLOATING CTA BUTTONS
-    ============================================ */
+    /* FLOATING CTA */
     .floating-cta {
       position: fixed;
       bottom: 32px;
@@ -759,8 +518,8 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 16px 24px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--primary-blue);
+      color: var(--white);
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
@@ -772,53 +531,18 @@ import FooterBar from '../components/FooterBar.astro';
     .floating-btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      background: var(--dark-slate-blue);
-      color: var(--natural);
+      background: var(--accent-blue);
     }
 
-    /* ============================================
-       RESPONSIVE DESIGN
-    ============================================ */
+    /* RESPONSIVE */
     @media (max-width: 991px) {
       .hero-section {
-        padding: 130px 24px 80px;
-        margin-top: 0;
-        min-height: 85vh;
+        padding: 140px 24px 80px;
+        min-height: 75vh;
       }
 
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(70px);
-      }
-
-      .hero-section .shape-1 {
-        width: 400px;
-        height: 400px;
-      }
-
-      .hero-section .shape-2 {
-        width: 350px;
-        height: 350px;
-      }
-
-      .hero-section .shape-3 {
-        width: 300px;
-        height: 300px;
-      }
-
-      .features-grid {
+      .why-matters-grid, .features-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
-
-      .why-matters-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .stats-row {
-        grid-template-columns: 1fr;
         gap: 24px;
       }
 
@@ -832,8 +556,7 @@ import FooterBar from '../components/FooterBar.astro';
         margin-bottom: 40px;
       }
 
-      .step-content-left,
-      .step-content-right {
+      .step-content-left, .step-content-right {
         text-align: left;
       }
 
@@ -841,81 +564,33 @@ import FooterBar from '../components/FooterBar.astro';
         margin: 0 auto;
       }
 
-      .features-section,
-      .why-matters-section,
-      .process-section,
-      .final-cta-section {
+      .why-matters-section, .features-section, .process-section, .final-cta-section {
         padding: 80px 24px;
       }
     }
 
     @media (max-width: 767px) {
       .hero-section {
-        padding: 120px 20px 60px;
-        margin-top: 0;
-        min-height: 80vh;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 40px 40px;
+        padding: 130px 20px 60px;
+        min-height: 70vh;
       }
 
       .hero-section h1 {
         font-size: clamp(32px, 7vw, 44px);
         margin-bottom: 20px;
-        padding: 0 10px;
       }
 
-      .hero-section .hero-subtitle {
+      .hero-subtitle {
         font-size: 18px;
-        margin-bottom: 40px;
       }
 
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(50px);
-      }
-
-      .hero-section .shape-1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        right: -100px;
-      }
-
-      .hero-section .shape-2 {
-        width: 250px;
-        height: 250px;
-        bottom: -150px;
-        left: -150px;
-      }
-
-      .hero-section .shape-3 {
-        width: 200px;
-        height: 200px;
-      }
-
-      .hero-section .hero-cta {
-        padding: 18px 36px;
-        font-size: 16px;
-        width: 100%;
-        max-width: 400px;
-        justify-content: center;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-
-      .features-grid {
+      .why-matters-grid, .features-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
-      .feature-card {
-        padding: 32px 24px;
+      .feature-card, .benefit-card {
+        padding: 36px 28px;
       }
 
       .feature-icon {
@@ -924,24 +599,8 @@ import FooterBar from '../components/FooterBar.astro';
         font-size: 28px;
       }
 
-      .benefit-card {
-        padding: 36px 28px;
-      }
-
       .benefit-card h3 {
-        font-size: 24px;
-      }
-
-      .stats-highlight {
-        padding: 36px 28px;
-      }
-
-      .stats-highlight h3 {
-        font-size: 26px;
-      }
-
-      .stat-value {
-        font-size: 36px;
+        font-size: 22px;
       }
 
       .final-cta-icon {
@@ -961,15 +620,8 @@ import FooterBar from '../components/FooterBar.astro';
         justify-content: center;
       }
 
-      .features-section,
-      .why-matters-section,
-      .process-section,
-      .final-cta-section {
+      .why-matters-section, .features-section, .process-section, .final-cta-section {
         padding: 60px 20px;
-      }
-
-      .section-header {
-        margin-bottom: 40px;
       }
 
       .floating-cta {
@@ -990,32 +642,11 @@ import FooterBar from '../components/FooterBar.astro';
 
     @media (max-width: 479px) {
       .hero-section {
-        padding: 110px 16px 50px;
-        margin-top: 0;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 30px 30px;
+        padding: 120px 16px 50px;
       }
 
       .hero-section h1 {
         font-size: clamp(28px, 8vw, 38px);
-        padding: 0 5px;
-      }
-
-      .hero-section .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        display: none;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
       }
 
       .feature-card h3 {
@@ -1023,7 +654,7 @@ import FooterBar from '../components/FooterBar.astro';
       }
 
       .benefit-card h3 {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       .final-cta-section h2 {
@@ -1035,129 +666,147 @@ import FooterBar from '../components/FooterBar.astro';
 <body>
   <Navigation />
   
-  <!-- ============================================
-       HERO SECTION
-  ============================================ -->
+  <!-- HERO SECTION -->
   <section class="hero-section">
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+    <div class="hero-background-overlay"></div>
 
     <div class="hero-container">
-      <div class="hero-badge" data-aos="fade-up">
-        <i class="ti ti-seo"></i>
-        <span>Organic Growth</span>
-      </div>
+      <div class="hero-content">
+        <h1>All-In-One SEO</h1>
 
-      <h1 data-aos="fade-up" data-aos-delay="100">
-        <span class="highlight-animated">AIO SEO</span> (All-In-One SEO)
-      </h1>
-
-      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-        Dominate local search rankings and become the #1 choice for high-value implant cases 
-        in your area. Get recommended by ChatGPT and other AI search engines.
-      </p>
-
-      <!-- <a href="/book-a-call" class="hero-cta" data-aos="fade-up" data-aos-delay="300">
-        <i class="ti ti-rocket"></i>
-        Get Started
-      </a> -->
-
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-        <span>Explore our solution</span>
-        <i class="ti ti-chevron-down"></i>
+        <p class="hero-subtitle">
+          Dominate local search rankings and get recommended by ChatGPT & other AI Models to become the #1 choice for multi-implants and dental help in your area.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       FEATURES SECTION
-  ============================================ -->
-  <section class="features-section">
+  <!-- WHY IT MATTERS SECTION -->
+  <section class="why-matters-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-package"></i>
-          What's Included
-        </span>
-        <h2 class="section-title">Complete SEO Solution</h2>
+        <h2 class="section-title">Why Google + AI Search Rankings is Critical for Implant Practices</h2>
+      </div>
+
+      <div class="why-matters-grid">
+        
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-clock-hour-4"></i>
+            24 Hours
+          </div>
+          <h3>76% of People Who Search for a Local Business Visit Within 24 Hours</h3>
+          <p>
+            3 quarters of people searching for "a dentist near me" visit the practice they find within one day. If you're not visible, you're missing out on the highest-intent, ready to book leads in dentistry.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-trophy"></i>
+            First Page
+          </div>
+          <h3>First Page of Google Captures 92% of All Search Traffic</h3>
+          <p>
+            The first page of google captures virtually all search traffic. If you're not ranking in the top 10, your chances of a new patient finding you is close to none.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-robot"></i>
+            AI Search
+          </div>
+          <h3>800% Increase in AI Search Usage Since the Start of the Year</h3>
+          <p>
+            Search behaviors are actively changing in favor of AI models. 42% of users now start their search on an LLM like ChatGPT, Perplexity, or Deepseek rather than traditional search. Be one of the first to be a recommended option for dentistry in your area and dominate organic referrals from AI.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-badge">
+            <i class="ti ti-target"></i>
+            Quality
+          </div>
+          <h3>SEO Delivers High-Quality Leads</h3>
+          <p>
+            SEO captures patients actively searching for a solution right now. Capture the highest-intent leads by being there in search results when they are seeking an answer.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features-section">
+    <div class="section-container">
+      <div class="features-intro">
+        <h2 class="section-title">A Complete SEO Solution</h2>
+        <p>
+          3-5x organic web traffic & AI visibility. Get recommended by AI which is set to dominate search inquiries by 2030. Tangible Results in just 30 days.
+        </p>
       </div>
 
       <div class="features-grid">
         
-        <!-- Feature 1: Local SEO Optimization -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-map-pin"></i>
           </div>
           <h3>Local SEO Optimization</h3>
           <p>
-            Google Business Profile management, local citations, and map rankings to ensure you 
-            appear when patients search for dental services in your area.
+            Google Business Profile management, local citations, map rankings.
           </p>
         </div>
 
-        <!-- Feature 2: On-Page SEO -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-file-search"></i>
           </div>
           <h3>On-Page SEO</h3>
           <p>
-            Website optimization, keyword targeting, and content strategy to rank for the exact 
-            terms high-value patients are searching for.
+            Website optimization, keyword targeting, content strategy.
           </p>
         </div>
 
-        <!-- Feature 3: Content Creation -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-pencil"></i>
           </div>
           <h3>Content Creation</h3>
           <p>
-            SEO-optimized blog posts and service pages that educate patients, build trust, and 
-            establish your practice as the local authority.
+            SEO-optimized blog posts and service pages.
           </p>
         </div>
 
-        <!-- Feature 4: Technical SEO -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-code"></i>
           </div>
           <h3>Technical SEO</h3>
           <p>
-            Site speed optimization, mobile responsiveness, and schema markup to ensure search 
-            engines can crawl and rank your site effectively.
+            Site speed, mobile optimization, schema markup.
           </p>
         </div>
 
-        <!-- Feature 5: Link Building -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-link"></i>
           </div>
           <h3>Link Building</h3>
           <p>
-            High-quality backlinks from dental industry sources, local directories, and 
-            authoritative websites to boost your domain authority.
+            High-quality backlinks from dental industry sources.
           </p>
         </div>
 
-        <!-- Feature 6: Monthly Reporting -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-chart-line"></i>
           </div>
           <h3>Monthly Reporting</h3>
           <p>
-            Track rankings, traffic, and conversions with transparent reports that show exactly 
-            how SEO is driving growth for your practice.
+            Track rankings, traffic, and conversions.
           </p>
         </div>
 
@@ -1165,158 +814,55 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       WHY IT MATTERS SECTION
-  ============================================ -->
-  <section class="why-matters-section">
-    <div class="section-container">
-      <div class="why-matters-intro">
-        <span class="section-tag">
-          <i class="ti ti-bulb"></i>
-          The Power of SEO
-        </span>
-        <h2 class="section-title">Why SEO is Critical for Implant Practices</h2>
-      </div>
-
-      <div class="why-matters-grid">
-        
-        <!-- Benefit 1: Immediate Local Impact -->
-        <div class="benefit-card">
-          <div class="benefit-badge">
-            <i class="ti ti-clock-hour-4"></i>
-            Immediate Action
-          </div>
-          <h3>76% of Local Searchers Visit Within 24 Hours</h3>
-          <p>
-            When patients search for dental implants in your area, three-quarters of them visit a 
-            practice within one day. If you're not ranking on the first page, you're invisible to 
-            these high-intent, ready-to-book patients.
-          </p>
-        </div>
-
-        <!-- Benefit 2: First Page Dominance -->
-        <div class="benefit-card">
-          <div class="benefit-badge">
-            <i class="ti ti-trophy"></i>
-            Market Share
-          </div>
-          <h3>92% of Traffic Goes to First Page Results</h3>
-          <p>
-            The first page of Google captures virtually all search traffic. Second page? Almost 
-            none. If you're not ranking in the top 10, you might as well not exist in the eyes of 
-            potential patients.
-          </p>
-        </div>
-
-        <!-- Benefit 3: Qualified Lead Generation -->
-        <div class="benefit-card">
-          <div class="benefit-badge">
-            <i class="ti ti-target"></i>
-            Quality Leads
-          </div>
-          <h3>SEO Delivers Qualified Leads Actively Searching</h3>
-          <p>
-            Unlike ads that interrupt, SEO captures patients who are actively searching for your 
-            services right now. These are high-intent leads who are ready to book—not cold prospects 
-            you have to convince.
-          </p>
-        </div>
-
-        <!-- Benefit 4: Long-Term Asset -->
-        <div class="benefit-card">
-          <div class="benefit-badge">
-            <i class="ti ti-trending-up"></i>
-            Compounding Returns
-          </div>
-          <h3>Long-Term Asset That Compounds Over Time</h3>
-          <p>
-            Unlike paid ads that stop the moment you stop paying, SEO builds momentum. Rankings 
-            improve month over month, content continues to attract traffic, and your authority 
-            grows—creating a compounding return on investment.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="stats-highlight">
-        <h3>Expected Results from Our SEO System</h3>
-        <div class="stats-row">
-          <div class="stat-box">
-            <div class="stat-value">2-4x</div>
-            <div class="stat-label">Web and incoming lead traffic from organic search</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-value">600%</div>
-            <div class="stat-label">Increase in AI search engine usage—get recommended by ChatGPT and other LLMs</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       PROCESS SECTION
-  ============================================ -->
+  <!-- PROCESS SECTION -->
   <section class="process-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-stairs-up"></i>
-          Our Approach
-        </span>
         <h2 class="section-title">How We Get You to #1</h2>
       </div>
 
       <div class="process-timeline">
         
-        <!-- Step 1: Audit -->
         <div class="process-step">
           <div class="step-content-left">
             <h3>Audit</h3>
             <p>
-              Complete analysis of your current SEO performance—identifying gaps, opportunities, 
-              and quick wins to jumpstart your rankings.
+              Complete analysis of your current SEO performance.
             </p>
           </div>
           <div class="step-number">1</div>
           <div></div>
         </div>
 
-        <!-- Step 2: Strategy -->
         <div class="process-step">
           <div></div>
           <div class="step-number">2</div>
           <div class="step-content-right">
             <h3>Strategy</h3>
             <p>
-              Custom SEO roadmap tailored to your market, competition, and target patients—
-              prioritizing high-impact actions that drive results fast.
+              Custom SEO roadmap tailored to your market.
             </p>
           </div>
         </div>
 
-        <!-- Step 3: Implementation -->
         <div class="process-step">
           <div class="step-content-left">
             <h3>Implementation</h3>
             <p>
-              Execute on-page, off-page, and technical SEO improvements—optimizing your site, 
-              building authority, and establishing your local dominance.
+              Execute on-page, off-page, and technical SEO.
             </p>
           </div>
           <div class="step-number">3</div>
           <div></div>
         </div>
 
-        <!-- Step 4: Optimization -->
         <div class="process-step">
           <div></div>
           <div class="step-number">4</div>
           <div class="step-content-right">
             <h3>Optimization</h3>
             <p>
-              Ongoing monitoring and continuous improvement—tracking rankings, analyzing 
-              performance, and adapting strategy to maintain and grow your #1 position.
+              Ongoing monitoring and continuous improvement.
             </p>
           </div>
         </div>
@@ -1325,34 +871,29 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       FINAL CTA SECTION
-  ============================================ -->
+  <!-- FINAL CTA SECTION -->
   <section class="final-cta-section">
     <div class="final-cta-content">
       <div class="final-cta-icon">
         <i class="ti ti-chart-arrows-vertical"></i>
       </div>
       
-      <h2>Ready to Dominate Local Search?</h2>
+      <h2>Ready to Turn Search Into Your Next Growth Channel?</h2>
       
       <p class="final-cta-text">
-        Stop losing patients to competitors who rank above you. Let us build a comprehensive 
-        SEO strategy that turns your website into a patient-generating machine—for years to come.
+        Stop losing patients to competitors who rank above you. Rank top 3 and turn your website into a patient-generating machine for years to come.
       </p>
       
       <a href="/book-a-call" class="final-cta-button">
         <i class="ti ti-calendar-event"></i>
-        Speak to Our Team
+        Get Started Now
       </a>
     </div>
   </section>
 
   <FooterBar />
 
-  <!-- ============================================
-       FLOATING CTA BUTTONS
-  ============================================ -->
+  <!-- FLOATING CTA -->
   <div class="floating-cta">
     <a href="/book-a-call" class="floating-btn">
       <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
@@ -1364,9 +905,6 @@ import FooterBar from '../components/FooterBar.astro';
     </a>
   </div>
 
-  <!-- ============================================
-       SCROLL ANIMATIONS
-  ============================================ -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const observerOptions = {
@@ -1377,75 +915,35 @@ import FooterBar from '../components/FooterBar.astro';
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            const target = entry.target as HTMLElement;
+            target.style.opacity = '1';
+            target.style.transform = 'translateY(0)';
           }
         });
       }, observerOptions);
 
-      // Observe all elements with data-aos attribute
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-      });
-
-      // Animated highlight text
-      const highlights = document.querySelectorAll('.highlight-animated');
-      highlights.forEach((highlight, index) => {
-        setTimeout(() => {
-          highlight.classList.add('active');
-        }, 1000 + (index * 200));
-      });
-
-      // Scroll indicator animation
-      const scrollIndicator = document.querySelector('.scroll-indicator');
-      if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-          const featuresSection = document.querySelector('.features-section');
-          if (featuresSection) {
-            featuresSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      // Animate feature cards
       document.querySelectorAll('.feature-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
       });
 
-      // Animate benefit cards
       document.querySelectorAll('.benefit-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
         observer.observe(card);
       });
 
-      // Animate process steps
       document.querySelectorAll('.process-step').forEach((step, index) => {
-        step.style.opacity = '0';
-        step.style.transform = 'translateY(30px)';
-        step.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+        const element = step as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
         observer.observe(step);
-      });
-
-      // Smooth scroll for all anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
       });
     });
   </script>

@@ -1,5 +1,5 @@
 ---
-// patient-communication.astro
+// patient-communication.astro - Updated
 import '../css/main.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
@@ -9,19 +9,15 @@ import FooterBar from '../components/FooterBar.astro';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patient Communication & Automation | Dentistry Growth Partners</title>
-  <meta name="description" content="Automate your patient communication to stay top of mind throughout the year with intelligent follow-up sequences and engagement campaigns.">
+  <title>Automated Patient Communication | Dentistry Growth Partners</title>
+  <meta name="description" content="Keep your schedule full and your practice top of mind by reaching out to patients at key times throughout the year with messaging designed to convert.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <!-- Favicon -->
   <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <style>
-    /* ============================================
-       RESET & BASE STYLES
-    ============================================ */
     * {
       margin: 0;
       padding: 0;
@@ -29,15 +25,14 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
     }
 
     body {
@@ -54,112 +49,85 @@ import FooterBar from '../components/FooterBar.astro';
       padding: 0 24px;
     }
 
-    /* ============================================
-       HERO SECTION
-    ============================================ */
+    /* HERO SECTION */
     .hero-section {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
-      padding: 140px 24px 80px;
-      margin-top: 0;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--accent-blue) 100%);
+      padding: 160px 24px 100px;
     }
 
-    /* Animated grid background */
-    .hero-section .hero-background {
+    /* Animated gradient orbs */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: floatOrb 20s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: floatOrb 25s ease-in-out infinite reverse;
+      z-index: 1;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+
+    .hero-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
-      opacity: 0.15;
+      background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
       z-index: 0;
     }
 
-    .hero-section .hero-background::before {
+    /* Dot pattern overlay */
+    .hero-background-overlay::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(60px, 60px);
-      }
-    }
-
-    .hero-section .hero-shapes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 1;
     }
 
-    .hero-section .shape {
-      position: absolute;
-      filter: blur(100px);
-      opacity: 0.3;
-      will-change: transform;
-      pointer-events: none;
-    }
-
-    .hero-section .shape-1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
-      animation: floatSlow 18s infinite ease-in-out;
-    }
-
-    .hero-section .shape-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
-      bottom: -200px;
-      left: -200px;
-      animation: floatSlow 22s infinite ease-in-out reverse;
-    }
-
-    .hero-section .shape-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSlow 25s infinite ease-in-out;
-    }
-
-    @keyframes floatSlow {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(40px, -40px) scale(1.1);
-      }
-      66% {
-        transform: translate(-30px, 30px) scale(0.95);
-      }
-    }
-
-    .hero-section .hero-container {
-      max-width: 1200px;
+    .hero-container {
+      max-width: 1100px;
       width: 100%;
       margin: 0 auto;
       position: relative;
@@ -171,175 +139,47 @@ import FooterBar from '../components/FooterBar.astro';
       text-align: center;
     }
 
-    .hero-section .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
-      padding: 12px 28px;
-      border-radius: 50px;
-      color: var(--white);
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 32px;
-      transition: all 0.3s ease;
-    }
-
-    .hero-section .hero-badge i {
-      font-size: 20px;
-      color: var(--natural);
+    .hero-content {
+      text-align: center;
+      position: relative;
     }
 
     .hero-section h1 {
-      font-size: clamp(40px, 5.5vw, 68px);
+      font-size: clamp(42px, 5.5vw, 62px);
       font-weight: 800;
       color: #ffffff;
-      line-height: 1.2;
-      margin: 0 auto 24px;
+      line-height: 1.15;
+      margin: 0 0 24px 0;
       letter-spacing: -1.8px;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      max-width: 1000px;
-      padding: 0 20px;
-    }
-
-    .hero-section .highlight-animated {
-      color: var(--natural);
       position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
-    .hero-section .highlight-animated::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: #c6ff53;
-      opacity: 0.3;
-      border-radius: 4px;
-      transform: scaleX(0);
-      animation: underlineGrow 0.8s ease-out 0.3s forwards;
-    }
-
-    @keyframes underlineGrow {
-      to {
-        transform: scaleX(1);
-      }
-    }
-
-    .hero-section .hero-subtitle {
-      font-size: clamp(18px, 2.2vw, 22px);
+    .hero-subtitle {
+      font-size: clamp(20px, 2.2vw, 24px);
       color: rgba(255, 255, 255, 0.95);
       line-height: 1.6;
-      margin-bottom: 48px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-section .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 18px 42px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
-      font-size: 17px;
-      font-weight: 700;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
-      margin-bottom: 28px;
-    }
-
-    .hero-section .hero-cta:hover {
-      background: transparent;
-      color: var(--natural);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
-    }
-
-    .hero-section .hero-cta i {
-      font-size: 22px;
-    }
-
-    .hero-section .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13px;
+      margin-bottom: 0;
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 8px;
     }
 
-    .hero-section .scroll-indicator:hover {
-      color: var(--natural);
-      transform: translateY(4px);
-    }
-
-    .hero-section .scroll-indicator i {
-      font-size: 22px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
-    }
-
-    /* ============================================
-       WHAT IT DOES SECTION
-    ============================================ */
+    /* WHAT IT DOES SECTION */
     .what-it-does-section {
       padding: 120px 24px;
       background: var(--white);
     }
 
     .section-header {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto 60px;
       text-align: center;
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--pale-goldenrod);
-      color: var(--dark-olive-green);
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .section-tag i {
-      font-size: 18px;
     }
 
     .section-title {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
-      color: var(--dark-slate-blue);
-      margin-bottom: 16px;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
       line-height: 1.2;
       letter-spacing: -1px;
     }
@@ -348,15 +188,13 @@ import FooterBar from '../components/FooterBar.astro';
       font-size: 19px;
       color: var(--dim-grey);
       line-height: 1.7;
-      max-width: 800px;
-      margin: 0 auto 48px;
     }
 
     .features-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -377,13 +215,13 @@ import FooterBar from '../components/FooterBar.astro';
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.05) 100%);
+      background: linear-gradient(135deg, transparent 0%, rgba(36, 142, 239, 0.05) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
     .feature-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
     }
@@ -395,13 +233,13 @@ import FooterBar from '../components/FooterBar.astro';
     .feature-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      color: var(--natural);
+      color: var(--white);
       margin-bottom: 24px;
       transition: all 0.4s ease;
     }
@@ -413,7 +251,7 @@ import FooterBar from '../components/FooterBar.astro';
     .feature-card h3 {
       font-size: 22px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 12px;
       letter-spacing: -0.3px;
     }
@@ -425,90 +263,66 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       BENEFITS SECTION
-    ============================================ */
+    /* BENEFITS SECTION */
     .benefits-section {
-      padding: 120px 24px;
-      background: var(--grey);
+      padding: 100px 24px;
+      background: var(--primary-light);
     }
 
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 40px;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 60px auto 0;
     }
 
     .benefit-card {
       background: var(--white);
-      border: 3px solid transparent;
+      border: 3px solid var(--grey);
       border-radius: 24px;
       padding: 48px 40px;
       transition: all 0.4s ease;
-      position: relative;
+      text-align: center;
     }
 
     .benefit-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
     }
 
-    .benefit-badge {
-      display: inline-flex;
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 50%;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
-      color: var(--natural);
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 24px;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      color: var(--white);
+      transition: all 0.4s ease;
     }
 
-    .benefit-badge i {
-      font-size: 16px;
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.1) rotate(5deg);
     }
 
     .benefit-card h3 {
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
+      color: var(--primary-blue);
+      margin-bottom: 0;
     }
 
-    .benefit-card p {
-      font-size: 16px;
-      color: var(--dim-grey);
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    /* ============================================
-       FINAL CTA SECTION
-    ============================================ */
+    /* FINAL CTA */
     .final-cta-section {
       padding: 100px 24px;
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
       position: relative;
       overflow: hidden;
-    }
-
-    .final-cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
-      opacity: 0.3;
     }
 
     .final-cta-content {
@@ -522,15 +336,15 @@ import FooterBar from '../components/FooterBar.astro';
     .final-cta-icon {
       width: 100px;
       height: 100px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 3px solid var(--natural);
+      background: rgba(255, 255, 255, 0.15);
+      border: 3px solid var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 32px;
       font-size: 48px;
-      color: var(--natural);
+      color: var(--white);
     }
 
     .final-cta-section h2 {
@@ -557,31 +371,29 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 20px 48px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--white);
+      color: var(--primary-blue);
       font-size: 18px;
       font-weight: 700;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--white);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
     }
 
     .final-cta-button:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--white);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
     }
 
     .final-cta-button i {
       font-size: 22px;
     }
 
-    /* ============================================
-       FLOATING CTA BUTTONS
-    ============================================ */
+    /* FLOATING CTA */
     .floating-cta {
       position: fixed;
       bottom: 32px;
@@ -597,8 +409,8 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 16px 24px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--primary-blue);
+      color: var(--white);
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
@@ -610,116 +422,42 @@ import FooterBar from '../components/FooterBar.astro';
     .floating-btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      background: var(--dark-slate-blue);
-      color: var(--natural);
+      background: var(--accent-blue);
     }
 
-    /* ============================================
-       RESPONSIVE DESIGN
-    ============================================ */
+    /* RESPONSIVE */
     @media (max-width: 991px) {
       .hero-section {
-        padding: 130px 24px 80px;
-        margin-top: 0;
-        min-height: 85vh;
+        padding: 140px 24px 80px;
+        min-height: 75vh;
       }
 
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(70px);
-      }
-
-      .hero-section .shape-1 {
-        width: 400px;
-        height: 400px;
-      }
-
-      .hero-section .shape-2 {
-        width: 350px;
-        height: 350px;
-      }
-
-      .hero-section .shape-3 {
-        width: 300px;
-        height: 300px;
-      }
-
-      .features-grid,
-      .benefits-grid {
+      .features-grid, .benefits-grid {
         grid-template-columns: 1fr;
         gap: 24px;
       }
 
-      .what-it-does-section,
-      .benefits-section,
-      .final-cta-section {
+      .what-it-does-section, .benefits-section, .final-cta-section {
         padding: 80px 24px;
       }
     }
 
     @media (max-width: 767px) {
       .hero-section {
-        padding: 120px 20px 60px;
-        margin-top: 0;
-        min-height: 80vh;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 40px 40px;
+        padding: 130px 20px 60px;
+        min-height: 70vh;
       }
 
       .hero-section h1 {
         font-size: clamp(32px, 7vw, 44px);
         margin-bottom: 20px;
-        padding: 0 10px;
       }
 
-      .hero-section .hero-subtitle {
+      .hero-subtitle {
         font-size: 18px;
-        margin-bottom: 40px;
       }
 
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(50px);
-      }
-
-      .hero-section .shape-1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        right: -100px;
-      }
-
-      .hero-section .shape-2 {
-        width: 250px;
-        height: 250px;
-        bottom: -150px;
-        left: -150px;
-      }
-
-      .hero-section .shape-3 {
-        width: 200px;
-        height: 200px;
-      }
-
-      .hero-section .hero-cta {
-        padding: 18px 36px;
-        font-size: 16px;
-        width: 100%;
-        max-width: 400px;
-        justify-content: center;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-
-      .feature-card,
-      .benefit-card {
+      .feature-card, .benefit-card {
         padding: 36px 28px;
       }
 
@@ -729,8 +467,10 @@ import FooterBar from '../components/FooterBar.astro';
         font-size: 28px;
       }
 
-      .benefit-card h3 {
-        font-size: 24px;
+      .benefit-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
       }
 
       .final-cta-icon {
@@ -750,18 +490,8 @@ import FooterBar from '../components/FooterBar.astro';
         justify-content: center;
       }
 
-      .what-it-does-section,
-      .benefits-section,
-      .final-cta-section {
+      .what-it-does-section, .benefits-section, .final-cta-section {
         padding: 60px 20px;
-      }
-
-      .section-header {
-        margin-bottom: 40px;
-      }
-
-      .benefits-grid {
-        margin-top: 40px;
       }
 
       .floating-cta {
@@ -782,32 +512,11 @@ import FooterBar from '../components/FooterBar.astro';
 
     @media (max-width: 479px) {
       .hero-section {
-        padding: 110px 16px 50px;
-        margin-top: 0;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 30px 30px;
+        padding: 120px 16px 50px;
       }
 
       .hero-section h1 {
         font-size: clamp(28px, 8vw, 38px);
-        padding: 0 5px;
-      }
-
-      .hero-section .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        display: none;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
       }
 
       .feature-card h3 {
@@ -815,7 +524,7 @@ import FooterBar from '../components/FooterBar.astro';
       }
 
       .benefit-card h3 {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       .final-cta-section h2 {
@@ -827,135 +536,70 @@ import FooterBar from '../components/FooterBar.astro';
 <body>
   <Navigation />
   
-  <!-- ============================================
-       HERO SECTION
-  ============================================ -->
+  <!-- HERO SECTION -->
   <section class="hero-section">
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+    <div class="hero-background-overlay"></div>
 
     <div class="hero-container">
-      <div class="hero-badge" data-aos="fade-up">
-        <i class="ti ti-message-circle"></i>
-        <span>Smart Automation</span>
-      </div>
+      <div class="hero-content">
+        <h1>Automated Patient Communication</h1>
 
-      <h1 data-aos="fade-up" data-aos-delay="100">
-        <span class="highlight-animated">Automated</span> Patient Communication <span class="highlight-animated">& Automation</span>
-      </h1>
-
-      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-        Automate your patient communication to stay top of mind throughout the year—
-        keeping your schedule full and your patients engaged.
-      </p>
-
-      <!-- <a href="/book-a-call" class="hero-cta" data-aos="fade-up" data-aos-delay="300">
-        <i class="ti ti-arrow-right"></i>
-        Learn More
-      </a> -->
-
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-        <span>See how it works</span>
-        <i class="ti ti-chevron-down"></i>
+        <p class="hero-subtitle">
+          Keep your schedule full and your practice top of mind by reaching out to patients at key times throughout the year with messaging designed to convert.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       WHAT IT DOES SECTION
-  ============================================ -->
+  <!-- WHAT IT DOES SECTION -->
   <section class="what-it-does-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-calendar-heart"></i>
-          How It Works
-        </span>
         <h2 class="section-title">Keep Your Patients Coming Through the Door</h2>
         <p class="section-description">
-          By having automated checkpoints for key holidays, dates, birthdays each month, and 
-          follow-up sequences, you ensure every patient stays engaged and rebooking their 
-          appointments throughout the year.
+          Your practice stays top of mind of all your patients when you automatically reach out throughout the year on special dates, with relevant practice updates, and promo offers. Increase how often and how likely your patients self-book their own appointments.
         </p>
       </div>
 
       <div class="features-grid">
         
-        <!-- Feature 1: Birthday & Holiday Messages -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-gift"></i>
           </div>
           <h3>Automated Birthday & Holiday Messages</h3>
           <p>
-            Send personalized greetings on birthdays, holidays, and special occasions—keeping your 
-            practice top of mind and showing patients you care beyond their dental visits.
+            Send personalized greetings on holidays, birthdays and special occasions - accounting for at least 12 touchpoints through the year to build likeness and loyalty.
           </p>
         </div>
 
-        <!-- Feature 2: Post-Treatment Follow-Up -->
         <div class="feature-card">
           <div class="feature-icon">
-            <i class="ti ti-mail-check"></i>
+            <i class="ti ti-phone-call"></i>
           </div>
-          <h3>Post-Treatment Follow-Up Sequences</h3>
+          <h3>Post-Treatment Review & Follow Up</h3>
           <p>
-            Automatically check in with patients after procedures, gather feedback, and ensure they're 
-            healing properly—all without manual effort from your team.
+            Have Maria call post-procedure to see how their experience was with your practice. By checking in, it shows you care and provides the opportunity to add another 5 star review to your google page. Maria even requests referrals on your behalf, turning a patient today into a patient tomorrow.
           </p>
         </div>
 
-        <!-- Feature 3: Database Reactivation -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-refresh-alert"></i>
           </div>
-          <h3>Re-Engagement & Database Reactivation</h3>
+          <h3>Patient Database Reactivation</h3>
           <p>
-            Bring back inactive patients with targeted campaigns that remind them it's time for their 
-            next visit. Turn dormant contacts into active revenue—automatically recapturing lost patients 
-            and filling schedule gaps.
+            Mine for hidden interest sitting in your PMS and turn dormant contacts into new appointments and filling schedule gaps.
           </p>
         </div>
 
-        <!-- Feature 4: Appointment Reminders -->
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="ti ti-bell-ringing"></i>
-          </div>
-          <h3>Appointment Reminders & Confirmations</h3>
-          <p>
-            Send automated SMS and email reminders before appointments to reduce no-shows by up to 80%. 
-            Patients confirm with a simple text—no phone tag required.
-          </p>
-        </div>
-
-        <!-- Feature 5: Review & Referral Requests -->
         <div class="feature-card">
           <div class="feature-icon">
             <i class="ti ti-star"></i>
           </div>
-          <h3>Review & Referral Request Automation</h3>
+          <h3>Review + Referral Request Automation</h3>
           <p>
-            Automatically request reviews from happy patients at the perfect moment—after successful 
-            treatments. Build your online reputation and generate referrals without lifting a finger.
-          </p>
-        </div>
-
-        <!-- Feature 6: Recall & Hygiene Reminders -->
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="ti ti-calendar-repeat"></i>
-          </div>
-          <h3>Recall & Hygiene Appointment Reminders</h3>
-          <p>
-            Patients automatically receive reminders for cleanings, checkups, and recall visits at the 
-            right intervals—keeping them on schedule and your hygiene chairs full.
+            Build your online reputation with 5 star reviews and generate referrals with strategic promo offers to your existing patient base.
           </p>
         </div>
 
@@ -963,84 +607,48 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       BENEFITS SECTION
-  ============================================ -->
+  <!-- BENEFITS SECTION -->
   <section class="benefits-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-trending-up"></i>
-          The Impact
-        </span>
-        <h2 class="section-title">Why Automation Works</h2>
+        <h2 class="section-title">Benefits</h2>
       </div>
 
       <div class="benefits-grid">
         
-        <!-- Benefit 1: Reduce No-Shows -->
         <div class="benefit-card">
-          <div class="benefit-badge">
+          <div class="benefit-icon">
             <i class="ti ti-percentage"></i>
-            Proven Results
           </div>
           <h3>Reduce No-Shows by Up to 80%</h3>
-          <p>
-            Automated reminders sent via SMS and email dramatically reduce missed appointments. 
-            Patients receive timely notifications and can confirm or reschedule with one click—
-            keeping your schedule optimized and revenue predictable.
-          </p>
         </div>
 
-        <!-- Benefit 2: Increase Patient Lifetime Value -->
         <div class="benefit-card">
-          <div class="benefit-badge">
-            <i class="ti ti-cash"></i>
-            Revenue Growth
+          <div class="benefit-icon">
+            <i class="ti ti-trending-up"></i>
           </div>
           <h3>Increase Patient Lifetime Value</h3>
-          <p>
-            Consistent touchpoints throughout the year keep patients engaged and coming back for 
-            regular care. Reactivation campaigns bring back dormant patients, and automated recall 
-            reminders ensure they never miss their next appointment.
-          </p>
         </div>
 
-        <!-- Benefit 3: Free Staff from Manual Follow-Up -->
         <div class="benefit-card">
-          <div class="benefit-badge">
+          <div class="benefit-icon">
             <i class="ti ti-users"></i>
-            Efficiency
           </div>
           <h3>Free Staff from Manual Follow-Up</h3>
-          <p>
-            Your team no longer wastes hours calling patients for confirmations, reminders, and 
-            follow-ups. Automation handles the repetitive tasks so your staff can focus on 
-            delivering exceptional patient care and high-value conversations.
-          </p>
         </div>
 
-        <!-- Benefit 4: Consistent Communication Touchpoints -->
         <div class="benefit-card">
-          <div class="benefit-badge">
+          <div class="benefit-icon">
             <i class="ti ti-check"></i>
-            Reliability
           </div>
           <h3>Consistent Communication Touchpoints</h3>
-          <p>
-            No patient falls through the cracks. Automated sequences ensure every patient receives 
-            the right message at the right time—whether it's a birthday greeting, a recall reminder, 
-            or a request for a review.
-          </p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       FINAL CTA SECTION
-  ============================================ -->
+  <!-- FINAL CTA SECTION -->
   <section class="final-cta-section">
     <div class="final-cta-content">
       <div class="final-cta-icon">
@@ -1050,9 +658,7 @@ import FooterBar from '../components/FooterBar.astro';
       <h2>Ready to Automate Your Patient Communication?</h2>
       
       <p class="final-cta-text">
-        Stop losing patients to poor follow-up. Let intelligent automation keep your patients 
-        engaged, your schedule full, and your team focused on what matters most—delivering 
-        exceptional care.
+        Stop losing patients to poor follow-up. Let intelligent automation keep your patients engaged, your schedule full, and your team focused on what matters most.
       </p>
       
       <a href="/book-a-call" class="final-cta-button">
@@ -1064,9 +670,7 @@ import FooterBar from '../components/FooterBar.astro';
 
   <FooterBar />
 
-  <!-- ============================================
-       FLOATING CTA BUTTONS
-  ============================================ -->
+  <!-- FLOATING CTA -->
   <div class="floating-cta">
     <a href="/book-a-call" class="floating-btn">
       <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
@@ -1078,9 +682,6 @@ import FooterBar from '../components/FooterBar.astro';
     </a>
   </div>
 
-  <!-- ============================================
-       SCROLL ANIMATIONS
-  ============================================ -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const observerOptions = {
@@ -1091,67 +692,27 @@ import FooterBar from '../components/FooterBar.astro';
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            const target = entry.target as HTMLElement;
+            target.style.opacity = '1';
+            target.style.transform = 'translateY(0)';
           }
         });
       }, observerOptions);
 
-      // Observe all elements with data-aos attribute
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-      });
-
-      // Animated highlight text
-      const highlights = document.querySelectorAll('.highlight-animated');
-      highlights.forEach((highlight, index) => {
-        setTimeout(() => {
-          highlight.classList.add('active');
-        }, 1000 + (index * 200));
-      });
-
-      // Scroll indicator animation
-      const scrollIndicator = document.querySelector('.scroll-indicator');
-      if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-          const whatItDoesSection = document.querySelector('.what-it-does-section');
-          if (whatItDoesSection) {
-            whatItDoesSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      // Animate feature cards
       document.querySelectorAll('.feature-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
       });
 
-      // Animate benefit cards
       document.querySelectorAll('.benefit-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
         observer.observe(card);
-      });
-
-      // Smooth scroll for all anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
       });
     });
   </script>

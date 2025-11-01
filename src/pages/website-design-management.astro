@@ -1,5 +1,5 @@
 ---
-// website-design-management.astro
+// website-design-management.astro - Updated with new color scheme and design
 import '../css/main.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
@@ -15,13 +15,10 @@ import FooterBar from '../components/FooterBar.astro';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <!-- Favicon -->
   <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  
   <style>
-    /* ============================================
-       RESET & BASE STYLES
-    ============================================ */
     * {
       margin: 0;
       padding: 0;
@@ -29,15 +26,14 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
     }
 
     body {
@@ -54,112 +50,54 @@ import FooterBar from '../components/FooterBar.astro';
       padding: 0 24px;
     }
 
-    /* ============================================
-       HERO SECTION
-    ============================================ */
+    /* HERO SECTION */
     .hero-section {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
-      padding: 140px 24px 80px;
-      margin-top: 0;
+      padding: 160px 24px 100px;
     }
 
-    /* Animated grid background */
-    .hero-section .hero-background {
+    .hero-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
-      opacity: 0.15;
+      background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
       z-index: 0;
     }
 
-    .hero-section .hero-background::before {
+    .hero-background-overlay::before {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(60px, 60px);
-      }
-    }
-
-    .hero-section .hero-shapes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(5, 16, 35, 0.92) 0%, rgba(7, 56, 125, 0.88) 50%, rgba(36, 142, 239, 0.85) 100%);
+      z-index: 1;
     }
 
-    .hero-section .shape {
+    .hero-background-overlay::after {
+      content: '';
       position: absolute;
-      filter: blur(100px);
-      opacity: 0.3;
-      will-change: transform;
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 2;
     }
 
-    .hero-section .shape-1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
-      animation: floatSlow 18s infinite ease-in-out;
-    }
-
-    .hero-section .shape-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
-      bottom: -200px;
-      left: -200px;
-      animation: floatSlow 22s infinite ease-in-out reverse;
-    }
-
-    .hero-section .shape-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSlow 25s infinite ease-in-out;
-    }
-
-    @keyframes floatSlow {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(40px, -40px) scale(1.1);
-      }
-      66% {
-        transform: translate(-30px, 30px) scale(0.95);
-      }
-    }
-
-    .hero-section .hero-container {
-      max-width: 1200px;
+    .hero-container {
+      max-width: 1100px;
       width: 100%;
       margin: 0 auto;
       position: relative;
@@ -171,175 +109,74 @@ import FooterBar from '../components/FooterBar.astro';
       text-align: center;
     }
 
-    .hero-section .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
-      padding: 12px 28px;
-      border-radius: 50px;
-      color: var(--white);
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 32px;
-      transition: all 0.3s ease;
-    }
-
-    .hero-section .hero-badge i {
-      font-size: 20px;
-      color: var(--natural);
+    .hero-content {
+      text-align: center;
+      position: relative;
     }
 
     .hero-section h1 {
-      font-size: clamp(40px, 5.5vw, 68px);
+      font-size: clamp(42px, 5.5vw, 62px);
       font-weight: 800;
       color: #ffffff;
-      line-height: 1.2;
-      margin: 0 auto 24px;
+      line-height: 1.15;
+      margin: 0 0 24px 0;
       letter-spacing: -1.8px;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      max-width: 1000px;
-      padding: 0 20px;
-    }
-
-    .hero-section .highlight-animated {
-      color: var(--natural);
       position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
-    .hero-section .highlight-animated::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: #c6ff53;
-      opacity: 0.3;
-      border-radius: 4px;
-      transform: scaleX(0);
-      animation: underlineGrow 0.8s ease-out 0.3s forwards;
-    }
-
-    @keyframes underlineGrow {
-      to {
-        transform: scaleX(1);
-      }
-    }
-
-    .hero-section .hero-subtitle {
-      font-size: clamp(18px, 2.2vw, 22px);
+    .hero-subtitle {
+      font-size: clamp(20px, 2.2vw, 24px);
       color: rgba(255, 255, 255, 0.95);
       line-height: 1.6;
-      margin-bottom: 48px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 40px;
+      font-weight: 600;
     }
 
-    .hero-section .hero-cta {
+    .hero-cta {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       padding: 18px 42px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 17px;
       font-weight: 700;
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
-      margin-bottom: 28px;
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
     }
 
-    .hero-section .hero-cta:hover {
+    .hero-cta:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--white);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(36, 142, 239, 0.4);
     }
 
-    .hero-section .hero-cta i {
+    .hero-cta i {
       font-size: 22px;
     }
 
-    .hero-section .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 8px;
-    }
-
-    .hero-section .scroll-indicator:hover {
-      color: var(--natural);
-      transform: translateY(4px);
-    }
-
-    .hero-section .scroll-indicator i {
-      font-size: 22px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
-    }
-
-    /* ============================================
-       WHAT YOU GET SECTION
-    ============================================ */
+    /* WHAT YOU GET SECTION */
     .what-you-get-section {
       padding: 120px 24px;
       background: var(--white);
     }
 
     .section-header {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto 60px;
       text-align: center;
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--pale-goldenrod);
-      color: var(--dark-olive-green);
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .section-tag i {
-      font-size: 18px;
     }
 
     .section-title {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
-      color: var(--dark-slate-blue);
-      margin-bottom: 16px;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
       line-height: 1.2;
       letter-spacing: -1px;
     }
@@ -361,9 +198,9 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     .service-column:hover {
-      border-color: var(--natural);
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-blue);
     }
 
     .service-column-header {
@@ -376,19 +213,19 @@ import FooterBar from '../components/FooterBar.astro';
     .service-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      color: var(--natural);
+      color: var(--white);
     }
 
     .service-column h3 {
       font-size: 28px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       letter-spacing: -0.5px;
     }
 
@@ -410,17 +247,36 @@ import FooterBar from '../components/FooterBar.astro';
 
     .service-list li i {
       font-size: 20px;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    /* ============================================
-       WHY IT MATTERS SECTION
-    ============================================ */
+    /* WHY IT MATTERS SECTION */
     .why-it-matters-section {
       padding: 120px 24px;
-      background: var(--grey);
+      background: var(--primary-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-it-matters-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    .why-it-matters-section .section-container {
+      position: relative;
+      z-index: 1;
     }
 
     .benefits-grid {
@@ -433,7 +289,7 @@ import FooterBar from '../components/FooterBar.astro';
 
     .benefit-card {
       background: var(--white);
-      border: 3px solid transparent;
+      border: 3px solid var(--grey);
       border-radius: 24px;
       padding: 48px 36px;
       text-align: center;
@@ -444,26 +300,26 @@ import FooterBar from '../components/FooterBar.astro';
     .benefit-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
     }
 
     .benefit-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
       font-size: 36px;
-      color: var(--natural);
+      color: var(--white);
     }
 
     .benefit-card h3 {
       font-size: 24px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 16px;
       letter-spacing: -0.5px;
     }
@@ -475,9 +331,7 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       DESIGN EXAMPLES SECTION
-    ============================================ */
+    /* DESIGN EXAMPLES SECTION */
     .design-examples-section {
       padding: 120px 24px;
       background: var(--white);
@@ -511,7 +365,7 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     .example-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     }
@@ -519,12 +373,12 @@ import FooterBar from '../components/FooterBar.astro';
     .example-image {
       width: 100%;
       height: 300px;
-      background: linear-gradient(135deg, var(--grey), var(--pale-goldenrod));
+      background: linear-gradient(135deg, var(--grey), var(--primary-light));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 48px;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       position: relative;
       overflow: hidden;
     }
@@ -555,8 +409,8 @@ import FooterBar from '../components/FooterBar.astro';
 
     .example-badge {
       display: inline-block;
-      background: var(--pale-goldenrod);
-      color: var(--dark-olive-green);
+      background: var(--primary-light);
+      color: var(--primary-blue);
       padding: 6px 16px;
       border-radius: 20px;
       font-size: 12px;
@@ -569,7 +423,7 @@ import FooterBar from '../components/FooterBar.astro';
     .example-content h3 {
       font-size: 22px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 12px;
       letter-spacing: -0.3px;
     }
@@ -581,12 +435,10 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       PROCESS SECTION
-    ============================================ */
+    /* PROCESS SECTION */
     .process-section {
       padding: 120px 24px;
-      background: var(--grey);
+      background: var(--primary-light);
     }
 
     .process-timeline {
@@ -601,7 +453,7 @@ import FooterBar from '../components/FooterBar.astro';
       top: 40px;
       bottom: 40px;
       width: 3px;
-      background: linear-gradient(180deg, var(--dark-slate-blue), var(--natural));
+      background: linear-gradient(180deg, var(--primary-blue), var(--accent-blue));
     }
 
     .timeline-item {
@@ -618,7 +470,7 @@ import FooterBar from '../components/FooterBar.astro';
     .timeline-number {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
       border: 4px solid var(--white);
       border-radius: 50%;
       display: flex;
@@ -626,7 +478,7 @@ import FooterBar from '../components/FooterBar.astro';
       justify-content: center;
       font-size: 24px;
       font-weight: 800;
-      color: var(--natural);
+      color: var(--white);
       flex-shrink: 0;
       position: relative;
       z-index: 10;
@@ -642,7 +494,7 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     .timeline-item:hover .timeline-content {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateX(8px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
     }
@@ -650,7 +502,7 @@ import FooterBar from '../components/FooterBar.astro';
     .timeline-content h3 {
       font-size: 22px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 8px;
       letter-spacing: -0.3px;
     }
@@ -662,12 +514,10 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       FINAL CTA SECTION
-    ============================================ */
+    /* FINAL CTA SECTION */
     .final-cta-section {
       padding: 100px 24px;
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -679,7 +529,7 @@ import FooterBar from '../components/FooterBar.astro';
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
       opacity: 0.3;
     }
 
@@ -694,15 +544,15 @@ import FooterBar from '../components/FooterBar.astro';
     .final-cta-icon {
       width: 100px;
       height: 100px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 3px solid var(--natural);
+      background: rgba(255, 255, 255, 0.15);
+      border: 3px solid var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 32px;
       font-size: 48px;
-      color: var(--natural);
+      color: var(--white);
     }
 
     .final-cta-section h2 {
@@ -729,31 +579,29 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 20px 48px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--white);
+      color: var(--primary-blue);
       font-size: 18px;
       font-weight: 700;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--white);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
     }
 
     .final-cta-button:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--white);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
     }
 
     .final-cta-button i {
       font-size: 22px;
     }
 
-    /* ============================================
-       FLOATING CTA BUTTONS
-    ============================================ */
+    /* FLOATING CTA */
     .floating-cta {
       position: fixed;
       bottom: 32px;
@@ -769,8 +617,8 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 16px 24px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--primary-blue);
+      color: var(--white);
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
@@ -782,43 +630,17 @@ import FooterBar from '../components/FooterBar.astro';
     .floating-btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      background: var(--dark-slate-blue);
-      color: var(--natural);
+      background: var(--accent-blue);
     }
 
-    /* ============================================
-       RESPONSIVE DESIGN
-    ============================================ */
+    /* RESPONSIVE */
     @media (max-width: 991px) {
       .hero-section {
-        padding: 130px 24px 80px;
-        margin-top: 0;
-        min-height: 85vh;
+        padding: 140px 24px 80px;
+        min-height: 75vh;
       }
 
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(70px);
-      }
-
-      .hero-section .shape-1 {
-        width: 400px;
-        height: 400px;
-      }
-
-      .hero-section .shape-2 {
-        width: 350px;
-        height: 350px;
-      }
-
-      .hero-section .shape-3 {
-        width: 300px;
-        height: 300px;
-      }
-
-      .services-split,
-      .examples-grid {
+      .services-split, .examples-grid {
         grid-template-columns: 1fr;
         gap: 32px;
       }
@@ -828,90 +650,39 @@ import FooterBar from '../components/FooterBar.astro';
         gap: 24px;
       }
 
-      .what-you-get-section,
-      .why-it-matters-section,
-      .design-examples-section,
-      .process-section,
-      .final-cta-section {
+      .what-you-get-section, .why-it-matters-section, .design-examples-section, .process-section, .final-cta-section {
         padding: 80px 24px;
       }
     }
 
     @media (max-width: 767px) {
       .hero-section {
-        padding: 120px 20px 60px;
-        margin-top: 0;
-        min-height: 80vh;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 40px 40px;
+        padding: 130px 20px 60px;
+        min-height: 70vh;
       }
 
       .hero-section h1 {
         font-size: clamp(32px, 7vw, 44px);
         margin-bottom: 20px;
-        padding: 0 10px;
       }
 
-      .hero-section .hero-subtitle {
+      .hero-subtitle {
         font-size: 18px;
-        margin-bottom: 40px;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(50px);
-      }
-
-      .hero-section .shape-1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        right: -100px;
-      }
-
-      .hero-section .shape-2 {
-        width: 250px;
-        height: 250px;
-        bottom: -150px;
-        left: -150px;
-      }
-
-      .hero-section .shape-3 {
-        width: 200px;
-        height: 200px;
-      }
-
-      .hero-section .hero-cta {
-        padding: 18px 36px;
-        font-size: 16px;
-        width: 100%;
-        max-width: 400px;
-        justify-content: center;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-
-      .service-column,
-      .benefit-card {
-        padding: 36px 28px;
-      }
-
-      .service-icon,
-      .benefit-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
       }
 
       .benefits-grid {
         grid-template-columns: 1fr;
         gap: 24px;
+      }
+
+      .service-column, .benefit-card {
+        padding: 36px 28px;
+      }
+
+      .service-icon, .benefit-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
       }
 
       .timeline-line {
@@ -945,16 +716,8 @@ import FooterBar from '../components/FooterBar.astro';
         justify-content: center;
       }
 
-      .what-you-get-section,
-      .why-it-matters-section,
-      .design-examples-section,
-      .process-section,
-      .final-cta-section {
+      .what-you-get-section, .why-it-matters-section, .design-examples-section, .process-section, .final-cta-section {
         padding: 60px 20px;
-      }
-
-      .section-header {
-        margin-bottom: 40px;
       }
 
       .floating-cta {
@@ -975,36 +738,14 @@ import FooterBar from '../components/FooterBar.astro';
 
     @media (max-width: 479px) {
       .hero-section {
-        padding: 110px 16px 50px;
-        margin-top: 0;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 30px 30px;
+        padding: 120px 16px 50px;
       }
 
       .hero-section h1 {
         font-size: clamp(28px, 8vw, 38px);
-        padding: 0 5px;
       }
 
-      .hero-section .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        display: none;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-
-      .service-column h3,
-      .benefit-card h3 {
+      .service-column h3, .benefit-card h3 {
         font-size: 20px;
       }
 
@@ -1017,55 +758,31 @@ import FooterBar from '../components/FooterBar.astro';
 <body>
   <Navigation />
   
-  <!-- ============================================
-       HERO SECTION
-  ============================================ -->
+  <!-- HERO SECTION -->
   <section class="hero-section">
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+    <div class="hero-background-overlay"></div>
 
     <div class="hero-container">
-      <div class="hero-badge" data-aos="fade-up">
-        <i class="ti ti-browser"></i>
-        <span>Full-Service Web</span>
-      </div>
+      <div class="hero-content">
+        <h1>Website Design & Management</h1>
 
-      <h1 data-aos="fade-up" data-aos-delay="100">
-        Website Design <span class="highlight-animated">& Management</span>
-      </h1>
+        <p class="hero-subtitle">
+          Custom, high-converting websites designed specifically for dental practices 
+          with ongoing management and optimization.
+        </p>
 
-      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-        Custom, high-converting websites designed specifically for dental practices 
-        with ongoing management and optimization.
-      </p>
-
-      <!-- <a href="#examples" class="hero-cta" data-aos="fade-up" data-aos-delay="300">
-        <i class="ti ti-photo"></i>
-        See Examples
-      </a> -->
-
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-        <span>What's included</span>
-        <i class="ti ti-chevron-down"></i>
+        <a href="#examples" class="hero-cta">
+          <i class="ti ti-photo"></i>
+          See Examples
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       WHAT YOU GET SECTION
-  ============================================ -->
+  <!-- WHAT YOU GET SECTION -->
   <section class="what-you-get-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-package"></i>
-          Complete Solution
-        </span>
         <h2 class="section-title">Complete Website Solution</h2>
       </div>
 
@@ -1147,16 +864,10 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       WHY IT MATTERS SECTION
-  ============================================ -->
+  <!-- WHY IT MATTERS SECTION -->
   <section class="why-it-matters-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-trophy"></i>
-          Why It Matters
-        </span>
         <h2 class="section-title">Your Website is Your Best Salesperson</h2>
       </div>
 
@@ -1202,16 +913,10 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       DESIGN EXAMPLES SECTION
-  ============================================ -->
+  <!-- DESIGN EXAMPLES SECTION -->
   <section class="design-examples-section" id="examples">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-photo"></i>
-          Portfolio
-        </span>
         <h2 class="section-title">Examples of Our Work</h2>
       </div>
 
@@ -1298,17 +1003,11 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       PROCESS SECTION
-  ============================================ -->
+  <!-- PROCESS SECTION -->
   <section class="process-section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-tag">
-          <i class="ti ti-timeline"></i>
-          Our Process
-        </span>
-        <h2 class="section-title">From Design to Launch in 4-6 Weeks</h2>
+        <h2 class="section-title">From Design to Launch in 4 Weeks</h2>
       </div>
 
       <div class="process-timeline">
@@ -1378,9 +1077,7 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       FINAL CTA SECTION
-  ============================================ -->
+  <!-- FINAL CTA SECTION -->
   <section class="final-cta-section">
     <div class="final-cta-content">
       <div class="final-cta-icon">
@@ -1390,8 +1087,9 @@ import FooterBar from '../components/FooterBar.astro';
       <h2>Ready for a Website That Converts?</h2>
       
       <p class="final-cta-text">
-        Stop losing patients to outdated websites. Get a modern, high-converting site that 
-        works as hard as you do—with ongoing management so you never have to worry about it.
+        20 year old websites don't come up in search results and are off-putting to customers. 
+        Get a modern, high-converting site that works as hard as you do—with ongoing management 
+        so you never have to worry about it.
       </p>
       
       <a href="/book-a-call" class="final-cta-button">
@@ -1403,9 +1101,7 @@ import FooterBar from '../components/FooterBar.astro';
 
   <FooterBar />
 
-  <!-- ============================================
-       FLOATING CTA BUTTONS
-  ============================================ -->
+  <!-- FLOATING CTA -->
   <div class="floating-cta">
     <a href="/book-a-call" class="floating-btn">
       <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
@@ -1417,9 +1113,6 @@ import FooterBar from '../components/FooterBar.astro';
     </a>
   </div>
 
-  <!-- ============================================
-       SCROLL ANIMATIONS
-  ============================================ -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const observerOptions = {
@@ -1430,72 +1123,45 @@ import FooterBar from '../components/FooterBar.astro';
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            const target = entry.target as HTMLElement;
+            target.style.opacity = '1';
+            target.style.transform = 'translateY(0)';
           }
         });
       }, observerOptions);
 
-      // Observe all elements with data-aos attribute
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-      });
-
-      // Animated highlight text
-      const highlights = document.querySelectorAll('.highlight-animated');
-      highlights.forEach((highlight, index) => {
-        setTimeout(() => {
-          highlight.classList.add('active');
-        }, 1000 + (index * 200));
-      });
-
-      // Scroll indicator animation
-      const scrollIndicator = document.querySelector('.scroll-indicator');
-      if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-          const whatYouGetSection = document.querySelector('.what-you-get-section');
-          if (whatYouGetSection) {
-            whatYouGetSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      // Animate service columns
       document.querySelectorAll('.service-column').forEach((column, index) => {
-        column.style.opacity = '0';
-        column.style.transform = 'translateY(30px)';
-        column.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        const element = column as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
         observer.observe(column);
       });
 
-      // Animate benefit cards
       document.querySelectorAll('.benefit-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
         observer.observe(card);
       });
 
-      // Animate example cards
       document.querySelectorAll('.example-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
       });
 
-      // Animate timeline items
       document.querySelectorAll('.timeline-item').forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-30px)';
-        item.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        const element = item as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateX(-30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
         observer.observe(item);
       });
 
-      // Smooth scroll for all anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();

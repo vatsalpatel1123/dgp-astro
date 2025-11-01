@@ -1,0 +1,1011 @@
+---
+// social-media-content-planning.astro - Social Media Content & Planning
+import '../css/main.css';
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Content & Planning | Dentistry Growth Partners</title>
+  <meta name="description" content="AI-generated, research-backed content that keeps your practice top-of-mind with strategic social media management.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 160px 24px 100px;
+    }
+
+    .hero-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .hero-background-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(5, 16, 35, 0.92) 0%, rgba(7, 56, 125, 0.88) 50%, rgba(36, 142, 239, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .hero-background-overlay::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 2;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(42px, 5.5vw, 62px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin: 0 0 24px 0;
+      letter-spacing: -1.8px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(20px, 2.2vw, 24px);
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.6;
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+
+    /* DESCRIPTION SECTION */
+    .description-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .description-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .description-content p {
+      font-size: 19px;
+      color: var(--dim-grey);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .description-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* KEY FEATURES SECTION */
+    .features-section {
+      padding: 120px 24px;
+      background: var(--primary-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    .features-section .section-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 24px;
+      padding: 48px 40px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(36, 142, 239, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: 24px;
+    }
+
+    .feature-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--white);
+      transition: all 0.4s ease;
+      flex-shrink: 0;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      letter-spacing: -0.5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BENEFITS SECTION */
+    .benefits-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .benefits-intro {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .benefits-intro p {
+      font-size: 19px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 24px;
+      padding: 48px 36px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .benefit-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      color: var(--white);
+    }
+
+    .benefit-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .benefit-card p {
+      font-size: 15px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* WHAT WE DELIVER SECTION */
+    .deliver-section {
+      padding: 120px 24px;
+      background: var(--primary-light);
+    }
+
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1300px;
+      margin: 60px auto 0;
+    }
+
+    .deliver-card {
+      background: var(--white);
+      border: 3px solid transparent;
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .deliver-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(36, 142, 239, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .deliver-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    }
+
+    .deliver-card:hover::before {
+      opacity: 1;
+    }
+
+    .deliver-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 24px;
+      transition: all 0.4s ease;
+    }
+
+    .deliver-card:hover .deliver-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .deliver-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .deliver-card p {
+      font-size: 15px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* FINAL CTA SECTION */
+    .final-cta-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .final-cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .final-cta-icon {
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      font-size: 48px;
+      color: var(--white);
+    }
+
+    .final-cta-section h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .final-cta-text {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--white);
+      color: var(--primary-blue);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 3px solid var(--white);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+    }
+
+    .final-cta-button:hover {
+      background: transparent;
+      color: var(--white);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
+    }
+
+    .final-cta-button i {
+      font-size: 22px;
+    }
+
+    /* FLOATING CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 1000;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--primary-blue);
+      color: var(--white);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      background: var(--accent-blue);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+      .hero-section {
+        padding: 140px 24px 80px;
+        min-height: 75vh;
+      }
+
+      .features-grid, .deliver-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .description-section, .features-section, .benefits-section, .deliver-section, .final-cta-section {
+        padding: 80px 24px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-section {
+        padding: 130px 20px 60px;
+        min-height: 70vh;
+      }
+
+      .hero-section h1 {
+        font-size: clamp(32px, 7vw, 44px);
+        margin-bottom: 20px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .features-grid, .benefits-grid, .deliver-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .feature-card, .benefit-card, .deliver-card {
+        padding: 36px 28px;
+      }
+
+      .feature-icon, .deliver-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+      }
+
+      .benefit-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+      }
+
+      .final-cta-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+      }
+
+      .final-cta-text {
+        font-size: 17px;
+      }
+
+      .final-cta-button {
+        padding: 18px 36px;
+        font-size: 16px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .description-section, .features-section, .benefits-section, .deliver-section, .final-cta-section {
+        padding: 60px 20px;
+      }
+
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+      }
+
+      .floating-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      .floating-btn span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .hero-section {
+        padding: 120px 16px 50px;
+      }
+
+      .hero-section h1 {
+        font-size: clamp(28px, 8vw, 38px);
+      }
+
+      .feature-card h3, .benefit-card h3, .deliver-card h3 {
+        font-size: 20px;
+      }
+
+      .final-cta-section h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <Navigation />
+  
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-background-overlay"></div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Social Media Content & Planning</h1>
+
+        <p class="hero-subtitle">
+          AI-generated, research-backed content that keeps your practice top-of-mind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESCRIPTION SECTION -->
+  <section class="description-section">
+    <div class="section-container">
+      <div class="description-content">
+        <p>
+          We help your practice build a consistent, professional social presence without the time drain. 
+          Our team uses AI-powered content creation to produce reels, carousels, and static posts that 
+          highlight your expertise, educate patients, and showcase your practice. Each post is designed 
+          to attract new patients, strengthen trust, and maintain long-term engagement with your community.
+        </p>
+        <p>
+          We also provide a custom content calendar — developed through in-depth research into the 
+          highest-converting and most engaging topics in dental marketing — so you know exactly what 
+          to post and when to post it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY FEATURES SECTION -->
+  <section class="features-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Key Features</h2>
+      </div>
+
+      <div class="features-grid">
+        
+        <!-- Feature 1: AI-Generated Reels & Videos -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <i class="ti ti-video"></i>
+            </div>
+            <h3>AI-Generated Reels & Videos</h3>
+          </div>
+          <p>
+            Short, engaging clips to educate and attract high-value patients. Our AI-powered video 
+            creation tools produce professional content that showcases your expertise and keeps 
+            viewers engaged.
+          </p>
+        </div>
+
+        <!-- Feature 2: Static & Carousel Posts -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <i class="ti ti-photo"></i>
+            </div>
+            <h3>Static & Carousel Posts</h3>
+          </div>
+          <p>
+            Clean visuals that position your practice as the local authority. Eye-catching graphics 
+            and informative carousels designed to educate, inspire trust, and drive engagement.
+          </p>
+        </div>
+
+        <!-- Feature 3: Custom Content Calendar -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <i class="ti ti-calendar-check"></i>
+            </div>
+            <h3>Custom Content Calendar</h3>
+          </div>
+          <p>
+            Strategic posting plan based on audience psychology and trending topics. Know exactly 
+            what to post and when, with a calendar developed through extensive research into 
+            high-converting dental content.
+          </p>
+        </div>
+
+        <!-- Feature 4: Patient-Centric Messaging -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <i class="ti ti-message-circle"></i>
+            </div>
+            <h3>Patient-Centric Messaging</h3>
+          </div>
+          <p>
+            Posts that build trust, credibility, and recall among existing and potential patients. 
+            Every piece of content is crafted to resonate with your target audience and address 
+            their concerns.
+          </p>
+        </div>
+
+        <!-- Feature 5: Growth-Oriented Strategy -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">
+              <i class="ti ti-chart-line"></i>
+            </div>
+            <h3>Growth-Oriented Strategy</h3>
+          </div>
+          <p>
+            Designed to increase visibility, drive inbound inquiries, and boost case acceptance 
+            indirectly. Every post serves a strategic purpose in your practice's growth journey.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="benefits-section">
+    <div class="section-container">
+      <div class="benefits-intro">
+        <h2 class="section-title">Why Social Media Matters for Your Practice</h2>
+        <p>
+          A strong social media presence keeps your practice top-of-mind, builds trust with your 
+          community, and attracts new patients organically.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        
+        <!-- Benefit 1: Build Trust Before the Call -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-shield-check"></i>
+          </div>
+          <h3>Build Trust Before the Call</h3>
+          <p>
+            Patients research practices online before booking. Consistent, professional content 
+            establishes credibility and makes them more likely to choose you.
+          </p>
+        </div>
+
+        <!-- Benefit 2: Stay Top-of-Mind -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-bulb"></i>
+          </div>
+          <h3>Stay Top-of-Mind</h3>
+          <p>
+            Regular posting keeps your practice visible to existing patients and their networks, 
+            increasing referrals and reactivations naturally.
+          </p>
+        </div>
+
+        <!-- Benefit 3: Educate & Attract Quality Patients -->
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <i class="ti ti-school"></i>
+          </div>
+          <h3>Educate & Attract Quality Patients</h3>
+          <p>
+            Educational content positions you as an expert and attracts patients who value quality 
+            care—the exact type of patient who invests in high-value procedures.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DELIVER SECTION -->
+  <section class="deliver-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">What We Deliver</h2>
+      </div>
+
+      <div class="deliver-grid">
+        
+        <!-- Deliverable 1: Monthly Content Package -->
+        <div class="deliver-card">
+          <div class="deliver-icon">
+            <i class="ti ti-package"></i>
+          </div>
+          <h3>Monthly Content Package</h3>
+          <p>
+            20-30 posts per month including reels, carousels, static posts, and stories—all 
+            customized to your practice and specialty.
+          </p>
+        </div>
+
+        <!-- Deliverable 2: Research-Backed Topics -->
+        <div class="deliver-card">
+          <div class="deliver-icon">
+            <i class="ti ti-file-search"></i>
+          </div>
+          <h3>Research-Backed Topics</h3>
+          <p>
+            Content calendar based on proven high-engagement topics in dental marketing, trending 
+            themes, and patient psychology.
+          </p>
+        </div>
+
+        <!-- Deliverable 3: Professional Design -->
+        <div class="deliver-card">
+          <div class="deliver-icon">
+            <i class="ti ti-palette"></i>
+          </div>
+          <h3>Professional Design</h3>
+          <p>
+            Branded graphics that match your practice aesthetic, ensuring consistency and 
+            professionalism across all platforms.
+          </p>
+        </div>
+
+        <!-- Deliverable 4: Caption Copy -->
+        <div class="deliver-card">
+          <div class="deliver-icon">
+            <i class="ti ti-writing"></i>
+          </div>
+          <h3>Caption Copy</h3>
+          <p>
+            Engaging, patient-friendly captions with strategic calls-to-action that encourage 
+            bookings, comments, and shares.
+          </p>
+        </div>
+
+        <!-- Deliverable 5: Hashtag Strategy -->
+        <div class="deliver-card">
+          <div class="deliver-icon">
+            <i class="ti ti-hash"></i>
+          </div>
+          <h3>Hashtag Strategy</h3>
+          <p>
+            Researched hashtag sets to maximize reach and discoverability within your local market 
+            and niche.
+          </p>
+        </div>
+
+        <!-- Deliverable 6: Scheduling Support -->
+        <div class="deliver-card">
+          <div class="deliver-icon">
+            <i class="ti ti-calendar-time"></i>
+          </div>
+          <h3>Scheduling Support</h3>
+          <p>
+            Content delivered ready-to-post with recommended posting times based on when your 
+            audience is most active.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA SECTION -->
+  <section class="final-cta-section">
+    <div class="final-cta-content">
+      <div class="final-cta-icon">
+        <i class="ti ti-brand-instagram"></i>
+      </div>
+      
+      <h2>Ready to Build a Strong Social Presence?</h2>
+      
+      <p class="final-cta-text">
+        Stop posting inconsistently or not at all. Let us handle your social media content so you 
+        can focus on delivering great care while we keep your practice top-of-mind in your community.
+      </p>
+      
+      <a href="/book-a-call" class="final-cta-button">
+        <i class="ti ti-calendar-event"></i>
+        Let's Talk
+      </a>
+    </div>
+  </section>
+
+  <FooterBar />
+
+  <!-- FLOATING CTA -->
+  <div class="floating-cta">
+    <a href="/book-a-call" class="floating-btn">
+      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
+      <span>Let's Talk</span>
+    </a>
+    <a href="tel:+16505578269" class="floating-btn">
+      <i class="ti ti-phone" style="font-size: 24px;"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = entry.target as HTMLElement;
+            target.style.opacity = '1';
+            target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.feature-card').forEach((card, index) => {
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+      });
+
+      document.querySelectorAll('.benefit-card').forEach((card, index) => {
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
+        observer.observe(card);
+      });
+
+      document.querySelectorAll('.deliver-card').forEach((card, index) => {
+        const element = card as HTMLElement;
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+      });
+    });
+  </script>
+
+</body>
+</html>

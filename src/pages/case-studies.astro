@@ -1,7 +1,6 @@
 ---
-// case-studies.astro - Real Results Page with Authentic Case Studies Only
+// case-studies.astro - Updated with embedded PDFs and new color scheme
 import '../css/main.css';
-import '../css/case-studies.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
 ---
@@ -16,46 +15,792 @@ import FooterBar from '../components/FooterBar.astro';
   <meta property="og:title" content="Real Results from Real Practices | Dentistry Growth Partners">
   <meta property="og:description" content="Authentic case studies showing real revenue growth and ROI from dental practices using our system.">
   <meta property="og:type" content="website">
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tabler Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HERO SECTION */
+    .case-studies-hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 160px 24px 100px;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .hero-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(5, 16, 35, 0.92) 0%, rgba(7, 56, 125, 0.88) 50%, rgba(36, 142, 239, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .hero-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 2;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(36, 142, 239, 0.3);
+      padding: 12px 28px;
+      border-radius: 50px;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge i {
+      font-size: 20px;
+    }
+
+    .case-studies-hero h1 {
+      font-size: clamp(42px, 5.5vw, 62px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin: 0 0 24px 0;
+      letter-spacing: -1.8px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .highlight {
+      color: var(--accent-blue);
+    }
+
+    .hero-description {
+      font-size: clamp(20px, 2.2vw, 24px);
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .hero-features {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 12px 24px;
+      border-radius: 50px;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .hero-feature i {
+      font-size: 20px;
+      color: var(--accent-blue);
+    }
+
+    /* EMBEDDED CASE STUDIES SECTION */
+    .embedded-studies-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .section-header {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary-light);
+      color: var(--primary-blue);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .section-tag i {
+      font-size: 18px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      font-size: 19px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    .case-study-embed {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+    }
+
+    .case-study-embed:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-study-header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      color: var(--white);
+      padding: 32px 40px;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .case-study-header h3 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .case-study-header p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+    }
+
+    .pdf-embed-container {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .pdf-embed {
+      width: 100%;
+      height: 800px;
+      border: none;
+      display: block;
+    }
+
+    /* AUTHENTIC CASE STUDIES SECTION */
+    .authentic-studies-section {
+      padding: 120px 24px;
+      background: var(--primary-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .authentic-studies-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    .authentic-studies-section .section-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .authentic-case-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 24px;
+      padding: 48px 40px;
+      margin-bottom: 40px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .authentic-case-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .authentic-case-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .case-badge {
+      display: inline-block;
+      background: var(--accent-blue);
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+
+    .case-header {
+      margin-bottom: 32px;
+    }
+
+    .case-info h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .case-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: var(--dim-grey);
+      margin: 0;
+    }
+
+    .case-location i {
+      font-size: 18px;
+      color: var(--accent-blue);
+    }
+
+    .case-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--grey);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      background: var(--primary-light);
+      transform: translateY(-4px);
+    }
+
+    .stat-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .stat-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--dim-grey);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .case-description {
+      border-top: 2px solid var(--grey);
+      padding-top: 24px;
+    }
+
+    .case-description h4 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .case-description p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* EXPECTED RESULTS SECTION */
+    .expected-results-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .results-timeline {
+      max-width: 1000px;
+      margin: 60px auto 80px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .timeline-phase {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 24px;
+      padding: 40px 36px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .timeline-phase:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .phase-badge {
+      display: inline-block;
+      background: var(--accent-blue);
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .timeline-phase h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .phase-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .metric-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.5;
+    }
+
+    .metric-item i {
+      font-size: 24px;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .success-factors {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .success-factors h3 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 40px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .factors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .factor-card {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .factor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .factor-card i {
+      font-size: 48px;
+      color: var(--accent-blue);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .factor-card h4 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .factor-card p {
+      font-size: 15px;
+      color: var(--dim-grey);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.3;
+    }
+
+    .cta-section .section-container {
+      position: relative;
+      z-index: 10;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .cta-section p {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--white);
+      color: var(--primary-blue);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 3px solid var(--white);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--white);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-primary i {
+      font-size: 22px;
+    }
+
+    /* FLOATING CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 1000;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--primary-blue);
+      color: var(--white);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      background: var(--accent-blue);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+      .case-studies-hero {
+        padding: 140px 24px 80px;
+        min-height: 75vh;
+      }
+
+      .case-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .results-timeline, .factors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .pdf-embed {
+        height: 600px;
+      }
+
+      .embedded-studies-section, .authentic-studies-section, .expected-results-section, .cta-section {
+        padding: 80px 24px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .case-studies-hero {
+        padding: 130px 20px 60px;
+        min-height: 70vh;
+      }
+
+      .case-studies-hero h1 {
+        font-size: clamp(32px, 7vw, 44px);
+        margin-bottom: 20px;
+      }
+
+      .hero-description {
+        font-size: 18px;
+      }
+
+      .hero-features {
+        gap: 16px;
+      }
+
+      .case-stats-grid, .results-timeline, .factors-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .stat-card {
+        padding: 20px 16px;
+      }
+
+      .pdf-embed {
+        height: 500px;
+      }
+
+      .case-study-header {
+        padding: 24px 28px;
+      }
+
+      .authentic-case-card {
+        padding: 36px 28px;
+      }
+
+      .timeline-phase, .factor-card {
+        padding: 32px 24px;
+      }
+
+      .btn-primary {
+        padding: 18px 36px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+      }
+
+      .embedded-studies-section, .authentic-studies-section, .expected-results-section, .cta-section {
+        padding: 60px 20px;
+      }
+
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+      }
+
+      .floating-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      .floating-btn span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .case-studies-hero {
+        padding: 120px 16px 50px;
+      }
+
+      .case-studies-hero h1 {
+        font-size: clamp(28px, 8vw, 38px);
+      }
+
+      .pdf-embed {
+        height: 400px;
+      }
+
+      .case-study-header h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <Navigation />
 
-  <!-- ============================================
-       HERO SECTION
-  ============================================ -->
+  <!-- HERO SECTION -->
   <section class="case-studies-hero">
-    <!-- Animated Background -->
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+    <div class="hero-background"></div>
 
     <div class="hero-container">
-      <div class="hero-badge">
+      <!-- <div class="hero-badge">
         <i class="ti ti-trophy"></i>
         <span>Proven Results</span>
-      </div>
+      </div> -->
 
       <h1>Real Results from <span class="highlight">Real Practices</span></h1>
       <p class="hero-description">
         These are actual results from our client practices—no fabricated data.
       </p>
 
-      <!-- Hero Features -->
-      <div class="hero-features">
+      <!-- <div class="hero-features">
         <div class="hero-feature">
           <i class="ti ti-certificate"></i>
           <span>Verified Results</span>
@@ -68,79 +813,50 @@ import FooterBar from '../components/FooterBar.astro';
           <i class="ti ti-trending-up"></i>
           <span>What to Expect</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 
-  <!-- ============================================
-       DOWNLOADABLE CASE STUDIES SECTION
-  ============================================ -->
-  <section class="downloadable-studies-section">
+  <!-- EMBEDDED CASE STUDIES SECTION -->
+  <section class="embedded-studies-section">
     <div class="section-container">
       <div class="section-header">
         <span class="section-tag">
           <i class="ti ti-chart-dots"></i>
           Detailed Analysis
         </span>
-        <h2 class="section-title">Download Our Complete Case Studies</h2>
+        <h2 class="section-title">Our Complete Case Studies</h2>
         <p class="section-description">
-          In-depth analysis and real data from our partner practices. Download or preview the full reports.
+          In-depth analysis and real data from our partner practices.
         </p>
       </div>
 
-      <div class="download-cards-grid">
-        
-        <!-- Case Study Document 1 -->
-        <div class="download-card">
-          <div class="download-icon">
-            <i class="ti ti-file-analytics"></i>
-          </div>
+      <!-- Case Study 1: Comprehensive Campaign Analysis -->
+      <div class="case-study-embed">
+        <div class="case-study-header">
           <h3>Comprehensive Campaign Analysis</h3>
-          <p class="download-subtitle">Lead Quality (LQ) vs. Lead Volume (LV)</p>
-          <p class="download-description">
-            Complete breakdown comparing lead quality strategies vs volume-based approaches, including conversion rates, cost per acquisition, and long-term ROI metrics.
-          </p>
-          <div class="download-actions">
-            <button class="btn-preview" data-pdf="/pdf/68d53b784cbd20d70bf3aaad.pdf">
-              <i class="ti ti-eye"></i>
-              Preview
-            </button>
-            <a href="/pdf/68d53b784cbd20d70bf3aaad.pdf" download class="btn-download">
-              <i class="ti ti-download"></i>
-              Download PDF
-            </a>
-          </div>
+          <p>Lead Quality (LQ) vs. Lead Volume (LV)</p>
         </div>
-
-        <!-- Case Study Document 2 -->
-        <div class="download-card">
-          <div class="download-icon">
-            <i class="ti ti-chart-line"></i>
-          </div>
-          <h3>Summit Dental Implants Case Study</h3>
-          <p class="download-subtitle">Quality-First Lead Gen System</p>
-          <p class="download-description">
-            Real results from Summit Dental's implementation of our quality-first lead generation system, including month-by-month breakdown of consultations, conversion rates, and revenue growth.
-          </p>
-          <div class="download-actions">
-            <button class="btn-preview" data-pdf="/pdf/68d53b74f2acc73a59f6dac4.pdf">
-              <i class="ti ti-eye"></i>
-              Preview
-            </button>
-            <a href="/pdf/68d53b74f2acc73a59f6dac4.pdf" download class="btn-download">
-              <i class="ti ti-download"></i>
-              Download PDF
-            </a>
-          </div>
+        <div class="pdf-embed-container">
+          <iframe src="/pdf/68d53b784cbd20d70bf3aaad.pdf" class="pdf-embed" title="Comprehensive Campaign Analysis PDF"></iframe>
         </div>
-
       </div>
+
+      <!-- Case Study 2: Summit Dental Implants -->
+      <div class="case-study-embed">
+        <div class="case-study-header">
+          <h3>Summit Dental Implants Case Study</h3>
+          <p>Quality-First Lead Gen System</p>
+        </div>
+        <div class="pdf-embed-container">
+          <iframe src="/pdf/68d53b74f2acc73a59f6dac4.pdf" class="pdf-embed" title="Summit Dental Implants Case Study PDF"></iframe>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ============================================
-       REAL CASE STUDIES SECTION (GoHighLevel Data Only)
-  ============================================ -->
+  <!-- AUTHENTIC CASE STUDIES SECTION -->
   <section class="authentic-studies-section">
     <div class="section-container">
       <div class="section-header">
@@ -283,9 +999,7 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       EXPECTED RESULTS SECTION
-  ============================================ -->
+  <!-- EXPECTED RESULTS SECTION -->
   <section class="expected-results-section">
     <div class="section-container">
       <div class="section-header">
@@ -381,9 +1095,7 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       FINAL CTA SECTION
-  ============================================ -->
+  <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="section-container">
       <h2>Want Results Like These?</h2>
@@ -399,9 +1111,7 @@ import FooterBar from '../components/FooterBar.astro';
 
   <FooterBar />
 
-  <!-- ============================================
-       FLOATING CTA BUTTONS
-  ============================================ -->
+  <!-- FLOATING CTA BUTTONS -->
   <div class="floating-cta">
     <a href="/book-a-call" class="floating-btn">
       <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
@@ -413,63 +1123,7 @@ import FooterBar from '../components/FooterBar.astro';
     </a>
   </div>
 
-  <!-- ============================================
-       PDF PREVIEW MODAL
-  ============================================ -->
-  <div class="pdf-modal" id="pdfModal">
-    <div class="pdf-modal-overlay"></div>
-    <div class="pdf-modal-content">
-      <button class="pdf-modal-close" aria-label="Close preview">
-        <i class="ti ti-x"></i>
-      </button>
-      <iframe id="pdfViewer" class="pdf-viewer"></iframe>
-    </div>
-  </div>
-
-  <!-- ============================================
-       JAVASCRIPT
-  ============================================ -->
   <script>
-    // PDF Preview Modal
-    document.addEventListener('DOMContentLoaded', function() {
-      const previewButtons = document.querySelectorAll('.btn-preview');
-      const modal = document.getElementById('pdfModal');
-      const modalOverlay = modal?.querySelector('.pdf-modal-overlay');
-      const closeButton = modal?.querySelector('.pdf-modal-close');
-      const pdfViewer = document.getElementById('pdfViewer');
-
-      previewButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const pdfFile = this.getAttribute('data-pdf');
-          if (pdfViewer && modal) {
-            pdfViewer.src = pdfFile;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      });
-
-      // Close modal
-      const closeModal = () => {
-        if (modal && pdfViewer) {
-          modal.classList.remove('active');
-          pdfViewer.src = '';
-          document.body.style.overflow = '';
-        }
-      };
-
-      closeButton?.addEventListener('click', closeModal);
-      modalOverlay?.addEventListener('click', closeModal);
-
-      // Close on Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal?.classList.contains('active')) {
-          closeModal();
-        }
-      });
-    });
-
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();

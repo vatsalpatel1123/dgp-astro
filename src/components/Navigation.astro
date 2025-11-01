@@ -49,14 +49,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
               <i class="ti ti-chevron-down dropdown-icon"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="/multi-implant-marketing" class={`dropdown-item ${currentPath === '/multi-implant-marketing' ? 'active' : ''}`}>
+              <a href="/all-on-x-ai" class={`dropdown-item ${currentPath === '/all-on-x-ai' ? 'active' : ''}`}>
                 <i class="ti ti-dental"></i>
-                Multi-Implant Marketing
+                All-On-X AI
               </a>
-              <a href="/high-value-case-marketing" class={`dropdown-item ${currentPath === '/high-value-case-marketing' ? 'active' : ''}`}>
+              <!-- <a href="/high-value-case-marketing" class={`dropdown-item ${currentPath === '/high-value-case-marketing' ? 'active' : ''}`}>
                 <i class="ti ti-diamond"></i>
                 High-Value Case Marketing
-              </a>
+              </a> -->
               <a href="/ai-voice-receptionist" class={`dropdown-item ${currentPath === '/ai-voice-receptionist' ? 'active' : ''}`}>
                 <i class="ti ti-phone-call"></i>
                 AI Scheduling Receptionist
@@ -68,6 +68,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
               <a href="/aio-seo" class={`dropdown-item ${currentPath === '/aio-seo' ? 'active' : ''}`}>
                 <i class="ti ti-search"></i>
                 AIO SEO
+              </a>
+              <a href="/social-media-content-planning" class={`dropdown-item ${currentPath === '/social-media-content-planning' ? 'active' : ''}`}>
+                <i class="ti ti-calendar-event"></i>
+                Social Media Content & Planning
               </a>
               <a href="/website-design-management" class={`dropdown-item ${currentPath === '/website-design-management' ? 'active' : ''}`}>
                 <i class="ti ti-world"></i>
@@ -165,13 +169,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
   .dropdown-item:hover {
     background: #f5f5f5;
-    border-left-color: #c6ff53;
+    border-left-color: #248EEF;
     padding-left: 24px;
   }
 
   /* Active Link Styles */
   .nav-link-dark.active {
-    color: #c6ff53 !important;
+    color: #248EEF !important;
     position: relative;
   }
 
@@ -182,15 +186,15 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     left: 0;
     right: 0;
     height: 3px;
-    background: #c6ff53;
+    background: #248EEF;
     border-radius: 2px;
   }
 
   /* Dropdown item active state */
   .dropdown-item.active {
-    background: rgba(198, 255, 83, 0.1);
-    border-left-color: #c6ff53;
-    color: #c6ff53;
+    background: #c5def6;
+    border-left-color: #248EEF;
+    color: #248EEF;
     font-weight: 700;
   }
 
@@ -204,10 +208,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       overflow: hidden;
       transform: none;
       box-shadow: none;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(7, 56, 125, 0.1);
       margin-top: 0;
       border-radius: 8px;
       transition: all 0.3s ease;
+      border: 1px solid rgba(36, 142, 239, 0.2);
     }
 
     .nav-dropdown.mobile-open .dropdown-menu {
@@ -220,17 +225,26 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     .dropdown-item {
       padding: 10px 16px;
       font-size: 13px;
-      color: #ffffff;
+      color: rgba(255, 255, 255, 0.9);
+      border-left: 3px solid transparent;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(36, 142, 239, 0.15);
+      border-left-color: #248EEF;
+      padding-left: 20px;
     }
 
     .dropdown-item i {
       font-size: 16px;
-      color: #c6ff53 !important;
+      color: #248EEF !important;
     }
 
     .dropdown-item.active {
-      background: rgba(198, 255, 83, 0.15);
-      color: #c6ff53;
+      background: rgba(36, 142, 239, 0.2);
+      color: #248EEF;
+      border-left-color: #248EEF;
+      font-weight: 700;
     }
 
     .navbar-button-wrapper {

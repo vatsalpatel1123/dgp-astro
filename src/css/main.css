@@ -2,15 +2,18 @@
        CSS VARIABLES
     ============================================ */
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
+
+      /* Legacy variable mappings for gradual transition */
+      --dark-slate-blue: #07387D;
+      --dark-olive-green: #051023;
     }
 
     * {
@@ -35,7 +38,7 @@
       left: 0;
       right: 0;
       z-index: 9999;
-      background: var(--dark-slate-blue);
+      background: var(--primary-dark);
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
@@ -43,6 +46,7 @@
       background: rgba(0, 0, 0, 0.2);
       padding: 10px 24px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: none; /* Hide top bar as per requirements */
     }
 
     .top-bar-content {
@@ -68,7 +72,7 @@
     }
 
     .top-bar-link {
-      color: var(--natural);
+      color: var(--accent-blue);
       font-size: 13px;
       font-weight: 600;
       text-decoration: none;
@@ -126,16 +130,16 @@
     }
 
     .nav-link-dark:hover {
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .nav-link-dark.w--current {
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .cta-button-dark {
-      background: var(--natural);
-      color: var(--black);
+      background: var(--accent-blue);
+      color: var(--white);
       padding: 12px 28px;
       border-radius: 8px;
       text-decoration: none;
@@ -143,14 +147,14 @@
       font-size: 15px;
       transition: all 0.3s ease;
       display: inline-block;
-      box-shadow: 0 4px 12px rgba(198, 255, 83, 0.3);
+      box-shadow: 0 4px 12px rgba(36, 142, 239, 0.3);
     }
 
     .cta-button-dark:hover {
       background: var(--white);
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 6px 20px rgba(36, 142, 239, 0.4);
     }
 
     .navbar-menu-button {
@@ -209,21 +213,37 @@
        HERO SECTION
     ============================================ */
     .hero-section {
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
       padding: 160px 24px 100px;
       position: relative;
       overflow: hidden;
-      /* margin-top: 120px; */
     }
 
-    .hero-section::before {
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-background::after {
       content: '';
       position: absolute;
       top: 0;
-      right: 0;
-      width: 50%;
+      left: 0;
+      width: 100%;
       height: 100%;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      background: linear-gradient(135deg, rgba(7, 56, 125, 0.85) 0%, rgba(5, 16, 35, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .hero-background img,
+    .hero-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       opacity: 0.3;
     }
 
@@ -235,7 +255,7 @@
       gap: 80px;
       align-items: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero-content h1 {
@@ -248,7 +268,7 @@
     }
 
     .hero-content .highlight {
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .hero-content p {
@@ -260,19 +280,19 @@
 
     .hero-badge {
       display: inline-block;
-      background: rgba(198, 255, 83, 0.15);
-      border: 2px solid var(--natural);
+      background: rgba(36, 142, 239, 0.15);
+      border: 2px solid var(--accent-blue);
       padding: 8px 20px;
       border-radius: 24px;
-      color: var(--natural);
+      color: var(--accent-blue);
       font-size: 14px;
       font-weight: 700;
       margin-bottom: 32px;
     }
 
     .btn-primary {
-      background: var(--natural);
-      color: var(--black);
+      background: var(--accent-blue);
+      color: var(--white);
       padding: 18px 40px;
       border-radius: 12px;
       text-decoration: none;
@@ -282,15 +302,15 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 2px solid var(--natural);
-      box-shadow: 0 4px 16px rgba(198,255,83,0.3);
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 4px 16px rgba(36, 142, 239, 0.3);
     }
 
     .btn-primary:hover {
-      background: transparent;
-      color: var(--natural);
+      background: var(--white);
+      color: var(--primary-blue);
       transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(198,255,83,0.4);
+      box-shadow: 0 6px 24px rgba(36, 142, 239, 0.4);
     }
 
     .hero-image-container {
@@ -300,13 +320,29 @@
 
     .hero-image {
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
       height: auto;
       border-radius: 20px;
       box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-      background: linear-gradient(135deg, #e0e7ff, #f0f4ff);
-      border: 4px solid var(--natural);
+      border: 4px solid var(--accent-blue);
       display: block;
+    }
+
+    .hero-guarantee-badge {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      background: var(--accent-blue);
+      color: var(--white);
+      padding: 20px 30px;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.4;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      max-width: 280px;
     }
 
     /* ============================================
@@ -348,33 +384,157 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;
       margin-top: 60px;
+      position: relative;
+    }
+
+    /* Decorative dot pattern in grid */
+    .why-grid::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      background-image: radial-gradient(circle, rgba(36, 142, 239, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .why-card {
-      background: var(--grey);
+      background: var(--white);
       padding: 40px;
       border-radius: 20px;
       border: 3px solid transparent;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative corner pattern */
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+      opacity: 0.08;
+      border-radius: 50%;
+      transition: all 0.4s ease;
+    }
+
+    /* Decorative bottom pattern */
+    .why-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 80px;
+      height: 80px;
+      background: var(--primary-blue);
+      opacity: 0.05;
+      border-radius: 50%;
+      transition: all 0.4s ease;
     }
 
     .why-card:hover {
-      border-color: var(--natural);
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      border-color: var(--accent-blue);
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(36, 142, 239, 0.25);
+      background: linear-gradient(135deg, var(--white) 0%, rgba(237, 237, 232, 0.5) 100%);
+    }
+
+    .why-card:hover::before {
+      transform: scale(1.3) rotate(45deg);
+      opacity: 0.12;
+    }
+
+    .why-card:hover::after {
+      transform: scale(1.2);
+      opacity: 0.08;
+    }
+
+    /* Alternating card patterns */
+    .why-card:nth-child(1) {
+      background: linear-gradient(to bottom right, var(--white) 0%, rgba(237, 237, 232, 0.3) 100%);
+    }
+
+    .why-card:nth-child(2) {
+      background: linear-gradient(to bottom left, var(--white) 0%, rgba(237, 237, 232, 0.3) 100%);
+    }
+
+    .why-card:nth-child(3) {
+      background: linear-gradient(to top right, var(--white) 0%, rgba(237, 237, 232, 0.3) 100%);
+    }
+
+    .why-card:nth-child(4) {
+      background: linear-gradient(to top left, var(--white) 0%, rgba(237, 237, 232, 0.3) 100%);
+    }
+
+    /* Card number badge */
+    .benefit-number {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      z-index: 3;
+      box-shadow: 0 4px 12px rgba(36, 142, 239, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .why-card:hover .benefit-number {
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 6px 20px rgba(36, 142, 239, 0.5);
     }
 
     .why-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
       font-size: 32px;
-      color: var(--pale-goldenrod);
+      color: var(--accent-blue);
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 8px 20px rgba(7, 56, 125, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    /* Icon glow effect */
+    .why-icon::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
+      border-radius: 18px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .why-card:hover .why-icon {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 12px 30px rgba(36, 142, 239, 0.4);
+    }
+
+    .why-card:hover .why-icon::before {
+      opacity: 0.2;
     }
 
     .why-card h3 {
@@ -382,22 +542,87 @@
       font-weight: 700;
       color: var(--black);
       margin-bottom: 16px;
+      position: relative;
+      z-index: 2;
+      padding-left: 16px;
+    }
+
+    /* Decorative line for heading */
+    .why-card h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 28px;
+      background: linear-gradient(to bottom, var(--accent-blue), var(--primary-blue));
+      border-radius: 4px;
+      transition: height 0.3s ease;
+    }
+
+    .why-card:hover h3::before {
+      height: 40px;
     }
 
     .why-card p {
       font-size: 16px;
       color: var(--dim-grey);
       line-height: 1.7;
+      position: relative;
+      z-index: 2;
     }
 
     .case-value-highlight {
-      background: var(--pale-goldenrod);
-      padding: 4px 12px;
-      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(36, 142, 239, 0.15), rgba(7, 56, 125, 0.1));
+      padding: 6px 16px;
+      border-radius: 12px;
       font-weight: 700;
-      color: var(--green);
+      color: var(--primary-blue);
       display: inline-block;
       margin: 8px 0;
+      border: 2px solid rgba(36, 142, 239, 0.2);
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .why-card:hover .case-value-highlight {
+      background: linear-gradient(135deg, rgba(36, 142, 239, 0.25), rgba(7, 56, 125, 0.15));
+      border-color: var(--accent-blue);
+      transform: translateX(4px);
+    }
+
+    /* Benefits heading styling */
+    .benefits-heading {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--black);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 12px;
+    }
+
+    .benefits-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-blue), var(--primary-blue));
+      border-radius: 2px;
+    }
+
+    /* Red highlight for problem statements */
+    .problem-highlight {
+      color: #d32f2f;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(211, 47, 47, 0.1), rgba(244, 67, 54, 0.08));
+      padding: 2px 4px;
+      border-radius: 4px;
     }
 
     /* ============================================
@@ -406,6 +631,37 @@
     .what-we-solve-section {
       padding: 100px 24px;
       background: var(--grey);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .what-we-solve-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .what-we-solve-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(7, 56, 125, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .what-we-solve-section .section-container {
+      position: relative;
+      z-index: 1;
     }
 
     .pain-points-grid {
@@ -482,7 +738,7 @@
     }
 
     .pillar-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 12px 40px rgba(0,0,0,0.1);
     }
@@ -493,8 +749,8 @@
       left: 40px;
       width: 50px;
       height: 50px;
-      background: var(--dark-slate-blue);
-      color: var(--natural);
+      background: var(--primary-blue);
+      color: var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -529,7 +785,7 @@
       content: '✓';
       position: absolute;
       left: 0;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       font-weight: 700;
       font-size: 18px;
     }
@@ -537,7 +793,7 @@
     .pipeline-flow {
       margin-top: 60px;
       padding: 60px 40px;
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
       border-radius: 20px;
       text-align: center;
       position: relative;
@@ -551,7 +807,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(36,142,239,0.1)"/></svg>') repeat;
       opacity: 0.3;
     }
 
@@ -569,7 +825,7 @@
       display: block;
       width: 80px;
       height: 4px;
-      background: var(--natural);
+      background: var(--accent-blue);
       margin: 16px auto 0;
       border-radius: 2px;
     }
@@ -601,7 +857,7 @@
       right: -20px;
       width: 20px;
       height: 3px;
-      background: var(--natural);
+      background: var(--accent-blue);
       transform: translateY(-50%);
       z-index: -1;
     }
@@ -612,13 +868,13 @@
 
     .journey-step:hover {
       transform: translateY(-12px);
-      border-color: var(--natural);
-      box-shadow: 0 20px 40px rgba(198, 255, 83, 0.3);
+      border-color: var(--accent-blue);
+      box-shadow: 0 20px 40px rgba(36, 142, 239, 0.3);
     }
 
     .journey-step:hover .step-icon {
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       transform: scale(1.15) rotate(5deg);
     }
 
@@ -629,8 +885,8 @@
       transform: translateX(-50%);
       width: 36px;
       height: 36px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -643,21 +899,21 @@
     .step-icon {
       width: 60px;
       height: 60px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 16px;
       font-size: 28px;
-      color: var(--natural);
+      color: var(--accent-blue);
       transition: all 0.4s ease;
     }
 
     .step-title {
       font-size: 15px;
       font-weight: 700;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 8px;
       line-height: 1.3;
     }
@@ -672,7 +928,7 @@
        FINAL CTA SECTION
     ============================================ */
     .cta-section {
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
       padding: 100px 24px;
       text-align: center;
       position: relative;
@@ -686,7 +942,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(36,142,239,0.1)"/></svg>') repeat;
       opacity: 0.3;
     }
 
@@ -715,7 +971,7 @@
        FOOTER STYLES
     ============================================ */
     .footer {
-      background: var(--dark-slate-blue);
+      background: var(--primary-dark);
       color: var(--white);
       padding: 80px 24px 24px;
     }
@@ -747,7 +1003,7 @@
     }
 
     .footer-heading:hover {
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .footer-right-contain {
@@ -765,7 +1021,7 @@
     .footer-coloumn-title {
       font-size: 16px;
       font-weight: 700;
-      color: var(--natural);
+      color: var(--accent-blue);
       margin-bottom: 8px;
     }
 
@@ -784,7 +1040,7 @@
     }
 
     .footer-link-2:hover {
-      color: var(--natural);
+      color: var(--accent-blue);
       padding-left: 8px;
     }
 
@@ -819,8 +1075,8 @@
       align-items: center;
       gap: 12px;
       padding: 16px 24px;
-      background: var(--natural);
-      color: var(--black);
+      background: var(--accent-blue);
+      color: var(--white);
       text-decoration: none;
       border-radius: 50px;
       font-weight: 700;
@@ -832,6 +1088,7 @@
     .floating-btn:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      background: var(--primary-blue);
     }
 
     /* ============================================
@@ -841,17 +1098,16 @@
       .navbar-menu-dark {
         display: none;
         position: fixed;
-        /* top: 120px; */
         top: 70px;
         left: 0;
         right: 0;
-        background: var(--dark-slate-blue);
+        background: var(--primary-dark);
         flex-direction: column;
         align-items: flex-start;
         padding: 24px;
         box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         margin-left: 0;
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 70px);
         overflow-y: auto;
       }
 
@@ -896,6 +1152,19 @@
 
       .why-grid {
         grid-template-columns: 1fr;
+      }
+
+      .why-grid::before {
+        width: 200px;
+        height: 200px;
+      }
+
+      .benefit-number {
+        top: 15px;
+        right: 15px;
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
       }
 
       .pain-points-grid {
@@ -952,7 +1221,7 @@
 
       .hero-image {
         max-width: 400px;
-        border: 3px solid var(--natural);
+        border: 3px solid var(--accent-blue);
       }
 
       .hero-content h1 {
@@ -965,6 +1234,31 @@
 
       .cta-section h2 {
         font-size: 36px;
+      }
+
+      .why-card {
+        padding: 32px;
+      }
+
+      .why-card h3 {
+        font-size: 20px;
+        padding-left: 12px;
+      }
+
+      .why-card h3::before {
+        width: 3px;
+        height: 24px;
+      }
+
+      .why-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+      }
+
+      .what-we-solve-section::before,
+      .what-we-solve-section::after {
+        display: none;
       }
 
       .pipeline-flow {
@@ -998,7 +1292,7 @@
         top: 70px;
         width: 3px;
         height: calc(100% + 24px);
-        background: var(--natural);
+        background: var(--accent-blue);
         transform: none;
       }
 
@@ -1057,7 +1351,7 @@
 
       .hero-image {
         max-width: 100%;
-        border: 2px solid var(--natural);
+        border: 2px solid var(--accent-blue);
         border-radius: 12px;
       }
 
