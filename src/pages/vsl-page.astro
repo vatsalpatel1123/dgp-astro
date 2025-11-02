@@ -30,15 +30,20 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
+
+      /* Legacy variable mappings for gradual transition */
+      --dark-slate-blue: #07387D;
+      --dark-olive-green: #051023;
+      --natural: #248EEF;
+      --pale-goldenrod: #EDEDE8;
     }
 
     body {
@@ -65,42 +70,44 @@ import FooterBar from '../components/FooterBar.astro';
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
       padding: 140px 24px 80px;
       margin-top: 0;
     }
 
-    /* Animated grid background */
+    /* Background Image with Overlay */
     .vsl-hero-section .hero-background {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
-      opacity: 0.15;
       z-index: 0;
     }
 
     .vsl-hero-section .hero-background::before {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+      z-index: 1;
     }
 
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(60px, 60px);
-      }
+    .vsl-hero-section .hero-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(5, 16, 35, 0.92) 0%, rgba(7, 56, 125, 0.88) 100%);
+      z-index: 2;
     }
 
     .vsl-hero-section .hero-shapes {
@@ -109,12 +116,13 @@ import FooterBar from '../components/FooterBar.astro';
       height: 100%;
       top: 0;
       left: 0;
+      z-index: 3;
     }
 
     .vsl-hero-section .shape {
       position: absolute;
-      filter: blur(100px);
-      opacity: 0.3;
+      filter: blur(80px);
+      opacity: 0.15;
       will-change: transform;
       pointer-events: none;
     }
@@ -122,7 +130,7 @@ import FooterBar from '../components/FooterBar.astro';
     .vsl-hero-section .shape-1 {
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.4) 0%, transparent 70%);
       top: -150px;
       right: -150px;
       animation: floatSlow 18s infinite ease-in-out;
@@ -131,20 +139,10 @@ import FooterBar from '../components/FooterBar.astro';
     .vsl-hero-section .shape-2 {
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(36, 142, 239, 0.3) 0%, transparent 70%);
       bottom: -200px;
       left: -200px;
       animation: floatSlow 22s infinite ease-in-out reverse;
-    }
-
-    .vsl-hero-section .shape-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSlow 25s infinite ease-in-out;
     }
 
     @keyframes floatSlow {
@@ -176,9 +174,9 @@ import FooterBar from '../components/FooterBar.astro';
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(36, 142, 239, 0.15);
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
+      border: 2px solid rgba(36, 142, 239, 0.4);
       padding: 12px 28px;
       border-radius: 50px;
       color: var(--white);
@@ -190,7 +188,7 @@ import FooterBar from '../components/FooterBar.astro';
 
     .vsl-hero-section .hero-badge i {
       font-size: 20px;
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .vsl-hero-section h1 {
@@ -206,10 +204,10 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     .vsl-hero-section .highlight-animated {
-      color: var(--natural);
+      color: var(--accent-blue);
       position: relative;
       display: inline-block;
-      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
+      background: linear-gradient(135deg, var(--accent-blue) 0%, #5ba8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -236,7 +234,7 @@ import FooterBar from '../components/FooterBar.astro';
       z-index: 10;
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
-      border: 3px solid rgba(198, 255, 83, 0.2);
+      border: 3px solid rgba(36, 142, 239, 0.3);
       border-radius: 20px;
       padding: 20px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -244,7 +242,7 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     .video-container:hover {
-      border-color: rgba(198, 255, 83, 0.4);
+      border-color: rgba(36, 142, 239, 0.5);
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
       transform: translateY(-4px);
     }
@@ -292,7 +290,7 @@ import FooterBar from '../components/FooterBar.astro';
     .feature-card {
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.2);
+      border: 2px solid rgba(36, 142, 239, 0.2);
       border-radius: 16px;
       padding: 24px;
       text-align: center;
@@ -301,20 +299,20 @@ import FooterBar from '../components/FooterBar.astro';
 
     .feature-card:hover {
       background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(198, 255, 83, 0.4);
+      border-color: rgba(36, 142, 239, 0.5);
       transform: translateY(-4px);
     }
 
     .feature-icon {
       width: 56px;
       height: 56px;
-      background: linear-gradient(135deg, var(--natural), #d4ff8d);
+      background: linear-gradient(135deg, var(--accent-blue), #5ba8ff);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      color: var(--dark-slate-blue);
+      color: var(--white);
       margin: 0 auto 16px;
     }
 
@@ -365,22 +363,22 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 10px;
       padding: 18px 42px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 17px;
       font-weight: 700;
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
     }
 
     .vsl-cta-section .hero-cta:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--accent-blue);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(36, 142, 239, 0.4);
     }
 
     .vsl-cta-section .hero-cta i {
@@ -460,13 +458,13 @@ import FooterBar from '../components/FooterBar.astro';
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.05) 100%);
+      background: linear-gradient(135deg, transparent 0%, rgba(36, 142, 239, 0.05) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
     .benefit-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
     }
@@ -478,13 +476,13 @@ import FooterBar from '../components/FooterBar.astro';
     .benefit-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      color: var(--natural);
+      color: var(--accent-blue);
       margin-bottom: 24px;
       transition: all 0.4s ease;
     }
@@ -525,7 +523,7 @@ import FooterBar from '../components/FooterBar.astro';
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(36,142,239,0.1)"/></svg>') repeat;
       opacity: 0.3;
     }
 
@@ -540,15 +538,15 @@ import FooterBar from '../components/FooterBar.astro';
     .final-cta-icon {
       width: 100px;
       height: 100px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 3px solid var(--natural);
+      background: rgba(36, 142, 239, 0.15);
+      border: 3px solid var(--accent-blue);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 32px;
       font-size: 48px;
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .final-cta-section h2 {
@@ -575,61 +573,26 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 20px 48px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 18px;
       font-weight: 700;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
     }
 
     .final-cta-button:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--accent-blue);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(36, 142, 239, 0.4);
     }
 
     .final-cta-button i {
       font-size: 22px;
-    }
-
-    /* ============================================
-       FLOATING CTA BUTTONS
-    ============================================ */
-    .floating-cta {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 1000;
-    }
-
-    .floating-btn {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 24px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .floating-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      background: var(--dark-slate-blue);
-      color: var(--natural);
     }
 
     /* ============================================
@@ -746,21 +709,6 @@ import FooterBar from '../components/FooterBar.astro';
         font-size: 16px;
         width: 100%;
         justify-content: center;
-      }
-
-      .floating-cta {
-        bottom: 20px;
-        right: 20px;
-        gap: 12px;
-      }
-
-      .floating-btn {
-        padding: 14px 20px;
-        font-size: 14px;
-      }
-
-      .floating-btn span {
-        display: none;
       }
     }
 
@@ -969,20 +917,6 @@ import FooterBar from '../components/FooterBar.astro';
   </section> -->
 
   <FooterBar />
-
-  <!-- ============================================
-       FLOATING CTA BUTTONS
-  ============================================ -->
-  <div class="floating-cta">
-    <a href="/book-a-call" class="floating-btn">
-      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
-      <span>Let's Talk</span>
-    </a>
-    <a href="tel:+16505578269" class="floating-btn">
-      <i class="ti ti-phone" style="font-size: 24px;"></i>
-      <span>Call Now</span>
-    </a>
-  </div>
 
   <!-- ============================================
        SCROLL ANIMATIONS

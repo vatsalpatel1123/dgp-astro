@@ -686,7 +686,7 @@ import FooterBar from '../components/FooterBar.astro';
           <div class="contact-icon">
             <i class="ti ti-phone"></i>
           </div>
-          <a href="tel:+16505578269">(650) 557-8269</a>
+          <a href="tel:+15614610636 ">+1 561 461 0636</a>
         </div>
         <div class="contact-info-item">
           <div class="contact-icon">
@@ -829,8 +829,8 @@ import FooterBar from '../components/FooterBar.astro';
             We typically respond to all inquiries within 4 business hours. For urgent matters, 
             please call us directly.
           </p>
-          <a href="tel:+16505578269">
-            Call: (650) 557-8269
+          <a href="tel:+15614610636 ">
+            Call: +1 561 461 0636
             <i class="ti ti-arrow-right"></i>
           </a>
         </div>
@@ -873,7 +873,7 @@ import FooterBar from '../components/FooterBar.astro';
 
   <!-- FLOATING CTA -->
   <div class="floating-cta">
-    <a href="tel:+16505578269" class="floating-btn">
+    <a href="tel:+15614610636 " class="floating-btn">
       <i class="ti ti-phone" style="font-size: 24px;"></i>
       <span>Call Now</span>
     </a>
@@ -886,21 +886,165 @@ import FooterBar from '../components/FooterBar.astro';
       const submitBtn = document.getElementById('submitBtn');
       const formMessage = document.getElementById('formMessage');
 
+      // Validation functions
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function validatePhone(phone) {
+        // Remove all non-numeric characters
+        const cleaned = phone.replace(/\D/g, '');
+        // Check if it has at least 10 digits
+        return cleaned.length >= 10;
+      }
+
+      function validateName(name) {
+        // Check if name has at least 2 characters and contains letters
+        return name.trim().length >= 2 && /[a-zA-Z]/.test(name);
+      }
+
+      function validateMessage(message) {
+        // Check if message has at least 10 characters
+        return message.trim().length >= 10;
+      }
+
+      function showFieldError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        field.style.borderColor = 'var(--error-red)';
+
+        // Remove any existing error message
+        const existingError = field.parentElement.querySelector('.field-error');
+        if (existingError) {
+          existingError.remove();
+        }
+
+        // Add error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error';
+        errorDiv.style.color = 'var(--error-red)';
+        errorDiv.style.fontSize = '14px';
+        errorDiv.style.marginTop = '4px';
+        errorDiv.textContent = message;
+        field.parentElement.appendChild(errorDiv);
+      }
+
+      function clearFieldError(fieldId) {
+        const field = document.getElementById(fieldId);
+        field.style.borderColor = '#c5c5c5';
+
+        const existingError = field.parentElement.querySelector('.field-error');
+        if (existingError) {
+          existingError.remove();
+        }
+      }
+
+      function showFormMessage(type, message) {
+        formMessage.className = `form-message ${type}`;
+        formMessage.textContent = message;
+        formMessage.style.display = 'block';
+      }
+
+      // Add real-time validation
+      document.getElementById('email').addEventListener('blur', function() {
+        if (this.value && !validateEmail(this.value)) {
+          showFieldError('email', 'Please enter a valid email address');
+        } else {
+          clearFieldError('email');
+        }
+      });
+
+      document.getElementById('phone').addEventListener('blur', function() {
+        if (this.value && !validatePhone(this.value)) {
+          showFieldError('phone', 'Please enter a valid phone number (at least 10 digits)');
+        } else {
+          clearFieldError('phone');
+        }
+      });
+
+      document.getElementById('name').addEventListener('blur', function() {
+        if (this.value && !validateName(this.value)) {
+          showFieldError('name', 'Please enter a valid name');
+        } else {
+          clearFieldError('name');
+        }
+      });
+
+      document.getElementById('message').addEventListener('blur', function() {
+        if (this.value && !validateMessage(this.value)) {
+          showFieldError('message', 'Please enter at least 10 characters');
+        } else {
+          clearFieldError('message');
+        }
+      });
+
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
+
+        // Clear any existing messages
+        formMessage.style.display = 'none';
+
+        // Get form values
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const practice = formData.get('practice');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const message = formData.get('message');
+
+        // Validate all fields
+        let hasErrors = false;
+
+        if (!validateName(name)) {
+          showFieldError('name', 'Please enter a valid name');
+          hasErrors = true;
+        } else {
+          clearFieldError('name');
+        }
+
+        if (!practice || practice.trim().length < 2) {
+          showFieldError('practice', 'Please enter your practice name');
+          hasErrors = true;
+        } else {
+          clearFieldError('practice');
+        }
+
+        if (!validateEmail(email)) {
+          showFieldError('email', 'Please enter a valid email address');
+          hasErrors = true;
+        } else {
+          clearFieldError('email');
+        }
+
+        if (!validatePhone(phone)) {
+          showFieldError('phone', 'Please enter a valid phone number (at least 10 digits)');
+          hasErrors = true;
+        } else {
+          clearFieldError('phone');
+        }
+
+        if (!validateMessage(message)) {
+          showFieldError('message', 'Please enter at least 10 characters');
+          hasErrors = true;
+        } else {
+          clearFieldError('message');
+        }
+
+        if (hasErrors) {
+          showFormMessage('error', 'Please fix the errors above before submitting.');
+          return;
+        }
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>Sending...</span><i class="ti ti-loader"></i>';
 
-        const formData = new FormData(form);
-        
         const payload = {
           formData: {
-            name: formData.get('name'),
-            practice: formData.get('practice'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            message: formData.get('message')
+            name: name,
+            practice: practice,
+            email: email,
+            phone: phone,
+            message: message
           },
           pageInfo: {
             currentUrl: window.location.href,
@@ -921,21 +1065,19 @@ import FooterBar from '../components/FooterBar.astro';
           });
 
           if (response.ok) {
-            formMessage.className = 'form-message success';
-            formMessage.textContent = '✓ Thank you! Your message has been sent successfully. We\'ll respond within one business day.';
+            showFormMessage('success', '✓ Thank you! Your message has been sent successfully. Redirecting you to learn more...');
             form.reset();
-            
+
+            // Redirect to VSL page after 2 seconds
             setTimeout(() => {
-              formMessage.style.display = 'none';
-            }, 10000);
+              window.location.href = '/vsl-page';
+            }, 2000);
           } else {
             throw new Error('Form submission failed');
           }
         } catch (error) {
-          formMessage.className = 'form-message error';
-          formMessage.textContent = '✗ Sorry, something went wrong. Please try again or call us at (650) 557-8269.';
+          showFormMessage('error', '✗ Sorry, something went wrong. Please try again or call us at +1 561 461 0636.');
           console.error('Form submission error:', error);
-        } finally {
           submitBtn.disabled = false;
           submitBtn.innerHTML = '<span>Send Message</span><i class="ti ti-send"></i>';
         }
