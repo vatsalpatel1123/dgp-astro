@@ -1188,11 +1188,13 @@ import FooterBar from '../components/FooterBar.astro';
           });
 
           if (response.ok) {
-            showSuccess('Success! Maria will call you shortly. Please keep your phone nearby.');
+            showSuccess('Success! Maria will call you shortly. Redirecting...');
             form.reset();
 
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Redirect to VSL page after 2 seconds
+            setTimeout(() => {
+              window.location.href = '/vsl-page';
+            }, 2000);
           } else {
             const errorData = await response.json().catch(() => ({}));
             showError(errorData.message || 'Something went wrong. Please try again or call us directly at +1 (650) 557-8269.');
