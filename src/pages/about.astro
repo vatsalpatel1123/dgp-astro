@@ -601,21 +601,41 @@ import FooterBar from '../components/FooterBar.astro';
     .contact-card-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: var(--accent-blue);
-      font-size: 17px;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--accent-blue);
+      color: var(--white);
+      font-size: 16px;
       font-weight: 700;
       text-decoration: none;
+      border-radius: 12px;
+      border: 3px solid var(--accent-blue);
       transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(36, 142, 239, 0.3);
     }
 
     .contact-card-link:hover {
-      color: var(--primary-blue);
-      gap: 12px;
+      background: transparent;
+      color: var(--accent-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(36, 142, 239, 0.4);
     }
 
     .contact-card-link i {
       font-size: 20px;
+    }
+
+    .contact-card-featured .contact-card-link {
+      background: var(--primary-blue);
+      border-color: var(--primary-blue);
+      box-shadow: 0 4px 16px rgba(7, 56, 125, 0.3);
+    }
+
+    .contact-card-featured .contact-card-link:hover {
+      background: transparent;
+      color: var(--primary-blue);
+      box-shadow: 0 6px 20px rgba(7, 56, 125, 0.4);
     }
 
     .contact-card-note {
@@ -841,11 +861,11 @@ import FooterBar from '../components/FooterBar.astro';
   <section class="our-mission-section">
     <div class="section-container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">
+        <!-- <span class="section-tag">
           <i class="ti ti-target"></i>
           Our Mission
-        </span>
-        <h2 class="section-title">Why We Exist</h2>
+        </span> -->
+        <h2 class="section-title">Our Mission</h2>
       </div>
 
       <div class="mission-content" data-aos="fade-up" data-aos-delay="100">
@@ -869,11 +889,11 @@ import FooterBar from '../components/FooterBar.astro';
   <section class="our-story-section">
     <div class="section-container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">
+        <!-- <span class="section-tag">
           <i class="ti ti-book"></i>
           Our Story
-        </span>
-        <h2 class="section-title">How DGP Was Born</h2>
+        </span> -->
+        <h2 class="section-title">Our Story</h2>
       </div>
 
       <div class="story-content" data-aos="fade-up" data-aos-delay="100">
@@ -893,14 +913,14 @@ import FooterBar from '../components/FooterBar.astro';
   <section class="our-team-section">
     <div class="section-container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">
+        <!-- <span class="section-tag">
           <i class="ti ti-users"></i>
           Meet the Founders
-        </span>
-        <h2 class="section-title">The Team Behind DGP</h2>
-        <p class="section-description">
+        </span> -->
+        <h2 class="section-title">Our Team</h2>
+        <!-- <p class="section-description">
           Two entrepreneurs with a shared vision: transform how dental practices grow and scale.
-        </p>
+        </p> -->
       </div>
 
       <div class="team-grid">
@@ -955,10 +975,10 @@ import FooterBar from '../components/FooterBar.astro';
   <section class="values-section">
     <div class="section-container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">
+        <!-- <span class="section-tag">
           <i class="ti ti-diamond"></i>
           Our Values
-        </span>
+        </span> -->
         <h2 class="section-title">What We Stand For</h2>
       </div>
 
@@ -1002,10 +1022,10 @@ import FooterBar from '../components/FooterBar.astro';
   <section class="contact-section">
     <div class="section-container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag">
+        <!-- <span class="section-tag">
           <i class="ti ti-phone"></i>
           Get in Touch
-        </span>
+        </span> -->
         <h2 class="section-title">Ready to Transform Your Practice?</h2>
         <p class="section-description">
           Let's discuss how we can help you achieve consistent, predictable growth with our proven system.
@@ -1055,7 +1075,7 @@ import FooterBar from '../components/FooterBar.astro';
             Pick a time that works for you
           </p>
           <a href="https://api.leadconnectorhq.com/widget/bookings/discovery-call-dgp" target="_blank" class="contact-card-link">
-            Book Your Free Consultation
+            Book a Call
             <i class="ti ti-arrow-right"></i>
           </a>
           <p class="contact-card-note">

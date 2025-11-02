@@ -383,9 +383,20 @@ import FooterBar from '../components/FooterBar.astro';
       overflow: hidden;
     }
 
+    .example-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(5, 16, 35, 0.3) 100%);
+      z-index: 1;
+    }
+
     .example-placeholder {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -921,80 +932,64 @@ import FooterBar from '../components/FooterBar.astro';
       </div>
 
       <p class="examples-note">
-        Our custom websites are designed specifically for dental practices, featuring 
-        conversion-optimized layouts and professional design tailored to your specialty.
+        Our custom websites are designed specifically for implant-focused dental practices, featuring
+        conversion-optimized layouts that attract high-value cases and drive appointments.
       </p>
 
       <div class="examples-grid">
-        
-        <!-- Example 1: Implant Practice -->
+
+        <!-- Example 1: Full-Arch Implant Practice -->
         <div class="example-card">
-          <div class="example-image">
-            <div class="example-placeholder">
-              <i class="ti ti-dental"></i>
-              <span>Implant Practice Website</span>
-            </div>
+          <div class="example-image" style="background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80'); background-size: cover; background-position: center;">
           </div>
           <div class="example-content">
-            <span class="example-badge">Implants</span>
-            <h3>Full-Arch Implant Practice</h3>
+            <span class="example-badge">Full-Arch Implants</span>
+            <h3>All-on-4 & Full-Arch Solutions</h3>
             <p>
-              Clean, modern design focused on high-value implant cases with strategic 
-              CTAs and case acceptance tools built in.
+              Modern, patient-focused design showcasing full-arch implant procedures with
+              clear pricing, financing options, and streamlined consultation booking.
             </p>
           </div>
         </div>
 
-        <!-- Example 2: Cosmetic Practice -->
+        <!-- Example 2: Single Tooth Implants -->
         <div class="example-card">
-          <div class="example-image">
-            <div class="example-placeholder">
-              <i class="ti ti-sparkles"></i>
-              <span>Cosmetic Practice Website</span>
-            </div>
+          <div class="example-image" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80'); background-size: cover; background-position: center;">
           </div>
           <div class="example-content">
-            <span class="example-badge">Cosmetic</span>
-            <h3>Cosmetic Dentistry Practice</h3>
+            <span class="example-badge">Single Implants</span>
+            <h3>Single Tooth Replacement</h3>
             <p>
-              Elegant, visual-driven design showcasing smile transformations and 
-              premium aesthetic procedures.
+              Clean, educational design focusing on single tooth implant procedures,
+              before/after galleries, and patient testimonials to build trust.
             </p>
           </div>
         </div>
 
-        <!-- Example 3: General Practice -->
+        <!-- Example 3: Implant Consultation Focus -->
         <div class="example-card">
-          <div class="example-image">
-            <div class="example-placeholder">
-              <i class="ti ti-friends"></i>
-              <span>Family Practice Website</span>
-            </div>
+          <div class="example-image" style="background-image: url('https://images.unsplash.com/photo-1629909615184-74df8a3cedc0?w=800&q=80'); background-size: cover; background-position: center;">
           </div>
           <div class="example-content">
-            <span class="example-badge">General</span>
-            <h3>Family & General Dentistry</h3>
+            <span class="example-badge">Consultation</span>
+            <h3>Consultation-Driven Design</h3>
             <p>
-              Warm, welcoming design optimized for family practices with easy 
-              appointment booking and patient education.
+              High-converting layout optimized for consultation requests with
+              interactive cost calculators, treatment timelines, and easy scheduling.
             </p>
           </div>
         </div>
 
-        <!-- Example 4: Multi-Location -->
+        <!-- Example 4: Premium Implant Practice -->
         <div class="example-card">
-          <div class="example-image">
-            <div class="example-placeholder">
-              <i class="ti ti-building-community"></i>
-              <span>Multi-Location Website</span>
-            </div>
+          <div class="example-image" style="background-image: url('https://images.unsplash.com/photo-1609840112855-9ab5ad8f66e4?w=800&q=80'); background-size: cover; background-position: center;">
           </div>
           <div class="example-content">
-            <span class="example-badge">Multi-Location</span>
-            <h3>Multi-Location Dental Group</h3>
+            <span class="example-badge">Premium</span>
+            <h3>Luxury Implant Practice</h3>
             <p>
-              Scalable design with location-specific pages, centralized booking, 
-              and brand consistency across all offices.
+              Elegant, high-end design for premium implant practices featuring
+              advanced technology, surgical expertise, and exceptional patient care.
             </p>
           </div>
         </div>

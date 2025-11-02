@@ -271,6 +271,28 @@ import FooterBar from '../components/FooterBar.astro';
       display: block;
     }
 
+    .image-embed-container {
+      background: var(--white);
+      border: 3px solid var(--grey);
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-study-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+
     /* AUTHENTIC CASE STUDIES SECTION */
     .authentic-studies-section {
       padding: 120px 24px;
@@ -722,6 +744,10 @@ import FooterBar from '../components/FooterBar.astro';
         height: 500px;
       }
 
+      .image-embed-container {
+        padding: 24px;
+      }
+
       .case-study-header {
         padding: 24px 28px;
       }
@@ -775,6 +801,10 @@ import FooterBar from '../components/FooterBar.astro';
         height: 400px;
       }
 
+      .image-embed-container {
+        padding: 16px;
+      }
+
       .case-study-header h3 {
         font-size: 24px;
       }
@@ -795,9 +825,9 @@ import FooterBar from '../components/FooterBar.astro';
         <span>Proven Results</span>
       </div> -->
 
-      <h1>Real Results from <span class="highlight">Real Practices</span></h1>
+      <h1>Our Complete Case Studies</h1>
       <p class="hero-description">
-        These are actual results from our client practices—no fabricated data.
+        In-depth analysis and real data from our partner practices.
       </p>
 
       <!-- <div class="hero-features">
@@ -820,7 +850,7 @@ import FooterBar from '../components/FooterBar.astro';
   <!-- EMBEDDED CASE STUDIES SECTION -->
   <section class="embedded-studies-section">
     <div class="section-container">
-      <div class="section-header">
+      <!-- <div class="section-header">
         <span class="section-tag">
           <i class="ti ti-chart-dots"></i>
           Detailed Analysis
@@ -829,20 +859,8 @@ import FooterBar from '../components/FooterBar.astro';
         <p class="section-description">
           In-depth analysis and real data from our partner practices.
         </p>
-      </div>
-
-      <!-- Case Study 1: Comprehensive Campaign Analysis -->
-      <div class="case-study-embed">
-        <div class="case-study-header">
-          <h3>Comprehensive Campaign Analysis</h3>
-          <p>Lead Quality (LQ) vs. Lead Volume (LV)</p>
-        </div>
-        <div class="pdf-embed-container">
-          <iframe src="/pdf/68d53b784cbd20d70bf3aaad.pdf" class="pdf-embed" title="Comprehensive Campaign Analysis PDF"></iframe>
-        </div>
-      </div>
-
-      <!-- Case Study 2: Summit Dental Implants -->
+      </div> -->
+       <!-- Case Study 1: Summit Dental Implants -->
       <div class="case-study-embed">
         <div class="case-study-header">
           <h3>Summit Dental Implants Case Study</h3>
@@ -852,12 +870,33 @@ import FooterBar from '../components/FooterBar.astro';
           <iframe src="/pdf/68d53b74f2acc73a59f6dac4.pdf" class="pdf-embed" title="Summit Dental Implants Case Study PDF"></iframe>
         </div>
       </div>
+       <!-- Case Study 2: New Smile -->
+      <div class="case-study-embed">
+        <div class="case-study-header">
+          <h3>New Smile Case Study</h3>
+          <p>Real Results from Our Marketing System</p>
+        </div>
+        <div class="image-embed-container">
+          <img src="/pdf/new-smile.png" alt="New Smile Case Study" class="case-study-image" />
+        </div>
+      </div>
+      <!-- Case Study 3: Comprehensive Campaign Analysis -->
+      <div class="case-study-embed">
+        <div class="case-study-header">
+          <h3>These results are possible because we go for lead quality over lead volume</h3>
+          <p>See our campaign</p>
+          <!-- <p>See our campaign (Comprehensive Campaign Analysis - Lead Quality (LQ) vs. Lead Volume (LV))</p> -->
+        </div>
+        <div class="pdf-embed-container">
+          <iframe src="/pdf/68d53b784cbd20d70bf3aaad.pdf" class="pdf-embed" title="Comprehensive Campaign Analysis PDF"></iframe>
+        </div>
+      </div>
 
     </div>
   </section>
 
   <!-- AUTHENTIC CASE STUDIES SECTION -->
-  <section class="authentic-studies-section">
+  <!-- <section class="authentic-studies-section">
     <div class="section-container">
       <div class="section-header">
         <span class="section-tag">
@@ -870,7 +909,6 @@ import FooterBar from '../components/FooterBar.astro';
         </p>
       </div>
 
-      <!-- Case Study 1: Initial Trial Results -->
       <div class="authentic-case-card">
         <div class="case-badge">Initial Trial Results</div>
         <div class="case-header">
@@ -933,7 +971,6 @@ import FooterBar from '../components/FooterBar.astro';
         </div>
       </div>
 
-      <!-- Case Study 2: Monthly Performance -->
       <div class="authentic-case-card">
         <div class="case-badge">Ongoing Monthly Performance</div>
         <div class="case-header">
@@ -997,7 +1034,7 @@ import FooterBar from '../components/FooterBar.astro';
       </div>
 
     </div>
-  </section>
+  </section> -->
 
   <!-- EXPECTED RESULTS SECTION -->
   <section class="expected-results-section">
