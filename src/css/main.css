@@ -209,6 +209,99 @@
       transform: translateY(50%) rotate(-45deg);
     }
 
+    /* Dropdown Menu Styles */
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown .nav-link-dark {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dropdown-icon {
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-dropdown:hover .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+      padding: 8px 0;
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      color: #1d1d1d;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .dropdown-item i {
+      font-size: 18px;
+      color: #083981;
+    }
+
+    .dropdown-item:hover {
+      background: #f5f5f5;
+      border-left-color: #248EEF;
+      padding-left: 24px;
+    }
+
+    /* Active Link Styles */
+    .nav-link-dark.active {
+      color: #248EEF !important;
+      position: relative;
+    }
+
+    .nav-link-dark.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #248EEF;
+      border-radius: 2px;
+    }
+
+    /* Dropdown item active state */
+    .dropdown-item.active {
+      background: #c5def6;
+      border-left-color: #248EEF;
+      color: #248EEF;
+      font-weight: 700;
+    }
+
     /* ============================================
        HERO SECTION
     ============================================ */
@@ -1044,6 +1137,60 @@
       padding-left: 8px;
     }
 
+    /* Social Media Icons */
+    .footer-social-media {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 2px solid white;
+      border-radius: 50%;
+      color: #248EEF;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: #248EEF;
+      color: #083981;
+      border-color: #248EEF;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(198, 255, 83, 0.3);
+    }
+
+    .social-icon i {
+      font-size: 20px;
+    }
+
+    /* HIPAA Logo */
+    .footer-hipaa-logo {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hipaa-logo {
+      height: 50px;
+      width: auto;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .hipaa-logo:hover {
+      opacity: 1;
+    }
+
     .footer-last-text {
       max-width: 1400px;
       margin: 60px auto 0;
@@ -1132,6 +1279,58 @@
         display: block;
       }
 
+      /* Mobile Dropdown Styles */
+      .dropdown-menu {
+        position: static;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transform: none;
+        box-shadow: none;
+        background: rgba(7, 56, 125, 0.1);
+        margin-top: 0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(36, 142, 239, 0.2);
+      }
+
+      .nav-dropdown.mobile-open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        max-height: 500px;
+        margin-top: 8px;
+      }
+
+      .dropdown-item {
+        padding: 10px 16px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.9);
+        border-left: 3px solid transparent;
+      }
+
+      .dropdown-item:hover {
+        background: rgba(36, 142, 239, 0.15);
+        border-left-color: #248EEF;
+        padding-left: 20px;
+      }
+
+      .dropdown-item i {
+        font-size: 16px;
+        color: #248EEF !important;
+      }
+
+      .dropdown-item.active {
+        background: rgba(36, 142, 239, 0.2);
+        color: #248EEF;
+        border-left-color: #248EEF;
+        font-weight: 700;
+      }
+
+      .navbar-button-wrapper {
+        margin-top: 16px;
+      }
+
       .hero-container {
         grid-template-columns: 1fr;
         gap: 60px;
@@ -1213,6 +1412,30 @@
         flex-direction: column;
         gap: 12px;
         text-align: center;
+      }
+
+      .footer-social-media {
+        margin-top: 20px;
+        gap: 12px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .social-icon i {
+        font-size: 18px;
+      }
+
+      .footer-hipaa-logo {
+        margin-top: 24px;
+        padding-top: 20px;
+      }
+
+      .hipaa-logo {
+        height: 40px;
       }
 
       .hero-image-container {
@@ -1345,6 +1568,20 @@
     }
 
     @media (max-width: 479px) {
+      .social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+
+      .social-icon i {
+        font-size: 16px;
+      }
+
+      .hipaa-logo {
+        height: 35px;
+      }
+
       .hero-image-container {
         padding: 0;
       }
