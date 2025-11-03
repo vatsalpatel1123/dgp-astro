@@ -1,0 +1,809 @@
+---
+// landing-page.astro - Multi-Implant Focused Landing Page
+import '../css/main.css';
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add 8-15+ Accepted Full & Single Arch Implant Cases Every Month | Dentistry Growth Partners</title>
+  <meta name="description" content="Discover how to add 8-15+ accepted full and single arch implant cases every month using All-ON-X AI - guaranteed results for multi-implant focused dental practices.">
+  <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Wistia Script -->
+  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
+      --primary-dark: #051023;
+      --primary-light: #EDEDE8;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--primary-dark);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #07387D 0%, #0a4d9e 100%);
+      padding: 140px 24px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .hero-subheading {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0 0 28px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin: 0 0 28px 0;
+      letter-spacing: -1px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-title .highlight {
+      color: var(--accent-blue);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      margin: 0 0 40px 0;
+      font-weight: 500;
+      max-width: 800px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent-blue);
+      color: var(--white);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
+      margin: 0 0 50px 0;
+    }
+
+    .cta-button:hover {
+      background: var(--primary-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(36, 142, 239, 0.4);
+    }
+
+    /* Video Section */
+    .video-section {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .video-container {
+      background: rgba(0, 0, 0, 0.3);
+      border: 4px solid var(--accent-blue);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+    }
+
+    .video-wrapper wistia-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+    }
+
+    .video-note {
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 24px 0 0 0;
+      line-height: 1.6;
+      width: 100%;
+    }
+
+    .offer-text {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 32px 0 0 0;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .offer-text .highlight {
+      color: var(--accent-blue);
+    }
+
+    /* Form Section */
+    .form-section {
+      background: var(--primary-dark);
+      padding: 80px 24px;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-logo {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .form-logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .form-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+    }
+
+    .form-subtitle {
+      font-size: 16px;
+      color: var(--dim-grey);
+      margin-bottom: 8px;
+    }
+
+    .form-duration {
+      font-size: 14px;
+      color: var(--dim-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .form-description {
+      background: var(--grey);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+    }
+
+    .form-description p {
+      font-size: 14px;
+      color: var(--black);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Booking Form */
+    .booking-form {
+      width: 100%;
+      min-height: 800px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: var(--primary-dark);
+      padding: 80px 24px;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-card {
+      padding: 32px 24px;
+    }
+
+    .stat-value {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--accent-blue);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    /* Comparison Section */
+    .comparison-section {
+      background: var(--primary-dark);
+      padding: 80px 24px;
+    }
+
+    .comparison-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .comparison-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .comparison-subtitle {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 50px;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .comparison-column {
+      text-align: center;
+    }
+
+    .column-header {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--grey);
+    }
+
+    .comparison-column:first-child .column-header {
+      color: var(--dim-grey);
+    }
+
+    .comparison-column:last-child .column-header {
+      color: var(--accent-blue);
+    }
+
+    .column-subheader {
+      font-size: 14px;
+      color: var(--dim-grey);
+      margin-bottom: 24px;
+    }
+
+    .comparison-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .comparison-item {
+      background: var(--accent-blue);
+      color: var(--white);
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* Results Section */
+    .results-section {
+      background: var(--primary-dark);
+      padding: 80px 24px;
+    }
+
+    .results-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .results-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 60px;
+    }
+
+    /* Case Study Section */
+    .case-study-section {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .case-study-container {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .download-link {
+      text-align: right;
+      margin-bottom: 16px;
+    }
+
+    .download-link a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .download-link a:hover {
+      color: var(--primary-blue);
+    }
+
+    .pdf-viewer {
+      width: 100%;
+      height: 75vh;
+      border: 2px solid var(--grey);
+      border-radius: 16px;
+      background: var(--white);
+    }
+
+    /* Guarantee Section */
+    .guarantee-section {
+      background: var(--primary-dark);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .guarantee-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .guarantee-badge {
+      display: inline-block;
+      background: var(--accent-blue);
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .guarantee-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .guarantee-text {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* Footer Logo Section */
+    .footer-logo-section {
+      background: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .footer-logo-section img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .stats-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-section {
+        padding: 120px 20px 60px;
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 7vw, 44px);
+      }
+
+      .video-container {
+        padding: 20px;
+      }
+
+      .form-container {
+        padding: 36px 28px;
+      }
+
+      .stats-container {
+        gap: 24px;
+      }
+
+      .stat-value {
+        font-size: 40px;
+      }
+
+      .stat-label {
+        font-size: 16px;
+      }
+
+      .comparison-title {
+        font-size: 28px;
+      }
+
+      .comparison-subtitle {
+        font-size: 22px;
+      }
+
+      .comparison-grid {
+        padding: 28px;
+      }
+
+      .results-title {
+        font-size: 32px;
+      }
+
+      .case-study-container {
+        padding: 28px 20px;
+      }
+
+      .pdf-viewer {
+        height: 60vh;
+      }
+
+      .guarantee-title {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .hero-section {
+        padding: 110px 16px 50px;
+      }
+
+      .video-container {
+        padding: 16px;
+      }
+
+      .form-container {
+        padding: 28px 20px;
+      }
+
+      .comparison-grid {
+        padding: 24px 16px;
+      }
+
+      .case-study-container {
+        padding: 24px 16px;
+      }
+
+      .pdf-viewer {
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <Navigation />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <p class="hero-subheading">ONLY For Private Multi-Implant Focused Dental Practices Above $750k/mo In Revenue</p>
+      
+      <h1 class="hero-title">
+        How To Add <span class="highlight">8-15+ ACCEPTED&nbsp;&nbsp;</span> Full & Single Arch Implant Cases <span class="highlight">Every Month</span>, Using All-On-X AI - <span class="highlight">Guaranteed</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        WITHOUT A Marketing Agency OR Wasting Chair Time with Unqualified Consults
+      </p>
+
+      <a href="#form" class="cta-button">
+        Watch How the Top 1% of Dentists Operate
+        <i class="ti ti-arrow-down"></i>
+      </a>
+
+      <!-- Video Section -->
+      <div class="video-section">
+        <div class="video-container">
+          <div class="video-wrapper">
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/udb6eu1njd.js" async type="module"></script>
+            <wistia-player media-id="udb6eu1njd" aspect="1.7777777777777777"></wistia-player>
+          </div>
+        </div>
+        
+        <p class="video-note">
+          (This video takes to pricing is an offer. PER; Once complete, schedule a call by first filling out the 3 ram form below.)
+        </p>
+
+        <p class="offer-text">
+          This offer is <span class="highlight">ONLY for multi-implant focused dentists</span> above $750k/mo in revenue.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-section" id="form">
+    <div class="form-container">
+      <!-- <div class="form-logo">
+        <img src="/636f4050ef41c9124a12cbba/dgp-logo1.png" alt="Dentistry Growth Partners" />
+      </div> -->
+
+    
+
+      <!-- GHL Booking Widget -->
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/booking/8WJvN9PmdT3mUGZDDGmL"
+        class="booking-form"
+        title="Book Intro Call"
+        allow="payment"
+        scrolling="yes"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-value">$15k - $75k</div>
+        <div class="stat-label">Case Values</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">75%</div>
+        <div class="stat-label">Case Acceptance Rates</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Minimum 5x</div>
+        <div class="stat-label">R.O.I.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="comparison-section">
+    <div class="comparison-container">
+      <h2 class="comparison-title">A Practice of</h2>
+      <h3 class="comparison-subtitle">The Past Vs The Future</h3>
+
+      <div class="comparison-grid">
+        <!-- Old Way -->
+        <div class="comparison-column">
+          <h4 class="column-header">The Old Way</h4>
+          <p class="column-subheader">(99% of Dentists)</p>
+          <div class="comparison-items">
+            <div class="comparison-item">Reactionary - Approach</div>
+            <div class="comparison-item">THROWING MONEY AWAY WITH AGENCY</div>
+            <div class="comparison-item">90 HR work weeks (Burnt Out)</div>
+            <div class="comparison-item">99% of the Market (doing nothing)</div>
+            <div class="comparison-item">Trying everything little time. always stressed, always failing</div>
+          </div>
+        </div>
+
+        <!-- New Way -->
+        <div class="comparison-column">
+          <h4 class="column-header">The Right Way</h4>
+          <p class="column-subheader">(Top 1% of Dentists)</p>
+          <div class="comparison-items">
+            <div class="comparison-item">15 - 40 min - pick target market</div>
+            <div class="comparison-item">NO MORE THROWING CASH COSTS</div>
+            <div class="comparison-item">See Double / Triple ROI</div>
+            <div class="comparison-item">Let Optimize Practice</div>
+            <div class="comparison-item">Have more Freedom, Make More $ WITH LESS WORK</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results-section">
+    <div class="results-container">
+      <h2 class="results-title">Results To Expect</h2>
+
+      <!-- Case Study Embed -->
+      <div class="case-study-section">
+        <div class="case-study-container">
+          <div class="download-link">
+            <a href="https://storage.googleapis.com/msgsndr/ueNjo8LgFsCPSK7POBiq/media/68d53b74f2acc73a59f6dac4.pdf" 
+               target="_blank" rel="noopener">
+              Download Case Study
+            </a>
+          </div>
+
+          <object
+            data="https://storage.googleapis.com/msgsndr/ueNjo8LgFsCPSK7POBiq/media/68d53b74f2acc73a59f6dac4.pdf#view=FitH"
+            type="application/pdf"
+            class="pdf-viewer">
+            <p style="text-align:center;padding:40px;color:var(--dim-grey);">
+              Your browser can't display PDFs inline. 
+              <a href="https://storage.googleapis.com/msgsndr/ueNjo8LgFsCPSK7POBiq/media/68d53b74f2acc73a59f6dac4.pdf" 
+                 target="_blank" rel="noopener"
+                 style="color:var(--accent-blue);font-weight:700;">
+                Open the Case Study
+              </a>
+            </p>
+          </object>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Section -->
+  <section class="guarantee-section">
+    <div class="guarantee-container">
+      <div class="guarantee-badge">
+        ✓ Minimum 15+ ACCEPTED Multi-Implant Cases Worth $20k - $80k in 90 Days or You Don't Pay
+      </div>
+      
+      <h2 class="guarantee-title">
+        To qualify, you must own your own practice, oversee ALL full case, apply, and spend with our team.
+      </h2>
+      
+      <p class="guarantee-text">
+        We stand behind our results with a performance guarantee.
+      </p>
+    </div>
+  </section>
+
+
+  <FooterBar />
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Fade in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all major sections
+    document.querySelectorAll('section').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

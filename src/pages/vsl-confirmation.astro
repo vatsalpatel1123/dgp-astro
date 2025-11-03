@@ -1,0 +1,767 @@
+---
+// vsl-confirmation.astro - Updated to match provided design
+import '../css/main.css';
+import Navigation from '../components/Navigation.astro';
+import FooterBar from '../components/FooterBar.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Call Has Been Booked | Dentistry Growth Partners</title>
+  <meta name="description" content="Complete these 3 steps to confirm your call with Dentistry Growth Partners.">
+  <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  
+  <!-- Wistia Script -->
+  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
+      --primary-dark: #051023;
+      --white: #ffffff;
+      --black: #1d1d1d;
+      --grey: #f5f5f5;
+      --dim-grey: #646464;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--primary-blue);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #07387D 0%, #0a4d9e 100%);
+    }
+
+    .content-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 140px 24px 100px;
+    }
+
+    /* Hero Section */
+    .hero-header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .booking-badge {
+      font-size: 20px;
+      color: var(--accent-blue);
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 40px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .important-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 3px solid var(--accent-blue);
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-bottom: 32px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.2s both;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .important-box strong {
+      font-size: 20px;
+      font-weight: 900;
+      display: block;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+    }
+
+    .important-box p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .important-box .underline {
+      text-decoration: underline;
+      font-weight: 800;
+      color: var(--accent-blue);
+    }
+
+    /* Alert Box */
+    .alert-box {
+      background: var(--accent-blue);
+      border-radius: 20px;
+      padding: 28px 36px;
+      margin-bottom: 80px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.4s both;
+      box-shadow: 0 8px 32px rgba(36, 142, 239, 0.4);
+    }
+
+    .alert-box p {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .alert-box .underline {
+      text-decoration: underline;
+      font-weight: 900;
+    }
+
+    /* Step Sections */
+    .step-section {
+      margin-bottom: 100px;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step-section:nth-child(1) {
+      animation-delay: 0.6s;
+    }
+
+    .step-section:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .step-section:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .step-header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .step-number-badge {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--accent-blue) 0%, #1a73cc 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.4);
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 24px rgba(36, 142, 239, 0.4);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 32px rgba(36, 142, 239, 0.6);
+      }
+    }
+
+    .step-number-badge::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid rgba(36, 142, 239, 0.3);
+    }
+
+    .step-title {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 900;
+      color: var(--white);
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+
+    .step-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 600;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* Video Container */
+    .video-container {
+      background: rgba(0, 0, 0, 0.3);
+      border: 4px solid var(--accent-blue);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 50px;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .video-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+      border-color: var(--white);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-wrapper iframe,
+    .video-wrapper wistia-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+    }
+
+    /* Image Container */
+    .image-container {
+      background: rgba(0, 0, 0, 0.3);
+      border: 4px solid var(--accent-blue);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .image-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Bottom Text */
+    .practices-text {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-top: 32px;
+      padding: 20px 28px;
+      background: rgba(36, 142, 239, 0.25);
+      border: 2px solid var(--accent-blue);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .final-message {
+      text-align: center;
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 900;
+      color: var(--white);
+      margin: 60px 0;
+      line-height: 1.5;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      padding: 0 20px;
+    }
+
+    /* Footer Disclaimer */
+    .disclaimer {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      line-height: 1.6;
+    }
+
+    .disclaimer-links {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .disclaimer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .disclaimer-links a:hover {
+      color: var(--accent-blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .content-container {
+        padding: 120px 28px 80px;
+      }
+
+      .step-section {
+        margin-bottom: 80px;
+      }
+
+      .alert-box {
+        margin-bottom: 60px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .content-container {
+        padding: 110px 24px 60px;
+      }
+
+      .hero-header {
+        margin-bottom: 50px;
+      }
+
+      .booking-badge {
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .hero-title {
+        font-size: clamp(36px, 10vw, 52px);
+        margin-bottom: 32px;
+        letter-spacing: -1.5px;
+      }
+
+      .important-box {
+        padding: 28px 32px;
+        margin-bottom: 28px;
+      }
+
+      .important-box strong {
+        font-size: 18px;
+        margin-bottom: 14px;
+        letter-spacing: 1.5px;
+      }
+
+      .important-box p {
+        font-size: 16px;
+      }
+
+      .alert-box {
+        padding: 24px 28px;
+        margin-bottom: 50px;
+      }
+
+      .alert-box p {
+        font-size: 15px;
+      }
+
+      .step-section {
+        margin-bottom: 70px;
+      }
+
+      .step-header {
+        margin-bottom: 36px;
+        padding: 0 16px;
+        gap: 16px;
+      }
+
+      .step-number-badge {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+        border-width: 3px;
+      }
+
+      .step-number-badge::before {
+        inset: -6px;
+      }
+
+      .step-title {
+        font-size: clamp(24px, 6vw, 32px);
+      }
+
+      .step-subtitle {
+        font-size: 16px;
+        margin-top: 12px;
+      }
+
+      .video-container,
+      .image-container {
+        padding: 20px;
+        border-width: 3px;
+        margin-bottom: 40px;
+      }
+
+      .practices-text {
+        font-size: 16px;
+        padding: 18px 24px;
+        margin-top: 28px;
+      }
+
+      .final-message {
+        font-size: clamp(18px, 4vw, 22px);
+        margin: 50px 0;
+      }
+
+      .disclaimer {
+        font-size: 10px;
+        padding: 0 12px;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .content-container {
+        padding: 100px 20px 50px;
+      }
+
+      .hero-header {
+        margin-bottom: 40px;
+      }
+
+      .booking-badge {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+
+      .hero-title {
+        font-size: clamp(32px, 11vw, 44px);
+        margin-bottom: 28px;
+        letter-spacing: -1px;
+      }
+
+      .important-box {
+        padding: 24px 24px;
+        margin-bottom: 24px;
+        border-radius: 16px;
+      }
+
+      .important-box strong {
+        font-size: 16px;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+      }
+
+      .important-box p {
+        font-size: 15px;
+      }
+
+      .alert-box {
+        padding: 20px 24px;
+        margin-bottom: 40px;
+        border-radius: 16px;
+      }
+
+      .alert-box p {
+        font-size: 14px;
+      }
+
+      .step-section {
+        margin-bottom: 60px;
+      }
+
+      .step-header {
+        margin-bottom: 32px;
+        padding: 0 12px;
+        gap: 14px;
+      }
+
+      .step-number-badge {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        border-width: 3px;
+      }
+
+      .step-number-badge::before {
+        inset: -5px;
+      }
+
+      .step-title {
+        font-size: clamp(22px, 7vw, 28px);
+      }
+
+      .step-subtitle {
+        font-size: 15px;
+        margin-top: 10px;
+      }
+
+      .video-container,
+      .image-container {
+        padding: 16px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+
+      .video-wrapper,
+      .image-container img {
+        border-radius: 12px;
+      }
+
+      .practices-text {
+        font-size: 15px;
+        padding: 16px 20px;
+        margin-top: 24px;
+      }
+
+      .final-message {
+        font-size: clamp(17px, 5vw, 20px);
+        margin: 40px 0;
+      }
+
+      .disclaimer {
+        font-size: 9px;
+        padding: 0 8px;
+      }
+
+      .disclaimer-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 360px) {
+      .content-container {
+        padding: 90px 16px 40px;
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 12vw, 36px);
+      }
+
+      .important-box,
+      .alert-box {
+        padding: 20px 20px;
+      }
+
+      .step-number-badge {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+        border-width: 2px;
+      }
+
+      .step-number-badge::before {
+        inset: -4px;
+      }
+
+      .video-container,
+      .image-container {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <Navigation />
+
+  <div class="page-wrapper">
+    <div class="content-container">
+
+      <!-- Hero Header -->
+      <div class="hero-header">
+        <p class="booking-badge">Your Call Has Been Booked.</p>
+        <h1 class="hero-title">Congratulations!</h1>
+      </div>
+
+      <!-- Important Box -->
+      <div class="important-box">
+        <strong>IMPORTANT:</strong>
+        <p>
+          Complete these <span class="underline">3 Steps Now</span>, or We'll Have to Cancel Your Call & Give the Slot to Someone Else.
+        </p>
+      </div>
+
+      <!-- Alert Box -->
+      <div class="alert-box">
+        <p>
+          <span class="underline">Don't Forget Step 3!</span> It explains how All-ON-X AI consistently produces $150k - $750k months for the dentists using it while working 15+ hours less per week.
+        </p>
+      </div>
+
+      <!-- STEP 1: First Video -->
+      <div class="step-section">
+        <div class="step-header">
+          <div class="step-number-badge">1</div>
+          <h2 class="step-title">Watch the 3-Minute Video Below</h2>
+        </div>
+
+        <div class="video-container">
+          <div class="video-wrapper">
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/jfiqajvn1f.js" async type="module"></script>
+            <wistia-player media-id="jfiqajvn1f" aspect="1.7777777777777777"></wistia-player>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Calendar Confirmation -->
+      <div class="step-section">
+        <div class="step-header">
+          <div class="step-number-badge">2</div>
+          <h2 class="step-title">Confirm Your Call</h2>
+          <p class="step-subtitle">Add the Call to Your Calendar and then Save it.</p>
+        </div>
+
+        <div class="image-container">
+          <img 
+            src="https://assets.cdn.filesafe.space/ueNjo8LgFsCPSK7POBiq/media/68c9b08f1ed4417eb048b314.png"
+            alt="Calendar Confirmation Instructions"
+          />
+        </div>
+
+        <p class="practices-text">15+ Practices Already Growing with This System!</p>
+      </div>
+
+      <!-- STEP 3: Second Video -->
+      <div class="step-section">
+        <div class="step-header">
+          <div class="step-number-badge">3</div>
+          <h2 class="step-title">Watch this Walk Through of All-On-X AI</h2>
+        </div>
+
+        <div class="video-container">
+          <div class="video-wrapper">
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/h6za4gmvlv.js" async type="module"></script>
+            <wistia-player media-id="h6za4gmvlv" aspect="1.7777777777777777"></wistia-player>
+          </div>
+        </div>
+
+        <p class="final-message">
+          We Look forward to showing you the #1 Full & Single Arch Implant<br>
+          Booking Solution on the Market!
+        </p>
+      </div>
+
+      <!-- Footer Disclaimer -->
+      <!-- <div class="disclaimer">
+        <p>
+          This site is not part of the Facebook Inc. website, nor Google Inc. Additionally, this site is not endorsed by Facebook or Google in any way. Copyright © 2025 Dentistry Growth Partners™. All rights Reserved.
+        </p>
+        <div class="disclaimer-links">
+          <a href="/terms">Terms & Conditions</a>
+          <a href="/privacy">Privacy Policy</a>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+
+  <FooterBar />
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Fade in animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.step-section').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
