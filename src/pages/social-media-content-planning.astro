@@ -666,6 +666,204 @@ import FooterBar from '../components/FooterBar.astro';
         font-size: 28px;
       }
     }
+/* DESCRIPTION SECTION */
+    .description-section {
+      padding: 120px 24px;
+      background: var(--white);
+    }
+
+    .description-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .description-intro {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .description-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 16px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .description-subtitle {
+      font-size: 20px;
+      color: var(--dim-grey);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* DESCRIPTION STEPS */
+    .description-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+
+    .description-step {
+      text-align: center;
+      position: relative;
+      padding: 40px 24px;
+      border-radius: 20px;
+      background: var(--grey);
+      transition: all 0.4s ease;
+    }
+
+    .description-step:hover {
+      background: var(--primary-light);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      color: var(--white);
+      font-size: 24px;
+      font-weight: 800;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    .step-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--white);
+      margin: 0 auto 20px;
+      transition: all 0.4s ease;
+    }
+
+    .description-step:hover .step-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .description-step h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .description-step p {
+      font-size: 15px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* HIGHLIGHT BOX */
+    .description-highlight {
+      background: linear-gradient(135deg, rgba(7, 56, 125, 0.08) 0%, rgba(36, 142, 239, 0.08) 100%);
+      border: 3px solid var(--primary-blue);
+      border-radius: 24px;
+      padding: 48px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .highlight-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .highlight-content h4 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .highlight-content p {
+      font-size: 16px;
+      color: var(--dim-grey);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+      .description-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .description-highlight {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+      }
+
+      .highlight-icon {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .description-section {
+        padding: 80px 20px;
+      }
+
+      .description-steps {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 60px;
+      }
+
+      .description-step {
+        padding: 32px 24px;
+      }
+
+      .description-title {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      .description-subtitle {
+        font-size: 17px;
+      }
+
+      .description-highlight {
+        padding: 32px;
+        gap: 20px;
+      }
+
+      .highlight-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 36px;
+      }
+
+      .highlight-content h4 {
+        font-size: 19px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -680,7 +878,7 @@ import FooterBar from '../components/FooterBar.astro';
         <h1>Social Media Content & Planning</h1>
 
         <p class="hero-subtitle">
-          AI-generated, research-backed content that keeps your practice top-of-mind.
+          Research-backed content that keeps your practice top-of-mind.
         </p>
       </div>
     </div>
@@ -691,16 +889,100 @@ import FooterBar from '../components/FooterBar.astro';
     <div class="section-container">
       <div class="description-content">
         <p>
-          We help your practice build a consistent, professional social presence without the time drain. 
-          Our team uses AI-powered content creation to produce reels, carousels, and static posts that 
-          highlight your expertise, educate patients, and showcase your practice. Each post is designed 
-          to attract new patients, strengthen trust, and maintain long-term engagement with your community.
+          We help your practice build a consistent, professional social presence without the time drain. Simply send us photos and videos of your team or practice — our experts turn them into high-performing content that attracts and engages patients.
         </p>
         <p>
-          We also provide a custom content calendar — developed through in-depth research into the 
-          highest-converting and most engaging topics in dental marketing — so you know exactly what 
-          to post and when to post it.
+          You’ll receive a 90-day content calendar with proven, high-converting topics, so you’ll always know what to record and when. Once submitted, we handle all editing, posting, and optimization for you.
         </p>
+        <p>
+          Not comfortable recording? No problem — send us what you have. Using your existing footage and AI content creation systems, we produce static images, carousels, and short-form reels that highlight your expertise, educate patients, and keep your practice top of mind in your community.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- DESCRIPTION SECTION -->
+  <section class="description-section">
+    <div class="section-container">
+      <div class="description-content">
+        
+        <div class="description-intro">
+          <h2 class="description-title">How It Works</h2>
+          <p class="description-subtitle">
+            A simple, done-with-you approach to building your practice's social presence
+          </p>
+        </div>
+
+        <div class="description-steps">
+          
+          <!-- Step 1 -->
+          <div class="description-step">
+            <div class="step-number">1</div>
+            <div class="step-icon">
+              <i class="ti ti-upload"></i>
+            </div>
+            <h3>Send Us Your Content</h3>
+            <p>
+              Share photos and videos of your team, practice, or procedures — whatever you have. 
+              Don't worry about quality or professionalism; we'll handle all the editing.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="description-step">
+            <div class="step-number">2</div>
+            <div class="step-icon">
+              <i class="ti ti-calendar-check"></i>
+            </div>
+            <h3>Get Your Content Calendar</h3>
+            <p>
+              Receive a 90-day strategic calendar with proven, high-converting topics. Always know 
+              what to record and when, based on audience psychology and dental marketing trends.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="description-step">
+            <div class="step-number">3</div>
+            <div class="step-icon">
+              <i class="ti ti-wand"></i>
+            </div>
+            <h3>We Create & Optimize</h3>
+            <p>
+              Our team transforms your content into reels, carousels, and static posts using 
+              professional design and AI-powered editing. All fully branded and optimized for engagement.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="description-step">
+            <div class="step-number">4</div>
+            <div class="step-icon">
+              <i class="ti ti-send"></i>
+            </div>
+            <h3>We Post & Track</h3>
+            <p>
+              Sit back while we handle scheduling, posting, and optimization. Your practice stays 
+              top-of-mind with zero effort on your end.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="description-highlight">
+          <div class="highlight-icon">
+            <i class="ti ti-alert-circle"></i>
+          </div>
+          <div class="highlight-content">
+            <h4>No Video Content? No Problem.</h4>
+            <p>
+              Using your existing footage (or starting from scratch), we create engaging static images, 
+              carousels, and short-form reels with AI that highlight your expertise and keep your 
+              practice visible in your community.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
