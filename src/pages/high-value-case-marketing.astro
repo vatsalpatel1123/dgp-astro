@@ -1,27 +1,25 @@
 ---
-// high-value-case-marketing.astro
+// high-value-case-marketing.astro - Updated with blue theme
 import '../css/main.css';
 import Navigation from '../components/Navigation.astro';
 import FooterBar from '../components/FooterBar.astro';
+import StickyCTA from '../components/StickyCTA.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>High-Value Case Marketing | Dentistry Growth Partners</title>
+  <title>Premier Case AI | Dentistry Growth Partners</title>
   <meta name="description" content="Premium marketing strategies focused on attracting patients seeking veneers, crowns, bridges, and other high-value dental treatments.">
+  <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
-  <link rel="shortcut icon" type="image/png" href="/636f4050ef41c9124a12cbba/dgp-logo1.png" />
+  
   <style>
-    /* ============================================
-       RESET & BASE STYLES
-    ============================================ */
     * {
       margin: 0;
       padding: 0;
@@ -29,15 +27,14 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     :root {
-      --dark-slate-blue: #083981;
-      --natural: #c6ff53;
+      --primary-light: #EDEDE8;
+      --primary-dark: #051023;
+      --primary-blue: #07387D;
+      --accent-blue: #248EEF;
       --white: #ffffff;
       --black: #1d1d1d;
       --grey: #f5f5f5;
       --dim-grey: #646464;
-      --dark-olive-green: #194c8b;
-      --green: #2b6648;
-      --pale-goldenrod: #e3fcb0;
     }
 
     body {
@@ -54,9 +51,7 @@ import FooterBar from '../components/FooterBar.astro';
       padding: 0 24px;
     }
 
-    /* ============================================
-       HERO SECTION
-    ============================================ */
+    /* Hero Section with Background */
     .hero-section {
       min-height: 90vh;
       display: flex;
@@ -64,101 +59,33 @@ import FooterBar from '../components/FooterBar.astro';
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0a4d9e 50%, #2b6648 100%);
       padding: 140px 24px 80px;
-      margin-top: 0;
     }
 
-    /* Animated grid background */
-    .hero-section .hero-background {
+    .hero-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      overflow: hidden;
-      opacity: 0.15;
+      background-image: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
       z-index: 0;
     }
 
-    .hero-section .hero-background::before {
+    .hero-background-overlay::before {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(198, 255, 83, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(198, 255, 83, 0.1) 2px, transparent 2px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(60px, 60px);
-      }
-    }
-
-    .hero-section .hero-shapes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(5, 16, 35, 0.92) 0%, rgba(7, 56, 125, 0.88) 50%, rgba(36, 142, 239, 0.85) 100%);
+      z-index: 1;
     }
 
-    .hero-section .shape {
-      position: absolute;
-      filter: blur(100px);
-      opacity: 0.3;
-      will-change: transform;
-      pointer-events: none;
-    }
-
-    .hero-section .shape-1 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.4) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
-      animation: floatSlow 18s infinite ease-in-out;
-    }
-
-    .hero-section .shape-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(198, 255, 83, 0.3) 0%, transparent 70%);
-      bottom: -200px;
-      left: -200px;
-      animation: floatSlow 22s infinite ease-in-out reverse;
-    }
-
-    .hero-section .shape-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSlow 25s infinite ease-in-out;
-    }
-
-    @keyframes floatSlow {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
-      33% {
-        transform: translate(40px, -40px) scale(1.1);
-      }
-      66% {
-        transform: translate(-30px, 30px) scale(0.95);
-      }
-    }
-
-    .hero-section .hero-container {
+    .hero-container {
       max-width: 1200px;
       width: 100%;
       margin: 0 auto;
@@ -171,25 +98,24 @@ import FooterBar from '../components/FooterBar.astro';
       text-align: center;
     }
 
-    .hero-section .hero-badge {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(36, 142, 239, 0.15);
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(198, 255, 83, 0.3);
+      border: 2px solid rgba(36, 142, 239, 0.4);
       padding: 12px 28px;
       border-radius: 50px;
       color: var(--white);
       font-size: 15px;
       font-weight: 700;
       margin-bottom: 32px;
-      transition: all 0.3s ease;
     }
 
-    .hero-section .hero-badge i {
+    .hero-badge i {
       font-size: 20px;
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .hero-section h1 {
@@ -204,34 +130,12 @@ import FooterBar from '../components/FooterBar.astro';
       padding: 0 20px;
     }
 
-    .hero-section .highlight-animated {
-      color: var(--natural);
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(135deg, #c6ff53 0%, #d4ff8d 100%);
+    .hero-section .highlight {
+      color: var(--accent-blue);
+      background: linear-gradient(135deg, #248EEF 0%, #5ba8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-    }
-
-    .hero-section .highlight-animated::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 8px;
-      background: #c6ff53;
-      opacity: 0.3;
-      border-radius: 4px;
-      transform: scaleX(0);
-      animation: underlineGrow 0.8s ease-out 0.3s forwards;
-    }
-
-    @keyframes underlineGrow {
-      to {
-        transform: scaleX(1);
-      }
     }
 
     .hero-section .hero-subtitle {
@@ -240,8 +144,6 @@ import FooterBar from '../components/FooterBar.astro';
       line-height: 1.6;
       margin-bottom: 48px;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .hero-section .hero-cta {
@@ -249,69 +151,26 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 10px;
       padding: 18px 42px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 17px;
       font-weight: 700;
       border-radius: 12px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
       margin-bottom: 28px;
     }
 
     .hero-section .hero-cta:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--accent-blue);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(36, 142, 239, 0.4);
     }
 
-    .hero-section .hero-cta i {
-      font-size: 22px;
-    }
-
-    .hero-section .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 8px;
-    }
-
-    .hero-section .scroll-indicator:hover {
-      color: var(--natural);
-      transform: translateY(4px);
-    }
-
-    .hero-section .scroll-indicator i {
-      font-size: 22px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
-    }
-
-    /* ============================================
-       CASE TYPES SECTION
-    ============================================ */
-    .case-types-section {
-      padding: 120px 24px;
-      background: var(--white);
-    }
-
+    /* Section Styles */
     .section-header {
       max-width: 800px;
       margin: 0 auto 60px;
@@ -322,8 +181,8 @@ import FooterBar from '../components/FooterBar.astro';
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--pale-goldenrod);
-      color: var(--dark-olive-green);
+      background: var(--primary-light);
+      color: var(--primary-blue);
       padding: 10px 24px;
       border-radius: 50px;
       font-size: 14px;
@@ -338,7 +197,7 @@ import FooterBar from '../components/FooterBar.astro';
     .section-title {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 16px;
       line-height: 1.2;
       letter-spacing: -1px;
@@ -350,6 +209,12 @@ import FooterBar from '../components/FooterBar.astro';
       line-height: 1.7;
       max-width: 700px;
       margin: 0 auto 48px;
+    }
+
+    /* Case Types Section */
+    .case-types-section {
+      padding: 120px 24px;
+      background: var(--white);
     }
 
     .case-types-grid {
@@ -366,42 +231,24 @@ import FooterBar from '../components/FooterBar.astro';
       border-radius: 20px;
       padding: 40px 36px;
       transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case-type-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, transparent 0%, rgba(198, 255, 83, 0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
     }
 
     .case-type-card:hover {
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
       transform: translateY(-8px);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
-    }
-
-    .case-type-card:hover::before {
-      opacity: 1;
     }
 
     .case-type-icon {
       width: 70px;
       height: 70px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      color: var(--natural);
+      color: var(--accent-blue);
       margin-bottom: 24px;
       transition: all 0.4s ease;
     }
@@ -413,14 +260,13 @@ import FooterBar from '../components/FooterBar.astro';
     .case-type-card h3 {
       font-size: 24px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 8px;
-      letter-spacing: -0.3px;
     }
 
     .case-type-value {
       font-size: 16px;
-      color: var(--green);
+      color: var(--accent-blue);
       font-weight: 700;
       margin-bottom: 12px;
     }
@@ -432,30 +278,10 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       APPROACH SECTION
-    ============================================ */
+    /* Approach Section */
     .approach-section {
       padding: 120px 24px;
       background: var(--grey);
-    }
-
-    .approach-intro {
-      max-width: 900px;
-      margin: 0 auto 60px;
-      text-align: center;
-    }
-
-    .approach-intro p {
-      font-size: 19px;
-      color: var(--dim-grey);
-      line-height: 1.7;
-      margin-top: 20px;
-    }
-
-    .approach-intro p strong {
-      color: var(--dark-slate-blue);
-      font-weight: 800;
     }
 
     .approach-grid {
@@ -472,21 +298,20 @@ import FooterBar from '../components/FooterBar.astro';
       border-radius: 24px;
       padding: 48px 40px;
       transition: all 0.4s ease;
-      position: relative;
     }
 
     .approach-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      border-color: var(--natural);
+      border-color: var(--accent-blue);
     }
 
     .approach-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
-      color: var(--natural);
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+      color: var(--accent-blue);
       padding: 10px 20px;
       border-radius: 50px;
       font-size: 13px;
@@ -496,16 +321,11 @@ import FooterBar from '../components/FooterBar.astro';
       margin-bottom: 24px;
     }
 
-    .approach-badge i {
-      font-size: 16px;
-    }
-
     .approach-card h3 {
       font-size: 26px;
       font-weight: 800;
-      color: var(--dark-slate-blue);
+      color: var(--primary-blue);
       margin-bottom: 16px;
-      letter-spacing: -0.5px;
     }
 
     .approach-card p {
@@ -515,9 +335,7 @@ import FooterBar from '../components/FooterBar.astro';
       margin: 0;
     }
 
-    /* ============================================
-       RESULTS SECTION
-    ============================================ */
+    /* Results Section */
     .results-section {
       padding: 120px 24px;
       background: var(--white);
@@ -532,24 +350,13 @@ import FooterBar from '../components/FooterBar.astro';
     }
 
     .result-card {
-      background: linear-gradient(135deg, var(--dark-slate-blue), var(--dark-olive-green));
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
       border-radius: 24px;
       padding: 48px 36px;
       text-align: center;
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
-    }
-
-    .result-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
-      opacity: 0.3;
     }
 
     .result-card:hover {
@@ -560,27 +367,23 @@ import FooterBar from '../components/FooterBar.astro';
     .result-icon {
       width: 80px;
       height: 80px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 3px solid var(--natural);
+      background: rgba(36, 142, 239, 0.15);
+      border: 3px solid var(--accent-blue);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
       font-size: 36px;
-      color: var(--natural);
-      position: relative;
-      z-index: 1;
+      color: var(--accent-blue);
     }
 
     .result-card h3 {
       font-size: 42px;
       font-weight: 800;
-      color: var(--natural);
+      color: var(--accent-blue);
       margin-bottom: 12px;
       letter-spacing: -1px;
-      position: relative;
-      z-index: 1;
     }
 
     .result-label {
@@ -588,29 +391,14 @@ import FooterBar from '../components/FooterBar.astro';
       color: rgba(255, 255, 255, 0.95);
       font-weight: 600;
       line-height: 1.4;
-      position: relative;
-      z-index: 1;
     }
 
-    /* ============================================
-       FINAL CTA SECTION
-    ============================================ */
+    /* Final CTA Section */
     .final-cta-section {
       padding: 100px 24px;
-      background: linear-gradient(135deg, var(--dark-slate-blue) 0%, var(--dark-olive-green) 100%);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
       position: relative;
       overflow: hidden;
-    }
-
-    .final-cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(198,255,83,0.1)"/></svg>') repeat;
-      opacity: 0.3;
     }
 
     .final-cta-content {
@@ -624,15 +412,15 @@ import FooterBar from '../components/FooterBar.astro';
     .final-cta-icon {
       width: 100px;
       height: 100px;
-      background: rgba(198, 255, 83, 0.15);
-      border: 3px solid var(--natural);
+      background: rgba(36, 142, 239, 0.15);
+      border: 3px solid var(--accent-blue);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 32px;
       font-size: 48px;
-      color: var(--natural);
+      color: var(--accent-blue);
     }
 
     .final-cta-section h2 {
@@ -659,92 +447,29 @@ import FooterBar from '../components/FooterBar.astro';
       align-items: center;
       gap: 12px;
       padding: 20px 48px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
+      background: var(--accent-blue);
+      color: var(--white);
       font-size: 18px;
       font-weight: 700;
       border-radius: 14px;
       text-decoration: none;
       transition: all 0.3s ease;
-      border: 3px solid var(--natural);
-      box-shadow: 0 8px 24px rgba(198, 255, 83, 0.3);
+      border: 3px solid var(--accent-blue);
+      box-shadow: 0 8px 24px rgba(36, 142, 239, 0.3);
     }
 
     .final-cta-button:hover {
       background: transparent;
-      color: var(--natural);
+      color: var(--accent-blue);
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(198, 255, 83, 0.4);
+      box-shadow: 0 12px 32px rgba(36, 142, 239, 0.4);
     }
 
-    .final-cta-button i {
-      font-size: 22px;
-    }
-
-    /* ============================================
-       FLOATING CTA BUTTONS
-    ============================================ */
-    .floating-cta {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 1000;
-    }
-
-    .floating-btn {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 24px;
-      background: var(--natural);
-      color: var(--dark-slate-blue);
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .floating-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      background: var(--dark-slate-blue);
-      color: var(--natural);
-    }
-
-    /* ============================================
-       RESPONSIVE DESIGN
-    ============================================ */
+    /* Responsive */
     @media (max-width: 991px) {
       .hero-section {
         padding: 130px 24px 80px;
-        margin-top: 0;
         min-height: 85vh;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(70px);
-      }
-
-      .hero-section .shape-1 {
-        width: 400px;
-        height: 400px;
-      }
-
-      .hero-section .shape-2 {
-        width: 350px;
-        height: 350px;
-      }
-
-      .hero-section .shape-3 {
-        width: 300px;
-        height: 300px;
       }
 
       .case-types-grid,
@@ -757,6 +482,21 @@ import FooterBar from '../components/FooterBar.astro';
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
       }
+    }
+
+    @media (max-width: 767px) {
+      .hero-section {
+        padding: 120px 20px 60px;
+        min-height: 80vh;
+      }
+
+      .hero-section h1 {
+        font-size: clamp(32px, 7vw, 44px);
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
 
       .case-types-section,
       .approach-section,
@@ -766,176 +506,13 @@ import FooterBar from '../components/FooterBar.astro';
       }
     }
 
-    @media (max-width: 767px) {
-      .hero-section {
-        padding: 120px 20px 60px;
-        margin-top: 0;
-        min-height: 80vh;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 40px 40px;
-      }
-
-      .hero-section h1 {
-        font-size: clamp(32px, 7vw, 44px);
-        margin-bottom: 20px;
-        padding: 0 10px;
-      }
-
-      .hero-section .hero-subtitle {
-        font-size: 18px;
-        margin-bottom: 40px;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        filter: blur(50px);
-      }
-
-      .hero-section .shape-1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        right: -100px;
-      }
-
-      .hero-section .shape-2 {
-        width: 250px;
-        height: 250px;
-        bottom: -150px;
-        left: -150px;
-      }
-
-      .hero-section .shape-3 {
-        width: 200px;
-        height: 200px;
-      }
-
-      .hero-section .hero-cta {
-        padding: 18px 36px;
-        font-size: 16px;
-        width: 100%;
-        max-width: 400px;
-        justify-content: center;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-
-      .case-type-card,
-      .approach-card {
-        padding: 36px 28px;
-      }
-
-      .case-type-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-      }
-
-      .results-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .result-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 32px;
-      }
-
-      .result-card h3 {
-        font-size: 36px;
-      }
-
-      .final-cta-icon {
-        width: 80px;
-        height: 80px;
-        font-size: 40px;
-      }
-
-      .final-cta-text {
-        font-size: 17px;
-      }
-
-      .final-cta-button {
-        padding: 18px 36px;
-        font-size: 16px;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .case-types-section,
-      .approach-section,
-      .results-section,
-      .final-cta-section {
-        padding: 60px 20px;
-      }
-
-      .section-header {
-        margin-bottom: 40px;
-      }
-
-      .floating-cta {
-        bottom: 20px;
-        right: 20px;
-        gap: 12px;
-      }
-
-      .floating-btn {
-        padding: 14px 20px;
-        font-size: 14px;
-      }
-
-      .floating-btn span {
-        display: none;
-      }
-    }
-
     @media (max-width: 479px) {
       .hero-section {
         padding: 110px 16px 50px;
-        margin-top: 0;
-      }
-
-      .hero-section .hero-background::before {
-        background-size: 30px 30px;
       }
 
       .hero-section h1 {
         font-size: clamp(28px, 8vw, 38px);
-        padding: 0 5px;
-      }
-
-      .hero-section .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .hero-section .shape-1,
-      .hero-section .shape-2,
-      .hero-section .shape-3 {
-        display: none;
-      }
-
-      .hero-section .hero-badge {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-
-      .case-type-card h3 {
-        font-size: 20px;
-      }
-
-      .approach-card h3 {
-        font-size: 22px;
-      }
-
-      .final-cta-section h2 {
-        font-size: 28px;
       }
     }
   </style>
@@ -943,48 +520,33 @@ import FooterBar from '../components/FooterBar.astro';
 <body>
   <Navigation />
   
-  <!-- ============================================
-       HERO SECTION
-  ============================================ -->
+  <!-- Hero Section -->
   <section class="hero-section">
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+    <div class="hero-background-overlay"></div>
 
     <div class="hero-container">
-      <div class="hero-badge" data-aos="fade-up">
+      <!-- <div class="hero-badge">
         <i class="ti ti-diamond"></i>
         <span>Premium Cases</span>
-      </div>
+      </div> -->
 
-      <h1 data-aos="fade-up" data-aos-delay="100">
-        <span class="highlight-animated">High-Value</span> Case Marketing
+      <h1>
+        Premier Case AI
       </h1>
 
-      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+      <p class="hero-subtitle">
         Premium marketing strategies focused on attracting patients seeking veneers, crowns, 
         bridges, and other high-value dental treatments.
       </p>
 
-      <!-- <a href="/book-a-call" class="hero-cta" data-aos="fade-up" data-aos-delay="300">
-        <i class="ti ti-arrow-right"></i>
-        Learn More
+      <!-- <a href="/book-a-call" class="hero-cta">
+        <i class="ti ti-calendar-event"></i>
+        Let's Talk
       </a> -->
-
-      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-        <span>Explore our approach</span>
-        <i class="ti ti-chevron-down"></i>
-      </div>
     </div>
   </section>
 
-  <!-- ============================================
-       CASE TYPES SECTION
-  ============================================ -->
+  <!-- Case Types Section -->
   <section class="case-types-section">
     <div class="section-container">
       <div class="section-header">
@@ -1001,7 +563,6 @@ import FooterBar from '../components/FooterBar.astro';
 
       <div class="case-types-grid">
         
-        <!-- Case Type 1: Full-Mouth Reconstructions -->
         <div class="case-type-card">
           <div class="case-type-icon">
             <i class="ti ti-dental"></i>
@@ -1014,7 +575,6 @@ import FooterBar from '../components/FooterBar.astro';
           </p>
         </div>
 
-        <!-- Case Type 2: All-on-4/All-on-6 -->
         <div class="case-type-card">
           <div class="case-type-icon">
             <i class="ti ti-building-arch"></i>
@@ -1027,7 +587,6 @@ import FooterBar from '../components/FooterBar.astro';
           </p>
         </div>
 
-        <!-- Case Type 3: Complex Implant Cases -->
         <div class="case-type-card">
           <div class="case-type-icon">
             <i class="ti ti-tool"></i>
@@ -1040,7 +599,6 @@ import FooterBar from '../components/FooterBar.astro';
           </p>
         </div>
 
-        <!-- Case Type 4: Smile Makeovers -->
         <div class="case-type-card">
           <div class="case-type-icon">
             <i class="ti ti-sparkles"></i>
@@ -1062,18 +620,16 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       APPROACH SECTION
-  ============================================ -->
+  <!-- Approach Section -->
   <section class="approach-section">
     <div class="section-container">
-      <div class="approach-intro">
+      <div class="section-header">
         <span class="section-tag">
           <i class="ti ti-target-arrow"></i>
           Our Methodology
         </span>
         <h2 class="section-title">How We Attract Premium Patients</h2>
-        <p>
+        <p class="section-description">
           <strong>It's the same proven system as our Multi-Implant Marketing—just tailored for 
           other high-value cases.</strong> Whether you want more veneers, crowns, or smile makeovers, 
           our six integrated systems work seamlessly to deliver qualified patients ready for treatment.
@@ -1082,7 +638,6 @@ import FooterBar from '../components/FooterBar.astro';
 
       <div class="approach-grid">
         
-        <!-- Approach 1: Targeted Campaigns -->
         <div class="approach-card">
           <div class="approach-badge">
             <i class="ti ti-target"></i>
@@ -1096,7 +651,6 @@ import FooterBar from '../components/FooterBar.astro';
           </p>
         </div>
 
-        <!-- Approach 2: Premium Positioning -->
         <div class="approach-card">
           <div class="approach-badge">
             <i class="ti ti-crown"></i>
@@ -1109,7 +663,6 @@ import FooterBar from '../components/FooterBar.astro';
           </p>
         </div>
 
-        <!-- Approach 3: Education-First Content -->
         <div class="approach-card">
           <div class="approach-badge">
             <i class="ti ti-book"></i>
@@ -1122,7 +675,6 @@ import FooterBar from '../components/FooterBar.astro';
           </p>
         </div>
 
-        <!-- Approach 4: Quality Screening -->
         <div class="approach-card">
           <div class="approach-badge">
             <i class="ti ti-filter"></i>
@@ -1139,9 +691,7 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       RESULTS SECTION
-  ============================================ -->
+  <!-- Results Section -->
   <section class="results-section">
     <div class="section-container">
       <div class="section-header">
@@ -1154,7 +704,6 @@ import FooterBar from '../components/FooterBar.astro';
 
       <div class="results-grid">
         
-        <!-- Result 1: Average Case Value -->
         <div class="result-card">
           <div class="result-icon">
             <i class="ti ti-cash"></i>
@@ -1163,7 +712,6 @@ import FooterBar from '../components/FooterBar.astro';
           <p class="result-label">Average Case Value</p>
         </div>
 
-        <!-- Result 2: Lead-to-Consultation Rate -->
         <div class="result-card">
           <div class="result-icon">
             <i class="ti ti-users"></i>
@@ -1172,7 +720,6 @@ import FooterBar from '../components/FooterBar.astro';
           <p class="result-label">Lead-to-Consultation Rate</p>
         </div>
 
-        <!-- Result 3: Consultation-to-Acceptance Rate -->
         <div class="result-card">
           <div class="result-icon">
             <i class="ti ti-check"></i>
@@ -1185,9 +732,7 @@ import FooterBar from '../components/FooterBar.astro';
     </div>
   </section>
 
-  <!-- ============================================
-       FINAL CTA SECTION
-  ============================================ -->
+  <!-- Final CTA Section -->
   <section class="final-cta-section">
     <div class="final-cta-content">
       <div class="final-cta-icon">
@@ -1209,92 +754,11 @@ import FooterBar from '../components/FooterBar.astro';
   </section>
 
   <FooterBar />
+  <!-- <StickyCTA /> -->
 
-  <!-- ============================================
-       FLOATING CTA BUTTONS
-  ============================================ -->
-  <div class="floating-cta">
-    <a href="/book-a-call" class="floating-btn">
-      <i class="ti ti-calendar-event" style="font-size: 24px;"></i>
-      <span>Let's Talk</span>
-    </a>
-    <a href="tel:+15614610636 " class="floating-btn">
-      <i class="ti ti-phone" style="font-size: 24px;"></i>
-      <span>Call Now</span>
-    </a>
-  </div>
-
-  <!-- ============================================
-       SCROLL ANIMATIONS
-  ============================================ -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-
-      // Observe all elements with data-aos attribute
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-      });
-
-      // Animated highlight text
-      const highlights = document.querySelectorAll('.highlight-animated');
-      highlights.forEach((highlight, index) => {
-        setTimeout(() => {
-          highlight.classList.add('active');
-        }, 1000 + (index * 200));
-      });
-
-      // Scroll indicator animation
-      const scrollIndicator = document.querySelector('.scroll-indicator');
-      if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-          const caseTypesSection = document.querySelector('.case-types-section');
-          if (caseTypesSection) {
-            caseTypesSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      // Animate case type cards
-      document.querySelectorAll('.case-type-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-      });
-
-      // Animate approach cards
-      document.querySelectorAll('.approach-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
-        observer.observe(card);
-      });
-
-      // Animate result cards
-      document.querySelectorAll('.result-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
-        observer.observe(card);
-      });
-
-      // Smooth scroll for all anchor links
+      // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
